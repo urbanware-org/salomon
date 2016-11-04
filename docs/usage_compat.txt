@@ -1,0 +1,38 @@
+
+USAGE (compat.sh)
+
+    Contents:
+
+        1.  Definition
+        2.  Shell requirements
+        3.  Compatibility check
+
+    1. Definition
+
+        The SaLoMon compatibility script checks if SaLoMon will run in the
+        current environment.
+
+    2. Shell requirements
+
+        The SaLoMon project was developed on (and for) the Bash shell, which
+        is the default shell on many Unix-like systems.
+
+        No matter which shell you are using, the Bash shell must be installed
+        in order to use SaLoMon. As a matter of fact, the SaLoMon project
+        takes advantage of certain features provided by the Bash shell.
+
+        Due to the shebang in the header of each script file, each component
+        uses the Bash shell, even if the script is being run on another shell.
+
+        Without the Bash shell, the scripts can also be executed, but will
+        either not work properly or not work at all. Maybe there are other
+        shells which provide the features needed, but there is no guarantee
+        for that.
+
+    3. Compatibility check
+
+        To check the compatibility, simply run the compatibility check script
+        without any arguments:
+
+            $ ./compat.sh
+
