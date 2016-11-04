@@ -1,0 +1,265 @@
+
+CHANGELOG (SaLoMon)
+
+    Version 1.6.2 (2015-04-30)
+
+        * Revised some of the output lines (changed their format, removed
+          unnecessary whitespaces and further negligible changes).
+
+        # Fixed the missing filter bug (missing filter pattern in the output
+          header).
+
+    Version 1.6.1 (2015-04-27)
+
+        * Revised all of the SaLoMon components to check if the required shell
+          is being installed.
+        * Revised the SaLoMon global variable core script.
+
+    Version 1.6.0 (2015-04-24)
+
+        + Added some additional checks to the compatibility check script.
+
+        * Revised all of the SaLoMon components to provide enhanced shell
+          compatibility.
+        * Revised (reorganized) the compatibility check script.
+
+    Version 1.5.9 (2015-04-17)
+
+        * Revised (changed) the string comparison operators in all components
+          (for shell compatibility reasons).
+        * Revised the main SaLoMon script (added a pre-check to check if the
+          currently used shell is suitable for running SaLoMon).
+        * Revised the compatibility check script (also added a pre-check with
+          additional information).
+
+    Version 1.5.8 (2015-03-27)
+
+        * Revised (reduced) some code inside the install script.
+
+        # Fixed the shebang bug in all components which caused syntax errors
+          on some systems (now, the Bash shell is explicitly set to execute
+          the scripts).
+
+    Version 1.5.7 (2015-03-14)
+
+        + Added the action command-line argument to the main SaLoMon script
+          (replaces the previous analyze argument, which however still works
+          for backwards compatibility purposes).
+
+        * Revised the description of some already existing command-line
+          arguments of the main SaLoMon script (negligible changes).
+
+    Version 1.5.6 (2015-02-07)
+
+        + Added an optional command-line argument to process temporary copy of
+          the input file instead of the input file itself.
+
+        * Revised the usage information text (added line breaks for better
+          readability).
+
+    Version 1.5.5 (2015-01-13)
+
+        * Revised some code inside the monitoring core script (negligible
+          changes).
+
+        # Fixed the freeze bug inside the SaLoMon monitoring core script (in
+          case the input file has been temporarily moved e. g. by a log
+          rotation process).
+
+    Version 1.5.4 (2014-12-17)
+
+        * Revised (reorganized) the core functionality of the main SaLoMon
+          script as well as the structure of the project itself.
+        * Revised the code for formatting the shell output inside the main
+          SaLoMon script.
+        * Revised the compatibility check script (negligible changes).
+
+    Version 1.5.3 (2014-12-08)
+
+        * Revised (reorganized) the filter code inside the main SaLoMon
+          script.
+        * Revised the output header inside the main SaLoMon script (added some
+          information and changed some decriptions for more clarity).
+
+        # Fixed the color bug inside the main SaLoMon script (lines have not
+          been colorized properly when no filter was given).
+
+    Version 1.5.2 (2014-12-06)
+
+        + Added an optional command-line argument to the main SaLoMon script
+          that allows excluding lines containing certain terms).
+
+        * Revised the install script (added additional command-line
+          arguments).
+        * Revised the compatibility check script (negligible changes).
+
+        # Fixed the filter whitespace bug inside the main SaLoMon script
+          (filters containing spaces have not been processed properly).
+
+    Version 1.5.1 (2014-11-21)
+
+        * Revised the information header inside the main SaLoMon script (added
+          new and revised information details).
+
+        # Fixed the highlight bug inside the main SaLoMon script (terms have
+          not been highlighted if multiple filter terms were given).
+        # Fixed the wait on match bug inside the main SaLoMon script (did not
+          work properly).
+
+    Version 1.5.0 (2014-11-19)
+
+        + Added an optional command-line argument to the main SaLoMon script
+          that additionally highlights the filter term.
+
+        * Revised (reorganized) the main SaLoMon script (for the new feature
+          as well as for more clarity).
+        * Revised the compatibility check script (improved the code to check
+          for additional commands).
+
+        - Removed backwards compatibility command-line arguments from the main
+          SaLoMon script (they still exist, but are no longer listed inside
+          the usage information).
+        - Removed start-up delay from the main SaLoMon script when displaying
+          the detail header.
+
+    Version 1.4.0 (2014-10-02)
+
+        + Added some details to the information header of the main SaLoMon
+          script.
+        + Added the optional command-line argument to the main SaLoMon script
+          to wait after printing a colored line.
+
+        * Revised the function to suppress the information header and footer
+          to the main SaLoMon script.
+        * Revised the monitoring function inside the the main SaLoMon script
+          (also allows slowing down the shell output now).
+
+        # Fixed the prompt bug when the monitoring process gets cancelled on
+          user request inside the main SaLoMon script (prompted even though
+          the corresponding argument was missing).
+        # Fixed the (negligible) default delay value bug inside the main
+          SaLoMon script (the value was different from the one shown in the
+          usage information).
+
+    Version 1.3.1 (2014-09-23)
+
+        + Added some details to the information header of the main SaLoMon
+          script.
+        + Added some details to the main SaLoMon script when analyzing a file
+          (information footer).
+        + Added the optional command-line argument to the main SaLoMon script
+          to disable the information header.
+
+        * Revised the description of some command-line arguments of the main
+          SaLoMon script for more clarity.
+        * Revised the main script in general (added a new function for SaLoMon
+          related shell output and reduced some code).
+
+    Version 1.3.0 (2014-09-19)
+
+        + Added an optional command-line argument to the main SaLoMon script
+          to prompt before exit in case the process gets cancelled on user
+          request.
+        + Added an optional command-line argument to the main SaLoMon script
+          to set the delay for the slow down feature.
+
+        * Revised the main SaLoMon script in general (several changes).
+        * Revised the compatibility check script (disabled unnecessary
+          checks).
+
+    Version 1.2.4 (2014-09-06)
+
+        + Added the command-line argument to the main SaLoMon script to slow
+          down the file analyzing process (decreases CPU usage).
+
+        * Revised the command-line arguments inside main SaLoMon script in
+          general.
+        * Revised the compatibility check script (improved the code to check
+          for certain commands).
+
+        # Fixed the error message bug inside the main SaLoMon script (messages
+          were not displayed correctly).
+
+    Version 1.2.3 (2014-08-04)
+
+        + Added a compatibility check script (which checks if SaLoMon runs on
+          the used shell).
+
+        * Revised the main SaLoMon script (removed deprecated code).
+
+    Version 1.2.2 (2014-07-30)
+
+        * Revised the install script (added alternate path where to create
+          the symbolic link to the main script).
+
+        # Fixed the copy bug inside the install script (data has not been
+          copied to the target directory properly).
+
+    Version 1.2.1 (2014-07-29)
+
+        + Added a install/uninstall script for SaLoMon.
+
+        * Revised the code for processing command-line arguments of the main
+          SaLoMon script.
+        * Revised the variables used in the main SaLoMon script (set more
+          suggestive names, removed unnecessary ones).
+
+    Version 1.2.0 (2014-07-28)
+
+        * Revised the code inside the main SaLoMon script for coloring the
+          lines (works way faster now and requires less resources).
+        * Revised the code inside the main SaLoMon script for processing color
+          files significantly.
+
+    Version 1.1.1 (2014-05-08)
+
+        + Added a feature to the main SaLoMon script that allows omitting the
+          config file path if the file is located in the corresponding config
+          sub-directory.
+
+        * Revised (reorganized) the code of the main SaLoMon script (added
+          some additional functions for increased readability).
+        * Revised the command-line arguments of the main SaLoMon script (and
+          added an additional argument for backwards compatibility).
+
+    Version 1.1.0 (2014-04-19)
+
+        + Added an additional support for applying a filter using a config
+          file to the main SaLoMon script.
+
+        * Revised some output text messages to the main SaLoMon script (for
+          more clarity).
+        * Revised the command-line argument parser inside the main SaLoMon
+          script(less code, more flexible).
+        * Revised the command-line argument for the filter pattern of the main
+          SaLoMon script (added support for patterns that contain spaces).
+
+    Version 1.0.3 (2014-04-16)
+
+        + Added a handler for unrecognized command-line arguments to the main
+          SaLoMon script.
+
+        # Fixed the negligible command-line argument validation bug inside the
+          main SaLoMon script (of those arguments that require a file path).
+
+    Version 1.0.2 (2014-04-15)
+
+        * Revised the filter pattern command-line argument inside the main
+          SaLoMon script (added support for multiple patterns).
+        * Revised the output header text of the main SaLoMon script (added the
+          absolute path to the given file names, if missing).
+
+    Version 1.0.1 (2014-04-14)
+
+        * Added an optional command-line argument to the the main SaLoMon
+          script to print the version number of the script and exit.
+
+        * Revised the code to handle the given command-line arguments inside
+          the main SaLoMon script.
+        * Revised the output header text the main SaLoMon script (added some
+          process details).
+
+    Version 1.0.0 (2014-04-10)
+
+        * First official release of this major version.
+
