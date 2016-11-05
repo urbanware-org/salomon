@@ -16,7 +16,7 @@ The script uses popular shell utilities that should be pre-installed by default 
 
 > :information_source: **Notice:**
 >
-> The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least Linux distributions).
+> The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
 >
 > No matter which shell you are using, the *Bash* shell must be installed in order to use *SaLoMon*.
 
