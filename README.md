@@ -2,13 +2,17 @@
 
 ## Definition
 
-The *SaLoMon* project is a simple tool to monitor or analyze log as well as plain text files and colorize as well as highlight lines containing certain terms.
+The *SaLoMon* project is a simple log file monitor and analyzer with various highlighting feratures which can also be used with other plain text files. 
 
 ## Details
 
 The main script was primarily built to monitor and analyze log as well as plain text files on systems without a graphical user interface. It returns either all or just certain lines (by applying a filter) that have been added to the monitored file.
 
 These lines can also easily be colorized with user-defined colors (and additionally highlighted) depending on given criteria. For example, all lines which contain the word "error" can be displayed red.
+
+## Usage
+
+Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with various usage examples.
 
 ## Requirements
 
