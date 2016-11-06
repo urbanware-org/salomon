@@ -12,7 +12,13 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 ## Usage
 
-Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with various usage examples.
+### Simple example
+
+You can see a simple usage example inside the wiki.
+
+### Documentation files
+
+Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further usage examples.
 
 ## Requirements
 
