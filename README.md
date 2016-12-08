@@ -2,7 +2,7 @@
 
 ## Definition
 
-The *SaLoMon* project is a simple log file monitor and analyzer with various highlighting feratures which can also be used with other plain text files. 
+The *SaLoMon* project is a simple log file monitor and analyzer with various highlighting features which can also be used with other plain text files. 
 
 ## Details
 
