@@ -156,8 +156,10 @@ usage() {
     echo "                        only (for details see section 4 inside the"
     echo "                        documentation file)"
     echo "  -h, --help            print this help message and exit"
-    echo "  --highlight           highlight the filter terms (by inverting"\
-                                 "their colors)"
+    echo "  --highlight           highlight the filter terms by inverting"\
+                                 "their colors"
+    echo "  --highlight-upper     Same as '--highlight' with uppercase"\
+                                 "letters"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --no-info             do not display the information header and"\
                                  "footer"
