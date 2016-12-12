@@ -128,6 +128,10 @@ else
                 highlight=1
                 shift
             ;;
+            --highlight-upper)
+                highlight_upper=1
+                shift
+            ;;
             --ignore-case)
                 arg_case="-i"
                 shift
@@ -235,9 +239,9 @@ else
             usage \
                 "The '--ignore-case' argument can only be used with a filter."
         fi
-        if [ $highlight = 1 ]; then
-        usage \
-                "The '--highlight' argument can only be used with a filter."
+        if [ $highlight = 1 ] || [ $highlight_upper = 1 ]; then
+            usage \
+                "The '--highlight' arguments can only be used with a filter."
         fi
     else
         if [ -f "$filter_pattern" ]; then
