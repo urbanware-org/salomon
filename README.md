@@ -30,14 +30,6 @@ The script uses popular shell utilities that should be pre-installed by default 
 >
 > No matter which shell you are using, the *Bash* shell must be installed in order to use *SaLoMon*.
 
-## Current development state
-
-The development of the *SaLoMon* project has been placed on hold for now.
-
-The main reason for this decision was the increased complexity of the code as well as the fact that maintaining it has become quite laborious.
-
-Furthermore, the project is written entirely in shell code which works fine so far, but does not provide the features programming languages like *Python* do.
-
 ## Useless facts
 
 * The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
