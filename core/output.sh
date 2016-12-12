@@ -226,7 +226,7 @@ print_output_line() {
 
     output="${color_code}${line}${color_none}"
     if [ "$filter_list" != "" ]; then
-        if [ $highlight $op 1 ]; then
+        if [ $highlight $op 1 ] || [ $highlight_upper $op 1 ]; then
             if [ $color_match $op 1 ]; then
                 color_high=$(echo "$color_code" | sed -e "s/0;/7;/g" \
                                                 | sed -e "s/1;/7;/g")
@@ -246,10 +246,15 @@ print_output_line() {
 
                 echo "$line" | grep $arg_case "$term" &>/dev/null
                 if [ $? $op 0 ]; then
-                    temp=$(echo $em "${color_high}${term_upper}${color_none}"\
+                    if [ $highlight_upper $op 1 ]; then
+                        term_case=$term_upper
+                    else
+                        term_case=$term
+                    fi
+                    temp=$(echo $em "${color_high}${term_case}${color_none}"\
                                     "${bs}${color_code}")
                     output=$(echo $em "${color_code}${line}${color_none}" \
-                            | sed -e "s/$term_upper/$temp/ig")
+                            | sed -e "s/$term_case/$temp/ig")
                     filter_match=1
                     break
                 fi
