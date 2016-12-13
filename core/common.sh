@@ -60,7 +60,7 @@ check_argument() {
     arg_value=$2
     arg_expect=$3
 
-    echo "$arg_value" | grep "^-" &>/dev/null
+    grep "^-" <<< "$arg_value" &>/dev/null
     if [ $? $op 0 ]; then
         usage "The argument '$arg_name' expects a $arg_expect."
     fi
@@ -104,13 +104,13 @@ shell_precheck() {
 }
 
 read_filter() {
-    cat "$filter_file" | grep -v "^#" | grep "#" &>/dev/null
+    (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
     if [ $? $op 0 ]; then
         usage "The filter pattern must not contain any hashes."
     fi
 
     filter_pattern=""
-    cat "$filter_file" | grep -v "#" | sed -e "s/\ /#/g" > $temp_file
+    (grep -v "#" | sed -e "s/\ /#/g") < "$filter_file" > $temp_file
     while read line; do
         temp="$filter_pattern;$line"
         filter_pattern="$temp"
@@ -191,4 +191,3 @@ usage() {
 }
 
 # EOF
-
