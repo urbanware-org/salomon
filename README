@@ -10,9 +10,9 @@ README (SaLoMon)
 
     Definition
 
-        The SaLoMon project is a simple tool to monitor or analyze log as well
-        as plain text files and colorize as well as highlight lines containing
-        certain terms.
+        The SaLoMon project is a simple log file monitor and analyzer with
+        various highlighting features which can also be used with other plain
+        text files. 
 
         It comes with a shell script, that uses popular shell utilities and
         runs on Unix-like operating systems, only.

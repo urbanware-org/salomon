@@ -22,7 +22,7 @@ Inside the `docs` sub-directory, there are plain text files containing the docum
 
 ## Requirements
 
-The script uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `requirements.txt` file.
+The script uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
 
 > :information_source: **Notice:**
 >
@@ -34,4 +34,3 @@ The script uses popular shell utilities that should be pre-installed by default 
 
 * The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
 * The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30th, 2015.
-* The included text files such as `readme.txt` and `license.txt` have lower-case names and an extension even though the usual format is upper case without any extension.
