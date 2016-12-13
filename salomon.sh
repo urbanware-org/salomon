@@ -217,7 +217,6 @@ else
 
     if [ "$color_file" != "" ]; then
         if [ ! -e "$color_file" ]; then
-            echo "$color_file" | grep "/" &>/dev/null
             color_file="${color_dir}${color_file}"
             if [ ! -e "$color_file" ]; then
                 usage "The given color config file does not exist."
@@ -236,7 +235,7 @@ else
                 "The '--ignore-case' argument can only be used with a filter."
         fi
         if [ $highlight = 1 ]; then
-        usage \
+            usage \
                 "The '--highlight' argument can only be used with a filter."
         fi
     else
@@ -247,24 +246,24 @@ else
             filter_file="${filter_dir}${filter}"
             read_filter
         else
-            echo "$filter_pattern" | grep "#" &>/dev/null
+            grep "#" <<< "$filter_pattern" &>/dev/null
             if [ $? = 0 ]; then
                 usage "The filter pattern must not contain any hashes."
             fi
         fi
 
-        temp=$(echo "$filter_pattern" | tr -s ";;" ";" \
-                                      | sed -e "s/^;//" \
-                                            -e "s/;$//")
-        filter_list=$(echo "$temp" | sed -e "s/^;*//g" \
-                                         -e "s/;*$//g" \
-                                         -e "s/\ /#/g" \
-                                         -e "s/;/\n/g")
-        filter_pattern=$(echo "$temp" | sed -e "s/#/\ /g")
+        temp=$((tr -s ";;" ";" | \
+                sed -e "s/^;//" \
+                    -e "s/;$//") <<< "$filter_pattern")
+        filter_list=$(sed -e "s/^;*//g" \
+                          -e "s/;*$//g" \
+                          -e "s/\ /#/g" \
+                          -e "s/;/\n/g" <<< "$temp")                      
+        filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
         filter=1
     fi
 
-    echo "$delay" | grep -E "^[0-9]*$" &>/dev/null
+    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
     if [ $? = 0 ]; then
         temp=$delay
         if [ $delay -lt 100 ]; then
@@ -278,37 +277,37 @@ else
     fi
 
     if [ "$exclude_pattern" != "" ]; then
-        echo "$exclude_pattern" | grep "#" &>/dev/null
+        grep "#" <<< "$exclude_pattern" &>/dev/null
         if [ $? = 0 ]; then
             usage "The exclude pattern must not contain any hashes."
         fi
 
-        exclude_list=$(echo "$exclude_pattern" | tr -s ";;" ";" \
-                                               | sed -e "s/^;*//" \
-                                                     -e "s/;*$//" \
-                                                     -e "s/\ /#/g" \
-                                                     -e "s/;/\n/g")
+        exclude_list=$((tr -s ";;" ";" | \
+                        sed -e "s/^;*//" \
+                            -e "s/;*$//" \
+                            -e "s/\ /#/g" \
+                            -e "s/;/\n/g") <<< "$exclude_pattern")
         exclude=1
     fi
 
     if [ "$remove_pattern" != "" ]; then
-        echo "$remove_pattern" | grep "#" &>/dev/null
+        grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? = 0 ]; then
             usage "The remove pattern must not contain any hashes."
         fi
 
-        remove_list=$(echo "$remove_pattern" | tr -s ";;" ";" \
-                                             | sed -e "s/^;*//" \
-                                                   -e "s/;*$//" \
-                                                   -e "s/\ /#/g" \
-                                                   -e "s/;/\n/g")
+        remove_list=$((tr -s ";;" ";" | \
+                       sed -e "s/^;*//" \
+                           -e "s/;*$//" \
+                           -e "s/\ /#/g" \
+                           -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
     fi
 
     if [ "$wait_match" = "" ]; then
         usage "The wait value must not be empty."
     else
-        echo "$wait_match" | grep -E "^[0-9]*$" &>/dev/null
+        grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
         if [ $? = 0 ]; then
             if [ $wait_match -lt 0 ]; then
                 wait=0
@@ -335,4 +334,3 @@ else
 fi
 
 # EOF
-
