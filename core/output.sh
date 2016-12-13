@@ -184,14 +184,14 @@ print_output_line() {
     color_match=0
     count_total=$(( count_total + 1 ))
     filter_match=0
-    line_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
 
     if [ $exclude $op 1 ]; then
         for string in $(echo "$exclude_list"); do
-            temp=$(echo "$string" | sed -e "s/#/\ /g")
+            temp=$(sed -e "s/#/\ /g" <<< "$string")
             string="$temp"
 
-            echo "$line_lower" | grep -i "$string" &>/dev/null
+            grep -i "$string" <<< "$line_lower" &>/dev/null
             if [ $? $op 0 ]; then
                 return
             fi
@@ -228,8 +228,8 @@ print_output_line() {
     if [ "$filter_list" != "" ]; then
         if [ $highlight $op 1 ] || [ $highlight_upper $op 1 ]; then
             if [ $color_match $op 1 ]; then
-                color_high=$(echo "$color_code" | sed -e "s/0;/7;/g" \
-                                                | sed -e "s/1;/7;/g")
+                color_high=$((sed -e "s/0;/7;/g" | \
+                              sed -e "s/1;/7;/g") <<< "$color_code")
             else
                 if [ "$em" $op "-e" ]; then
                     color_code="\e[0m"
@@ -241,10 +241,10 @@ print_output_line() {
             fi
 
             for filter_term in $(echo "$filter_list"); do
-                term=$(echo "$filter_term" | sed -e "s/#/\ /g")
-                term_upper=$(echo "$term" | tr '[:lower:]' '[:upper:]')
+                term=$(sed -e "s/#/\ /g" <<< "$filter_term")
+                term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
-                echo "$line" | grep $arg_case "$term" &>/dev/null
+                grep $arg_case "$term" <<< "$line" &>/dev/null
                 if [ $? $op 0 ]; then
                     if [ $highlight_upper $op 1 ]; then
                         term_case=$term_upper
@@ -253,18 +253,20 @@ print_output_line() {
                     fi
                     temp=$(echo $em "${color_high}${term_case}${color_none}"\
                                     "${bs}${color_code}")
-                    output=$(echo $em "${color_code}${line}${color_none}" \
-                            | sed -e "s/$term_case/$temp/ig")
+
+                    output=$(echo $em "${color_code}${line}${color_none}" | \
+                             sed -e "s/$term_upper/$temp/ig")
+
                     filter_match=1
                     break
                 fi
             done
         else
             for filter_term in $(echo "$filter_list"); do
-                term=$(echo "$filter_term" | sed -e "s/#/\ /g")
-                term_upper=$(echo "$term" | tr '[:lower:]' '[:upper:]')
+                term=$(sed -e "s/#/\ /g" <<< "$filter_term")
+                term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
-                echo "$line" | grep $arg_case "$term" &>/dev/null
+                grep $arg_case "$term" <<< "$line" &>/dev/null
                 if [ $? $op 0 ]; then
                     output="${color_code}${line}${color_none}"
                     filter_match=1
@@ -280,7 +282,7 @@ print_output_line() {
 
     if [ $remove $op 1 ]; then
         for string in $(echo "$remove_list"); do
-            temp=$(echo "$string" | sed -e "s/#/\ /g")
+            temp=$(sed -e "s/#/\ /g" <<< "$string")
             line=$(echo $em "$output" | sed -e "s/${temp}//ig")
             output="$line"
         done
@@ -295,4 +297,3 @@ print_output_line() {
 }
 
 # EOF
-
