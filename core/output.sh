@@ -228,8 +228,8 @@ print_output_line() {
     if [ "$filter_list" != "" ]; then
         if [ $highlight $op 1 ]; then
             if [ $color_match $op 1 ]; then
-                color_high=$(sed -e "s/0;/7;/g" | \
-                             sed -e "s/1;/7;/g") <<< "$color_code")
+                color_high=$((sed -e "s/0;/7;/g" | \
+                              sed -e "s/1;/7;/g") <<< "$color_code")
             else
                 if [ "$em" $op "-e" ]; then
                     color_code="\e[0m"
