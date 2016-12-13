@@ -74,8 +74,8 @@ get_color_code() {
 read_colors() {
     for color in $(echo "$color_list"); do
         color_line=""
-        cat "$color_file" | grep -v "#" | grep "^$color\ .*" \
-                          | sed -e "s/^$color//g" > $temp_file
+        (grep -v "#" | grep "^$color\ .*" | \
+         sed -e "s/^$color//g") < "$color_file" > $temp_file
         while read line; do
             color_temp="$color_line $line"
             color_line="$color_temp"
@@ -85,7 +85,7 @@ read_colors() {
             continue
         fi
 
-        colorize_[$color]=$(echo "$color_line" | tr '[:upper:]' '[:lower:]')
+        colorize_[$color]=$(tr '[:upper:]' '[:lower:]' <<< "$color_line")
     done
     rm -f $temp_file
 }
