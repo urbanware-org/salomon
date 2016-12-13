@@ -124,7 +124,7 @@ else
     check_failed=1
 fi
 
-cat $script_temp | grep "sh" &>/dev/null
+grep "sh" <<< $script_temp &>/dev/null
 if [ $? $op 0 ]; then
     check_grep="${color_lightgreen}SUCCESS${color_none}"
 else
@@ -145,7 +145,7 @@ else
     check_failed=1
 fi
 
-echo $script_temp | sed -e "s/sh/foo/g" &>/dev/null
+sed -e "s/sh/foo/g" <<< $script_temp &>/dev/null
 if [ $? $op 0 ]; then
     check_sed="${color_lightgreen}SUCCESS${color_none}"
 else
@@ -214,4 +214,3 @@ echo
 rm -f $script_temp
 
 # EOF
-
