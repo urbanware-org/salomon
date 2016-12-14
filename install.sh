@@ -3,12 +3,12 @@
 # ============================================================================
 # Name:         Sane Log Monitor install/uninstall script
 # Project:      SaLoMon
-# Copyright:    Copyright (C) 2015 by Ralf Kilian
+# Copyright:    Copyright (C) 2016 by Ralf Kilian
 # Website:      http://www.urbanware.org
 # ----------------------------------------------------------------------------
 # File:         install.sh
-# Version:      1.6.2
-# Date:         2015-04-30
+# Version:      1.7.0
+# Date:         2016-12-14
 # Description:  Installation script for SaLoMon, which allows to install or
 #               uninstall the project automatically.
 # ----------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 # DEALINGS IN THE SOFTWARE.
 # ============================================================================
 
-script_version="1.6.2"
+script_version="1.7.0"
 
 # Pre-check if the Bash shell is installed
 seperator="***************************************"
