@@ -143,7 +143,7 @@ CHANGELOG (SaLoMon)
         * Revised the monitoring function inside the the main SaLoMon script
           (also allows slowing down the shell output now).
 
-        # Fixed the prompt bug when the monitoring process gets cancelled on
+        # Fixed the prompt bug when the monitoring process gets canceled on
           user request inside the main SaLoMon script (prompted even though
           the corresponding argument was missing).
         # Fixed the (negligible) default delay value bug inside the main
@@ -167,7 +167,7 @@ CHANGELOG (SaLoMon)
     Version 1.3.0 (2014-09-19)
 
         + Added an optional command-line argument to the main SaLoMon script
-          to prompt before exit in case the process gets cancelled on user
+          to prompt before exit in case the process gets canceled on user
           request.
         + Added an optional command-line argument to the main SaLoMon script
           to set the delay for the slow down feature.
