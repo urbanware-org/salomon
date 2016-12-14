@@ -35,7 +35,7 @@
 cancel_process() {
     echo
     print_line "*"
-    temp="${color_lightred}cancelled ${color_lightgray}on"
+    temp="${color_lightred}Cancelled ${color_lightgray}on"
     print_line "${temp}${color_lightcyan} user request${color_lightgray}."
 
     if [ $follow $op 0 ]; then
