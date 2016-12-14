@@ -22,9 +22,7 @@ Inside the `docs` sub-directory, there are plain text files containing the docum
 
 ## Requirements
 
-The script uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
-
-The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions). So, no matter which shell you are using, the *Bash* shell must be installed in order to use *SaLoMon*.
+The *SaLoMon* project uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
 
 ## Useless facts
 
