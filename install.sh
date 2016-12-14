@@ -81,7 +81,7 @@ confirm() {
     read -p "This will $1 SaLoMon. Do you wish to proceed (Y/N)? " choice
     if [ "$choice" != "Y" ] && [ "$choice" != "y" ]; then
         echo
-        echo $em "${color_lightred}cancelled${color_none} on user request."
+        echo $em "${color_lightred}Canceled${color_none} on user request."
         echo
         exit 0
     fi
