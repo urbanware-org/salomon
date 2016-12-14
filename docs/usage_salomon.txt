@@ -20,8 +20,8 @@ USAGE (salomon.sh)
 
     1. Definition
 
-        Monitor or analyze log as well as plain text files and colorize as
-        well as highlight lines containing certain terms.
+        Monitor and analyze log and plain text files with various filter and
+        highlighting features.
 
     2. General stuff
 
