@@ -3,12 +3,12 @@
 # ============================================================================
 # Name:         Sane Log Monitor file analyzing core script
 # Project:      SaLoMon
-# Copyright:    Copyright (C) 2015 by Ralf Kilian
+# Copyright:    Copyright (C) 2016 by Ralf Kilian
 # Website:      http://www.urbanware.org
 # ----------------------------------------------------------------------------
 # File:         analyze.sh
-# Version:      1.6.2
-# Date:         2015-04-30
+# Version:      1.7.0
+# Date:         2016-12-14
 # Description:  Functions to analyze a file with SaLoMon.
 # ----------------------------------------------------------------------------
 # Distributed under the MIT License:
