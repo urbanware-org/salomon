@@ -1,6 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
+    Version 1.7.0 (2016-12-14)
+
+        + Added an optional command-line argument to highlight the filter
+          terms additionally with uppercase letters (was implicit before, now
+          is explicit).
+
+        * Revised all components which contained "useless use of" syntax
+          constructions and mostly replaced them with more sensible code.
+          
     Version 1.6.2 (2015-04-30)
 
         * Revised some of the output lines (changed their format, removed
