@@ -24,7 +24,7 @@ Inside the `docs` sub-directory, there are plain text files containing the docum
 
 The script uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
 
-> :information_source: **Notice:**
+> :bulb: **Notice:**
 >
 > The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
 >
