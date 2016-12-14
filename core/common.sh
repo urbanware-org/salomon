@@ -35,7 +35,7 @@
 cancel_process() {
     echo
     print_line "*"
-    temp="${color_lightred}Cancelled ${color_lightgray}on"
+    temp="${color_lightred}Canceled ${color_lightgray}on"
     print_line "${temp}${color_lightcyan} user request${color_lightgray}."
 
     if [ $follow $op 0 ]; then
@@ -164,7 +164,7 @@ usage() {
     echo "  --no-info             do not display the information header and"\
                                  "footer"
     echo "  -p, --prompt          prompt before exit (in case the process"\
-                                 "gets cancelled"
+                                 "gets canceled"
     echo "                        on user request)"
     echo "  -r REMOVE, --remove REMOVE"
     echo "                        remove a certain string from each line"\
