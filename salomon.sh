@@ -9,8 +9,8 @@
 # File:         salomon.sh
 # Version:      1.6.2
 # Date:         2015-04-30
-# Description:  Monitor or analyze log as well as plain text files and
-#               colorize as well as highlight lines containing certain terms.
+# Description:  Monitor and analyze log and plain text files with various
+#               filter and highlighting features.
 # ----------------------------------------------------------------------------
 # Distributed under the MIT License:
 #
