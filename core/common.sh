@@ -128,9 +128,8 @@ usage() {
     echo "                  [--ignore-case] [--no-info] [-p] [-r REMOVE]"
     echo "                  [-s] [--version] [-w WAIT]"
     echo
-    echo "Monitor or analyze log as well as plain text files and colorize as"\
-         "well as"
-    echo "highlight lines containing certain terms."
+    echo "Monitor and analyze log and plain text files with various filter"\
+         "and highlighting features."
     echo
     echo "required arguments:"
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
