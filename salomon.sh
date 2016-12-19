@@ -5,6 +5,7 @@
 # Project:      SaLoMon
 # Copyright:    Copyright (C) 2016 by Ralf Kilian
 # Website:      http://www.urbanware.org
+# GitHub:       https://github.com/urbanware-org/salomon
 # ----------------------------------------------------------------------------
 # File:         salomon.sh
 # Version:      1.7.0
