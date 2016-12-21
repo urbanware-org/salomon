@@ -1,4 +1,4 @@
-# *SaLoMon*
+# *SaLoMon* <img src="salomon.png" alt="SaLoMon logo" height=48px width=48px align="right"/> 
 
 ## Definition
 
