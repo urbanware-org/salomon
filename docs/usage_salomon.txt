@@ -10,8 +10,9 @@ USAGE (salomon.sh)
           2.3  Colorize and highlight certain lines
           2.4  Config file paths
         3.  Processing an input file
-          3.1  Monitor the file
-          3.2  Analyze the file
+          3.1  Relevant keystrokes
+          3.2  Monitor the file
+          3.3  Analyze the file
         4.  Applying a filter
           4.1  Filter pattern
           4.2  Filter config file
@@ -90,12 +91,25 @@ USAGE (salomon.sh)
         The following examples use a color config file. See section 2.3 for
         details.
 
-        3.1 Monitor the file
+        3.1  Relevant keystrokes
+        
+            The SaLoMon process (no matter if monitoring or analyzing) can be
+            canceled at any time by pressing the universal and well-known
+            <Ctrl>+<C> keystroke.
+            
+            Furthermore, the Bash shell also provides built-in keystrokes to
+            pause ("freeze") the output and, of course, to resume again.
+            Notice that they are part of the Bash not of SaLoMon.
+            
+            By pressing <Ctrl>+<S> the output freezes until "defreezing" it
+            afain using <Ctrl>+<Q>.
+
+        3.2 Monitor the file
 
             This feature uses the follow mode of the "tail" utility to return
             the lines of the file and colorizes the output with user-defined
             colors. The file will be monitored until the user cancels the
-            process by pressing <Ctrl>+<C>.
+            process.
 
             For example, if you want to monitor the file "/tmp/foobar.log"
             using the file "/tmp/colors.cfg" to colorize certain lines, type:
@@ -103,7 +117,7 @@ USAGE (salomon.sh)
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
 
-        3.2 Analyze the file
+        3.3 Analyze the file
 
             Instead of monitoring a file, it is also possible to analyze it.
             This will simply return its lines and colorize certain of them,
