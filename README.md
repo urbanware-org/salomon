@@ -18,7 +18,7 @@ You can see a simple usage example inside the wiki.
 
 ### Documentation files
 
-Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further usage examples.
+Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further information and usage examples.
 
 ## Requirements
 
