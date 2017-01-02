@@ -34,6 +34,11 @@
 # ============================================================================
 
 analyze_input_file() {
+    tail "$input_file" &>/dev/null
+    if [ $? != 0 ]; then
+        usage "error: No read permission on the given input file."
+    fi
+
     if [ $copy $op 1 ]; then
         timestamp=$(date "+%Y%m%d%H%M%S%N")
         temp_file="/tmp/salomon_${timestamp}.tmp"
