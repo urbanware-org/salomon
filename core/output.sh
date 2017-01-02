@@ -127,7 +127,7 @@ print_output_header() {
     else
         temp="${color_lightgray}None"
     fi
-    print_line "${color_white}Exclude pattern:" "${color_lightgray}None"
+    print_line "${color_white}Exclude pattern:" "$temp"
 
     if [ $remove $op 1 ]; then
         temp="${color_yellow}$remove_pattern"

@@ -78,6 +78,33 @@ check_command() {
     fi
 }
 
+check_patterns() {
+    if [ "$filter_list" != "" ]; then
+        for filter_term in $(echo "$filter_list"); do
+            term=$(sed -e "s/#/\ /g" <<< "$filter_term")
+            term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
+            if [ "$exclude_list" != "" ]; then
+                for string in $(echo "$exclude_list"); do
+                    temp=$(sed -e "s/#/\ /g" <<< "$string")
+                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
+                    if [ "$term_upper" = "$string_upper" ]; then
+                        usage "Exclude list must not contain a filter term."
+                    fi
+                done
+            fi
+            if [ "$remove_list" != "" ]; then
+                for string in $(echo "$remove_list"); do
+                    temp=$(sed -e "s/#/\ /g" <<< "$string")
+                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
+                    if [ "$term_upper" = "$string_upper" ]; then
+                        usage "Remove list must not contain a filter term."
+                    fi
+                done
+            fi
+        done
+    fi
+}
+
 shell_precheck() {
     precheck=$(echo -e "precheck" | grep "\-e")
     if [ $? $op 0 ]; then
@@ -158,7 +185,7 @@ usage() {
     echo "  -h, --help            print this help message and exit"
     echo "  --highlight           highlight the filter terms by inverting"\
                                  "their colors"
-    echo "  --highlight-upper     Same as '--highlight' with uppercase"\
+    echo "  --highlight-upper     Same as '--highlight', but with uppercase"\
                                  "letters"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --no-info             do not display the information header and"\
