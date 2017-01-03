@@ -220,7 +220,6 @@ print_output_line() {
         fi
     done
 
-
     if [ "$color_code" $op 0 ]; then
         color_code="$color_none"
     fi
