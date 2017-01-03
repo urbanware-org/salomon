@@ -258,8 +258,8 @@ print_output_line() {
                     output=$(echo $em "${color_code}${line}${color_none}" | \
                              sed -e "s/$term_upper/$temp/ig")
 
+                    line="$output"
                     filter_match=1
-                    break
                 fi
             done
         else
