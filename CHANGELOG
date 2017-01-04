@@ -1,6 +1,23 @@
 
 CHANGELOG (SaLoMon)
 
+    Version 1.7.1 (2017-01-03)
+
+        + Added a permission check on the input file to (exit in case the file
+          file cannot be read).
+
+        * Revised the highlight feature (highlight all filter terms in an
+          output line if multiple occur).
+        * Revised the usage information inside the SaLoMon common core script
+          (negligible changes).
+
+        # Fixed the exclude information bug inside the output header (missing
+          exclude pattern).
+        # Fixed the exclude filter pattern bug (now, the exclude list must not
+          contain a filter term).
+        # Fixed the remove filter pattern bug (now, the remove list must not
+          contain a filter term).
+
     Version 1.7.0 (2016-12-14)
 
         + Added an optional command-line argument to highlight the filter
@@ -15,8 +32,8 @@ CHANGELOG (SaLoMon)
         * Revised some of the output lines (changed their format, removed
           unnecessary whitespaces and further negligible changes).
 
-        # Fixed the missing filter bug (missing filter pattern in the output
-          header).
+        # Fixed the filter information bug inside the output header (missing
+          filter pattern).
 
     Version 1.6.1 (2015-04-27)
 
