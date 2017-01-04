@@ -3,8 +3,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.7.1 (2017-01-03)
 
-        + Added a permission check on the input file to (exit in case the file
-          file cannot be read).
+        + Added a permission check on the input file (exit in case the file
+          cannot be read).
 
         * Revised the highlight feature (highlight all filter terms in an
           output line if multiple occur).
