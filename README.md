@@ -16,6 +16,8 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 You can see a simple usage example inside the [wiki](../../wiki).
 
+### Documentation
+
 Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further information and usage examples.
 
 ## Requirements
