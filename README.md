@@ -12,11 +12,9 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 ## Usage
 
-### Simple example
+### Quick start guide
 
-You can see a simple usage example inside the wiki.
-
-### Documentation files
+You can see a simple usage example inside the [wiki](../../wiki).
 
 Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further information and usage examples.
 
