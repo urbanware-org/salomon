@@ -30,7 +30,7 @@ USAGE (salomon.sh)
 
             Usually, each script requires command-line arguments to operate.
             So, to get an overview of all arguments available, simply run the
-            script with the "--help" argument. For example:
+            script with the '--help' argument. For example:
 
                 $ ./salomon.sh --help
 
@@ -55,12 +55,12 @@ USAGE (salomon.sh)
             file the lines of the input file will be displayed in the default
             colors of the shell.
 
-            Inside the "colors" sub-directory there is a sample color config
-            file named "sample_colors.cfg". It can be used to colorize lines
+            Inside the 'colors' sub-directory there is a sample color config
+            file named 'sample_colors.cfg'. It can be used to colorize lines
             containing a certain term with a user-defined color. This file
             contains some usage examples how to do this.
 
-            Furthermore, there is the "--highlight" command-line argument that
+            Furthermore, there is the '--highlight' command-line argument that
             additionally highlights the filter terms inside the corresponding
             lines (if a filter was given) by inverting their colors.
 
@@ -83,7 +83,7 @@ USAGE (salomon.sh)
 
             SaLoMon will first check the current working directory for these
             config files. If these do not exist there, it will check for them
-            inside the config sub-directories ("colors" and "filters") of the
+            inside the config sub-directories ('colors' and 'filters') of the
             SaLoMon script directory.
 
     3. Processing an input file
@@ -106,13 +106,13 @@ USAGE (salomon.sh)
 
         3.2 Monitor the file
 
-            This feature uses the follow mode of the "tail" utility to return
+            This feature uses the follow mode of the 'tail' utility to return
             the lines of the file and colorizes the output with user-defined
             colors. The file will be monitored until the user cancels the
             process.
 
-            For example, if you want to monitor the file "/tmp/foobar.log"
-            using the file "/tmp/colors.cfg" to colorize certain lines, type:
+            For example, if you want to monitor the file '/tmp/foobar.log'
+            using the file '/tmp/colors.cfg' to colorize certain lines, type:
 
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
@@ -123,8 +123,8 @@ USAGE (salomon.sh)
             This will simply return its lines and colorize certain of them,
             then exit.
 
-            For example, if you want to analyze the file "/tmp/foobar.log"
-            using the file "/tmp/colors.cfg" to colorize certain lines, type:
+            For example, if you want to analyze the file '/tmp/foobar.log'
+            using the file '/tmp/colors.cfg' to colorize certain lines, type:
 
                 $ ./salomon.sh -a analyze -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
@@ -135,7 +135,7 @@ USAGE (salomon.sh)
         details.
 
         It is possible to filter the output to e. g. only return lines that
-        contain certain terms. There is also the optional "--ignore-case"
+        contain certain terms. There is also the optional '--ignore-case'
         argument to ignore the case of the given filter pattern.
 
         The filter pattern also allows spaces, including leading and trailing
@@ -188,8 +188,8 @@ USAGE (salomon.sh)
             argument expects a pattern, it is also possible to give a config
             file containing the pattern.
 
-            Inside the "filters" sub-directory there is a sample filter config
-            file named "sample_filter.cfg". This file contains usage examples
+            Inside the 'filters' sub-directory there is a sample filter config
+            file named 'sample_filter.cfg'. This file contains usage examples
             how to filter the output.
 
             If the sample config file is missing for some reason, you may
@@ -197,7 +197,7 @@ USAGE (salomon.sh)
 
                 http://www.urbanware.org/salomon.html
 
-            For example, to use the file "/tmp/filter.cfg" as filter pattern,
+            For example, to use the file '/tmp/filter.cfg' as filter pattern,
             type:
 
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log \
