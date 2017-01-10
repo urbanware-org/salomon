@@ -21,11 +21,11 @@ USAGE (install.sh)
         2.1 Overview of all command-line arguments
 
             Usually, to get an overview of all arguments available, you simply
-            have run the script with the "--help" argument, but there is no
+            have run the script with the '--help' argument, but there is no
             such feature for this install script.
 
             Running it without any arguments will install SaLoMon and running
-            it with the argument "--uninstall" will remove the project again.
+            it with the argument '--uninstall' will remove the project again.
 
             Details can be found below.
 
@@ -45,10 +45,10 @@ USAGE (install.sh)
 
         Notice that this process requires superuser privileges.
 
-        The project will be installed to "/opt/salomon" and a symbolic link to
-        its main script will be created in "/usr/local/bin" by default. If the
-        directory "/usr/local/bin" does not exist, the symbolic link will be
-        created inside "/usr/bin" instead.
+        The project will be installed to '/opt/salomon' and a symbolic link to
+        its main script will be created in '/usr/local/bin' by default. If the
+        directory '/usr/local/bin' does not exist, the symbolic link will be
+        created inside '/usr/bin' instead.
 
         Now, to install, type one of the following commands (all of them have
         the same effect).
