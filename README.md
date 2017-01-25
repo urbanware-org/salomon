@@ -28,3 +28,4 @@ The *SaLoMon* project uses popular shell utilities that should be pre-installed 
 
 * The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
 * The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30th, 2015.
+
