@@ -277,7 +277,7 @@ CHANGELOG (SaLoMon)
 
     Version 1.0.1 (2014-04-14)
 
-        * Added an optional command-line argument to the the main SaLoMon
+        + Added an optional command-line argument to the the main SaLoMon
           script to print the version number of the script and exit.
 
         * Revised the code to handle the given command-line arguments inside
