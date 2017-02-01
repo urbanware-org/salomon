@@ -32,10 +32,6 @@ source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
 declare -A "colorize_"
 set_global_variables
-
-# Main entry point
-
-# Perform a shell compatibility check first
 shell_precheck
 
 # Check command-line arguments
