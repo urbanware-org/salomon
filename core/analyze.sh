@@ -1,17 +1,13 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor file analyzing core script
 # Project:      SaLoMon
+# File:         File analyzing core script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         analyze.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  Functions to analyze a file with SaLoMon.
 # ============================================================================
 
 analyze_input_file() {
