@@ -56,11 +56,11 @@ check_command() {
 }
 
 check_patterns() {
-    if [ "$filter_list" != "" ]; then
+    if [ ! -z"$filter_list" ]; then
         for filter_term in $(echo "$filter_list"); do
             term=$(sed -e "s/#/\ /g" <<< "$filter_term")
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
-            if [ "$exclude_list" != "" ]; then
+            if [ ! -z "$exclude_list" ]; then
                 for string in $(echo "$exclude_list"); do
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
@@ -69,7 +69,7 @@ check_patterns() {
                     fi
                 done
             fi
-            if [ "$remove_list" != "" ]; then
+            if [ ! -z "$remove_list" ]; then
                 for string in $(echo "$remove_list"); do
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
@@ -187,7 +187,7 @@ usage() {
     echo "Further information and usage examples can be found inside the"\
          "documentation"
     echo "file for this script."
-    if [ "$error_msg" != "" ]; then
+    if [ ! -z "$error_msg" ]; then
         echo
         echo "error: $error_msg"
         exit 1
