@@ -1,21 +1,14 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor script
 # Project:      SaLoMon
+# File:         Main script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         salomon.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  Monitor and analyze log and plain text files with various
-#               filter and highlighting features.
 # ============================================================================
-
-script_version="1.7.1"
 
 # Pre-check if the Bash shell is installed
 seperator="***************************************"
