@@ -8,7 +8,7 @@ CHANGELOG (SaLoMon)
     
         * Revised the main and the install script (abbreviated the notice
           about the missing Bash shell and referred to the shell compatibility
-          script for details.
+          script for details).
         * Revised the notice inside the shell compatibility script about the
           missing Bash shell.
         * Revised the syntax to check for zero-length strings in various
