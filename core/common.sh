@@ -1,17 +1,13 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor common core script
 # Project:      SaLoMon
+# File:         Common core script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         common.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  Common core functions for the SaLoMon project.
 # ============================================================================
 
 cancel_process() {
