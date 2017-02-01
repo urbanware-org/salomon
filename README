@@ -32,9 +32,9 @@ README (SaLoMon)
 
     Requirements
 
-        The SaLoMon project takes advantage of some shell utilities which
-        need to be installed. Details can be found inside the included
-        'REQUIREMENTS' file.
+        The SaLoMon project takes advantage of some shell utilities which need
+        to be installed. Details about the requirements can be found inside
+        the included 'REQUIREMENTS' file.
 
     Usage
 
