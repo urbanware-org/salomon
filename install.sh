@@ -48,7 +48,7 @@ confirm() {
 
 error() {
     echo
-    if [ "$2" = "" ]; then
+    if [ -z "$2" ]; then
         echo $em "${color_lightred}error:${color_none} $1"
     else
         echo $em "${color_lightred}error:${color_none} $1"\
@@ -68,7 +68,7 @@ fi
 
 if [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
     script_mode="uninstall"
-elif [ "$1" = "--install" ] || [ "$1" = "-i" ] || [ "$1" = "" ]; then
+elif [ "$1" = "--install" ] || [ "$1" = "-i" ] || [ -z "$1" ]; then
     script_mode="install"
 else
     error "Invalid argument" "$1"
