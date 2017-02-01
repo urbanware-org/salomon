@@ -6,6 +6,7 @@ README (SaLoMon)
         SaLoMon
         Version 1.7.1
         Copyright (C) 2017 by Ralf Kilian
+        
         Website: http://www.urbanware.org
         GitHub: https://github.com/urbanware-org/salomon
 
@@ -13,49 +14,33 @@ README (SaLoMon)
 
         The SaLoMon project is a simple log file monitor and analyzer with
         various highlighting features which can also be used with other plain
-        text files. 
-
+        text files.
+        
         It comes with a shell script, that uses popular shell utilities and
         runs on Unix-like operating systems, only.
 
-        Further information can be on the website of the project:
-
-            http://www.urbanware.org/salomon.html
+        Further information can be on the website or GitHub repository of the
+        project.
 
     License
 
-        Permission is hereby granted, free of charge, to any person obtaining
-        a copy of this software and associated documentation files (the
-        "Software"), to deal in the Software without restriction, including
-        without limitation the rights to use, copy, modify, merge, publish,
-        distribute, sublicense, and/or sell copies of the Software, and to
-        permit persons to whom the Software is furnished to do so, subject to
-        the following conditions:
-
-        The above copyright notice and this permission notice shall be
-        included in all copies or substantial portions of the Software.
-
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-        CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-        TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-        SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        This project is distributed under the MIT License. You should have
+        received a copy of the license along with this program. If not, you
+        can find the license terms here:
+        
+            https://opensource.org/licenses/MIT
 
     Requirements
 
-        The requirements for this project can be found inside the included
-        "REQUIREMENTS" file.
-
-        In case this file is missing, you can also find the information on the
-        website of the project mentioned above.
+        The SaLoMon project takes advantage of some shell utilities which
+        need to be installed. Details can be found inside the included
+        'REQUIREMENTS' file.
 
     Usage
 
         For fundamental documentation as well as some usage examples for each
         component of the project, you may have a look at the text files inside
-        the included "docs" sub-directory.
+        the included 'docs' sub-directory.
 
     Legal information
 
