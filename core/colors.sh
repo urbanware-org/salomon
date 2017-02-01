@@ -1,18 +1,13 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor color management core script
 # Project:      SaLoMon
+# File:         Color management core script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         colors.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  Functions to read the color config files and to return the
-#               appropriate color code.
 # ============================================================================
 
 get_color_code() {
