@@ -146,7 +146,7 @@ else
         esac
     done
 
-    if [ "$action" != "" ]; then
+    if [ ! -z "$action" ]; then
         if [ "$action" = "analyze" ]; then
             follow=0
         elif [ "$action" = "monitor" ]; then
@@ -166,7 +166,7 @@ else
         usage "A temporary copy only makes sense when analyzing a file."
     fi
 
-    if [ "$input_file" = "" ]; then
+    if [ -z "$input_file" ]; then
         usage "No input file given."
     elif [ ! -e "$input_file" ]; then
         usage "The given input file does not exist."
@@ -174,7 +174,7 @@ else
         usage "The given input file path is not a file."
     fi
 
-    if [ "$color_file" != "" ]; then
+    if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then
             color_file="${color_dir}${color_file}"
             if [ ! -e "$color_file" ]; then
@@ -188,7 +188,7 @@ else
         fi
     fi
 
-    if [ "$filter_pattern" = "" ]; then
+    if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
                 "The '--ignore-case' argument can only be used with a filter."
@@ -221,7 +221,6 @@ else
         filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
         filter=1
     fi
-
     grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
     if [ $? = 0 ]; then
         temp=$delay
@@ -234,13 +233,11 @@ else
     else
         usage "The delay must be a number between 100 and 900."
     fi
-
-    if [ "$exclude_pattern" != "" ]; then
+    if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
         if [ $? = 0 ]; then
             usage "The exclude pattern must not contain any hashes."
         fi
-
         exclude_list=$((tr -s ";;" ";" | \
                         sed -e "s/^;*//" \
                             -e "s/;*$//" \
@@ -248,13 +245,11 @@ else
                             -e "s/;/\n/g") <<< "$exclude_pattern")
         exclude=1
     fi
-
-    if [ "$remove_pattern" != "" ]; then
+    if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? = 0 ]; then
             usage "The remove pattern must not contain any hashes."
         fi
-
         remove_list=$((tr -s ";;" ";" | \
                        sed -e "s/^;*//" \
                            -e "s/;*$//" \
@@ -262,8 +257,7 @@ else
                            -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
     fi
-
-    if [ "$wait_match" = "" ]; then
+    if [ -z "$wait_match" ]; then
         usage "The wait value must not be empty."
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
@@ -275,7 +269,6 @@ else
             usage "The wait value must be a number greater than zero."
         fi
     fi
-
     check_command grep 0 grep
     check_command sed 0 sed
     check_command tail 0 coreutils
