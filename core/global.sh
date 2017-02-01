@@ -1,21 +1,18 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor global variable core script
 # Project:      SaLoMon
+# File:         Global variable core script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         global.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  Variables used by the main SaLoMon script as well as the
-#               core components.
 # ============================================================================
 
 set_global_variables() {
+    version="1.7.1"
+
     arg_case=""
     input_file=""
     temp_file="/tmp/salomon_$$.tmp"
