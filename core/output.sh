@@ -114,7 +114,7 @@ print_output_header() {
     print_line "${color_white}Remove pattern:" "$temp"
 
     if [ $filter $op 1 ]; then
-        if [ "$filter_file" != "" ]; then
+        if [ ! -z "$filter_file" ]; then
             temp="${color_white}Filter file:"
             print_line "$temp" "${color_yellow}$filter_file"
         fi
@@ -202,7 +202,7 @@ print_output_line() {
     fi
 
     output="${color_code}${line}${color_none}"
-    if [ "$filter_list" != "" ]; then
+    if [ ! -z "$filter_list" ]; then
         if [ $highlight $op 1 ] || [ $highlight_upper $op 1 ]; then
             if [ $color_match $op 1 ]; then
                 color_high=$((sed -e "s/0;/7;/g" | \
