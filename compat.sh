@@ -1,21 +1,14 @@
 #!/bin/bash
 
 # ============================================================================
-# Name:         Sane Log Monitor shell compatibility script
 # Project:      SaLoMon
+# File:         Shell compatibility script
 # Copyright:    Copyright (C) 2017 by Ralf Kilian
 # License:      Distributed under the MIT License
+# ----------------------------------------------------------------------------
 # Website:      http://www.urbanware.org
 # GitHub:       https://github.com/urbanware-org/salomon
-# ----------------------------------------------------------------------------
-# File:         compat.sh
-# Version:      1.7.1
-# Date:         2017-01-03
-# Description:  A script that checks if SaLoMon will run in the current
-#               environment.
 # ============================================================================
-
-script_version="1.7.1"
 
 # Pre-check if the Bash shell is installed
 seperator="***************************************"
