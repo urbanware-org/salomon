@@ -1,6 +1,22 @@
 
 CHANGELOG (SaLoMon)
 
+    Version 1.7.2 (2017-02-01)
+    
+        + Added a variable into the global variable core script containing the
+          version number (instead of such a variable in each non-core script).
+    
+        * Revised the main and the install script (abbreviated the notice
+          about the missing Bash shell and referred to the shell compatibility
+          script for details.
+        * Revised the notice inside the shell compatibility script about the
+          missing Bash shell.
+        * Revised the syntax to check for zero-length strings in various
+          components.
+
+        - Removed the variables containing the version number inside the non-
+          core scripts (now a global variable).
+
     Version 1.7.1 (2017-01-03)
 
         + Added a permission check on the input file (exit in case the file
