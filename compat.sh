@@ -10,27 +10,23 @@
 # GitHub:       https://github.com/urbanware-org/salomon
 # ============================================================================
 
-# Pre-check if the Bash shell is installed
+# Check if the Bash shell is installed
 seperator="***************************************"
 bash --version >/dev/null 2>&1
 if [ $? != 0 ]; then
     echo
     echo "${seperator}${seperator}"
-    echo "* A pre-check already has determined that the Bash shell (which is"\
-         "required) *"
-    echo "* does not seem to be installed.                                 "\
+    echo "* This script has determined that the Bash shell (which is"\
+         "required) does    *"
+    echo "* not seem to be installed.                                      "\
          "           *"
     echo "*                                                                "\
          "           *"
     echo "* No matter which shell you are using, the Bash shell must be"\
          "installed in   *"
-    echo "* order to run SaLoMon.                                          "\
-         "           *"
-    echo "*                                                                "\
-         "           *"
-    echo "* Without the Bash shell, the scripts can also be executed, but"\
-         "will either  *"
-    echo "* not work properly or not work at all.                          "\
+    echo "* order to run SaLoMon. Without the Bash shell, SaLoMon will"\
+         "either not work *" 
+    echo "* properly or not work at all.                                   "\
          "           *"
     echo "${seperator}${seperator}"
     echo
