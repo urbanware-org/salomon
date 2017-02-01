@@ -33,7 +33,7 @@ USAGE (compat.sh)
     3. Compatibility check
 
         To check the compatibility, simply run the compatibility check script
-        without any arguments:
+        without any arguments. There are no command-line arguments anyway.
 
             $ ./compat.sh
 
