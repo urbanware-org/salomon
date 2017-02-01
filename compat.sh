@@ -22,12 +22,20 @@ if [ $? != 0 ]; then
          "           *"
     echo "*                                                                "\
          "           *"
+    echo "* The SaLoMon project was developed on (and for) the Bash shell,"\
+         "which is    *"
+    echo "* the default shell on many Unix-like systems (or at least on"\
+        "many Linux     *"
+    echo "* distributions).                                                "\
+         "           *"
+    echo "*                                                                "\
+         "           *"
     echo "* No matter which shell you are using, the Bash shell must be"\
          "installed in   *"
-    echo "* order to run SaLoMon. Without the Bash shell, SaLoMon will"\
-         "either not work *" 
-    echo "* properly or not work at all.                                   "\
-         "           *"
+    echo "* order to use SaLoMon. As a matter of fact, the SaLoMon project"\
+         "takes       *"
+    echo "* advantage of certain features provided by the Bash shell."\
+         "                 *"
     echo "${seperator}${seperator}"
     echo
     exit
