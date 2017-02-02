@@ -113,7 +113,7 @@ else
                 shift
             ;;
             --version)
-                echo "$script_version"
+                echo "$version"
                 exit
             ;;
             -w|--wait)
