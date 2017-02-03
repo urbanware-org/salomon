@@ -12,7 +12,7 @@
 
 # Check if the Bash shell is installed
 bash --version >/dev/null 2>&1
-if [ $? != 0 ]; then
+if [ "$?" != "0" ]; then
     echo
     echo "error: The Bash shell does not seem to be installed, run the"\
          "'compat.sh'"
@@ -35,7 +35,7 @@ set_global_variables
 shell_precheck
 
 # Check command-line arguments
-if [ $# = 0 ]; then
+if [ $# -eq 0 ]; then
     usage "At least one required argument is missing."
 else
     while [[ $# > 0 ]]; do
@@ -150,7 +150,7 @@ else
         if [ "$action" = "analyze" ]; then
             follow=0
         elif [ "$action" = "monitor" ]; then
-            if [ "$follow" = 0 ]; then
+            if [ $follow -eq 0 ]; then
                 usage "Argument conflict (different actions given)."
             fi
         else
@@ -158,11 +158,11 @@ else
         fi
     fi
 
-    if [ $follow = 0 ] && [ $prompt = 1 ]; then
+    if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
         usage "The analyzing mode does not support a prompt before exit."
     fi
 
-    if [ $follow = 1 ] && [ $copy = 1 ]; then
+    if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
         usage "A temporary copy only makes sense when analyzing a file."
     fi
 
@@ -193,7 +193,7 @@ else
             usage \
                 "The '--ignore-case' argument can only be used with a filter."
         fi
-        if [ $highlight = 1 ] || [ $highlight_upper = 1 ]; then
+        if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             usage \
                 "The '--highlight' arguments can only be used with a filter."
         fi
@@ -206,7 +206,7 @@ else
             read_filter
         else
             grep "#" <<< "$filter_pattern" &>/dev/null
-            if [ $? = 0 ]; then
+            if [ $? -eq 0 ]; then
                 usage "The filter pattern must not contain any hashes."
             fi
         fi
@@ -222,7 +222,7 @@ else
         filter=1
     fi
     grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
-    if [ $? = 0 ]; then
+    if [ $? -eq 0 ]; then
         temp=$delay
         if [ $delay -lt 100 ]; then
             temp=100
@@ -235,7 +235,7 @@ else
     fi
     if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
-        if [ $? = 0 ]; then
+        if [ $? -eq 0 ]; then
             usage "The exclude pattern must not contain any hashes."
         fi
         exclude_list=$((tr -s ";;" ";" | \
@@ -247,7 +247,7 @@ else
     fi
     if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
-        if [ $? = 0 ]; then
+        if [ $? -eq 0 ]; then
             usage "The remove pattern must not contain any hashes."
         fi
         remove_list=$((tr -s ";;" ";" | \
@@ -261,7 +261,7 @@ else
         usage "The wait value must not be empty."
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
-        if [ $? = 0 ]; then
+        if [ $? -eq 0 ]; then
             if [ $wait_match -lt 0 ]; then
                 wait=0
             fi
@@ -275,11 +275,11 @@ else
 fi
 
 # Process the given input file
-if [ $header = 1 ]; then
+if [ $header -eq 1 ]; then
     print_output_header
 fi
 
-if [ $follow = 1 ]; then
+if [ $follow -eq 1 ]; then
     monitor_input_file
 else
     analyze_input_file

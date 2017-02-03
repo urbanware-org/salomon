@@ -13,7 +13,7 @@
 # Check if the Bash shell is installed
 seperator="***************************************"
 bash --version >/dev/null 2>&1
-if [ $? != 0 ]; then
+if [ "$?" != "0" ]; then
     echo
     echo "${seperator}${seperator}"
     echo "* This script has determined that the Bash shell (which is"\
@@ -54,7 +54,7 @@ echo
 echo $em "${color_lightcyan}SaLoMon compatibility check script"\
          "${color_none}"
 
-if [ "$em" $op "" ]; then
+if [ "$em" = "" ]; then
     check_error=" [!]"
     check_echo="${color_lightred}FAILURE${color_none}${check_error}"
     temp="............"
@@ -81,7 +81,7 @@ touch $script_temp
 chmod +x $script_temp
 
 basename $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_basename="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
@@ -90,56 +90,56 @@ fi
 echo "#!/bin/bash" > $script_temp
 echo "declare salomon=foobar" >> $script_temp
 $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_declare="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 dirname $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_dirname="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 grep "sh" <<< $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_grep="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 printf ""
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_printf="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 readlink -f $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_readlink="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 sed -e "s/sh/foo/g" <<< $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_sed="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 tail $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_tail="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
 trap &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_trap="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
@@ -150,13 +150,13 @@ echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
 echo "}" >> $script_temp
 $script_temp &>/dev/null
-if [ $? $op 0 ]; then
+if [ $? -eq 0 ]; then
     check_function="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-if [ $check_failed $op 0 ]; then
+if [ $check_failed -eq 0 ]; then
     check_overall="${color_lightgreen}SUCCESS${color_none}"
 else
     check_overall="${color_lightred}FAILURE${color_none}"

@@ -12,7 +12,7 @@
 
 # Check if the Bash shell is installed
 bash --version >/dev/null 2>&1
-if [ $? != 0 ]; then
+if [ "$?" != "0" ]; then
     echo
     echo "error: The Bash shell does not seem to be installed, run the"\
          "'compat.sh'"
