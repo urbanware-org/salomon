@@ -1,6 +1,17 @@
 
 CHANGELOG (SaLoMon)
 
+    Version x.x.x (xxxx-xx-xx)
+    
+        * Revised all components (adjusted various comparison operators and
+          removed unnecessary quotes around variables).
+
+        # Fixed the version number bug inside the main SaLoMon script (the
+          command-line argument to show the version returned an empty string).
+          
+        - Removed an unnecessary global variable containing a comparison
+          operator.
+          
     Version 1.7.2 (2017-02-01)
     
         + Added a variable into the global variable core script containing the
