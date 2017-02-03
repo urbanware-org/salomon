@@ -20,7 +20,6 @@ set_global_variables() {
     bs="\b"
     ce="\c"
     em="-e"
-    op="=="
 
     action=""
     copy=0

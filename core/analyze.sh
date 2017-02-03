@@ -14,11 +14,11 @@ analyze_input_file() {
     check_patterns
 
     tail "$input_file" &>/dev/null
-    if [ $? != 0 ]; then
+    if [ $? -ne 0 ]; then
         usage "error: No read permission on the given input file."
     fi
 
-    if [ $copy $op 1 ]; then
+    if [ $copy -eq 1 ]; then
         timestamp=$(date "+%Y%m%d%H%M%S%N")
         temp_file="/tmp/salomon_${timestamp}.tmp"
         cat "$input_file" > $temp_file
@@ -28,16 +28,16 @@ analyze_input_file() {
     while read line; do
         print_output_line "$line"
 
-        if [ $slow $op 1 ]; then
+        if [ $slow -eq 1 ]; then
             sleep 0.$delay
         fi
     done < $input_file
 
-    if [ $copy $op 1 ]; then
+    if [ $copy -eq 1 ]; then
         rm -f $temp_file
     fi
 
-    if [ $header $op 1 ]; then
+    if [ $header -eq 1 ]; then
         echo
         temp="Reached the end of the given input file."
         print_line "*"

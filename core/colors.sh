@@ -13,37 +13,37 @@
 get_color_code() {
     color_name=$1
 
-    if [ "$color_name" $op "black" ]; then
+    if [ "$color_name" = "black" ]; then
         color_code="$color_black"
-    elif [ "$color_name" $op "brown" ]; then
+    elif [ "$color_name" = "brown" ]; then
         color_code="$color_brown"
-    elif [ "$color_name" $op "darkblue" ]; then
+    elif [ "$color_name" = "darkblue" ]; then
         color_code="$color_darkblue"
-    elif [ "$color_name" $op "darkcyan" ]; then
+    elif [ "$color_name" = "darkcyan" ]; then
         color_code="$color_darkcyan"
-    elif [ "$color_name" $op "darkgray" ]; then
+    elif [ "$color_name" = "darkgray" ]; then
         color_code="$color_darkgray"
-    elif [ "$color_name" $op "darkgreen" ]; then
+    elif [ "$color_name" = "darkgreen" ]; then
         color_code="$color_darkgreen"
-    elif [ "$color_name" $op "darkpurple" ]; then
+    elif [ "$color_name" = "darkpurple" ]; then
         color_code="$color_darkpurple"
-    elif [ "$color_name" $op "darkred" ]; then
+    elif [ "$color_name" = "darkred" ]; then
         color_code="$color_darkred"
-    elif [ "$color_name" $op "lightblue" ]; then
+    elif [ "$color_name" = "lightblue" ]; then
         color_code="$color_lightblue"
-    elif [ "$color_name" $op "lightcyan" ]; then
+    elif [ "$color_name" = "lightcyan" ]; then
         color_code="$color_lightcyan"
-    elif [ "$color_name" $op "lightgray" ]; then
+    elif [ "$color_name" = "lightgray" ]; then
         color_code="$color_lightgray"
-    elif [ "$color_name" $op "lightgreen" ]; then
+    elif [ "$color_name" = "lightgreen" ]; then
         color_code="$color_lightgreen"
-    elif [ "$color_name" $op "lightpurple" ]; then
+    elif [ "$color_name" = "lightpurple" ]; then
         color_code="$color_lightpurple"
-    elif [ "$color_name" $op "lightred" ]; then
+    elif [ "$color_name" = "lightred" ]; then
         color_code="$color_lightred"
-    elif [ "$color_name" $op "white" ]; then
+    elif [ "$color_name" = "white" ]; then
         color_code="$color_white"
-    elif [ "$color_name" $op "yellow" ]; then
+    elif [ "$color_name" = "yellow" ]; then
         color_code="$color_yellow"
     fi
 }
@@ -58,7 +58,7 @@ read_colors() {
             color_line="$color_temp"
         done < $temp_file
 
-        if [ "$color_line" $op "" ]; then
+        if [ "$color_line" = "" ]; then
             continue
         fi
 

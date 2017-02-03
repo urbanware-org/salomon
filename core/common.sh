@@ -16,11 +16,11 @@ cancel_process() {
     temp="${color_lightred}Canceled ${color_lightgray}on"
     print_line "${temp}${color_lightcyan} user request${color_lightgray}."
 
-    if [ $follow $op 0 ]; then
+    if [ $follow -eq 0 ]; then
         print_line
         print_line_count
     fi
-    if [ $prompt $op 1 ]; then
+    if [ $prompt -eq 1 ]; then
         print_line
         print_line "${color_lightgray}Press any key to exit."
         print_line "*"
@@ -39,7 +39,7 @@ check_argument() {
     arg_expect=$3
 
     grep "^-" <<< "$arg_value" &>/dev/null
-    if [ $? $op 0 ]; then
+    if [ $? -eq 0 ]; then
         usage "The argument '$arg_name' expects a $arg_expect."
     fi
 }
@@ -84,7 +84,7 @@ check_patterns() {
 
 shell_precheck() {
     precheck=$(echo -e "precheck" | grep "\-e")
-    if [ $? $op 0 ]; then
+    if [ $? -eq 0 ]; then
         color_none=""
         color_black=""
         color_brown=""
@@ -110,7 +110,7 @@ shell_precheck() {
 
 read_filter() {
     (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
-    if [ $? $op 0 ]; then
+    if [ $? -eq 0 ]; then
         usage "The filter pattern must not contain any hashes."
     fi
 
