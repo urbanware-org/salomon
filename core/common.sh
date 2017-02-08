@@ -29,7 +29,8 @@ cancel_process() {
         print_line "*"
         echo
     fi
-
+    
+    rm -f $temp_file
     exit 2
 }
 
