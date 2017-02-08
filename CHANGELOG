@@ -6,8 +6,11 @@ CHANGELOG (SaLoMon)
         * Revised all components (adjusted various comparison operators and
           removed unnecessary quotes around variables).
 
+        # Fixed the left-over temporary file bug when the process has been
+          canceled.
         # Fixed the version number bug inside the main SaLoMon script (the
-          command-line argument to show the version returned an empty string).
+          command-line argument to show the version information returned an
+          empty string).
           
         - Removed an unnecessary global variable containing a comparison
           operator.
