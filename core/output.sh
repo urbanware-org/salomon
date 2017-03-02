@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # ============================================================================
-# Project:      SaLoMon
-# File:         Output core script
-# Copyright:    Copyright (C) 2017 by Ralf Kilian
-# License:      Distributed under the MIT License
-# ----------------------------------------------------------------------------
-# Website:      http://www.urbanware.org
-# GitHub:       https://github.com/urbanware-org/salomon
+# SaLoMon - Simple log file monitor and analyzer
+# Output core script
+# Copyright (C) 2017 by Ralf Kilian
+# Distributed under the MIT License (https://opensource.org/licenses/MIT)
+# 
+# Website:  http://www.urbanware.org
+# GitHub:   https://github.com/urbanware-org/salomon
 # ============================================================================
 
 print_line() {
