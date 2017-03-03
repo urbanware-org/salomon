@@ -3,6 +3,8 @@ CHANGELOG (SaLoMon)
 
     Version x.x.x (xxxx-xx-xx)
 
+        * Revised the exit codes of the scripts in general (including exit
+          code 1 in case the Bash shell is missing).
         * Revised the output header inside the output core script (negligible
           changes).
 
