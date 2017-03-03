@@ -16,7 +16,7 @@ if [ "$?" != "0" ]; then
     echo "error: The Bash shell does not seem to be installed, run the"\
          "'compat.sh'"
     echo "       script for details."
-    exit
+    exit 1
 fi
 
 script_dir=$(dirname $(readlink -f $0))
