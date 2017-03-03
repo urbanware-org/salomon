@@ -1,6 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
+    Version x.x.x (xxxx-xx-xx)
+
+        * Revised the output header inside the output core script (nengligible
+          changes).
+
     Version 1.7.3 (2017-02-08)
     
         * Revised all components (adjusted various comparison operators and
