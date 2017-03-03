@@ -40,7 +40,7 @@ confirm() {
         echo
         echo $em "${color_lightred}Canceled${color_none} on user request."
         echo
-        exit 0
+        exit
     fi
 }
 
