@@ -38,7 +38,7 @@ if [ "$?" != "0" ]; then
          "                 *"
     echo "${seperator}${seperator}"
     echo
-    exit
+    exit 1
 fi
 
 script_dir=$(dirname $(readlink -f $0))
