@@ -147,7 +147,7 @@ print_output_header() {
             temp="* "
         fi
         echo $em "${temp}${color_white}Press${color_lightcyan}"\
-                 "<Ctrl>${bs}${color_lightgray}+${color_lightcyan}<C>"\
+                 "Ctrl${color_lightgray}+${color_lightcyan}C"\
                  "${color_white}to"\
                  "${color_lightred}cancel${color_white}."
     fi
