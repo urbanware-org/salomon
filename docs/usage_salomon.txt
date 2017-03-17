@@ -91,7 +91,7 @@ USAGE (salomon.sh)
         The following examples use a color config file. See section 2.3 for
         details.
 
-        3.1  Relevant keystrokes
+        3.1 Relevant keystrokes
         
             The SaLoMon process (no matter if monitoring or analyzing) can be
             canceled at any time by pressing the universal and well-known
