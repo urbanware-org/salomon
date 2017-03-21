@@ -1,8 +1,8 @@
-# *SaLoMon* <img src="salomon.png" alt="SaLoMon logo" height=48px width=48px align="right"/> 
+# *SaLoMon* <img src="salomon.png" alt="SaLoMon logo" height=48px width=48px align="right"/>
 
 ## Definition
 
-The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files. 
+The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files.
 
 ## Details
 

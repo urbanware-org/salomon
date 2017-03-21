@@ -5,7 +5,7 @@
 # Install and uninstall script
 # Copyright (C) 2017 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
-# 
+#
 # Website: http://www.urbanware.org
 # GitHub: https://github.com/urbanware-org/salomon
 # ============================================================================

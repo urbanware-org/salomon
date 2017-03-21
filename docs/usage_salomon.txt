@@ -92,15 +92,15 @@ USAGE (salomon.sh)
         details.
 
         3.1 Relevant keystrokes
-        
+
             The SaLoMon process (no matter if monitoring or analyzing) can be
             canceled at any time by pressing the universal and well-known
             <Ctrl>+<C> keystroke.
-            
+
             Furthermore, the Bash shell also provides built-in keystrokes to
             pause ("freeze") the output and, of course, to resume again.
             Notice that they are part of the Bash not of SaLoMon.
-            
+
             By pressing <Ctrl>+<S> the output freezes until "defreezing" it
             afain using <Ctrl>+<Q>.
 

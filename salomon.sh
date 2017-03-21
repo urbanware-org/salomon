@@ -5,7 +5,7 @@
 # Main script
 # Copyright (C) 2017 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
-# 
+#
 # Website: http://www.urbanware.org
 # GitHub: https://github.com/urbanware-org/salomon
 # ============================================================================
@@ -215,7 +215,7 @@ else
         filter_list=$(sed -e "s/^;*//g" \
                           -e "s/;*$//g" \
                           -e "s/\ /#/g" \
-                          -e "s/;/\n/g" <<< "$temp")                      
+                          -e "s/;/\n/g" <<< "$temp")
         filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
         filter=1
     fi

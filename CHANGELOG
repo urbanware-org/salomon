@@ -9,7 +9,7 @@ CHANGELOG (SaLoMon)
           changes).
 
     Version 1.7.3 (2017-02-08)
-    
+
         * Revised all components (adjusted various comparison operators and
           removed unnecessary quotes around variables).
 
@@ -18,15 +18,15 @@ CHANGELOG (SaLoMon)
         # Fixed the version number bug inside the main SaLoMon script (the
           command-line argument to show the version information returned an
           empty string).
-          
+
         - Removed an unnecessary global variable containing a comparison
           operator.
-          
+
     Version 1.7.2 (2017-02-01)
-    
+
         + Added a variable into the global variable core script containing the
           version number (instead of such a variable in each non-core script).
-    
+
         * Revised the main and the install script (abbreviated the notice
           about the missing Bash shell and referred to the shell compatibility
           script for details).
@@ -63,7 +63,7 @@ CHANGELOG (SaLoMon)
 
         * Revised all components which contained "useless use of" syntax
           constructions and mostly replaced them with more sensible code.
-          
+
     Version 1.6.2 (2015-04-30)
 
         * Revised some of the output lines (changed their format, removed

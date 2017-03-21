@@ -5,7 +5,7 @@
 # File monitoring core script
 # Copyright (C) 2017 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
-# 
+#
 # Website: http://www.urbanware.org
 # GitHub: https://github.com/urbanware-org/salomon
 # ============================================================================
@@ -16,7 +16,7 @@ monitor_input_file() {
     tail "$input_file" &>/dev/null
     if [ $? -ne 0 ]; then
         usage "error: No read permission on the given input file."
-    fi 
+    fi
 
     tail -F "$input_file" 2>/dev/null | while read line; do
         print_output_line "$line"
