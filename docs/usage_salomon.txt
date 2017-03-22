@@ -28,9 +28,9 @@ USAGE (salomon.sh)
 
         2.1 Overview of all command-line arguments
 
-            Usually, each script requires command-line arguments to operate.
-            So, to get an overview of all arguments available, simply run the
-            script with the '--help' argument. For example:
+            The script requires command-line arguments to operate. You can get
+            an overview of all arguments available, by simply running the main
+            script with the '--help' argument:
 
                 $ ./salomon.sh --help
 
