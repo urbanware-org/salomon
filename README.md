@@ -14,7 +14,7 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 ### Quick start guide
 
-You can see a simple usage example inside the [wiki](../../wiki).
+You can see a simple usage example inside the [wiki](../../wiki/Quick-start).
 
 ### Documentation
 
