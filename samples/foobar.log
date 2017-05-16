@@ -1,0 +1,12 @@
+2014-04-02 01:04:16 Starting foobar service
+2014-04-02 01:04:17 Reading config file
+2014-04-02 01:04:17 Warning: Config file 'foobar.cfg' not found
+2014-04-02 01:04:18 Notice: Using fallback config file instead
+2014-04-02 01:04:19 Configuration has been loaded successfully
+2014-04-02 01:04:20 Running process #1
+2014-04-02 01:04:24 Running process #2
+2014-04-02 01:04:28 Running process #3
+2014-04-02 01:04:32 Running process #4
+2014-04-02 01:04:33 Error while running process #4
+2014-04-02 01:04:34 Warning: At least one process has failed
+2014-04-02 01:04:36 Stopping foobar service
