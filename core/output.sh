@@ -146,10 +146,21 @@ print_output_header() {
         else
             temp="* "
         fi
-        echo $em "${temp}${color_white}Press${color_lightcyan}"\
-                 "Ctrl${color_lightgray}+${color_lightcyan}C"\
-                 "${color_white}to"\
-                 "${color_lightred}cancel${color_white}."
+        
+        cl_c=${color_lightcyan}
+        cl_g=${color_lightgreen}
+        cl_l=${color_lightgray}
+        cl_r=${color_lightred}
+        cl_w=${color_white}
+        cl_y=${color_yellow}
+
+        echo $em "${temp}${cl_w}Press"\
+                 "${cl_c}Ctrl${cl_l}+${cl_c}C"\
+                 "${cl_w}to ${cl_r}cancel${cl_w},"\
+                 "${cl_c}Ctrl${cl_l}+${cl_c}S"\
+                 "${cl_w}to ${cl_y}freeze${cl_w} and"\
+                 "${cl_c}Ctrl${cl_l}+${cl_c}Q"\
+                 "${cl_w}to ${cl_g}defreeze${cl_w} the output."
     fi
 
     print_line "*"
