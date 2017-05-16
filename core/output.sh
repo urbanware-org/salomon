@@ -18,7 +18,7 @@ print_line() {
     elif [ "$1" = "*" ]; then
         if [ "$em" = "-e" ]; then
             echo $em "${color_lightblue}${ce}"
-                for number in $(seq 1 78); do
+            for number in $(seq 1 78); do
                 echo $em "*${ce}"
             done
             echo $em "${color_none}"
