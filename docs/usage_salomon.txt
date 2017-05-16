@@ -101,8 +101,8 @@ USAGE (salomon.sh)
             pause ("freeze") the output and, of course, to resume again.
             Notice that they are part of the Bash not of SaLoMon.
 
-            By pressing <Ctrl>+<S> the output freezes until "defreezing" it
-            afain using <Ctrl>+<Q>.
+            By pressing <Ctrl>+<S> the output freezes until defreezing it
+            again using <Ctrl>+<Q>.
 
         3.2 Monitor the file
 
