@@ -57,7 +57,7 @@ check_command() {
 }
 
 check_patterns() {
-    if [ ! -z"$filter_list" ]; then
+    if [ ! -z "$filter_list" ]; then
         for filter_term in $(echo "$filter_list"); do
             term=$(sed -e "s/#/\ /g" <<< "$filter_term")
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
