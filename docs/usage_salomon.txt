@@ -8,7 +8,8 @@ USAGE (salomon.sh)
           2.1  Overview of all command-line arguments
           2.2  Important notice
           2.3  Colorize and highlight certain lines
-          2.4  Config file paths
+          2.4  Process the input file without colorization
+          2.5  Config file paths
         3.  Processing an input file
           3.1  Relevant keystrokes
           3.2  Monitor the file
@@ -69,7 +70,19 @@ USAGE (salomon.sh)
 
                 http://www.urbanware.org/salomon.html
 
-        2.4 Config file paths
+        2.4 Process the input file without colorization
+                    
+            If you do not need any colorization of the output from the
+            processed file (no matter if you monitor or analyze it), you may
+            use the native shell commands such as (for example)
+
+                $ cat /tmp/foobar.log
+                $ grep "error" /tmp/foobar.log
+                $ tail -f /tmp/foobar.log
+
+            instead which are way faster.
+
+        2.5 Config file paths
 
             Since version 1.1.1 you do not have to give the full path to the
             config files for SaLoMon if these are located in the corresponding
@@ -102,7 +115,7 @@ USAGE (salomon.sh)
             Notice that they are part of the Bash not of SaLoMon.
 
             By pressing <Ctrl>+<S> the output freezes until defreezing it
-            again using <Ctrl>+<Q>.
+            again using <Ctrl>+<Q> or <Return>.
 
         3.2 Monitor the file
 
