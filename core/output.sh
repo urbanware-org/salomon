@@ -276,6 +276,15 @@ print_output_line() {
         done
     fi
 
+    if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
+        highlight_all=0
+    else
+        if [ $highlight_all -eq 1 ]; then
+            temp=$(echo $em "\e[7m$output" | sed -e "s/0m/7m/g")
+            output="$temp\e[0m"
+        fi
+    fi
+
     echo $em "$output"
     count_lines=$(( count_lines + 1 ))
 
