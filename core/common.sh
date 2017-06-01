@@ -163,7 +163,9 @@ usage() {
     echo "  -h, --help            print this help message and exit"
     echo "  --highlight           highlight the filter terms by inverting"\
                                  "their colors"
-    echo "  --highlight-upper     Same as '--highlight', but with uppercase"\
+    echo "  --highlight-all       highlight the lines terms by inverting"\
+                                 "their color"
+    echo "  --highlight-upper     same as '--highlight', but with uppercase"\
                                  "letters"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --no-info             do not display the information header and"\
