@@ -2,10 +2,14 @@
 CHANGELOG (SaLoMon)
 
     Version x.x.x (xxxx-xx-xx)
-    
+
+        + Added an optional command-line argument (and feature) to highlight
+          the whole line (instead of only highlighting the filter terms).
+
+        * Revised the command-line argument parser in the main SaLoMon script.
         * Revised the output header inside the output core script (added all
           relevant keystrokes).
-          
+
     Version 1.7.4 (2017-04-01)
 
         * Revised the exit codes of the scripts in general (including exit
@@ -62,12 +66,13 @@ CHANGELOG (SaLoMon)
 
     Version 1.7.0 (2016-12-14)
 
-        + Added an optional command-line argument to highlight the filter
-          terms additionally with uppercase letters (was implicit before, now
-          is explicit).
+        + Added an optional command-line argument (and feature) to highlight
+          the filter terms additionally with uppercase letters (was implicit
+          before, now is explicit).
 
         * Revised all components which contained "useless use of" syntax
           constructions and mostly replaced them with more sensible code.
+        * Revised the 
 
     Version 1.6.2 (2015-04-30)
 
@@ -119,8 +124,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.5.6 (2015-02-07)
 
-        + Added an optional command-line argument to process temporary copy of
-          the input file instead of the input file itself.
+        + Added an optional command-line argument (and feature) to process
+          temporary copy of the input file instead of the input file itself.
 
         * Revised the usage information text (added line breaks for better
           readability).
@@ -154,8 +159,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.5.2 (2014-12-06)
 
-        + Added an optional command-line argument to the main SaLoMon script
-          that allows excluding lines containing certain terms).
+        + Added an optional command-line argument (and feature) to the main
+          SaLoMon script that allows excluding lines containing certain terms.
 
         * Revised the install script (added additional command-line
           arguments).
@@ -176,8 +181,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.5.0 (2014-11-19)
 
-        + Added an optional command-line argument to the main SaLoMon script
-          that additionally highlights the filter term.
+        + Added an optional command-line argument (and feature) to the main
+          SaLoMon script that additionally highlights the filter term.
 
         * Revised (reorganized) the main SaLoMon script (for the new feature
           as well as for more clarity).
@@ -194,8 +199,8 @@ CHANGELOG (SaLoMon)
 
         + Added some details to the information header of the main SaLoMon
           script.
-        + Added the optional command-line argument to the main SaLoMon script
-          to wait after printing a colored line.
+        + Added the optional command-line argument (and feature) to the main
+          SaLoMon script to wait after printing a colored line.
 
         * Revised the function to suppress the information header and footer
           to the main SaLoMon script.
@@ -237,8 +242,9 @@ CHANGELOG (SaLoMon)
 
     Version 1.2.4 (2014-09-06)
 
-        + Added the command-line argument to the main SaLoMon script to slow
-          down the file analyzing process (decreases CPU usage).
+        + Added an optional command-line argument (and feature) to the main
+          SaLoMon script to slow down the file analyzing process (decreases
+          CPU usage).
 
         * Revised the command-line arguments inside main SaLoMon script in
           general.
@@ -265,7 +271,7 @@ CHANGELOG (SaLoMon)
 
     Version 1.2.1 (2014-07-29)
 
-        + Added a install/uninstall script for SaLoMon.
+        + Added an install/uninstall script for SaLoMon.
 
         * Revised the code for processing command-line arguments of the main
           SaLoMon script.
@@ -281,7 +287,7 @@ CHANGELOG (SaLoMon)
 
     Version 1.1.1 (2014-05-08)
 
-        + Added a feature to the main SaLoMon script that allows omitting the
+        + Added some code to the main SaLoMon script that allows omitting the
           config file path if the file is located in the corresponding config
           sub-directory.
 
@@ -292,8 +298,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.1.0 (2014-04-19)
 
-        + Added an additional support for applying a filter using a config
-          file to the main SaLoMon script.
+        + Added additional options for applying a filter using a config file
+          to the main SaLoMon script.
 
         * Revised some output text messages to the main SaLoMon script (for
           more clarity).
