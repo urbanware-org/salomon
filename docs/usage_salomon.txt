@@ -8,8 +8,11 @@ USAGE (salomon.sh)
           2.1  Overview of all command-line arguments
           2.2  Important notice
           2.3  Colorize and highlight certain lines
-          2.4  Process the input file without colorization
-          2.5  Config file paths
+             2.3.1  Color config files
+             2.3.2  Highlight filter terms
+             2.3.3  Highlight whole lines
+             2.3.4  No colorization and hightlighting
+          2.4  Config file paths
         3.  Processing an input file
           3.1  Relevant keystrokes
           3.2  Monitor the file
@@ -50,39 +53,43 @@ USAGE (salomon.sh)
         2.3 Colorize and highlight certain lines
 
             In first place, SaLoMon has been developed to monitor and analyze
-            files by colorizing lines which contain certain terms.
+            files by colorizing lines which contain certain terms (which can
+            also be highlighted) to get a fast overview of the contents (for
+            example to easily detect error messages inside log files).
 
-            However, a color config file is not required. Without that config
-            file the lines of the input file will be displayed in the default
-            colors of the shell.
+            2.3.1 Color config files
 
-            Inside the 'colors' sub-directory there is a sample color config
-            file named 'sample_colors.cfg'. It can be used to colorize lines
-            containing a certain term with a user-defined color. This file
-            contains some usage examples how to do this.
+                Inside the 'colors' sub-directory there is a sample color
+                config file named 'sample_colors.cfg'. It can be used to
+                colorize lines containing certain terms with user-defined
+                colors. This sample config file also contains some simple
+                usage examples how to do this.
 
-            Furthermore, there is the '--highlight' command-line argument that
-            additionally highlights the filter terms inside the corresponding
-            lines (if a filter was given) by inverting their colors.
+            2.3.2 Highlight filter terms
 
-            If the sample config file is missing for some reason, you may
-            download the project from the website:
+                The '--highlight' command-line argument allows to additionally
+                highlight the filter terms inside the corresponding lines (if
+                a filter was given) by inverting their colors (sort of marker
+                pen like). It can be used with and without a color config.
 
-                http://www.urbanware.org/salomon.html
+                You may also use '--highlight-upper', which works the same way
+                and additionally switches the letters of the filter terms to
+                uppercase.
 
-        2.4 Process the input file without colorization
-                    
-            If you do not need any colorization of the output from the
-            processed file (no matter if you monitor or analyze it), you may
-            use the native shell commands such as (for example)
+            2.3.3 Highlight whole lines
 
-                $ cat /tmp/foobar.log
-                $ grep "error" /tmp/foobar.log
-                $ tail -f /tmp/foobar.log
+                Instead of only highlighting the filter terms, you can also
+                highlight the whole line. This does neither require a color
+                config nor a filter.
 
-            instead which are way faster.
+            2.3.4 No colorization and hightlighting
 
-        2.5 Config file paths
+                If you do not need any colorization and highlighting, you may
+                use the native shell commands and tools such as 'cat', 'grep'
+                and 'tail' instead which are faster and usually already
+                installed by default.
+
+        2.4 Config file paths
 
             Since version 1.1.1 you do not have to give the full path to the
             config files for SaLoMon if these are located in the corresponding
