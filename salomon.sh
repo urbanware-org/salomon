@@ -190,6 +190,12 @@ else
         fi
     fi
 
+    highlight_params=$(( highlight + highlight_all + highlight_upper ))
+    if [ $highlight_params -gt 1 ]; then
+        usage \
+                "Only one highlighting argument allowed (multiple given)."
+    fi
+
     if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
