@@ -81,6 +81,10 @@ else
                 highlight=1
                 shift
             ;;
+            --highlight-all)
+                highlight_all=1
+                shift
+            ;;
             --highlight-upper)
                 highlight_upper=1
                 shift
