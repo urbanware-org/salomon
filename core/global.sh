@@ -27,6 +27,7 @@ set_global_variables() {
     follow=1
     header=1
     highlight=0
+    highlight_all=0
     highlight_upper=0
     prompt=0
     slow=0
