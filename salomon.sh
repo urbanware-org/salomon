@@ -203,7 +203,7 @@ else
         fi
         if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             usage \
-                "The '--highlight' arguments can only be used with a filter."
+                "This highlighting argument can only be used with a filter."
         fi
     else
         if [ -f "$filter_pattern" ]; then
