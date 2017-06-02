@@ -13,12 +13,12 @@
 monitor_input_file() {
     check_patterns
 
-    tail -n $start_line "$input_file" &>/dev/null
+    tail "$input_file" &>/dev/null
     if [ $? -ne 0 ]; then
         usage "error: No read permission on the given input file."
     fi
 
-    tail -F "$input_file" 2>/dev/null | while read line; do
+    tail -n $start_line -F "$input_file" 2>/dev/null | while read line; do
         print_output_line "$line"
 
         if [ $slow -eq 1 ]; then
