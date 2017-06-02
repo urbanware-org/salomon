@@ -110,6 +110,11 @@ else
                 slow=1
                 shift
             ;;
+            --start-line)
+                shift
+                start_line="$1"
+                shift
+            ;;
             -t|--temp-copy)
                 copy=1
                 shift
