@@ -25,7 +25,15 @@ analyze_input_file() {
         input_file=$temp_file
     fi
 
+    count=0
     while read line; do
+        if [ $start_line -gt 1 ]; then
+            if [ $count -lt $start_line ]; then
+                count=$(( count + 1 ))
+                continue
+            fi
+        fi
+
         print_output_line "$line"
 
         if [ $slow -eq 1 ]; then
