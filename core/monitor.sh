@@ -13,7 +13,7 @@
 monitor_input_file() {
     check_patterns
 
-    tail "$input_file" &>/dev/null
+    tail -n $start_line "$input_file" &>/dev/null
     if [ $? -ne 0 ]; then
         usage "error: No read permission on the given input file."
     fi
