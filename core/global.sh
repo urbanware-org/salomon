@@ -28,10 +28,10 @@ set_global_variables() {
     header=1
     highlight=0
     highlight_all=0
+    highlight_all_fill=1
     highlight_upper=0
     prompt=0
     slow=0
-    start-line=1
     wait_match=0
 
     color_code=""
