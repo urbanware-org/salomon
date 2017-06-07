@@ -175,6 +175,24 @@ print_output_line() {
     filter_match=0
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
 
+    if [ $highlight_all_fill = 1  ]; then
+        term_width=$(( $(tput cols) + 1 ))
+        line_length=${#line_lower}
+    
+        while true; do
+            if [ $line_length -ge $term_width ]; then
+                line_length=$(( line_length - term_width + 1 ))
+            else
+                break
+            fi
+        done
+
+        line_filler=$(( term_width - line_length ))
+        line_spaces=$(seq -s " " ${line_filler} | tr -d '[:digit:]')
+    else
+        line_spaces=""
+    fi
+
     if [ $exclude -eq 1 ]; then
         for string in $(echo "$exclude_list"); do
             temp=$(sed -e "s/#/\ /g" <<< "$string")
@@ -212,7 +230,7 @@ print_output_line() {
         color_code="$color_none"
     fi
 
-    output="${color_code}${line}${color_none}"
+    output="${color_code}${line}${color_none}${line_spaces}"
     if [ ! -z "$filter_list" ]; then
         if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             if [ $color_match -eq 1 ]; then
