@@ -32,6 +32,7 @@ set_global_variables() {
     highlight_upper=0
     prompt=0
     slow=0
+    start_line=1
     wait_match=0
 
     color_code=""
