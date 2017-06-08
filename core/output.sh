@@ -58,13 +58,13 @@ print_output_header() {
     echo
     print_line "*"
     temp=$(readlink -f $input_file)
-    print_line "${color_white}Input file:" "${color_yellow}${temp}"
+    print_line "${color_white}Input file:" "${color_yellow}$temp"
 
     if [ "$color_file" = "" ]; then
         print_line "${color_white}Color file:" "${color_lightgray}None"
     else
         temp=$(readlink -f $color_file)
-        print_line "${color_white}Color file:" "${color_yellow}${temp}"
+        print_line "${color_white}Color file:" "${color_yellow}$temp"
     fi
 
     print_line
@@ -128,14 +128,25 @@ print_output_header() {
         fi
         print_line "${color_white}Ignore case:" "${color_lightred}${temp}"
 
-        if [ $highlight -eq 0 ]; then
-            temp="${color_lightred}No"
+        if [ $highlight -eq 1 ]; then
+            temp="${color_lightgreen}Filter matches"
+        elif [ $highlight_upper -eq 1 ]; then
+            temp="${color_lightgreen}Filter matches (in uppercase)"
+        elif [ $highlight_all -eq 1 ]; then
+            temp="${color_lightgreen}All lines"            
         else
-            temp="${color_lightgreen}Yes"
+            temp="${color_lightred}No"
         fi
         print_line "${color_white}Highlight:" "$temp"
     else
         print_line "${color_white}Filter pattern:" "${color_lightgray}None"
+        if [ $highlight_all -eq 1 ]; then
+            temp="${color_lightgreen}All lines"
+            print_line "${color_white}Highlight:" "$temp"
+        else
+            temp="${color_lightgray}Nothing"
+            print_line "${color_white}Highlight:" "$temp"
+        fi
     fi
 
     if [ $follow -eq 1 ]; then
@@ -274,7 +285,7 @@ print_output_line() {
 
                 grep $arg_case "$term" <<< "$line" &>/dev/null
                 if [ $? -eq 0 ]; then
-                    output="${color_code}${line}${color_none}"
+                    output="${color_code}${line}${color_none}${line_spaces}"
                     filter_match=1
                     break
                 fi
