@@ -4,7 +4,8 @@ CHANGELOG (SaLoMon)
     Next version (outstanding)
 
         + Added an optional command-line argument (and feature) to highlight
-          the whole line (instead of only highlighting the filter terms).
+          the whole line (instead of only the filter terms).
+        + Added the support for 256-color highlighting.
 
         * Revised the command-line argument parser in the main SaLoMon script.
         * Revised the output header inside the output core script (added all
