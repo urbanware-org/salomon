@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.8.0 (2017-06-08)
 
         + Added an optional command-line argument (and feature) to highlight
           the whole line (instead of only the filter terms).
