@@ -58,13 +58,13 @@ print_output_header() {
     echo
     print_line "*"
     temp=$(readlink -f $input_file)
-    print_line "${color_white}Input file:" "${color_yellow}$temp"
+    print_line "${color_white}Input file:" "${color_yellow}${temp}"
 
     if [ "$color_file" = "" ]; then
         print_line "${color_white}Color file:" "${color_lightgray}None"
     else
         temp=$(readlink -f $color_file)
-        print_line "${color_white}Color file:" "${color_yellow}$temp"
+        print_line "${color_white}Color file:" "${color_yellow}${temp}"
     fi
 
     print_line
@@ -126,7 +126,7 @@ print_output_header() {
         else
             temp="${color_lightred}No"
         fi
-        print_line "${color_white}Ignore case:" "${color_lightred}No"
+        print_line "${color_white}Ignore case:" "${color_lightred}${temp}"
 
         if [ $highlight -eq 0 ]; then
             temp="${color_lightred}No"
