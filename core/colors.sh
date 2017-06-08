@@ -46,7 +46,7 @@ get_color_code() {
     elif [ "$color_name" = "yellow" ]; then
         color_code="$color_yellow"
     else
-        # Support for 256 colors
+        # Support for 256 colors (color code instead of name)
         color_code="\e[38;5;${color_name}m"
     fi
 }
