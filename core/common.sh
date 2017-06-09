@@ -165,6 +165,9 @@ usage() {
                                  "their colors"
     echo "  --highlight-all       highlight the whole lines by inverting"\
                                  "their color (no filter required)"
+    echo "  --highlight-cut-off   cut off the trailing spaces at the end of"\
+                                 "a whole highlighted lines"
+                                 "their color (no filter required)"
     echo "  --highlight-upper     same as '--highlight', but with uppercase"\
                                  "letters (also reuqires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
