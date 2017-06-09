@@ -41,7 +41,7 @@ check_argument() {
 
     grep "^-" <<< "$arg_value" &>/dev/null
     if [ $? -eq 0 ]; then
-        usage "The argument '$arg_name' expects a $arg_expect."
+        usage "The argument '$arg_name' expects a $arg_expect"
     fi
 }
 
@@ -52,7 +52,7 @@ check_command() {
 
     $check_command --help &>/dev/null
     if [ $? != $expected_code ]; then
-        usage "This script requires the '$required_pkg' package to work."
+        usage "This script requires the '$required_pkg' package to work"
     fi
 }
 
@@ -66,7 +66,7 @@ check_patterns() {
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
                     if [ "$term_upper" = "$string_upper" ]; then
-                        usage "Exclude list must not contain a filter term."
+                        usage "Exclude list must not contain a filter term"
                     fi
                 done
             fi
@@ -75,7 +75,7 @@ check_patterns() {
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
                     if [ "$term_upper" = "$string_upper" ]; then
-                        usage "Remove list must not contain a filter term."
+                        usage "Remove list must not contain a filter term"
                     fi
                 done
             fi
@@ -112,7 +112,7 @@ shell_precheck() {
 read_filter() {
     (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
     if [ $? -eq 0 ]; then
-        usage "The filter pattern must not contain any hashes."
+        usage "The filter pattern must not contain any hashes"
     fi
 
     filter_pattern=""
