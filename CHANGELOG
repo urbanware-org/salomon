@@ -6,6 +6,8 @@ CHANGELOG (SaLoMon)
         + Added an optional command-line argument (and feature) to remove the
           trailing whitespaces at the end of a whole highlighted line.
 
+        * Revised various SaLoMon components (negligible changes).
+
     Version 1.8.0 (2017-06-08)
 
         + Added an optional command-line argument (and feature) to highlight
@@ -15,7 +17,7 @@ CHANGELOG (SaLoMon)
         * Revised the command-line argument parser in the main SaLoMon script.
         * Revised the output header inside the output core script (added all
           relevant keystrokes).
-          
+
         # Fixed the ignore-case information bug inside the output header (not
           displayed correctly before).
 
