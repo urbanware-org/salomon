@@ -186,7 +186,7 @@ print_output_line() {
     filter_match=0
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
 
-    if [ $highlight_all_fill = 1  ]; then
+    if [ $highlight_cut_off = 0 ]; then
         term_width=$(( $(tput cols) + 1 ))
         line_length=${#line_lower}
     
