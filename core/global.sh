@@ -40,6 +40,8 @@ set_global_variables() {
     color_list="black brown darkblue darkcyan darkgray darkgreen darkpurple"
     color_temp="$color_list darkred lightblue lightcyan lightgray lightgreen"
     color_list="$color_temp lightpurple lightred white yellow"
+    color_random_min=1
+    color_random_max=256
 
     color_none="\e[0m"
     color_black="\e[0;30m"
