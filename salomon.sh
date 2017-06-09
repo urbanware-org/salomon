@@ -34,7 +34,7 @@ shell_precheck
 
 # Check command-line arguments
 if [ $# -eq 0 ]; then
-    usage "At least one required argument is missing."
+    usage "At least one required argument is missing"
 else
     while [[ $# > 0 ]]; do
         arg="$1"
@@ -57,6 +57,10 @@ else
                 shift
                 color_file="$1"
                 check_argument "-c/--color-file" "$color_file" "file"
+                shift
+            ;;
+            --cut-off)
+                highlight_cut_off=1
                 shift
             ;;
             -d|--delay)
@@ -83,10 +87,6 @@ else
             ;;
             --highlight-all)
                 highlight_all=1
-                shift
-            ;;
-            --highlight-cut-off)
-                highlight_cut_off=1
                 shift
             ;;
             --highlight-upper)
@@ -152,7 +152,7 @@ else
 
             # Unrecognized arguments
             *)
-                usage "The given argument '$1' is unrecognized."
+                usage "The given argument '$1' is unrecognized"
             ;;
         esac
     done
@@ -162,38 +162,38 @@ else
             follow=0
         elif [ "$action" = "monitor" ]; then
             if [ $follow -eq 0 ]; then
-                usage "Argument conflict (different actions given)."
+                usage "Multiple action arguments given (only one allowed)"
             fi
         else
-            usage "The action '$action' does not exist."
+            usage "The action '$action' does not exist"
         fi
     fi
 
     if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
-        usage "The analyzing mode does not support a prompt before exit."
+        usage "The analyzing mode does not support a prompt before exit"
     fi
 
     if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
-        usage "A temporary copy only makes sense when analyzing a file."
+        usage "A temporary copy only makes sense when analyzing a file"
     fi
 
     if [ -z "$input_file" ]; then
-        usage "No input file given."
+        usage "No input file given"
     elif [ ! -e "$input_file" ]; then
-        usage "The given input file does not exist."
+        usage "The given input file does not exist"
     elif [ ! -f "$input_file" ]; then
-        usage "The given input file path is not a file."
+        usage "The given input file path is not a file"
     fi
 
     if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then
             color_file="${color_dir}${color_file}"
             if [ ! -e "$color_file" ]; then
-                usage "The given color config file does not exist."
+                usage "The given color config file does not exist"
             fi
         fi
         if [ ! -f "$color_file" ]; then
-            usage "The given color config file path is not a file."
+            usage "The given color config file path is not a file"
         else
             read_colors "$color_file"
         fi
@@ -202,17 +202,23 @@ else
     highlight_params=$(( highlight + highlight_all + highlight_upper ))
     if [ $highlight_params -gt 1 ]; then
         usage \
-                "Only one highlighting argument allowed (multiple given)."
+            "Multiple highlighting arguments given (only one allowed)"
     fi
+    
+    if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
+        usage \
+            "The '--cut-off' argument can only be used with '--highlight-all'"
+    fi
+
 
     if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
-                "The '--ignore-case' argument can only be used with a filter."
+                "The '--ignore-case' argument can only be used with a filter"
         fi
         if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             usage \
-                "This highlighting argument can only be used with a filter."
+                "This highlighting argument can only be used with a filter"
         fi
     else
         if [ -f "$filter_pattern" ]; then
@@ -224,7 +230,7 @@ else
         else
             grep "#" <<< "$filter_pattern" &>/dev/null
             if [ $? -eq 0 ]; then
-                usage "The filter pattern must not contain any hashes."
+                usage "The filter pattern must not contain any hashes"
             fi
         fi
 
@@ -248,12 +254,12 @@ else
         fi
         delay=$temp
     else
-        usage "The delay must be a number between 100 and 900."
+        usage "The delay must be a number between 100 and 900"
     fi
     if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
-            usage "The exclude pattern must not contain any hashes."
+            usage "The exclude pattern must not contain any hashes"
         fi
         exclude_list=$((tr -s ";;" ";" | \
                         sed -e "s/^;*//" \
@@ -265,7 +271,7 @@ else
     if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
-            usage "The remove pattern must not contain any hashes."
+            usage "The remove pattern must not contain any hashes"
         fi
         remove_list=$((tr -s ";;" ";" | \
                        sed -e "s/^;*//" \
@@ -275,7 +281,7 @@ else
         remove=1
     fi
     if [ -z "$wait_match" ]; then
-        usage "The wait value must not be empty."
+        usage "The wait value must not be empty"
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -283,7 +289,7 @@ else
                 wait=0
             fi
         else
-            usage "The wait value must be a number greater than zero."
+            usage "The wait value must be a number greater than zero"
         fi
     fi
     check_command grep 0 grep
