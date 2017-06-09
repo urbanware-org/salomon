@@ -148,6 +148,8 @@ usage() {
     echo "                        color config file for colorizing lines"\
                                  "which contain"
     echo "                        certain terms"
+    echo "  --cut-off             remove the trailing whitespaces used to"\
+                                 "fill the line when using '--highlight-all'"
     echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
                                  "(milliseconds,"
     echo "                        number between 100 and 900, default is 200)"
@@ -165,8 +167,6 @@ usage() {
                                  "their colors"
     echo "  --highlight-all       highlight the whole lines by inverting"\
                                  "their color (no filter required)"
-    echo "  --highlight-cut-off   remove the trailing whitespaces at the end"\
-                                 "of a whole highlighted line"
     echo "  --highlight-upper     same as '--highlight', but with uppercase"\
                                  "letters (also reuqires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
@@ -194,7 +194,7 @@ usage() {
     echo "file for this script."
     if [ ! -z "$error_msg" ]; then
         echo
-        echo "error: $error_msg"
+        echo "error: $error_msg."
         exit 1
     else
         exit 0
