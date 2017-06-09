@@ -47,13 +47,18 @@ get_color_code() {
         color_code="$color_yellow"
     else
         # Support for 256 colors (color code instead of name)
-        color_code="\e[38;5;${color_name}m"
+        if [ "$color_name" = "random" ]; then
+            temp=$(shuf -i ${color_random_min}-${color_random_max} -n 1)
+            color_code="\e[38;5;${temp}m"
+        else
+            color_code="\e[38;5;${color_name}m"
+        fi
     fi
 }
 
 read_colors() {    
     # Support for 256 colors
-    color_temp="$color_list $(seq 1 256)"
+    color_temp="$color_list random $(seq 1 256)"
     color_list="$color_temp"
     
     for color in $(echo "$color_list"); do
