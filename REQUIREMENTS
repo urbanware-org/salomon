@@ -4,19 +4,17 @@ REQUIREMENTS (SaLoMon)
     The SaLoMon project was developed on (and for) the Bash shell, which is
     is the default shell on many Unix-like systems (or at least Linux
     distributions).
-    
+
     So, no matter which shell you are using, the Bash shell must be installed
     in order to use SaLoMon.
-    
+
     Additional package requirements:
 
+        - coreutils 2.85 (version or higher is recommended)
         - grep (version 2.18 or higher is recommended)
         - sed (version 2.50 or higher is recommended)
-        - tail (version 2.81 or higher is recommended)
-
-    Usually, the "tail" utility is part of the "coreutils" package.
 
     All the recommended versions of the utilities mentioned above are the ones
-    that have been used while developing SaLoMon. The project may also work
-    with earlier versions.
+    that have been used while developing SaLoMon. The project also works most
+    likely with earlier versions.
 
