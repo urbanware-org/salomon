@@ -10,7 +10,7 @@ REQUIREMENTS (SaLoMon)
 
     Additional package requirements:
 
-        - coreutils 2.85 (version or higher is recommended)
+        - coreutils (version 2.85 or higher is recommended)
         - grep (version 2.18 or higher is recommended)
         - sed (version 2.50 or higher is recommended)
 
