@@ -26,9 +26,9 @@ USAGE (compat.sh)
         uses the Bash shell, even if the script is being run on another shell.
 
         Without the Bash shell, the scripts can also be executed, but will
-        either not work properly or not work at all. Maybe there are other
-        shells which provide the features needed, but there is no guarantee
-        for that.
+        either not work properly or most likely not work at all. Maybe there
+        are other shells which provide the features needed, but there is no
+        guarantee for that.
 
     3. Compatibility check
 
@@ -36,4 +36,5 @@ USAGE (compat.sh)
         without any arguments. There are no command-line arguments anyway.
 
             $ ./compat.sh
+
 
