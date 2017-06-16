@@ -6,6 +6,7 @@ CHANGELOG (SaLoMon)
         + Added an optional command-line argument (and feature) to remove the
           trailing whitespaces of a whole highlighted line.
 
+        * Revised the output header when using analyze mode.
         * Revised various SaLoMon components (negligible changes).
 
     Version 1.8.0 (2017-06-08)
