@@ -18,7 +18,9 @@ You can see a simple usage example inside the [wiki](../../wiki/Quick-start).
 
 ### Documentation
 
-Inside the `docs` sub-directory, there are plain text files containing the documentation for each component with further information and usage examples.
+You can find a fundamental documentation inside the [wiki](../../wiki).
+
+Inside the `docs` sub-directory, there are plain text files containing a detailed documentation for each component with further information and usage examples.
 
 ## Requirements
 
