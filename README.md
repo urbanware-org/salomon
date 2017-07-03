@@ -12,9 +12,7 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 ## Usage
 
-### Quick start guide
-
-You can see a simple usage example inside the [wiki](../../wiki/Quick-start).
+You can get started with *SaLoMon* in less than two minutes by reading the [quick start guide](../../wiki/Quick-start).
 
 ### Documentation
 
