@@ -2,7 +2,7 @@
 REQUIREMENTS (SaLoMon)
 
     The SaLoMon project was developed on (and for) the Bash shell, which is
-    is the default shell on many Unix-like systems (or at least Linux
+    the default shell on many Unix-like systems (or at least Linux
     distributions).
 
     So, no matter which shell you are using, the Bash shell must be installed
