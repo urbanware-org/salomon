@@ -29,7 +29,7 @@ You can get started with *SaLoMon* in less than two minutes by reading the [quic
 
 You can find a fundamental documentation inside the [wiki](../../wiki).
 
-Inside the `docs` sub-directory, there are plain text files containing a detailed documentation for each component with further information and usage examples.
+In the `docs` sub-directory of the project, there are plain text files containing a detailed documentation for each component with further information and usage examples.
 
 ## Requirements
 
