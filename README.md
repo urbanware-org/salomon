@@ -21,6 +21,8 @@ The main script was primarily built to monitor and analyze log as well as plain 
 
 These lines can also easily be colorized with user-defined colors (and additionally highlighted) depending on given criteria. For example, all lines which contain the word "error" can be displayed red.
 
+[Top](#salomon-)
+
 ## Usage
 
 ### Quick start
@@ -33,14 +35,21 @@ You can find a fundamental documentation inside the [wiki](../../wiki).
 
 In the `docs` sub-directory of the project, there are plain text files containing a detailed documentation for each component with further information and usage examples.
 
+[Top](#salomon-)
+
 ## Requirements
 
 The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
 
+[Top](#salomon-)
+
 ## Useless facts
 
 * The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
 * The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30th, 2015.
+
+[Top](#salomon-)
+
 
