@@ -33,7 +33,9 @@ In the `docs` sub-directory of the project, there are plain text files containin
 
 ## Requirements
 
-The *SaLoMon* project uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
+The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
+
+Furthermore, it uses popular shell utilities that should be pre-installed by default on *Unix*-like systems, see the included `REQUIREMENTS` file.
 
 ## Useless facts
 
