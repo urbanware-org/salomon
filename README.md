@@ -1,5 +1,14 @@
 # *SaLoMon* <img src="wiki/salomon.png" alt="SaLoMon logo" align="right"/>
 
+**Table of contents**
+* [Definition](#definition)
+* [Details](#details)
+* [Usage](#usage)
+* [Requirements](#requirements)
+* [Useless facts](#useless-facts)
+
+----
+
 ## Definition
 
 The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files.
