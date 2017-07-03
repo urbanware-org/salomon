@@ -13,6 +13,8 @@
 
 The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files.
 
+[Top](#salomon-)
+
 ## Details
 
 The main script was primarily built to monitor and analyze log as well as plain text files on systems without a graphical user interface. It returns either all or just certain lines (by applying a filter) that have been added to the monitored file.
