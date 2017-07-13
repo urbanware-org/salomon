@@ -58,11 +58,11 @@ check_command() {
 
 check_patterns() {
     if [ ! -z "$filter_list" ]; then
-        for filter_term in $(echo "$filter_list"); do
+        for filter_term in $filter_list; do
             term=$(sed -e "s/#/\ /g" <<< "$filter_term")
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
             if [ ! -z "$exclude_list" ]; then
-                for string in $(echo "$exclude_list"); do
+                for string in $exclude_list; do
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
                     if [ "$term_upper" = "$string_upper" ]; then
@@ -71,7 +71,7 @@ check_patterns() {
                 done
             fi
             if [ ! -z "$remove_list" ]; then
-                for string in $(echo "$remove_list"); do
+                for string in $remove_list; do
                     temp=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
                     if [ "$term_upper" = "$string_upper" ]; then
