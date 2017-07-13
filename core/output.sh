@@ -203,7 +203,7 @@ print_output_line() {
     fi
 
     if [ $exclude -eq 1 ]; then
-        for string in $(echo "$exclude_list"); do
+        for string in $exclude_list; do
             temp=$(sed -e "s/#/\ /g" <<< "$string")
             string="$temp"
 
@@ -214,13 +214,13 @@ print_output_line() {
         done
     fi
 
-    for color in $(echo "$color_list"); do
+    for color in $color_list; do
         if [ "${colorize_[$color]}" = "" ]; then
             continue
         fi
 
         items=$(echo "${colorize_[$color]}")
-        for item in $(echo $items); do
+        for item in $items; do
             if [[ "$line_lower" = *$item* ]]; then
                 color_match=1
                 break
@@ -255,7 +255,7 @@ print_output_line() {
                 fi
             fi
 
-            for filter_term in $(echo "$filter_list"); do
+            for filter_term in $filter_list; do
                 term=$(sed -e "s/#/\ /g" <<< "$filter_term")
                 term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
@@ -277,7 +277,7 @@ print_output_line() {
                 fi
             done
         else
-            for filter_term in $(echo "$filter_list"); do
+            for filter_term in $filter_list; do
                 term=$(sed -e "s/#/\ /g" <<< "$filter_term")
                 term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
@@ -296,7 +296,7 @@ print_output_line() {
     fi
 
     if [ $remove -eq 1 ]; then
-        for string in $(echo "$remove_list"); do
+        for string in $remove_list; do
             temp=$(sed -e "s/#/\ /g" <<< "$string")
             line=$(echo $em "$output" | sed -e "s/${temp}//ig")
             output="$line"
