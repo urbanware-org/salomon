@@ -141,7 +141,7 @@ usage() {
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
     echo "                        action to perform with the input file"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
-    echo "                        input file to monitor"
+    echo "                        input file to analyze or monitor"
     echo
     echo "optional arguments:"
     echo "  -c COLOR_FILE, --color-file COLOR_FILE"
@@ -182,7 +182,7 @@ usage() {
                                  "file)"
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
-    echo "  -t, --temp-copy       process temporary copy of the input file"\
+    echo "  -t, --temp-copy       process a temporary copy of the input file"\
                                  "instead of"
     echo "                        the input file itself"
     echo "  --version             print the version number and exit"
