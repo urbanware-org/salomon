@@ -66,6 +66,7 @@ fi
 
 check_basename="${color_lightred}FAILURE${color_none}${check_error}"
 check_declare="${color_lightred}FAILURE${color_none}${check_error}"
+check_dialog="${color_yellow}MISSING${color_none}${check_error}"
 check_dirname="${color_lightred}FAILURE${color_none}${check_error}"
 check_grep="${color_lightred}FAILURE${color_none}${check_error}"
 check_printf="${color_lightred}FAILURE${color_none}${check_error}"
@@ -94,6 +95,11 @@ if [ $? -eq 0 ]; then
     check_declare="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
+fi
+
+dialog --help &>/dev/null
+if [ $? -eq 0 ]; then
+    check_dialog="${color_lightgreen}SUCCESS${color_none}"
 fi
 
 dirname $script_temp &>/dev/null
@@ -145,6 +151,13 @@ else
     check_failed=1
 fi
 
+trap &>/dev/null
+if [ $? -eq 0 ]; then
+    check_trap="${color_lightgreen}SUCCESS${color_none}"
+else
+    check_failed=0
+fi
+
 echo "#!/bin/bash" > $script_temp
 echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
@@ -167,6 +180,8 @@ echo $em "Checking 'basename' command ..........................$temp"\
          "${check_basename}"
 echo $em "Checking 'declare' command ...........................$temp"\
          "${check_declare}"
+echo $em "Checking 'dialog' command ............................$temp"\
+         "${check_dialog}"
 echo $em "Checking 'dirname' command ...........................$temp"\
          "${check_dirname}"
 echo $em "Checking 'grep' command ..............................$temp"\
