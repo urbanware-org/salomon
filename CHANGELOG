@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.8.1 (2017-08-17)
 
         + Added an optional command-line argument (and feature) to remove the
           trailing whitespaces of a whole highlighted line.
