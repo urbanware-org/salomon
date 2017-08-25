@@ -1,6 +1,10 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        + Added interactive dialogs as command-line argument alternative.
+
     Version 1.8.1 (2017-08-17)
 
         + Added an optional command-line argument (and feature) to remove the
