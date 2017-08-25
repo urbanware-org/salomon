@@ -133,7 +133,7 @@ print_output_header() {
         elif [ $highlight_upper -eq 1 ]; then
             temp="${color_lightgreen}Filter matches (in uppercase)"
         elif [ $highlight_all -eq 1 ]; then
-            temp="${color_lightgreen}All lines"            
+            temp="${color_lightgreen}All lines"
         else
             temp="${color_lightred}No"
         fi
@@ -187,7 +187,7 @@ print_output_line() {
     if [ $highlight_cut_off = 0 ]; then
         term_width=$(( $(tput cols) + 1 ))
         line_length=${#line_lower}
-    
+
         while true; do
             if [ $line_length -ge $term_width ]; then
                 line_length=$(( line_length - term_width + 1 ))
