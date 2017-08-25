@@ -56,11 +56,11 @@ get_color_code() {
     fi
 }
 
-read_colors() {    
+read_colors() {
     # Support for 256 colors
     color_temp="$color_list random $(seq 1 256)"
     color_list="$color_temp"
-    
+
     for color in $(echo "$color_list"); do
         color_line=""
         (grep -v "#" | grep "^$color\ .*" | \
@@ -76,7 +76,7 @@ read_colors() {
 
         colorize_[$color]=$(tr '[:upper:]' '[:lower:]' <<< "$color_line")
     done
-    
+
     rm -f $temp_file
 }
 
