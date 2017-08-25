@@ -175,6 +175,9 @@ usage() {
                                  "letters"
     echo "                        (also reuqires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
+    echo "  --interactive         use interactive mode with dialogs (for"\
+                                 "details see"
+    echo "                        section 2.5 inside the documentation file)"
     echo "  --no-info             do not display the information header and"\
                                  "footer"
     echo "  -p, --prompt          prompt before exit (in case the process"\
@@ -198,8 +201,12 @@ usage() {
          "documentation"
     echo "file for this script."
     if [ ! -z "$error_msg" ]; then
-        echo
-        echo "error: $error_msg."
+        if [ $interactive -eq 1 ]; then
+            predef_error_dialog "$error_msg."
+        else
+            echo
+            echo "error: $error_msg."
+        fi
         exit 1
     else
         exit 0
