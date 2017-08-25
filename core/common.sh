@@ -139,7 +139,9 @@ usage() {
     echo
     echo "required arguments:"
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
-    echo "                        action to perform with the input file"
+    echo "                        action (processing mode) to perform with"\
+    echo                         "the given"
+    echo "                        input file"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
     echo "                        input file to analyze or monitor"
     echo
@@ -149,7 +151,8 @@ usage() {
                                  "which contain"
     echo "                        certain terms"
     echo "  --cut-off             remove the trailing whitespaces used to"\
-                                 "fill the line when using '--highlight-all'"
+                                 "fill the line"
+    echo "                        when using '--highlight-all'"
     echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
                                  "(milliseconds,"
     echo "                        number between 100 and 900, default is 200)"
@@ -166,9 +169,11 @@ usage() {
     echo "  --highlight           highlight the filter terms by inverting"\
                                  "their colors"
     echo "  --highlight-all       highlight the whole lines by inverting"\
-                                 "their color (no filter required)"
+                                 "their color (no"
+    echo "                        filter required)"
     echo "  --highlight-upper     same as '--highlight', but with uppercase"\
-                                 "letters (also reuqires a filter)"
+                                 "letters"
+    echo "                        (also reuqires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --no-info             do not display the information header and"\
                                  "footer"
