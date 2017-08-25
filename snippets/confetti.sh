@@ -3,7 +3,7 @@ confetti() {
     highlight_random=0
     line_input="$1"
     line_output=""
-    
+
     if [ "$highlight" = "" ]; then
         highlight_random=1
     fi
