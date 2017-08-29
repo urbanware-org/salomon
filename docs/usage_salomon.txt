@@ -13,6 +13,7 @@ USAGE (salomon.sh)
              2.3.3  Highlight whole lines
              2.3.4  No colorization and hightlighting
           2.4  Config file paths
+          2.5  Interactive mode
         3.  Processing an input file
           3.1  Relevant keystrokes
           3.2  Monitor the file
@@ -103,8 +104,36 @@ USAGE (salomon.sh)
 
             SaLoMon will first check the current working directory for these
             config files. If these do not exist there, it will check for them
-            inside the config sub-directories ('colors' and 'filters') of the
-            SaLoMon script directory.
+            inside the config sub-directories ('colors' and 'filters') which
+            can be found in the SaLoMon script directory.
+
+        2.5 Interactive mode
+
+            Since version 1.8.1 SaLoMon provides an interactive mode which
+            allows using text-based dialogs instead of command-line arguments
+            to enter relevant information. However, the dialogs can be
+            combined with command-line arguments.
+
+            Notice that the interactive mode is not a complete alternative to
+            the command-line arguments.
+
+            It is meant for the use on a graphical user interface with desktop
+            shortcuts. For example, you can create a desktop shortcut with the
+            following command:
+
+                salomon -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg
+
+            This will always monitor the given file. Now, if you want to
+            monitor a couple of different files once in a while, you would
+            need to create a shortcut for each of them.
+
+            For more flexibility, you can use the following command for the
+            shortcut:
+
+                salomon --interactive -a monitor -c /tmp/colors.cfg
+
+            With this, you will be prompted for the relevant information such
+            as the file name, filter pattern and highlight mode.
 
     3. Processing an input file
 
