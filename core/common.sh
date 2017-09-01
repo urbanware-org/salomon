@@ -140,7 +140,7 @@ usage() {
     echo "required arguments:"
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
     echo "                        action (processing mode) to perform with"\
-    echo                         "the given"
+                                 "the given"
     echo "                        input file"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
     echo "                        input file to analyze or monitor"
@@ -173,7 +173,7 @@ usage() {
     echo "                        filter required)"
     echo "  --highlight-upper     same as '--highlight', but with uppercase"\
                                  "letters"
-    echo "                        (also reuqires a filter)"
+    echo "                        (also requires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --interactive         use interactive mode with dialogs (for"\
                                  "details see"
@@ -190,7 +190,7 @@ usage() {
                                  "file)"
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
-    echo "  -t, --temp-copy       process a temporary copy of the input file"\
+    echo "  -t, --temp-copy       process temporary copy of the input file"\
                                  "instead of"
     echo "                        the input file itself"
     echo "  --version             print the version number and exit"
@@ -202,7 +202,7 @@ usage() {
     echo "file for this script."
     if [ ! -z "$error_msg" ]; then
         if [ $interactive -eq 1 ]; then
-            predef_error_dialog "$error_msg."
+            predef_error_dialog "$error_msg"
         else
             echo
             echo "error: $error_msg."

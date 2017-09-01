@@ -11,7 +11,7 @@
 # ============================================================================
 
 set_global_variables() {
-    version="1.8.1"
+    version="1.8.0"
 
     arg_case=""
     input_file=""
@@ -78,8 +78,6 @@ set_global_variables() {
     remove=0
     remove_list=""
     remove_pattern=""
-    
-    unset color_temp
 }
 
 # EOF

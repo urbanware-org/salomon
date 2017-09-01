@@ -25,6 +25,7 @@ script_file=$(basename "$0")
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh
 source ${script_dir}/core/common.sh
+source ${script_dir}/core/dialogs.sh
 source ${script_dir}/core/global.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
@@ -97,6 +98,10 @@ else
                 arg_case="-i"
                 shift
             ;;
+            --interactive)
+                interactive=1
+                shift
+            ;;
             --no-info)
                 header=0
                 shift
@@ -157,6 +162,29 @@ else
         esac
     done
 
+    if [ $interactive -eq 1 ]; then
+        dialog --help &>/dev/null
+        if [ $? -ne 0 ]; then
+            interactive=0
+            usage "The interactive mode requires the tool 'dialog' to work"
+        fi
+        predef_notice_dialog
+    fi
+
+    # Input file
+    if [ -z "$input_file" ] && [ $interactive -eq 1 ]; then
+        dialog_input_file
+        input_file=$user_input
+    fi
+    if [ -z "$input_file" ]; then
+        usage "No input file given"
+    elif [ ! -e "$input_file" ]; then
+        usage "The given input file does not exist"
+    elif [ ! -f "$input_file" ]; then
+        usage "The given input file path is not a file"
+    fi
+
+    # Action (processing mode)
     if [ ! -z "$action" ]; then
         if [ "$action" = "analyze" ]; then
             follow=0
@@ -167,50 +195,18 @@ else
         else
             usage "The action '$action' does not exist"
         fi
-    fi
-
-    if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
-        usage "The analyzing mode does not support a prompt before exit"
-    fi
-
-    if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
-        usage "A temporary copy only makes sense when analyzing a file"
-    fi
-
-    if [ -z "$input_file" ]; then
-        usage "No input file given"
-    elif [ ! -e "$input_file" ]; then
-        usage "The given input file does not exist"
-    elif [ ! -f "$input_file" ]; then
-        usage "The given input file path is not a file"
-    fi
-
-    if [ ! -z "$color_file" ]; then
-        if [ ! -e "$color_file" ]; then
-            color_file="${color_dir}${color_file}"
-            if [ ! -e "$color_file" ]; then
-                usage "The given color config file does not exist"
-            fi
-        fi
-        if [ ! -f "$color_file" ]; then
-            usage "The given color config file path is not a file"
-        else
-            read_colors "$color_file"
+    else
+        if [ $interactive -eq 1 ]; then
+            dialog_action
+            follow=$?
         fi
     fi
 
-    highlight_params=$(( highlight + highlight_all + highlight_upper ))
-    if [ $highlight_params -gt 1 ]; then
-        usage \
-            "Multiple highlighting arguments given (only one allowed)"
+    # Filter pattern
+    if [ -z "$filter_pattern" ] && [ $interactive -eq 1 ]; then
+        dialog_filter
+        filter_pattern=$user_input
     fi
-    
-    if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
-        usage \
-            "The '--cut-off' argument can only be used with '--highlight-all'"
-    fi
-
-
     if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
@@ -244,17 +240,11 @@ else
         filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
         filter=1
     fi
-    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
-    if [ $? -eq 0 ]; then
-        temp=$delay
-        if [ $delay -lt 100 ]; then
-            temp=100
-        elif [ $delay -gt 900 ]; then
-            temp=900
-        fi
-        delay=$temp
-    else
-        usage "The delay must be a number between 100 and 900"
+
+    # Exclude pattern
+    if [ -z "$exclude_pattern" ] && [ $interactive -eq 1 ]; then
+        dialog_exclude
+        exclude_pattern=$user_input
     fi
     if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
@@ -268,6 +258,12 @@ else
                             -e "s/;/\n/g") <<< "$exclude_pattern")
         exclude=1
     fi
+
+    # Remove pattern
+    if [ -z "$remove_pattern" ] && [ $interactive -eq 1 ]; then
+        dialog_remove
+        remove_pattern=$user_input
+    fi
     if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -280,6 +276,44 @@ else
                            -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
     fi
+
+    # Highlighting
+    highlight_params=$(( highlight + highlight_all + highlight_upper ))
+    if [ $highlight_params -gt 1 ]; then
+        usage \
+            "Multiple highlighting arguments given (only one allowed)"
+    else
+        if [ $interactive -eq 1 ]; then
+            dialog_highlight
+            if [ $user_input -eq 2 ]; then
+                highlight_all=1
+            elif [ $user_input -eq 3 ]; then
+                highlight_all=1
+                highlight_cut_off=1
+            elif [ $user_input -eq 4 ]; then
+                highlight=1
+            elif [ $user_input -eq 5 ]; then
+                highlight_upper=1
+            fi
+
+            if [ $user_input -ge 2 ]; then
+                dialog_color_file
+                color_file=$user_input
+                # FIXME: Check if file exists (also in non-interactive mode)
+            fi
+        fi
+    fi
+    if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
+        usage \
+            "The '--cut-off' argument can only be used with '--highlight-all'"
+    fi
+
+
+
+    # FIXME: Further arguments... ----------------------
+
+
+
     if [ -z "$wait_match" ]; then
         usage "The wait value must not be empty"
     else
@@ -292,9 +326,41 @@ else
             usage "The wait value must be a number greater than zero"
         fi
     fi
+
+
+
+
+
+    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
+    if [ $? -eq 0 ]; then
+        temp=$delay
+        if [ $delay -lt 100 ]; then
+            temp=100
+        elif [ $delay -gt 900 ]; then
+            temp=900
+        fi
+        delay=$temp
+    else
+        usage "The delay must be a number between 100 and 900"
+    fi
+
+
+    if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
+        usage "The analyzing mode does not support a prompt before exit"
+    fi
+
+    if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
+        usage "A temporary copy only makes sense when analyzing a file"
+    fi
+
+
+    # --------------------------
+
+    # FIXME: Final checks
     check_command grep 0 grep
     check_command sed 0 sed
     check_command tail 0 coreutils
+
 fi
 
 # Process the given input file

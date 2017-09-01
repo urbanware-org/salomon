@@ -3,18 +3,15 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
-        + Added interactive dialogs as command-line argument alternative.
-
-    Version 1.8.1 (2017-08-17)
-
         + Added an optional command-line argument (and feature) to remove the
           trailing whitespaces of a whole highlighted line.
+        + Added interactive dialogs as command-line argument alternative.
 
         * Revised some code inside the output core component for higher
           performance and less code.
         * Revised the output header when using analyze mode.
-        * Revised the shell compatibility check script (added check for the
-          'dialog' tool in advance).
+        * Revised the shell compatibility script (added additional check for
+          the 'dialog' tool).
         * Revised various SaLoMon components (negligible changes).
 
     Version 1.8.0 (2017-06-08)

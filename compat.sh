@@ -151,13 +151,6 @@ else
     check_failed=1
 fi
 
-trap &>/dev/null
-if [ $? -eq 0 ]; then
-    check_trap="${color_lightgreen}SUCCESS${color_none}"
-else
-    check_failed=0
-fi
-
 echo "#!/bin/bash" > $script_temp
 echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
