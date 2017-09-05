@@ -204,7 +204,7 @@ else
         usage \
             "Multiple highlighting arguments given (only one allowed)"
     fi
-    
+
     if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
         usage \
             "The '--cut-off' argument can only be used with '--highlight-all'"
