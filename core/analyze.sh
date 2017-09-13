@@ -18,12 +18,12 @@ analyze_input_file() {
         if [ $? -ne 0 ]; then
             usage "No read permission on the given input file '$i'"
         fi
-    done  
+    done
 
     #if [ $copy -eq 1 ]; then
         timestamp=$(date "+%Y%m%d%H%M%S%N")
         temp_file="/tmp/salomon_${timestamp}.tmp"
-        paste -d "\n" $input_file | grep -v "^$" > $temp_file 
+        paste -d "\n" $input_file | grep -v "^$" > $temp_file
         input_file=$temp_file
     #fi
 
@@ -57,7 +57,7 @@ analyze_input_file() {
         print_line "*"
         echo
     fi
-    
+
     rm -f "$temp_file"
 }
 
