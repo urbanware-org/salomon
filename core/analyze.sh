@@ -57,6 +57,8 @@ analyze_input_file() {
         print_line "*"
         echo
     fi
+    
+    rm -f "$temp_file"
 }
 
 # EOF
