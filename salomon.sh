@@ -183,9 +183,9 @@ else
 
     for i in $input_files; do
         if [ ! -e "$input_file" ]; then
-            usage "The given input file does not exist"
+            usage "The given input file '$i' does not exist"
         elif [ ! -f "$input_file" ]; then
-            usage "The given input file path is not a file"
+            usage "The given input file path '$i' is not a file"
         fi
     done
 
