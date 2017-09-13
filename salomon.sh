@@ -47,7 +47,7 @@ else
             ;;
             -i|--input-file)
                 shift
-                input_file="$1"
+                input_file="$input_file $1"
                 check_argument "-i/--input-file" "$input_file" "file"
                 shift
             ;;
@@ -119,10 +119,6 @@ else
                 start_line="$1"
                 shift
             ;;
-            -t|--temp-copy)
-                copy=1
-                shift
-            ;;
             --version)
                 echo "$version"
                 exit
@@ -173,17 +169,19 @@ else
         usage "The analyzing mode does not support a prompt before exit"
     fi
 
-    if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
-        usage "A temporary copy only makes sense when analyzing a file"
-    fi
-
     if [ -z "$input_file" ]; then
         usage "No input file given"
-    elif [ ! -e "$input_file" ]; then
-        usage "The given input file does not exist"
-    elif [ ! -f "$input_file" ]; then
-        usage "The given input file path is not a file"
     fi
+
+    temp=$(echo "${input_file}" | sed -e 's/^ *//g;s/ *$//g')
+    input_file="$temp"
+    for i in $input_file; do
+        if [ ! -e "$i" ]; then
+            usage "The given input file '$i' does not exist"
+        elif [ ! -f "$i" ]; then
+            usage "The given input file path '$i' is not a file"
+        fi
+    done
 
     if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then

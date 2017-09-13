@@ -187,8 +187,6 @@ usage() {
                                  "file)"
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
-    echo "  -t, --temp-copy       process a temporary copy of the input file"\
-                                 "instead of"
     echo "                        the input file itself"
     echo "  --version             print the version number and exit"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\

@@ -13,17 +13,17 @@
 analyze_input_file() {
     check_patterns
 
-    tail "$input_file" &>/dev/null
-    if [ $? -ne 0 ]; then
-        usage "error: No read permission on the given input file"
-    fi
+    for i in $input_file; do
+        tail "$i" &>/dev/null
+        if [ $? -ne 0 ]; then
+            usage "No read permission on the given input file '$i'"
+        fi
+    done
 
-    if [ $copy -eq 1 ]; then
-        timestamp=$(date "+%Y%m%d%H%M%S%N")
-        temp_file="/tmp/salomon_${timestamp}.tmp"
-        cat "$input_file" > $temp_file
-        input_file=$temp_file
-    fi
+    timestamp=$(date "+%Y%m%d%H%M%S%N")
+    temp_file="/tmp/salomon_${timestamp}.tmp"
+    paste -d "\n" $input_file | grep -v "^$" > $temp_file
+    input_file=$temp_file
 
     count=0
     while read line; do
@@ -40,10 +40,7 @@ analyze_input_file() {
             sleep 0.$delay
         fi
     done < $input_file
-
-    if [ $copy -eq 1 ]; then
-        rm -f $temp_file
-    fi
+    rm -f $temp_file
 
     if [ $header -eq 1 ]; then
         echo

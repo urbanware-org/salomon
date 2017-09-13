@@ -69,6 +69,7 @@ check_declare="${color_lightred}FAILURE${color_none}${check_error}"
 check_dialog="${color_yellow}MISSING${color_none}${check_error}"
 check_dirname="${color_lightred}FAILURE${color_none}${check_error}"
 check_grep="${color_lightred}FAILURE${color_none}${check_error}"
+check_paste="${color_lightred}FAILURE${color_none}${check_error}"
 check_printf="${color_lightred}FAILURE${color_none}${check_error}"
 check_readlink="${color_lightred}FAILURE${color_none}${check_error}"
 check_sed="${color_lightred}FAILURE${color_none}${check_error}"
@@ -116,6 +117,13 @@ else
     check_failed=1
 fi
 
+paste --help &>/dev/null
+if [ $? -eq 0 ]; then
+    check_paste="${color_lightgreen}SUCCESS${color_none}"
+else
+    check_failed=1
+fi
+
 printf ""
 if [ $? -eq 0 ]; then
     check_printf="${color_lightgreen}SUCCESS${color_none}"
@@ -151,13 +159,6 @@ else
     check_failed=1
 fi
 
-trap &>/dev/null
-if [ $? -eq 0 ]; then
-    check_trap="${color_lightgreen}SUCCESS${color_none}"
-else
-    check_failed=0
-fi
-
 echo "#!/bin/bash" > $script_temp
 echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
@@ -186,6 +187,8 @@ echo $em "Checking 'dirname' command ...........................$temp"\
          "${check_dirname}"
 echo $em "Checking 'grep' command ..............................$temp"\
          "${check_grep}"
+echo $em "Checking 'paste' command .............................$temp"\
+         "${check_printf}"
 echo $em "Checking 'printf' command ............................$temp"\
          "${check_printf}"
 echo $em "Checking 'readlink' command ..........................$temp"\

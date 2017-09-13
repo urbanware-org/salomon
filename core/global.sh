@@ -15,6 +15,7 @@ set_global_variables() {
 
     arg_case=""
     input_file=""
+    input_count=0
     temp_file="/tmp/salomon_$$.tmp"
 
     bs="\b"
