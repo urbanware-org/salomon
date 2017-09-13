@@ -8,7 +8,7 @@ CHANGELOG (SaLoMon)
         * Revised the output header inside the output core script (removed
           information duplicates).
         * Revised the shell compatibility check script (added check for the
-          'paste' tool, removed duplicate if 'trap').
+          'paste' tool, removed duplicate of 'trap').
         * Revised various SaLoMon components (negligible changes).
 
         - Removed the optional command-line argument to analyze the given
