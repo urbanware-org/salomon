@@ -5,8 +5,10 @@ CHANGELOG (SaLoMon)
     
         * Revised the code in various SaLoMon components to allow multiple
           input files at once.
+        * Revised the output header inside the output core script (removed
+          information duplicates).
         * Revised the shell compatibility check script (added check for the
-          'paste' tool).
+          'paste' tool, removed duplicate if 'trap').
         * Revised various SaLoMon components (negligible changes).
     
     Version 1.8.1 (2017-08-17)
