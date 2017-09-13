@@ -176,14 +176,18 @@ else
     if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
         usage "A temporary copy only makes sense when analyzing a file"
     fi
-
+    
     if [ -z "$input_file" ]; then
         usage "No input file given"
-    elif [ ! -e "$input_file" ]; then
-        usage "The given input file does not exist"
-    elif [ ! -f "$input_file" ]; then
-        usage "The given input file path is not a file"
     fi
+
+    for i in $input_files; do
+        if [ ! -e "$input_file" ]; then
+            usage "The given input file does not exist"
+        elif [ ! -f "$input_file" ]; then
+            usage "The given input file path is not a file"
+        fi
+    done
 
     if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then
