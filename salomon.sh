@@ -47,7 +47,7 @@ else
             ;;
             -i|--input-file)
                 shift
-                input_file="$1"
+                input_file="$input_file $1"
                 check_argument "-i/--input-file" "$input_file" "file"
                 shift
             ;;
