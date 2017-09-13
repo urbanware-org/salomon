@@ -10,7 +10,11 @@ CHANGELOG (SaLoMon)
         * Revised the shell compatibility check script (added check for the
           'paste' tool, removed duplicate if 'trap').
         * Revised various SaLoMon components (negligible changes).
-    
+
+        - Removed the optional command-line argument to analyze the given
+          input files inside a temporary copy instead of the files themselves
+          (the temporary copy will be created by default now).
+
     Version 1.8.1 (2017-08-17)
 
         + Added an optional command-line argument (and feature) to remove the
