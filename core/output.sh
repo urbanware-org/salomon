@@ -57,8 +57,21 @@ print_line_count() {
 print_output_header() {
     echo
     print_line "*"
-    temp=$(readlink -f $input_file)
-    print_line "${color_white}Input file:" "${color_yellow}$temp"
+    
+    if [ $input_count -eq 1 ]; then
+        temp=$(readlink -f $input_file)
+        print_line "${color_white}Input file:" "${color_yellow}$temp"
+    else
+        # Works, but is in need of improvement
+        print_line "${color_white}Input file:" "${color_yellow}$input_file"
+    fi
+
+    if [ "$color_file" = "" ]; then
+        print_line "${color_white}Color file:" "${color_lightgray}None"
+    else
+        temp=$(readlink -f $color_file)
+        print_line "${color_white}Color file:" "${color_yellow}$temp"
+    fi
 
     if [ "$color_file" = "" ]; then
         print_line "${color_white}Color file:" "${color_lightgray}None"
