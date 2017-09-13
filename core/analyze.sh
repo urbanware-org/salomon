@@ -13,17 +13,19 @@
 analyze_input_file() {
     check_patterns
 
-    tail "$input_file" &>/dev/null
-    if [ $? -ne 0 ]; then
-        usage "No read permission on the given input file"
-    fi
+    for i in $input_file; do
+        tail "$i" &>/dev/null
+        if [ $? -ne 0 ]; then
+            usage "No read permission on the given input file '$i'"
+        fi
+    done  
 
-    if [ $copy -eq 1 ]; then
+    #if [ $copy -eq 1 ]; then
         timestamp=$(date "+%Y%m%d%H%M%S%N")
         temp_file="/tmp/salomon_${timestamp}.tmp"
-        cat "$input_file" > $temp_file
+        paste -d "\n" $input_file | grep -v "^$" > $temp_file 
         input_file=$temp_file
-    fi
+    #fi
 
     count=0
     while read line; do
