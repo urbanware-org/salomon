@@ -187,7 +187,6 @@ usage() {
                                  "file)"
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
-    echo "                        the input file itself"
     echo "  --version             print the version number and exit"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
                                  "line"
