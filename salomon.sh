@@ -181,10 +181,12 @@ else
         usage "No input file given"
     fi
 
-    for i in $input_files; do
-        if [ ! -e "$input_file" ]; then
+    temp=$(echo "${input_file}" | sed -e 's/^ *//g;s/ *$//g')
+    input_file="$temp"
+    for i in $input_file; do
+        if [ ! -e "$i" ]; then
             usage "The given input file '$i' does not exist"
-        elif [ ! -f "$input_file" ]; then
+        elif [ ! -f "$i" ]; then
             usage "The given input file path '$i' is not a file"
         fi
     done
