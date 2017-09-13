@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.8.2 (2017-09-13)
     
         * Revised the code in various SaLoMon components to allow multiple
           input files at once.
