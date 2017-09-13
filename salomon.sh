@@ -119,10 +119,6 @@ else
                 start_line="$1"
                 shift
             ;;
-            -t|--temp-copy)
-                copy=1
-                shift
-            ;;
             --version)
                 echo "$version"
                 exit
@@ -173,10 +169,6 @@ else
         usage "The analyzing mode does not support a prompt before exit"
     fi
 
-    if [ $follow -eq 1 ] && [ $copy -eq 1 ]; then
-        usage "A temporary copy only makes sense when analyzing a file"
-    fi
-    
     if [ -z "$input_file" ]; then
         usage "No input file given"
     fi
