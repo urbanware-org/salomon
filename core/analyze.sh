@@ -20,12 +20,10 @@ analyze_input_file() {
         fi
     done
 
-    #if [ $copy -eq 1 ]; then
-        timestamp=$(date "+%Y%m%d%H%M%S%N")
-        temp_file="/tmp/salomon_${timestamp}.tmp"
-        paste -d "\n" $input_file | grep -v "^$" > $temp_file
-        input_file=$temp_file
-    #fi
+    timestamp=$(date "+%Y%m%d%H%M%S%N")
+    temp_file="/tmp/salomon_${timestamp}.tmp"
+    paste -d "\n" $input_file | grep -v "^$" > $temp_file
+    input_file=$temp_file
 
     count=0
     while read line; do
@@ -42,10 +40,7 @@ analyze_input_file() {
             sleep 0.$delay
         fi
     done < $input_file
-
-    if [ $copy -eq 1 ]; then
-        rm -f $temp_file
-    fi
+    rm -f $temp_file
 
     if [ $header -eq 1 ]; then
         echo
@@ -57,8 +52,6 @@ analyze_input_file() {
         print_line "*"
         echo
     fi
-
-    rm -f "$temp_file"
 }
 
 # EOF
