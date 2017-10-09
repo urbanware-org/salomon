@@ -1,8 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised the output header inside the output core script (negligible
+          changes).
+        * Revised the separator when processing multiple input files (replaced
+          the previous one with a line of hyphens).
+
     Version 1.8.2 (2017-09-13)
-    
+
         * Revised the code in various SaLoMon components to allow multiple
           input files at once.
         * Revised the output header inside the output core script (removed

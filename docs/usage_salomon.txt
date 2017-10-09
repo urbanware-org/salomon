@@ -151,15 +151,15 @@ USAGE (salomon.sh)
                                -c /tmp/colors.cfg
 
         3.4 Multiple input files
-        
+
             You can also provide multiple (two or more) input files at once.
-        
+
             For example, if you want to monitor the files '/tmp/foo.log' and
             and '/tmp/bar.log' using the file '/tmp/colors.cfg' to colorize
             certain lines, type:
 
                 $ ./salomon.sh -a monitor -i /tmp/foo.log -i /tmp/bar.log \
-                               -c /tmp/colors.cfg        
+                               -c /tmp/colors.cfg
 
     4. Applying a filter
 

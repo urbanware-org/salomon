@@ -79,6 +79,8 @@ set_global_variables() {
     remove_list=""
     remove_pattern=""
 
+    seperator_line=1
+
     unset color_temp
 }
 

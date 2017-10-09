@@ -57,12 +57,22 @@ print_line_count() {
 print_output_header() {
     echo
     print_line "*"
-    
+
+    input_count=$(wc -w <<< $input_file)
     if [ $input_count -eq 1 ]; then
-        temp=$(readlink -f $input_file)
-        print_line "${color_white}Input file:" "${color_yellow}$temp"
+        filepath=$(readlink -f $input_file)
+        print_line "${color_white}Input file:" "${color_yellow}$filepath"
     else
-        print_line "${color_white}Input file:" "${color_yellow}$input_file"
+        input_file_list=""
+        for file in $input_file; do
+            filepath=$(readlink -f $file)
+            temp="$files $filepath"
+            files="$temp"
+        done
+        input_file_list=$(sed -e "s/^\ //g" <<< $files)
+
+        print_line \
+            "${color_white}Input files:" "${color_yellow}$input_file_list"
     fi
 
     if [ "$color_file" = "" ]; then
@@ -188,6 +198,18 @@ print_output_line() {
     count_total=$(( count_total + 1 ))
     filter_match=0
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
+
+    if [ $seperator_line -eq 1 ]; then
+        grep "^==>.*<==$" <<< $1 &>/dev/null
+        if [ $? -eq 0 ]; then
+            temp=$((sed -e "s/==>//g" | sed -e "s/<==//g") <<< $1)
+            fp=$(readlink -f $temp)
+            ln=$(printf -- "-%.0s" $(seq 0 80))
+            seperator="\e[1;30m--\e[0;37m[\e[1;33m$fp\e[0;37m]\e[1;30m$ln"
+            echo -e "$seperator\e[0m" | cut -c 1-113
+            return
+        fi
+    fi
 
     if [ $highlight_cut_off = 0 ]; then
         term_width=$(( $(tput cols) + 1 ))
@@ -318,6 +340,7 @@ print_output_line() {
     fi
 
     echo $em "$output"
+
     count_lines=$(( count_lines + 1 ))
 
     if [ $color_match -eq 1 ]; then
