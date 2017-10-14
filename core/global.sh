@@ -11,7 +11,7 @@
 # ============================================================================
 
 set_global_variables() {
-    version="1.8.2"
+    version="1.8.3"
 
     arg_case=""
     input_file=""
@@ -31,6 +31,7 @@ set_global_variables() {
     highlight_all=0
     highlight_cut_off=0
     highlight_upper=0
+    interactive=0
     prompt=0
     slow=0
     start_line=1

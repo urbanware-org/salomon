@@ -63,16 +63,19 @@ print_output_header() {
         filepath=$(readlink -f $input_file)
         print_line "${color_white}Input file:" "${color_yellow}$filepath"
     else
-        input_file_list=""
+        desc="Input files:"
         for file in $input_file; do
-            filepath=$(readlink -f $file)
-            temp="$files $filepath"
-            files="$temp"
+            temp=$(sed -e "s/^ *//g;s/ *$//g;s/#/\ /g" <<< "$file")
+            filepath=$(readlink -f "$temp")
+            if [ -z "$filepath" ]; then
+                continue
+            fi
+            print_line "${color_white}$desc" "${color_yellow}$filepath"
+            if [ ! -z "$desc" ]; then
+                desc=""
+            fi
         done
-        input_file_list=$(sed -e "s/^\ //g" <<< $files)
-
-        print_line \
-            "${color_white}Input files:" "${color_yellow}$input_file_list"
+        print_line
     fi
 
     if [ "$color_file" = "" ]; then
@@ -202,8 +205,8 @@ print_output_line() {
     if [ $seperator_line -eq 1 ]; then
         grep "^==>.*<==$" <<< $1 &>/dev/null
         if [ $? -eq 0 ]; then
-            temp=$((sed -e "s/==>//g" | sed -e "s/<==//g") <<< $1)
-            fp=$(readlink -f $temp)
+            temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
+            fp=$(readlink -f "$temp")
             ln=$(printf -- "-%.0s" $(seq 0 80))
             seperator="\e[1;30m--\e[0;37m[\e[1;33m$fp\e[0;37m]\e[1;30m$ln"
             echo -e "$seperator\e[0m" | cut -c 1-113

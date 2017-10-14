@@ -1,12 +1,16 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.8.3 (2017-10-14)
 
+        * Revised the code to process the input files inside the main SaLoMon
+          as well as the analyzing and monitoring core script.
         * Revised the output header inside the output core script (negligible
-          changes).
+          changes related to multiple input files).
         * Revised the separator when processing multiple input files (replaced
           the previous one with a line of hyphens).
+
+        # Fixed the bug that input file paths cannot contain any spaces.
 
     Version 1.8.2 (2017-09-13)
 

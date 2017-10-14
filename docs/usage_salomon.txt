@@ -107,7 +107,7 @@ USAGE (salomon.sh)
             inside the config sub-directories ('colors' and 'filters') of the
             SaLoMon script directory.
 
-    3. Processing an input file
+    3. Processing input file
 
         The following examples use a color config file. See section 2.3 for
         details.

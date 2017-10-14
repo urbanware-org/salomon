@@ -13,16 +13,36 @@
 analyze_input_file() {
     check_patterns
 
-    for i in $input_file; do
-        tail "$i" &>/dev/null
-        if [ $? -ne 0 ]; then
-            usage "No read permission on the given input file '$i'"
+    spaces=0
+    for file in $input_file; do
+        temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
+
+        grep "#" <<< "$temp" &>/dev/null
+        if [ $? -eq 0 ]; then
+            filepath="$(sed -e "s/#/\ /g" <<< "$temp")"
+            spaces=1
+        else
+            filepath="$temp"
+            spaces=0
         fi
+
+        tail "$filepath" &>/dev/null
+        if [ $? -ne 0 ]; then
+            usage "No read permission on the given input file '$filepath'"
+        fi
+
+        if [ $spaces -eq 1 ]; then
+            temp=$(sed -e "s/\ /\*/g" <<< $filepath)
+            input_file_list="$input_file_list $temp"
+        else
+            input_file_list="$input_file_list $filepath"
+        fi
+
     done
 
     timestamp=$(date "+%Y%m%d%H%M%S%N")
     temp_file="/tmp/salomon_${timestamp}.tmp"
-    paste -d "\n" $input_file | grep -v "^$" > $temp_file
+    paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
     input_file=$temp_file
 
     count=0
@@ -35,7 +55,6 @@ analyze_input_file() {
         fi
 
         print_output_line "$line"
-
         if [ $slow -eq 1 ]; then
             sleep 0.$delay
         fi

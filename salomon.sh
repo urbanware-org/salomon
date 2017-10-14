@@ -47,7 +47,8 @@ else
             ;;
             -i|--input-file)
                 shift
-                input_file="$input_file $1"
+                temp=$(sed -e "s/^ *//g;s/ *$//g;s/\ /#/g" <<< $1)
+                input_file="$input_file $temp"
                 check_argument "-i/--input-file" "$input_file" "file"
                 shift
             ;;
@@ -153,6 +154,24 @@ else
         esac
     done
 
+    # Input file
+    temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
+    input_file="$temp"
+
+    if [ -z "$input_file" ]; then
+        usage "No input file given"
+    fi
+
+    for file in $input_file; do
+        filepath=$(sed -e "s/^ *//g;s/ *$//g;s/#/\ /g" <<< $file)
+        if [ ! -e "$filepath" ]; then
+            usage "The given input file '$filepath' does not exist"
+        elif [ ! -f "$filepath" ]; then
+            usage "The given input file path '$filepath' is not a file"
+        fi
+    done
+
+    # Action to perform
     if [ ! -z "$action" ]; then
         if [ "$action" = "analyze" ]; then
             follow=0
@@ -165,24 +184,12 @@ else
         fi
     fi
 
+    # Prompt before exit
     if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
         usage "The analyzing mode does not support a prompt before exit"
     fi
 
-    if [ -z "$input_file" ]; then
-        usage "No input file given"
-    fi
-
-    temp=$(echo "${input_file}" | sed -e 's/^ *//g;s/ *$//g')
-    input_file="$temp"
-    for i in $input_file; do
-        if [ ! -e "$i" ]; then
-            usage "The given input file '$i' does not exist"
-        elif [ ! -f "$i" ]; then
-            usage "The given input file path '$i' is not a file"
-        fi
-    done
-
+    # Color file
     if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then
             color_file="${color_dir}${color_file}"
@@ -197,6 +204,7 @@ else
         fi
     fi
 
+    # Highlighting
     highlight_params=$(( highlight + highlight_all + highlight_upper ))
     if [ $highlight_params -gt 1 ]; then
         usage \
@@ -208,7 +216,7 @@ else
             "The '--cut-off' argument can only be used with '--highlight-all'"
     fi
 
-
+    # Filter pattern
     if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
@@ -242,6 +250,8 @@ else
         filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
         filter=1
     fi
+
+    # Delay
     grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
     if [ $? -eq 0 ]; then
         temp=$delay
@@ -254,6 +264,8 @@ else
     else
         usage "The delay must be a number between 100 and 900"
     fi
+
+    # Exclude pattern
     if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -266,6 +278,8 @@ else
                             -e "s/;/\n/g") <<< "$exclude_pattern")
         exclude=1
     fi
+
+    # Remove pattern
     if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -278,6 +292,8 @@ else
                            -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
     fi
+
+    # Wait on match
     if [ -z "$wait_match" ]; then
         usage "The wait value must not be empty"
     else
@@ -290,16 +306,19 @@ else
             usage "The wait value must be a number greater than zero"
         fi
     fi
+
+    # Check requirements
     check_command grep 0 grep
     check_command sed 0 sed
     check_command tail 0 coreutils
 fi
 
-# Process the given input file
+# Prepare output first
 if [ $header -eq 1 ]; then
     print_output_header
 fi
 
+# Finally, process the given input file
 if [ $follow -eq 1 ]; then
     monitor_input_file
 else
