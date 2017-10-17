@@ -19,7 +19,7 @@ monitor_input_file() {
 
         grep "#" <<< "$temp" &>/dev/null
         if [ $? -eq 0 ]; then
-            filepath="$(sed -e "s/#/\ /g" <<< "$temp")"
+            filepath="$(sed -e "s/##/\ /g" <<< "$temp")"
             spaces=1
         else
             filepath="$temp"

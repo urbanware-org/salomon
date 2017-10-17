@@ -65,7 +65,7 @@ print_output_header() {
     else
         desc="Input files:"
         for file in $input_file; do
-            temp=$(sed -e "s/^ *//g;s/ *$//g;s/#/\ /g" <<< "$file")
+            temp=$(sed -e "s/^ *//g;s/ *$//g;s/##/\ /g" <<< "$file")
             filepath=$(readlink -f "$temp")
             if [ -z "$filepath" ]; then
                 continue

@@ -47,7 +47,7 @@ else
             ;;
             -i|--input-file)
                 shift
-                temp=$(sed -e "s/^ *//g;s/ *$//g;s/\ /#/g" <<< $1)
+                temp=$(sed -e "s/^ *//g;s/ *$//g;s/\ /##/g" <<< $1)
                 input_file="$input_file $temp"
                 check_argument "-i/--input-file" "$input_file" "file"
                 shift
@@ -163,7 +163,7 @@ else
     fi
 
     for file in $input_file; do
-        filepath=$(sed -e "s/^ *//g;s/ *$//g;s/#/\ /g" <<< $file)
+        filepath=$(sed -e "s/^ *//g;s/ *$//g;s/##/\ /g" <<< $file)
         if [ ! -e "$filepath" ]; then
             usage "The given input file '$filepath' does not exist"
         elif [ ! -f "$filepath" ]; then
