@@ -83,6 +83,20 @@ check_patterns() {
     fi
 }
 
+prepare_path() {
+    path_input="$1"
+    while true; do
+        grep "//" <<< $path_input &>/dev/null
+        if [ $? -eq 0 ]; then
+            temp=$(sed -e "s/\/\//\//g" <<< $path_input)
+            path_input=$temp
+        else
+            break
+        fi
+    done
+    path_prepared=$(sed -e "s/^ *//g;s/ *$//g;s/\ /\/\//g" <<< $path_input)
+}
+
 shell_precheck() {
     precheck=$(echo -e "precheck" | grep "\-e")
     if [ $? -eq 0 ]; then

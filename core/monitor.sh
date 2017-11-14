@@ -17,9 +17,9 @@ monitor_input_file() {
     for file in $input_file; do
         temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
 
-        grep "#" <<< "$temp" &>/dev/null
+        grep "//" <<< "$temp" &>/dev/null
         if [ $? -eq 0 ]; then
-            filepath="$(sed -e "s/##/\ /g" <<< "$temp")"
+            filepath="$(sed -e "s/\/\//\ /g" <<< "$temp")"
             spaces=1
         else
             filepath="$temp"
