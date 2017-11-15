@@ -157,7 +157,9 @@ usage() {
     echo                         "the given"
     echo "                        input file(s)"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
-    echo "                        input file(s) to analyze or monitor"
+    echo "                        input file to analyze or monitor (can be"\
+                                 "given multiple"
+    echo "                        times)"
     echo
     echo "optional arguments:"
     echo "  -c COLOR_FILE, --color-file COLOR_FILE"
