@@ -155,9 +155,9 @@ usage() {
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
     echo "                        action (processing mode) to perform with"\
     echo                         "the given"
-    echo "                        input file"
+    echo "                        input file(s)"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
-    echo "                        input file to analyze or monitor"
+    echo "                        input file(s) to analyze or monitor"
     echo
     echo "optional arguments:"
     echo "  -c COLOR_FILE, --color-file COLOR_FILE"
