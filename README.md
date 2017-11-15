@@ -17,9 +17,15 @@ The *SaLoMon* project is a simple log file monitor and analyzer with various fil
 
 ## Details
 
-The main script was primarily built to monitor and analyze log as well as plain text files on systems without a graphical user interface. It returns either all or just certain lines (by applying a filter) that have been added to the monitored file.
+The main script was primarily built to monitor and analyze log as well as plain text files on systems without a graphical user interface. It returns either all or just certain lines (by applying a filter) that have been added to the monitored file or multiple files.
 
-These lines can also easily be colorized with user-defined colors (and additionally highlighted) depending on given criteria. For example, all lines which contain the word "error" can be displayed red.
+These lines can also easily be colorized with user-defined colors (and additionally highlighted in different ways) depending on given criteria. For example, all lines which contain the word "error" can be displayed red.
+
+<img src="https://github.com/urbanware-org/salomon/blob/master/wiki/salomon_dialog_inputfile.png" alt="SaLoMon interactive dialog" align="right"/>
+
+There are various additional features, for example giving a filter, exclude and remove pattern to filter and customize the output.
+
+Furthermore, as you can see on the right, there is the option to use interavtice dialogs instead of or in combination with command-line arguments which is useful when e. g. running *SaLoMon* via shortcut in a terminal window on a graphical user interface.
 
 [Top](#salomon-)
 
