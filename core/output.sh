@@ -110,7 +110,7 @@ print_output_header() {
         else
             sec="seconds"
         fi
-        temp="${color_lightgreen}Yes ${color_yellow}($wait_match.000 $sec)"
+        temp="${color_lightgreen}Yes ${color_yellow}($wait_match $sec)"
     else
         temp="${color_lightred}No"
     fi

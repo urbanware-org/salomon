@@ -25,6 +25,7 @@ script_file=$(basename "$0")
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh
 source ${script_dir}/core/common.sh
+source ${script_dir}/core/dialogs.sh
 source ${script_dir}/core/global.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
@@ -98,6 +99,10 @@ else
                 arg_case="-i"
                 shift
             ;;
+            --interactive)
+                interactive=1
+                shift
+            ;;
             --no-info)
                 header=0
                 shift
@@ -158,6 +163,12 @@ else
     temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
     input_file="$temp"
 
+    if [ $interactive -eq 1 ]; then
+        dialog_startup_notice
+        dialog_input_file "$input_file"
+        input_file=$user_input
+    fi
+
     if [ -z "$input_file" ]; then
         usage "No input file given"
     fi
@@ -172,6 +183,16 @@ else
     done
 
     # Action to perform
+    if [ $interactive -eq 1 ]; then
+        dialog_action "$action"
+        if [ $? -eq 0 ]; then
+            action="analyze"
+            follow=0
+        else
+            action="monitor"
+        fi
+    fi
+
     if [ ! -z "$action" ]; then
         if [ "$action" = "analyze" ]; then
             follow=0
@@ -185,11 +206,28 @@ else
     fi
 
     # Prompt before exit
-    if [ $follow -eq 0 ] && [ $prompt -eq 1 ]; then
-        usage "The analyzing mode does not support a prompt before exit"
+    if [ $follow -eq 1 ]; then
+        dialog_prompt_on_exit $prompt
+        if [ $? -eq 0 ]; then
+            prompt=1
+        else
+            prompt=0
+        fi
+    else
+        if [ $interactive -eq 0 ]; then
+            if [ $prompt -eq 1 ]; then
+                usage \
+                    "The analyzing mode does not support a prompt before exit"
+            fi
+        fi
     fi
 
     # Color file
+    if [ $interactive -eq 1 ]; then
+        dialog_color_file "$color_file"
+        color_file="$user_input"
+    fi
+
     if [ ! -z "$color_file" ]; then
         if [ ! -e "$color_file" ]; then
             color_file="${color_dir}${color_file}"
@@ -204,19 +242,23 @@ else
         fi
     fi
 
-    # Highlighting
-    highlight_params=$(( highlight + highlight_all + highlight_upper ))
-    if [ $highlight_params -gt 1 ]; then
-        usage \
-            "Multiple highlighting arguments given (only one allowed)"
-    fi
-
-    if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
-        usage \
-            "The '--cut-off' argument can only be used with '--highlight-all'"
-    fi
-
     # Filter pattern
+    if [ $interactive -eq 1 ]; then
+        dialog_filter "$filter_pattern"
+        filter_pattern="$user_input"
+
+        if [ -z "$filter_pattern" ]; then
+            arg_case=""
+        else
+            dialog_ignore_case "$arg_case"
+            if [ $? -eq 0 ]; then
+                arg_case="-i"
+            else
+                arg_case=""
+            fi
+        fi
+    fi
+
     if [ -z "$filter_pattern" ]; then
         if [ "$arg_case" = "-i" ]; then
             usage \
@@ -251,21 +293,43 @@ else
         filter=1
     fi
 
-    # Delay
-    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
-    if [ $? -eq 0 ]; then
-        temp=$delay
-        if [ $delay -lt 100 ]; then
-            temp=100
-        elif [ $delay -gt 900 ]; then
-            temp=900
+    # Highlighting
+    if [ $interactive -eq 1 ]; then
+        highlight=0
+        highlight_all=0
+        highlight_upper=0
+        highlight_cut_off=0
+
+        dialog_highlight
+        if [ $user_input -eq 2 ]; then
+            highlight_all=1
+        elif [ $user_input -eq 3 ]; then
+            highlight_all=1
+            highlight_cut_off=1
+        elif [ $user_input -eq 4 ]; then
+            highlight=1
+        elif [ $user_input -eq 5 ]; then
+            highlight_upper=1
         fi
-        delay=$temp
-    else
-        usage "The delay must be a number between 100 and 900"
+    fi
+
+    highlight_params=$(( highlight + highlight_all + highlight_upper ))
+    if [ $highlight_params -gt 1 ]; then
+        usage \
+            "Multiple highlighting arguments given (only one allowed)"
+    fi
+
+    if [ $highlight_all -eq 0 ] && [ $highlight_cut_off -eq 1 ]; then
+        usage \
+            "The '--cut-off' argument can only be used with '--highlight-all'"
     fi
 
     # Exclude pattern
+    if [ $interactive -eq 1 ]; then
+        dialog_exclude_pattern "$exclude_pattern"
+        exclude_pattern="$user_input"
+    fi
+
     if [ ! -z "$exclude_pattern" ]; then
         grep "#" <<< "$exclude_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -280,6 +344,11 @@ else
     fi
 
     # Remove pattern
+    if [ $interactive -eq 1 ]; then
+        dialog_remove_pattern "$remove_pattern"
+        remove_pattern="$user_input"
+    fi
+
     if [ ! -z "$remove_pattern" ]; then
         grep "#" <<< "$remove_pattern" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -293,7 +362,43 @@ else
         remove=1
     fi
 
+    # Slow down (delay)
+    if [ $interactive -eq 1 ]; then
+        dialog_slow_down "$slow"
+        if [ $? -eq 0 ]; then
+            slow=1
+            dialog_delay "$delay"
+            delay="$user_input"
+        fi
+    fi
+
+    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
+    if [ $? -eq 0 ]; then
+        temp=$delay
+        if [ $delay -lt 100 ]; then
+            temp=100
+        elif [ $delay -gt 900 ]; then
+            temp=900
+        fi
+        delay=$temp
+    else
+        usage "The delay must be an integer between 100 and 900"
+    fi
+
     # Wait on match
+    if [ $interactive -eq 1 ]; then
+        if [ "$wait_match" = "0" ]; then
+            dialog_wait_on_match
+        else
+            dialog_wait_on_match "$wait_match"
+        fi
+
+        wait_match="$user_input"
+        if [ -z "$wait_match" ]; then
+            wait_match=0
+        fi
+    fi
+
     if [ -z "$wait_match" ]; then
         usage "The wait value must not be empty"
     else
@@ -303,7 +408,7 @@ else
                 wait=0
             fi
         else
-            usage "The wait value must be a number greater than zero"
+            usage "The wait value must be an integer greater than zero"
         fi
     fi
 
@@ -314,6 +419,10 @@ else
 fi
 
 # Prepare output first
+if [ $interactive -eq 1 ]; then
+    clear
+fi
+
 if [ $header -eq 1 ]; then
     print_output_header
 fi

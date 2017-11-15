@@ -3,6 +3,10 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
+        + Added an optional command-line argument (and feature) to use
+          interactive dialogs instead of or in combination with command-line
+          arguments.
+
         * Revised the code to process input file paths that contain spaces.
 
     Version 1.8.3 (2017-10-14)

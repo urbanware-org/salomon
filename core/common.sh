@@ -169,7 +169,8 @@ usage() {
     echo "                        when using '--highlight-all'"
     echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
                                  "(milliseconds,"
-    echo "                        number between 100 and 900, default is 200)"
+    echo "                        integer between 100 and 900, default is"\
+                                  "200)"
     echo "  -e EXCLUDE, --exclude EXCLUDE"
     echo "                        exclude lines which a certain string (for"\
                                  "details see"
@@ -189,6 +190,9 @@ usage() {
                                  "letters"
     echo "                        (also reuqires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
+    echo "  --interactive         use interactive dialogs (for details see"\
+                                 "section 2.5"
+    echo "                        inside the documentation)"
     echo "  --no-info             do not display the information header and"\
                                  "footer"
     echo "  -p, --prompt          prompt before exit (in case the process"\
@@ -208,9 +212,14 @@ usage() {
     echo "Further information and usage examples can be found inside the"\
          "documentation"
     echo "file for this script."
-    if [ ! -z "$error_msg" ]; then
-        echo
-        echo "error: $error_msg."
+        if [ ! -z "$error_msg" ]; then
+        if [ $interactive -eq 1 ]; then
+            predef_error_dialog "$error_msg"
+            clear
+        else
+            echo
+            echo "error: $error_msg."
+        fi
         exit 1
     else
         exit 0

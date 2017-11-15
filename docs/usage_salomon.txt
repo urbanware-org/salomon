@@ -13,6 +13,7 @@ USAGE (salomon.sh)
              2.3.3  Highlight whole lines
              2.3.4  No colorization and hightlighting
           2.4  Config file paths
+          2.5  Interactive dialogs
         3.  Processing an input file
           3.1  Relevant keystrokes
           3.2  Monitor the file
@@ -97,7 +98,7 @@ USAGE (salomon.sh)
             sub-directories.
 
             So, in case you only give the file name (instead of the path) for
-            the color or filter config like this
+            the color or filter config like this:
 
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log -c colors.cfg \
                                -f filter.cfg
@@ -106,6 +107,23 @@ USAGE (salomon.sh)
             config files. If these do not exist there, it will check for them
             inside the config sub-directories ('colors' and 'filters') of the
             SaLoMon script directory.
+
+        2.5 Interactive dialogs
+
+            Since version 1.9.0 you can use interactive dialogs instead of or
+            in combination with command-line arguments by giving the
+            '--interactive' argument:
+
+                $ ./salomon.sh --interactive
+
+            However, if you give further arguments like this
+
+                $ ./salomon.sh --interactive -a monitor -i /tmp/foobar.log \
+                               -c /tmp/colors.cfg
+
+            the values will be automatically applied to the dialogs. For
+            example, the dialog window asking for the input file will already
+            contain '/tmp/foobar.log', which can still be changed.
 
     3. Processing input file
 
