@@ -1,6 +1,13 @@
 
 CHANGELOG (SaLoMon)
 
+    Version 1.9.1 (2017-11-16)
+
+        # Fixed the command-line argument issue with older versions of
+          the 'dialog' tool.
+        # Fixed the missing interactive check inside the main SaLoMon script
+          when checking for prompt on exit.
+
     Version 1.9.0 (2017-11-15)
 
         + Added an optional command-line argument (and feature) to use

@@ -164,6 +164,7 @@ else
     input_file="$temp"
 
     if [ $interactive -eq 1 ]; then
+        check_dialog
         dialog_startup_notice
         dialog_input_file "$input_file"
         input_file=$user_input
@@ -207,11 +208,13 @@ else
 
     # Prompt before exit
     if [ $follow -eq 1 ]; then
-        dialog_prompt_on_exit $prompt
-        if [ $? -eq 0 ]; then
-            prompt=1
-        else
-            prompt=0
+        if [ $interactive -eq 1 ]; then
+            dialog_prompt_on_exit $prompt
+            if [ $? -eq 0 ]; then
+                prompt=1
+            else
+                prompt=0
+            fi
         fi
     else
         if [ $interactive -eq 0 ]; then
@@ -221,7 +224,7 @@ else
             fi
         fi
     fi
-
+    
     # Color file
     if [ $interactive -eq 1 ]; then
         dialog_color_file "$color_file"
