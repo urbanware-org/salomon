@@ -18,7 +18,7 @@ dialog_action() {
     fi
 
     dialog --no-shadow --title "Processing mode" --yes-label "Analyze" \
-           --no-label "Monitor" --default-button $def_button \
+           --no-label "Monitor" $dialog_def_arg $def_button \
            --yesno "What do you want to do with the input file(s)?" 8 60
 }
 
@@ -84,7 +84,7 @@ dialog_ignore_case() {
     fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
-    dialog --no-shadow --title "Ignore case" --default-button $def_button \
+    dialog --no-shadow --title "Ignore case" $dialog_def_arg $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -107,7 +107,7 @@ dialog_prompt_on_exit() {
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")
-    dialog --no-shadow --title "Prompt on exit" --default-button $def_button \
+    dialog --no-shadow --title "Prompt on exit" $dialog_def_arg $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -130,7 +130,7 @@ dialog_slow_down() {
                     "\n\nThis will decrease the CPU usage depending on the"\
                     "amount of output data. Usually, this is not required.")
     dialog --no-shadow --title "Slow down output" \
-           --default-button $def_button --yesno "$dlg_text" 8 60
+           $dialog_def_arg $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_startup_notice() {
