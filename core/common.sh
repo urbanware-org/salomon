@@ -56,6 +56,15 @@ check_command() {
     fi
 }
 
+check_dialog() {
+    dialog --help | grep "--default-button" &>/dev/null
+    if [ $? -eq 0 ]; then
+        dialog_def_arg="--default-button"
+    else
+        dialog_def_arg="--default-item"
+    fi
+}
+
 check_patterns() {
     if [ ! -z "$filter_list" ]; then
         for filter_term in $filter_list; do
