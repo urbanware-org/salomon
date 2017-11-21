@@ -171,7 +171,7 @@ else
     fi
 
     if [ -z "$input_file" ]; then
-        usage "No input file given"
+        usage "No input file(s) given"
     fi
 
     for file in $input_file; do
