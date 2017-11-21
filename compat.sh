@@ -43,7 +43,7 @@ fi
 
 script_dir=$(dirname $(readlink -f $0))
 script_file=$(basename "$0")
-script_temp="/tmp/salomon_compat.sh"
+script_temp="$(dirname $(mktemp -u))/salomon_compat.sh"
 
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/global.sh
