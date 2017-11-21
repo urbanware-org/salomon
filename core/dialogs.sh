@@ -12,13 +12,11 @@
 
 dialog_action() {
     if [ -z "$1" ] || [ "$1" = "monitor" ]; then
-        def_button="no"
-    else
-        def_button="yes"
+        def_button="--defaultno"
     fi
 
     dialog --no-shadow --title "Processing mode" --yes-label "Analyze" \
-           --no-label "Monitor" $dialog_def_arg $def_button \
+           --no-label "Monitor" $def_button \
            --yesno "What do you want to do with the input file(s)?" 8 60
 }
 
@@ -77,14 +75,12 @@ dialog_highlight() {
 }
 
 dialog_ignore_case() {
-    if [ "$1" = "-i" ]; then
-        def_button="yes"
-    else
-        def_button="no"
+    if [ "$1" != "-i" ]; then
+        def_button="--defaultno"
     fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
-    dialog --no-shadow --title "Ignore case" $dialog_def_arg $def_button \
+    dialog --no-shadow --title "Ignore case" $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -98,16 +94,14 @@ dialog_input_file() {
 }
 
 dialog_prompt_on_exit() {
-    if [ $1 -eq 1 ]; then
-        def_button="yes"
-    else
-        def_button="no"
+    if [ $1 -ne 1 ]; then
+        def_button="--defaultno"
     fi
 
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")
-    dialog --no-shadow --title "Prompt on exit" $dialog_def_arg $def_button \
+    dialog --no-shadow --title "Prompt on exit" $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -120,17 +114,15 @@ dialog_remove_pattern() {
 }
 
 dialog_slow_down() {
-    if [ $1 -eq 1 ]; then
-        def_button="yes"
-    else
-        def_button="no"
+    if [ $1 -ne 1 ]; then
+        def_button="--defaultno"
     fi
 
     dlg_text=$(echo "Do you want to slow down the output of the lines?"\
                     "\n\nThis will decrease the CPU usage depending on the"\
                     "amount of output data. Usually, this is not required.")
     dialog --no-shadow --title "Slow down output" \
-           $dialog_def_arg $def_button --yesno "$dlg_text" 8 60
+           $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_startup_notice() {

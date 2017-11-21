@@ -1,6 +1,12 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised (and reduced) the 'dialog' related code.
+
+        # Fixed the default-button bug on the interactive dialogs.
+
     Version 1.9.1 (2017-11-16)
 
         # Fixed the command-line argument issue with older versions of

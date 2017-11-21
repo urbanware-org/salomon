@@ -164,7 +164,6 @@ else
     input_file="$temp"
 
     if [ $interactive -eq 1 ]; then
-        check_dialog
         dialog_startup_notice
         dialog_input_file "$input_file"
         input_file=$user_input
