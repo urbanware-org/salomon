@@ -57,7 +57,7 @@ check_command() {
 }
 
 check_dialog() {
-    dialog --help | grep "--default-button" &>/dev/null
+    dialog --help | grep "\-\-default-button" &>/dev/null
     if [ $? -eq 0 ]; then
         dialog_def_arg="--default-button"
     else
