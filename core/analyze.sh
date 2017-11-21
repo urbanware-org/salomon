@@ -41,7 +41,7 @@ analyze_input_file() {
     done
 
     timestamp=$(date "+%Y%m%d%H%M%S%N")
-    temp_file="/tmp/salomon_${timestamp}.tmp"
+    temp_file="$(dirname $(mktemp -u))/salomon_${timestamp}.tmp"
     paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
     input_file=$temp_file
 
