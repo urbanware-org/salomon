@@ -13,8 +13,12 @@ REQUIREMENTS (SaLoMon)
         - coreutils (version 2.85 or higher is recommended)
         - grep (version 2.18 or higher is recommended)
         - sed (version 2.50 or higher is recommended)
+        
+    Optional package requirements:
+    
+        - dialog (version 1.1 or higher is recommended)
 
-    All the recommended versions of the utilities mentioned above are the ones
-    that have been used while developing SaLoMon. The project also works most
-    likely with earlier versions.
+    All the recommended versions of the required utilities mentioned above are
+    the ones that have been used while developing SaLoMon. The project also
+    works most likely with earlier versions.
 
