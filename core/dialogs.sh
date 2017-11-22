@@ -55,7 +55,7 @@ dialog_filter() {
 
 dialog_highlight() {
     def_item="1"
-    
+
     if [ -z "$filter_pattern" ]; then
         if [ $highlight_all -eq 1 ]; then
             if [ $highlight_cut_off -eq 1 ]; then
@@ -63,7 +63,7 @@ dialog_highlight() {
             else
                 def_item="2"
             fi
-        fi        
+        fi
         user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
@@ -84,8 +84,7 @@ dialog_highlight() {
         elif [ $highlight -eq 1 ]; then
             def_item="4"
         fi
-        
-             
+
         hlw="Highlight all lines"
         user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
@@ -105,7 +104,7 @@ dialog_ignore_case() {
         def_button="--defaultno"
     else
         def_button=""
-    fi  
+    fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
     dialog --no-shadow --title "Ignore case" $def_button \
