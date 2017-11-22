@@ -297,11 +297,6 @@ else
 
     # Highlighting
     if [ $interactive -eq 1 ]; then
-        highlight=0
-        highlight_all=0
-        highlight_upper=0
-        highlight_cut_off=0
-
         dialog_highlight
         if [ $user_input -eq 2 ]; then
             highlight_all=1

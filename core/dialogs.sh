@@ -54,8 +54,18 @@ dialog_filter() {
 }
 
 dialog_highlight() {
+    def_item="1"
+    
     if [ -z "$filter_pattern" ]; then
-        user_input=$(dialog --no-shadow --no-cancel --title "Highlight mode" \
+        if [ $highlight_all -eq 1 ]; then
+            if [ $highlight_cut_off -eq 1 ]; then
+                def_item="3"
+            else
+                def_item="2"
+            fi
+        fi        
+        user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
+                            --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
                             10 60 20 \
                             "1" "Do not highlight" \
@@ -63,8 +73,22 @@ dialog_highlight() {
                             "3" "Highlight whole lines (cut-off)" \
                             3>&1 1>&2 2>&3 3>&-)
     else
+        if [ $highlight_all -eq 1 ]; then
+            if [ $highlight_cut_off -eq 1 ]; then
+                def_item="3"
+            else
+                def_item="2"
+            fi
+        elif [ $highlight_upper -eq 1 ]; then
+            def_item="5"
+        elif [ $highlight -eq 1 ]; then
+            def_item="4"
+        fi
+        
+             
         hlw="Highlight all lines"
-        user_input=$(dialog --no-shadow --no-cancel --title "Highlight mode" \
+        user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
+                            --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
                             12 60 20 \
                             "1" "Do not highlight" \
