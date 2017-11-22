@@ -223,7 +223,7 @@ else
             fi
         fi
     fi
-    
+
     # Color file
     if [ $interactive -eq 1 ]; then
         dialog_color_file "$color_file"

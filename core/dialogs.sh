@@ -13,6 +13,8 @@
 dialog_action() {
     if [ -z "$1" ] || [ "$1" = "monitor" ]; then
         def_button="--defaultno"
+    else
+        def_button=""
     fi
 
     dialog --no-shadow --title "Processing mode" --yes-label "Analyze" \
@@ -77,7 +79,9 @@ dialog_highlight() {
 dialog_ignore_case() {
     if [ "$1" != "-i" ]; then
         def_button="--defaultno"
-    fi
+    else
+        def_button=""
+    fi  
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
     dialog --no-shadow --title "Ignore case" $def_button \
@@ -94,7 +98,9 @@ dialog_input_file() {
 }
 
 dialog_prompt_on_exit() {
-    if [ $1 -ne 1 ]; then
+    if [ $1 -eq 1 ]; then
+        def_button=""
+    else
         def_button="--defaultno"
     fi
 
@@ -114,7 +120,9 @@ dialog_remove_pattern() {
 }
 
 dialog_slow_down() {
-    if [ $1 -ne 1 ]; then
+    if [ $1 -eq 1 ]; then
+        def_button=""
+    else
         def_button="--defaultno"
     fi
 
