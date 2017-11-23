@@ -21,6 +21,7 @@ cancel_process() {
         print_line_count
     fi
     if [ $prompt -eq 1 ]; then
+        trap - 2 20
         print_line
         print_line "${color_lightgray}Press any key to exit."
         print_line "*"

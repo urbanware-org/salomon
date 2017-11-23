@@ -4,8 +4,12 @@ CHANGELOG (SaLoMon)
     Next version (outstanding)
 
         * Revised (and reduced) the 'dialog' related code.
+        * Revised the code to parse pattern command-line arguments (negligible
+          changes).
 
         # Fixed the default-button bug on the interactive dialogs.
+        # Fixed the freeze bug (increased CPU usage) when hitting Ctrl+C at
+          the prompt after canceling the monitoring process.
 
     Version 1.9.1 (2017-11-16)
 
