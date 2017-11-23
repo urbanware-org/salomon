@@ -73,7 +73,7 @@ print_color_table() {
     echo
     echo "All numbers that have a black background are colors cannot be"\
          "displayed"
-    echo "(except for number 0, which actually does have a black background)."
+    echo "(except for number 0, which actually has a black background)."
     echo
 }
 
