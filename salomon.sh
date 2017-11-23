@@ -252,6 +252,9 @@ else
         if [ -z "$filter_pattern" ]; then
             arg_case=""
         else
+            if [[ $filter_pattern == *"#"* ]]; then
+                usage "The filter pattern must not contain any hashes"
+            fi
             dialog_ignore_case "$arg_case"
             if [ $? -eq 0 ]; then
                 arg_case="-i"
@@ -278,8 +281,7 @@ else
             filter_file="${filter_dir}${filter}"
             read_filter
         else
-            grep "#" <<< "$filter_pattern" &>/dev/null
-            if [ $? -eq 0 ]; then
+            if [[ $filter_pattern == *"#"* ]]; then
                 usage "The filter pattern must not contain any hashes"
             fi
         fi
@@ -328,8 +330,7 @@ else
     fi
 
     if [ ! -z "$exclude_pattern" ]; then
-        grep "#" <<< "$exclude_pattern" &>/dev/null
-        if [ $? -eq 0 ]; then
+        if [[ $exclude_pattern == *"#"* ]]; then
             usage "The exclude pattern must not contain any hashes"
         fi
         exclude_list=$((tr -s ";;" ";" | \
@@ -347,8 +348,7 @@ else
     fi
 
     if [ ! -z "$remove_pattern" ]; then
-        grep "#" <<< "$remove_pattern" &>/dev/null
-        if [ $? -eq 0 ]; then
+        if [[ $remove_pattern == *"#"* ]]; then
             usage "The remove pattern must not contain any hashes"
         fi
         remove_list=$((tr -s ";;" ";" | \
