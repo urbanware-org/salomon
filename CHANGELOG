@@ -3,6 +3,10 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
+        + Added an optional command-line argument (and feature) to print the
+          256-color table to see which colors are supported by the terminal
+          emulator currently used.
+
         * Revised (and reduced) the 'dialog' related code.
         * Revised the code to parse pattern command-line arguments (negligible
           changes).

@@ -56,6 +56,27 @@ get_color_code() {
     fi
 }
 
+print_color_table() {
+    echo
+    echo "This terminal emulator supports (can display) the following colors:"
+    echo
+    
+    cpl=1
+    for color in $(seq 0 255); do
+        printf "\x1b[48;5;%sm%4d\e[0m" "$color" "$color";
+        cpl=$(( ++cpl ))
+        if [ $cpl -gt 16 ]; then
+            echo
+            cpl=1
+        fi 
+    done
+    echo
+    echo "All numbers that have a black background are colors cannot be"\
+         "displayed"
+    echo "(except for number 0, which actually does have a black background)."
+    echo
+}
+
 read_colors() {
     # Support for 256 colors
     color_temp="$color_list random $(seq 1 256)"

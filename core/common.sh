@@ -167,6 +167,11 @@ usage() {
     echo "                        color config file for colorizing lines"\
                                  "which contain"
     echo "                        certain terms"
+    echo "  --color-table         print the 256-color table to see which"\
+                                 "colors are"
+    echo "                        supported (can be displayed) by the"\
+                                 "terminal emulator"
+    echo "                        currently used and exit"
     echo "  --cut-off             remove the trailing whitespaces used to"\
                                  "fill the line"
     echo "                        when using '--highlight-all'"

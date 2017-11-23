@@ -61,6 +61,10 @@ else
                 check_argument "-c/--color-file" "$color_file" "file"
                 shift
             ;;
+            --color-table)
+                color_table=1
+                shift
+            ;;
             --cut-off)
                 highlight_cut_off=1
                 shift
@@ -158,6 +162,12 @@ else
             ;;
         esac
     done
+
+    # Print color table (if requested)
+    if [ $color_table -eq 1 ]; then
+        print_color_table
+        exit
+    fi
 
     # Input file
     temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
