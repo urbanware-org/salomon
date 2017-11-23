@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Version 1.9.2 (2017-11-32)
+    Version 1.9.2 (2017-11-23)
 
         + Added an optional command-line argument (and feature) to print the
           256-color table to see which colors are supported by the terminal
