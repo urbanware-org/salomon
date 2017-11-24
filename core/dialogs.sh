@@ -162,7 +162,7 @@ dialog_startup_notice() {
     else
         dlg_shadow=""
     fi
-    
+
     dlg_text=$(echo "Notice that the interactive mode is \Z1not\Z0 (yet) a"\
                     "complete alternative to the command-line arguments."\
                     "\n\nFor details see section 2.5 inside the"\
@@ -207,7 +207,7 @@ predef_input_dialog() {
     if [ -z $dialog_width ]; then
         dialog_width=60
     fi
-    
+
     if [ $dialog_shadow -ne 1 ]; then
         dlg_shadow="--no-shadow"
     else

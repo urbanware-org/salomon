@@ -81,7 +81,7 @@ set_global_variables() {
     remove_pattern=""
 
     seperator_line=1
-    
+
     dialog_shadow=1
 
     unset color_temp

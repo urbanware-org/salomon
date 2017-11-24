@@ -60,21 +60,25 @@ print_color_table() {
     echo
     echo "This terminal emulator supports (can display) the following colors:"
     echo
-    
+
     cpl=1
     for color in $(seq 0 255); do
         printf "\x1b[48;5;%sm%4d\e[0m" "$color" "$color";
         cpl=$(( ++cpl ))
-        if [ $cpl -gt 16 ]; then
+        if [ $cpl -gt 19 ] || [ $color -eq 255 ]; then
             echo
             cpl=1
-        fi 
+        fi
     done
-
+    
     echo
     echo "All numbers that have a black background are colors cannot be"\
          "displayed"
     echo "(except for number 0, which actually has a black background)."
+    echo
+    echo "When running SaLoMon on a text-based user interface, there"\
+         "are most likely"
+    echo "16 colors available, only."
     echo
 }
 
