@@ -70,6 +70,7 @@ print_color_table() {
             cpl=1
         fi 
     done
+
     echo
     echo "All numbers that have a black background are colors cannot be"\
          "displayed"
