@@ -158,7 +158,7 @@ dialog_slow_down() {
 
 dialog_startup_notice() {
     if [ $dialog_shadow -ne 1 ]; then
-        dlg_shadow="$dlg_shadow"
+        dlg_shadow="--no-shadow"
     else
         dlg_shadow=""
     fi
