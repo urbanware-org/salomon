@@ -17,7 +17,7 @@ dialog_action() {
         def_button=""
     fi
 
-    dialog --no-shadow --title "Processing mode" --yes-label "Analyze" \
+    dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
            --no-label "Monitor" $def_button \
            --yesno "What do you want to do with the input file(s)?" 8 60
 }
@@ -64,7 +64,7 @@ dialog_highlight() {
                 def_item="2"
             fi
         fi
-        user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
+        user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
                             10 60 20 \
@@ -86,7 +86,7 @@ dialog_highlight() {
         fi
 
         hlw="Highlight all lines"
-        user_input=$(dialog --no-shadow --no-cancel --default-item $def_item \
+        user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
                             12 60 20 \
@@ -107,7 +107,7 @@ dialog_ignore_case() {
     fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
-    dialog --no-shadow --title "Ignore case" $def_button \
+    dialog $dlg_shadow --title "Ignore case" $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -130,7 +130,7 @@ dialog_prompt_on_exit() {
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")
-    dialog --no-shadow --title "Prompt on exit" $def_button \
+    dialog $dlg_shadow --title "Prompt on exit" $def_button \
            --yesno "$dlg_text" 8 60
 }
 
@@ -152,13 +152,13 @@ dialog_slow_down() {
     dlg_text=$(echo "Do you want to slow down the output of the lines?"\
                     "\n\nThis will decrease the CPU usage depending on the"\
                     "amount of output data. Usually, this is not required.")
-    dialog --no-shadow --title "Slow down output" \
+    dialog $dlg_shadow --title "Slow down output" \
            $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_startup_notice() {
     if [ $dialog_shadow -ne 1 ]; then
-        dlg_shadow="--no-shadow"
+        dlg_shadow="$dlg_shadow"
     else
         dlg_shadow=""
     fi
@@ -185,7 +185,7 @@ predef_error_dialog() {
     dialog_text="$1"
 
     if [ $dialog_shadow -ne 1 ]; then
-        dlg_shadow="--no-shadow"
+        dlg_shadow="$dlg_shadow"
     else
         dlg_shadow=""
     fi
@@ -209,7 +209,7 @@ predef_input_dialog() {
     fi
 
     if [ $dialog_shadow -ne 1 ]; then
-        dlg_shadow="--no-shadow"
+        dlg_shadow="$dlg_shadow"
     else
         dlg_shadow=""
     fi
