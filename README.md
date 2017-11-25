@@ -23,9 +23,9 @@ These lines can also easily be colorized with user-defined colors (and additiona
 
 <img src="https://github.com/urbanware-org/salomon/blob/master/wiki/salomon_dialog_inputfile.png" alt="SaLoMon interactive dialog" align="right"/>
 
-There are various additional features, for example giving a filter, exclude and remove pattern to filter and customize the output.
+There are various additional combinable features, for example giving a filter, exclude and remove pattern to filter and customize the output.
 
-Furthermore, as you can see on the right, there is the option to use interavtice dialogs instead of or in combination with command-line arguments which is useful when e. g. running *SaLoMon* via shortcut in a terminal window on a graphical user interface.
+Furthermore, as you can see on the right, there is the option to use interactive dialogs instead of or in combination with command-line arguments which is useful when e. g. running *SaLoMon* via shortcut in a terminal window on a graphical user interface.
 
 [Top](#salomon-)
 
