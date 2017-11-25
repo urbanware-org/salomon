@@ -76,9 +76,9 @@ print_color_table() {
          "displayed"
     echo "(except for number 0, which actually has a black background)."
     echo
-    echo "When running SaLoMon on a text-based user interface, there"\
-         "are most likely"
-    echo "16 colors available, only."
+    echo "When running SaLoMon on a text-based user interface, there are"\
+         "most likely"
+    echo "only 16 colors available which occur multiple times in the table."
     echo
 }
 
