@@ -13,7 +13,10 @@ USAGE (salomon.sh)
              2.3.3  Highlight whole lines
              2.3.4  No colorization and hightlighting
           2.4  Config file paths
-          2.5  File paths containing spaces
+          2.5  File paths containing certain characters
+             2.5.1  Whitespaces
+             2.5.2  Quotation marks
+             2.5.3  Backslashes
           2.6  Interactive dialogs
         3.  Processing an input file
           3.1  Relevant keystrokes
@@ -109,13 +112,54 @@ USAGE (salomon.sh)
             inside the config sub-directories ('colors' and 'filters') of the
             SaLoMon script directory.
 
-        2.5 File paths containing spaces
+        2.5 File paths containing certain characters
         
-            Notice that paths which contain spaces must either be enclosed
-            with (single or double) quotes or given with escaped whitespaces.
+            Paths which contain spaces must either be enclosed with (single or
+            or double) quotes or given with escaped whitespaces.
             
             Escaping also applies to special characters such as quotes or
-            backslashes (the latter whyever) inside the file name.
+            backslashes inside the file name.
+            
+            Due to the fact, that backslashes are escape characters, it is
+            most unlikely that a file path contains one.
+            
+            Below you can find a few examples of escaped characters.
+            
+            2.5.1 Whitespaces
+            
+                Single space:
+            
+                    File path:  /tmp/server mails.log
+                    Escaped:    /tmp/server\ mails.log
+                
+                Multiple spaces:
+                
+                    File path:  /tmp/server user logins.log
+                    Escaped:    /tmp/server\ user\ logins.log
+                
+                Multiple spaces (consecutively):
+                
+                    File path:  /tmp/server   user logins.log
+                    Escaped:    /tmp/server\ \ \ user\ logins.log
+            
+            2.5.2 Quotation marks
+            
+                Single quotes:
+            
+                    File path:  /tmp/output of 'tail'.log
+                    Escaped:    /tmp/output\ of\ \'tail\'.log
+                
+                Double quotes:
+                
+                    File path:  /tmp/output of "tail".log
+                    Escaped:    /tmp/output\ of\ \"tail\".log
+                    
+            2.5.3 Backslashes
+            
+                Most unlikely, but just in case:
+                
+                    File path:  /tmp/foo\bar.log
+                    Escaped:    /tmp/foo\\bar.log
 
         2.6 Interactive dialogs
 
