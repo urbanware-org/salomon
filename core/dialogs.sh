@@ -114,9 +114,9 @@ dialog_ignore_case() {
 dialog_input_file() {
     dlg_text=$(echo "Please enter the path of the file(s) which you want to"\
                     "process.\n\nMultiple paths must be separated with"\
-                    "spaces.\n\nPaths that contain spaces must either be"\
-                    "given with quotes around them or with escaped directory"\
-                    "separators.")
+                    "spaces.\n\nPaths that contain spaces themselves must"\
+                    "either be enclosed with (single or double) quotes or"\
+                    "given with escaped whitespaces.")
     predef_input_dialog "Input file" "$dlg_text" 14 60 "$1"
 }
 
@@ -165,7 +165,7 @@ dialog_startup_notice() {
 
     dlg_text=$(echo "Notice that the interactive mode is \Z1not\Z0 (yet) a"\
                     "complete alternative to the command-line arguments."\
-                    "\n\nFor details see section 2.5 inside the"\
+                    "\n\nFor details see section 2.6 inside the"\
                     "documentation.\n\nYou can \Z1cancel\Z0 interactive mode"\
                     "at any time either by holding \Z4Ctrl\Z0+\Z4C\Z0 or"\
                     "pressing those keys multiple times.")
