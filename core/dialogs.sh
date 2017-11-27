@@ -116,8 +116,9 @@ dialog_input_file() {
                     "process.\n\nMultiple paths must be separated with"\
                     "spaces.\n\nPaths that contain spaces themselves must"\
                     "either be enclosed with (single or double) quotes or"\
-                    "given with escaped whitespaces.")
-    predef_input_dialog "Input file" "$dlg_text" 14 60 "$1"
+                    "given with escaped whitespaces.\n\nFor details see"\
+                    "section 2.5 inside the documentation.")
+    predef_input_dialog "Input file" "$dlg_text" 17 60 "$1"
 }
 
 dialog_prompt_on_exit() {
