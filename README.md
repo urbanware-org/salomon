@@ -58,4 +58,3 @@ Furthermore, it uses popular shell utilities that should be pre-installed by def
 
 [Top](#salomon-)
 
-
