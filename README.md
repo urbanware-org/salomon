@@ -13,7 +13,7 @@
 
 The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files.
 
-[Top](#salomon-)
+[Top](#)
 
 ## Details
 
@@ -27,7 +27,7 @@ There are various additional combinable features, for example giving a filter, e
 
 Furthermore, as you can see on the right, there is the option to use interactive dialogs instead of or in combination with command-line arguments which is useful when e. g. running *SaLoMon* via shortcut in a terminal window on a graphical user interface.
 
-[Top](#salomon-)
+[Top](#)
 
 ## Usage
 
@@ -41,7 +41,7 @@ You can find a fundamental documentation inside the [wiki](../../wiki).
 
 In the `docs` sub-directory of the project, there are plain text files containing a detailed documentation for each component with further information and usage examples.
 
-[Top](#salomon-)
+[Top](#)
 
 ## Requirements
 
@@ -49,12 +49,12 @@ The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the 
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
 
-[Top](#salomon-)
+[Top](#)
 
 ## Useless facts
 
 * The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
 * The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30<sup>th</sup>, 2015.
 
-[Top](#salomon-)
+[Top](#)
 
