@@ -18,7 +18,7 @@ REQUIREMENTS (SaLoMon)
     
         If you want to use the interactive dialog feature, the tool 'dialog'
         (or 'cdialog') must be installed on the system. Notice that this
-        feature will not work with 'Xdialog' as SaLoMon is text-base user
+        feature will not work with 'Xdialog' as SaLoMon is text-based user
         interface intended.
     
             - dialog (version 1.1 or higher is recommended)
