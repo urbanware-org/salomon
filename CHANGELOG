@@ -1,6 +1,16 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+    
+        * Revised the dialog core module (added cancel buttons to input
+          dialogs and also some negligible changes).
+        * Revised the output of the 256-color table (added further information
+          and optimized the output for a 80x25 text-based user interface).
+        
+        # Fixed the irrelevant error message bug when the '--color-table'
+          argument was not given.
+
     Version 1.9.2 (2017-11-23)
 
         + Added an optional command-line argument (and feature) to print the
