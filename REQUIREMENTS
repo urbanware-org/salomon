@@ -16,7 +16,12 @@ REQUIREMENTS (SaLoMon)
         
     Optional package requirements:
     
-        - dialog (version 1.1 or higher is recommended)
+        If you want to use the interactive dialog feature, the tool 'dialog'
+        (or 'cdialog') must be installed on the system. Notice that this
+        feature will not work with 'Xdialog' as SaLoMon is text-base user
+        interface intended.
+    
+            - dialog (version 1.1 or higher is recommended)
 
     All the recommended versions of the required utilities mentioned above are
     the ones that have been used while developing SaLoMon. The project also
