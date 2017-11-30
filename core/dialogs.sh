@@ -17,9 +17,10 @@ dialog_action() {
         def_button=""
     fi
 
+    dlg_text=$(echo "What do you want to do with the input file(s)?")
     dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
-           --no-label "Monitor" $def_button \
-           --yesno "What do you want to do with the input file(s)?" 8 60
+                       --no-label "Monitor" $def_button \
+                       --yesno "$dlg_text" 8 60     
 }
 
 dialog_color_file() {
@@ -67,10 +68,10 @@ dialog_highlight() {
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
-                            10 60 20 \
-                            "1" "Do not highlight" \
-                            "2" "Highlight whole lines (filled)" \
-                            "3" "Highlight whole lines (cut-off)" \
+                                    10 60 20 \
+                                    "1" "Do not highlight" \
+                                    "2" "Highlight whole lines (filled)" \
+                                    "3" "Highlight whole lines (cut-off)" \
                             3>&1 1>&2 2>&3 3>&-)
     else
         if [ $highlight_all -eq 1 ]; then
@@ -89,12 +90,12 @@ dialog_highlight() {
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
-                            12 60 20 \
-                            "1" "Do not highlight" \
-                            "2" "$hlw (filled, filter independent)" \
-                            "3" "$hlw (cut-off, filter independent)" \
-                            "4" "Highlight filter matches" \
-                            "5" "Highlight and uppercase filter matches"\
+                                12 60 20 \
+                                "1" "Do not highlight" \
+                                "2" "$hlw (filled, filter independent)" \
+                                "3" "$hlw (cut-off, filter independent)" \
+                                "4" "Highlight filter matches" \
+                                "5" "Highlight and uppercase filter matches"\
                             3>&1 1>&2 2>&3 3>&-)
     fi
 }
@@ -107,8 +108,8 @@ dialog_ignore_case() {
     fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
-    dialog $dlg_shadow --title "Ignore case" $def_button \
-           --yesno "$dlg_text" 8 60
+    dialog $dlg_shadow --title "Ignore case" --yes-label "Yes" \
+                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_input_file() {
@@ -131,8 +132,8 @@ dialog_prompt_on_exit() {
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")
-    dialog $dlg_shadow --title "Prompt on exit" $def_button \
-           --yesno "$dlg_text" 8 60
+    dialog $dlg_shadow --title "Prompt on exit" --yes-label "Yes" \
+                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_remove_pattern() {
@@ -153,8 +154,8 @@ dialog_slow_down() {
     dlg_text=$(echo "Do you want to slow down the output of the lines?"\
                     "\n\nThis will decrease the CPU usage depending on the"\
                     "amount of output data. Usually, this is not required.")
-    dialog $dlg_shadow --title "Slow down output" \
-           $def_button --yesno "$dlg_text" 8 60
+    dialog $dlg_shadow --title "Slow down output" --yes-label "Yes" \
+                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
 }
 
 dialog_startup_notice() {
@@ -171,8 +172,13 @@ dialog_startup_notice() {
                     "at any time either by holding \Z4Ctrl\Z0+\Z4C\Z0 or"\
                     "pressing those keys multiple times.")
     dialog $dlg_shadow --title "SaLoMon interactive mode notice" \
-           --colors --ok-label "Proceed" \
-           --msgbox "$dlg_text" 11 60
+                       --colors --yes-label "Proceed" --no-label "Exit" \
+                       --yesno "$dlg_text" 11 60
+           
+    if [ $? -ne 0 ]; then
+        clear
+        exit
+    fi
 }
 
 dialog_wait_on_match() {
@@ -192,7 +198,7 @@ predef_error_dialog() {
     fi
 
     dialog $dlg_shadow --title "Error" --colors --ok-label "Exit" \
-           --msgbox "\Z1${dialog_text}." 8 60
+                       --msgbox "\Z1${dialog_text}." 8 60
 }
 
 predef_input_dialog() {
@@ -215,11 +221,17 @@ predef_input_dialog() {
         dlg_shadow=""
     fi
 
-    user_input=$(dialog $dlg_shadow --no-cancel --title "$dialog_title" \
-                        --inputbox "$dialog_text" \
-                        $dialog_height $dialog_width \
-                        "$dialog_init" \
+    user_input=$(dialog $dlg_shadow --title "$dialog_title" \
+                                    --cancel-label "Cancel" \
+                                    --inputbox "$dialog_text" \
+                                        $dialog_height $dialog_width \
+                                        "$dialog_init" \
                         3>&1 1>&2 2>&3 3>&-)
+
+    if [ $? -ne 0 ]; then
+        clear
+        exit
+    fi
 }
 
 # EOF
