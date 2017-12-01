@@ -3,6 +3,8 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
     
+        * Revised the command-line arguments and usage information (negligible
+          changes).
         * Revised the dialog core module (added cancel buttons to input
           dialogs and also some negligible changes).
         * Revised the output of the 256-color table (added further information
