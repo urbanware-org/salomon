@@ -188,7 +188,6 @@ usage() {
                                  "filter pattern,"
     echo "                        only (for details see section 4 inside the"
     echo "                        documentation file)"
-    echo "  -?, --help            print this help message and exit"
     echo "  --highlight           highlight the filter terms by inverting"\
                                  "their colors"
     echo "  --highlight-all       highlight the whole lines by inverting"\
@@ -216,6 +215,7 @@ usage() {
     echo "  --version             print the version number and exit"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
                                  "line"
+    echo "  -?, --help            print this help message and exit"
     echo
     echo "Further information and usage examples can be found inside the"\
          "documentation"
