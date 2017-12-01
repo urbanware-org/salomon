@@ -188,7 +188,7 @@ usage() {
                                  "filter pattern,"
     echo "                        only (for details see section 4 inside the"
     echo "                        documentation file)"
-    echo "  -h, --help            print this help message and exit"
+    echo "  -?, --help            print this help message and exit"
     echo "  --highlight           highlight the filter terms by inverting"\
                                  "their colors"
     echo "  --highlight-all       highlight the whole lines by inverting"\
