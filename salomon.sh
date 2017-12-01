@@ -84,7 +84,7 @@ else
                 filter_pattern="$1"
                 shift
             ;;
-            -h|--help)
+            -?|--help)
                 usage
             ;;
             --highlight)
@@ -146,6 +146,9 @@ else
                 color_file="$1"
                 check_argument "-c/--config-file" "$color_file" "file"
                 shift
+            ;;
+            -h)
+                usage
             ;;
             -n|--no-follow)
                 follow=0
