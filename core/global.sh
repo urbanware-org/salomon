@@ -84,6 +84,16 @@ set_global_variables() {
     seperator_line=1
 
     dialog_shadow=1
+    dialog_show_color=1
+    dialog_show_delay=1
+    dialog_show_exclude=1
+    dialog_show_filter=1
+    dialog_show_highlight=1
+    dialog_show_ignorecase=1
+    dialog_show_prompt=1
+    dialog_show_remove=1
+    dialog_show_slowdown=1
+    dialog_show_wait=1
 
     unset color_temp
 }
