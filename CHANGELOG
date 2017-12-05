@@ -7,9 +7,13 @@ CHANGELOG (SaLoMon)
           changes).
         * Revised the dialog core module (added cancel buttons to input
           dialogs and also some negligible changes).
+        * Revised the output header inside the output core script (negligible
+          changes).
         * Revised the output of the 256-color table (added further information
           and optimized the output for a 80x25 text-based user interface).
 
+        # Fixed the multiple highlight arguments bug when using interactive
+          mode.
         # Fixed the irrelevant error message bug when the '--color-table'
           argument was not given.
 
