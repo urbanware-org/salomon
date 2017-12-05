@@ -24,6 +24,11 @@ dialog_action() {
 }
 
 dialog_color_file() {
+    if [ $dialog_show_color -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
     dlg_text=$(echo "Do you want to use a color file?\n\nEnter the path of"\
                     "the color config file or leave blank to disable"\
                     "highlighting:")
@@ -31,12 +36,22 @@ dialog_color_file() {
 }
 
 dialog_delay() {
+    if [ $dialog_show_delay -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+    
     dlg_text=$(echo "Enter the amount of milliseconds to wait between each"\
                     "output line:")
     predef_input_dialog "Slow down delay" "$dlg_text" 9 60 "$1"
 }
 
 dialog_exclude_pattern() {
+    if [ $dialog_show_exclude -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+    
     dlg_text=$(echo "Do you want to use an exclude pattern?\n\nFor details"\
                     "about the exclude pattern syntax, see\nsection 5 inside"\
                     "the documentation.\n\nEnter the desired information or"\
@@ -45,6 +60,11 @@ dialog_exclude_pattern() {
 }
 
 dialog_filter_pattern() {
+    if [ $dialog_show_filter -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+    
     dlg_text=$(echo "Do you want to use a filter?\n\nYou can either enter"\
                     "the path to a filter config file or a filter pattern"\
                     "(without leading and trailing quotation marks).\n\nFor"\
@@ -54,9 +74,9 @@ dialog_filter_pattern() {
     predef_input_dialog "Filter pattern" "$dlg_text" 17 60 "$1"
 }
 
-dialog_highlight() {
+dialog_highlight() {   
     def_item="1"
-
+    
     if [ -z "$filter_pattern" ]; then
         if [ $highlight_all -eq 1 ]; then
             if [ $highlight_cut_off -eq 1 ]; then
@@ -65,6 +85,12 @@ dialog_highlight() {
                 def_item="2"
             fi
         fi
+
+        if [ $dialog_show_highlight -ne 1 ]; then
+            user_input="$def_item"
+            return
+        fi
+    
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
@@ -86,6 +112,11 @@ dialog_highlight() {
             def_item="4"
         fi
 
+        if [ $dialog_show_highlight -ne 1 ]; then
+            user_input="$def_item"
+            return
+        fi
+
         hlw="Highlight all lines"
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
@@ -101,6 +132,14 @@ dialog_highlight() {
 }
 
 dialog_ignore_case() {
+    if [ $dialog_show_ignorecase -ne 1 ]; then
+        if [ "$1" = "-i" ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+    
     if [ "$1" != "-i" ]; then
         def_button="--defaultno"
     else
@@ -123,6 +162,14 @@ dialog_input_file() {
 }
 
 dialog_prompt_on_exit() {
+    if [ $dialog_show_prompt -ne 1 ]; then
+        if [ $1 -eq 1 ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+
     if [ $1 -eq 1 ]; then
         def_button=""
     else
@@ -137,6 +184,11 @@ dialog_prompt_on_exit() {
 }
 
 dialog_remove_pattern() {
+    if [ $dialog_show_remove -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+    
     dlg_text=$(echo "Do you want to use an remove pattern?\n\nFor details"\
                     "about the remove pattern syntax, see\nsection 6 inside"\
                     "the documentation.\n\nEnter the desired information or"\
@@ -145,6 +197,14 @@ dialog_remove_pattern() {
 }
 
 dialog_slow_down() {
+    if [ $dialog_show_slowdown -ne 1 ]; then
+        if [ $1 -eq 1 ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+    
     if [ $1 -eq 1 ]; then
         def_button=""
     else
@@ -182,6 +242,11 @@ dialog_startup_notice() {
 }
 
 dialog_wait_on_match() {
+    if [ $dialog_show_wait -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+    
     dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
                     "\n\nIf yes, enter the amount of seconds, otherwise"\
                     "leave blank to skip:")
