@@ -171,7 +171,7 @@ else
         print_color_table
         exit
     fi
-    
+
     # Input file
     temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
     input_file="$temp"

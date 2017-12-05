@@ -20,7 +20,7 @@ dialog_action() {
     dlg_text=$(echo "What do you want to do with the input file(s)?")
     dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
                        --no-label "Monitor" $def_button \
-                       --yesno "$dlg_text" 8 60     
+                       --yesno "$dlg_text" 8 60
 }
 
 dialog_color_file() {
@@ -40,7 +40,7 @@ dialog_delay() {
         user_input="$1"
         return
     fi
-    
+
     dlg_text=$(echo "Enter the amount of milliseconds to wait between each"\
                     "output line:")
     predef_input_dialog "Slow down delay" "$dlg_text" 9 60 "$1"
@@ -51,7 +51,7 @@ dialog_exclude_pattern() {
         user_input="$1"
         return
     fi
-    
+
     dlg_text=$(echo "Do you want to use an exclude pattern?\n\nFor details"\
                     "about the exclude pattern syntax, see\nsection 5 inside"\
                     "the documentation.\n\nEnter the desired information or"\
@@ -64,7 +64,7 @@ dialog_filter_pattern() {
         user_input="$1"
         return
     fi
-    
+
     dlg_text=$(echo "Do you want to use a filter?\n\nYou can either enter"\
                     "the path to a filter config file or a filter pattern"\
                     "(without leading and trailing quotation marks).\n\nFor"\
@@ -74,9 +74,9 @@ dialog_filter_pattern() {
     predef_input_dialog "Filter pattern" "$dlg_text" 17 60 "$1"
 }
 
-dialog_highlight() {   
+dialog_highlight() {
     def_item="1"
-    
+
     if [ -z "$filter_pattern" ]; then
         if [ $highlight_all -eq 1 ]; then
             if [ $highlight_cut_off -eq 1 ]; then
@@ -90,12 +90,12 @@ dialog_highlight() {
             user_input="$def_item"
             return
         fi
-    
+
         highlight=0
         highlight_all=0
         highlight_cut_off=0
         highlight_upper=0
-    
+
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
@@ -121,7 +121,7 @@ dialog_highlight() {
             user_input="$def_item"
             return
         fi
-        
+
         highlight=0
         highlight_all=0
         highlight_cut_off=0
@@ -149,7 +149,7 @@ dialog_ignore_case() {
             return 1
         fi
     fi
-    
+
     if [ "$1" != "-i" ]; then
         def_button="--defaultno"
     else
@@ -198,7 +198,7 @@ dialog_remove_pattern() {
         user_input="$1"
         return
     fi
-    
+
     dlg_text=$(echo "Do you want to use an remove pattern?\n\nFor details"\
                     "about the remove pattern syntax, see\nsection 6 inside"\
                     "the documentation.\n\nEnter the desired information or"\
@@ -214,7 +214,7 @@ dialog_slow_down() {
             return 1
         fi
     fi
-    
+
     if [ $1 -eq 1 ]; then
         def_button=""
     else
@@ -244,7 +244,7 @@ dialog_startup_notice() {
     dialog $dlg_shadow --title "SaLoMon interactive mode notice" \
                        --colors --yes-label "Proceed" --no-label "Exit" \
                        --yesno "$dlg_text" 11 60
-           
+
     if [ $? -ne 0 ]; then
         clear
         exit
@@ -256,7 +256,7 @@ dialog_wait_on_match() {
         user_input="$1"
         return
     fi
-    
+
     dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
                     "\n\nIf yes, enter the amount of seconds, otherwise"\
                     "leave blank to skip:")

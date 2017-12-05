@@ -113,51 +113,51 @@ USAGE (salomon.sh)
             SaLoMon script directory.
 
         2.5 File paths containing certain characters
-        
+
             Paths which contain spaces must either be enclosed with (single or
             or double) quotes or given with escaped whitespaces.
-            
+
             Escaping also applies to special characters such as quotes or
             backslashes inside the file name.
-            
+
             Due to the fact, that backslashes are escape characters, it is
             most unlikely that a file path contains one.
-            
+
             Below you can find a few examples of escaped characters.
-            
+
             2.5.1 Whitespaces
-            
+
                 Single space:
-            
+
                     File path:  /tmp/server mails.log
                     Escaped:    /tmp/server\ mails.log
-                
+
                 Multiple spaces:
-                
+
                     File path:  /tmp/server user logins.log
                     Escaped:    /tmp/server\ user\ logins.log
-                
+
                 Multiple spaces (consecutively):
-                
+
                     File path:  /tmp/server   user logins.log
                     Escaped:    /tmp/server\ \ \ user\ logins.log
-            
+
             2.5.2 Quotation marks
-            
+
                 Single quotes:
-            
+
                     File path:  /tmp/output of 'tail'.log
                     Escaped:    /tmp/output\ of\ \'tail\'.log
-                
+
                 Double quotes:
-                
+
                     File path:  /tmp/output of "tail".log
                     Escaped:    /tmp/output\ of\ \"tail\".log
-                    
+
             2.5.3 Backslashes
-            
+
                 Most unlikely, but just in case:
-                
+
                     File path:  /tmp/foo\bar.log
                     Escaped:    /tmp/foo\\bar.log
 
@@ -178,13 +178,13 @@ USAGE (salomon.sh)
             example, the dialog window asking for the input file will already
             contain '/tmp/foobar.log', which can still be changed.
 
-        
+
 
     3. Processing input file
 
         The following examples use a color config file. See section 2.3 for
         details.
-        
+
         3.1 Relevant keystrokes
 
             The SaLoMon process (no matter if monitoring or analyzing) can be
