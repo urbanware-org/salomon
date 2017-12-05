@@ -162,7 +162,7 @@ print_output_header() {
             temp="${color_lightgreen}All lines"
             print_line "${color_white}Highlight:" "$temp"
         else
-            temp="${color_lightgray}Nothing"
+            temp="${color_lightred}No"
             print_line "${color_white}Highlight:" "$temp"
         fi
     fi
