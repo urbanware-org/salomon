@@ -116,6 +116,11 @@ dialog_highlight() {
             user_input="$def_item"
             return
         fi
+        
+        highlight=0
+        highlight_all=0
+        highlight_cut_off=0
+        highlight_upper=0
 
         hlw="Highlight all lines"
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
