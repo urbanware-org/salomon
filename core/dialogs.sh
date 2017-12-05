@@ -91,6 +91,11 @@ dialog_highlight() {
             return
         fi
     
+        highlight=0
+        highlight_all=0
+        highlight_cut_off=0
+        highlight_upper=0
+    
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
