@@ -195,7 +195,7 @@ usage() {
     echo "                        filter required)"
     echo "  --highlight-upper     same as '--highlight', but with uppercase"\
                                  "letters"
-    echo "                        (also reuqires a filter)"
+    echo "                        (also requires a filter)"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --interactive         use interactive dialogs (for details see"\
                                  "section 2.5"
