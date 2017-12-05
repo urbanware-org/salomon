@@ -259,7 +259,7 @@ else
 
     # Filter pattern
     if [ $interactive -eq 1 ]; then
-        dialog_filter "$filter_pattern"
+        dialog_filter_pattern "$filter_pattern"
         filter_pattern="$user_input"
 
         if [ -z "$filter_pattern" ]; then
