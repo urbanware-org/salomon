@@ -44,7 +44,7 @@ dialog_exclude_pattern() {
     predef_input_dialog "Exclude pattern" "$dlg_text" 13 60 "$1"
 }
 
-dialog_filter() {
+dialog_filter_pattern() {
     dlg_text=$(echo "Do you want to use a filter?\n\nYou can either enter"\
                     "the path to a filter config file or a filter pattern"\
                     "(without leading and trailing quotation marks).\n\nFor"\
