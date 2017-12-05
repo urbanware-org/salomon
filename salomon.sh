@@ -84,7 +84,7 @@ else
                 filter_pattern="$1"
                 shift
             ;;
-            -?|--help)
+            -\?|--help)
                 usage
             ;;
             --highlight)
