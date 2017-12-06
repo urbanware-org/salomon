@@ -128,6 +128,7 @@ dialog_highlight() {
         highlight_upper=0
 
         hlw="Highlight all lines"
+        hlf="Highlight filter matches"
         user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
                             --title "Highlight mode" \
                             --menu "Do you want to highlight the output?" \
@@ -135,8 +136,8 @@ dialog_highlight() {
                                 "1" "Do not highlight" \
                                 "2" "$hlw (filled, filter independent)" \
                                 "3" "$hlw (cut-off, filter independent)" \
-                                "4" "Highlight filter matches" \
-                                "5" "Highlight and uppercase filter matches"\
+                                "4" "$hlf" \
+                                "5" "$hlf and convert to uppercase"\
                             3>&1 1>&2 2>&3 3>&-)
     fi
 }
