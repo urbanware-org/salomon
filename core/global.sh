@@ -27,9 +27,9 @@ set_global_variables() {
     delay=200
     follow=1
     header=1
-    highlight=0
     highlight_all=0
     highlight_cut_off=0
+    highlight_matches=0
     highlight_upper=0
     interactive=0
     prompt=0
