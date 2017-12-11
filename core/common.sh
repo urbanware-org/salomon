@@ -180,7 +180,7 @@ usage() {
     echo "                        integer between 100 and 900, default is"\
                                  "$delay)"
     echo "  --dialogs             use interactive dialogs (for details see"\
-                                 "section 2.5"
+                                 "section 2.6"
     echo "                        inside the documentation)"
     echo "  -e EXCLUDE, --exclude EXCLUDE"
     echo "                        exclude lines which a certain string (for"\
