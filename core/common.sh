@@ -178,7 +178,7 @@ usage() {
     echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
                                  "(milliseconds,"
     echo "                        integer between 100 and 900, default is"\
-                                  "200)"
+                                  "$delay)"
     echo "  -e EXCLUDE, --exclude EXCLUDE"
     echo "                        exclude lines which a certain string (for"\
                                  "details see"
