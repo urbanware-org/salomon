@@ -29,6 +29,7 @@ source ${script_dir}/core/dialogs.sh
 source ${script_dir}/core/global.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
+source ${script_dir}/salomon.cfg
 declare -A "colorize_"
 set_global_variables
 shell_precheck
