@@ -178,7 +178,10 @@ usage() {
     echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
                                  "(milliseconds,"
     echo "                        integer between 100 and 900, default is"\
-                                  "$delay)"
+                                 "$delay)"
+    echo "  --dialogs             use interactive dialogs (for details see"\
+                                 "section 2.5"
+    echo "                        inside the documentation)"
     echo "  -e EXCLUDE, --exclude EXCLUDE"
     echo "                        exclude lines which a certain string (for"\
                                  "details see"
@@ -197,9 +200,7 @@ usage() {
                                  "to uppercase"
     echo "                        converted letters"
     echo "  --ignore-case         ignore the case of the given filter pattern"
-    echo "  --interactive         use interactive dialogs (for details see"\
-                                 "section 2.5"
-    echo "                        inside the documentation)"
+    echo "  --interactive         same as '--dialogs'"
     echo "  --no-info             do not display the information header and"\
                                  "footer"
     echo "  -p, --prompt          prompt before exit (in case the process"\
