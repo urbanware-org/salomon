@@ -230,10 +230,8 @@ dialog_slow_down() {
 }
 
 dialog_startup_notice() {
-    if [ $dialog_shadow -ne 1 ]; then
-        dlg_shadow="--no-shadow"
-    else
-        dlg_shadow=""
+    if [ $dialog_show_startup_notice -ne 1 ]; then
+        return
     fi
 
     dlg_text=$(echo "Notice that the interactive mode is \Z1not\Z0 (yet) a"\
@@ -262,6 +260,16 @@ dialog_wait_on_match() {
                     "\n\nIf yes, enter the amount of seconds, otherwise"\
                     "leave blank to skip:")
     predef_input_dialog "Wait on match" "$dlg_text" 11 60 "$1"
+}
+
+init_dialogs() {
+    if [ $dialog_shadow -ne 1 ]; then
+        dlg_shadow="--no-shadow"
+    else
+        dlg_shadow=""
+    fi
+
+    dialog_startup_notice
 }
 
 predef_error_dialog() {

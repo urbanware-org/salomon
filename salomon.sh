@@ -186,7 +186,7 @@ else
     input_file="$temp"
 
     if [ $interactive -eq 1 ]; then
-        dialog_startup_notice
+        init_dialogs
         dialog_input_file "$input_file"
         input_file=$user_input
     fi
@@ -225,6 +225,8 @@ else
         else
             usage "The action '$action' does not exist"
         fi
+    else
+        usage "No action given"
     fi
 
     # Prompt before exit

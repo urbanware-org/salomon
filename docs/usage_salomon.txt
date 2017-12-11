@@ -164,21 +164,19 @@ USAGE (salomon.sh)
         2.6 Interactive dialogs
 
             Since version 1.9.0 you can use interactive dialogs instead of or
-            in combination with command-line arguments by giving the
-            '--interactive' argument:
+            in combination with command-line arguments by giving either the
+            '--dialogs' or '--interactive' argument:
 
-                $ ./salomon.sh --interactive
+                $ ./salomon.sh --dialogs
 
             However, if you give further arguments like this
 
-                $ ./salomon.sh --interactive -a monitor -i /tmp/foobar.log \
+                $ ./salomon.sh --dialogs -a monitor -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
 
             the values will be automatically applied to the dialogs. For
             example, the dialog window asking for the input file will already
             contain '/tmp/foobar.log', which can still be changed.
-
-
 
     3. Processing input file
 
