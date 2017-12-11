@@ -11,6 +11,9 @@
 # ============================================================================
 
 set_global_variables() {
+    # Do not change any values below! See the 'salomon.cfg' file inside the
+    # main directory of SaLoMon for configuration options.
+
     version="1.9.2"
 
     arg_case=""
@@ -24,7 +27,6 @@ set_global_variables() {
 
     action=""
     copy=0
-    delay=200
     follow=1
     header=1
     highlight=0
@@ -80,20 +82,6 @@ set_global_variables() {
     remove=0
     remove_list=""
     remove_pattern=""
-
-    seperator_line=1
-
-    dialog_shadow=1
-    dialog_show_color=1
-    dialog_show_delay=1
-    dialog_show_exclude=1
-    dialog_show_filter=1
-    dialog_show_highlight=1
-    dialog_show_ignorecase=1
-    dialog_show_prompt=1
-    dialog_show_remove=1
-    dialog_show_slowdown=1
-    dialog_show_wait=1
 
     unset color_temp
 }

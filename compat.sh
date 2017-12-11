@@ -11,11 +11,11 @@
 # ============================================================================
 
 # Check if the Bash shell is installed
-seperator="***************************************"
+separator="***************************************"
 bash --version >/dev/null 2>&1
 if [ "$?" != "0" ]; then
     echo
-    echo "${seperator}${seperator}"
+    echo "${separator}${separator}"
     echo "* This script has determined that the Bash shell (which is"\
          "required) does    *"
     echo "* not seem to be installed.                                      "\
@@ -36,7 +36,7 @@ if [ "$?" != "0" ]; then
          "takes       *"
     echo "* advantage of certain features provided by the Bash shell."\
          "                 *"
-    echo "${seperator}${seperator}"
+    echo "${separator}${separator}"
     echo
     exit 1
 fi
