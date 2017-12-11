@@ -14,7 +14,7 @@ set_global_variables() {
     # Do not change any values below! See the 'salomon.cfg' file inside the
     # main directory of SaLoMon for configuration options.
 
-    version="1.9.2"
+    version="1.9.3"
 
     arg_case=""
     input_file=""
