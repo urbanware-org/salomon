@@ -75,6 +75,10 @@ else
                 delay="$1"
                 shift
             ;;
+            --dialogs)
+                interactive=1
+                shift
+            ;;
             -e|--exclude)
                 shift
                 exclude_pattern="$1"
