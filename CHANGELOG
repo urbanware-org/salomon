@@ -6,8 +6,8 @@ CHANGELOG (SaLoMon)
         + Added a global config file ('salomon.cfg') for certain options that
           cannot be set using command-line arguments.
 
-        * Revised the command-line arguments and usage information (negligible
-          changes).
+        * Revised the command-line arguments for more clarity as well as usage
+          information (negligible changes).
         * Revised the dialog core module (added cancel buttons to input
           dialogs and also some negligible changes).
         * Revised the output header inside the output core script (negligible
