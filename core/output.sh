@@ -23,7 +23,7 @@ print_line() {
             done
             echo $em "${color_none}"
         else
-            echo "${seperator}${seperator}"
+            echo "${separator}${separator}"
         fi
     else
         temp=$(printf "%-${indent}s" "$1")
@@ -202,14 +202,14 @@ print_output_line() {
     filter_match=0
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
 
-    if [ $seperator_line -eq 1 ]; then
+    if [ $separator_line -eq 1 ]; then
         grep "^==>.*<==$" <<< $1 &>/dev/null
         if [ $? -eq 0 ]; then
             temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
             fp=$(readlink -f "$temp")
             ln=$(printf -- "-%.0s" $(seq 0 80))
-            seperator="\e[1;30m--\e[0;37m[\e[1;33m$fp\e[0;37m]\e[1;30m$ln"
-            echo -e "$seperator\e[0m" | cut -c 1-113
+            separator="\e[1;30m--\e[0;37m[\e[1;33m$fp\e[0;37m]\e[1;30m$ln"
+            echo -e "$separator\e[0m" | cut -c 1-113
             return
         fi
     fi
