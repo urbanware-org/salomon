@@ -88,12 +88,12 @@ else
             -\?|--help)
                 usage
             ;;
-            --highlight)
-                highlight=1
-                shift
-            ;;
             --highlight-all)
                 highlight_all=1
+                shift
+            ;;
+            --highlight-matches)
+                highlight_matches=1
                 shift
             ;;
             --highlight-upper)
@@ -150,6 +150,10 @@ else
             ;;
             -h)
                 usage
+            ;;
+            --highlight)
+                highlight_matches=1
+                shift
             ;;
             -n|--no-follow)
                 follow=0
@@ -283,7 +287,7 @@ else
             usage \
                 "The '--ignore-case' argument can only be used with a filter"
         fi
-        if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
+        if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             usage \
                 "This highlighting argument can only be used with a filter"
         fi
@@ -320,13 +324,13 @@ else
             highlight_all=1
             highlight_cut_off=1
         elif [ $user_input -eq 4 ]; then
-            highlight=1
+            highlight_matches=1
         elif [ $user_input -eq 5 ]; then
             highlight_upper=1
         fi
     fi
 
-    highlight_params=$(( highlight + highlight_all + highlight_upper ))
+    highlight_params=$(( highlight_all + highlight_matches + highlight_upper ))
     if [ $highlight_params -gt 1 ]; then
         usage \
             "Multiple highlighting arguments given (only one allowed)"

@@ -146,7 +146,7 @@ print_output_header() {
         fi
         print_line "${color_white}Ignore case:" "${color_lightred}${temp}"
 
-        if [ $highlight -eq 1 ]; then
+        if [ $highlight_matches -eq 1 ]; then
             temp="${color_lightgreen}Filter matches"
         elif [ $highlight_upper -eq 1 ]; then
             temp="${color_lightgreen}Filter matches (in uppercase)"
@@ -271,7 +271,7 @@ print_output_line() {
 
     output="${color_code}${line}${color_none}${line_spaces}"
     if [ ! -z "$filter_list" ]; then
-        if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
+        if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             if [ $color_match -eq 1 ]; then
                 color_high=$((sed -e "s/0;/7;/g" | \
                               sed -e "s/1;/7;/g") <<< "$color_code")
@@ -333,7 +333,7 @@ print_output_line() {
         done
     fi
 
-    if [ $highlight -eq 1 ] || [ $highlight_upper -eq 1 ]; then
+    if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
         highlight_all=0
     else
         if [ $highlight_all -eq 1 ]; then
