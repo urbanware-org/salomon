@@ -432,7 +432,7 @@ else
             usage "The wait value must be an integer greater than zero"
         fi
     fi
-    
+
     # Information header and footer
     if [ $interactive -eq 1 ]; then
         dialog_no_info $header
