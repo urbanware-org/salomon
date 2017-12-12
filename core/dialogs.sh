@@ -17,7 +17,7 @@ dialog_action() {
         def_button=""
     fi
 
-    dlg_text=$(echo "What do you want to do with the input file(s)?")
+    dlg_text="hat do you want to do with the input file(s)?"
     dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
                        --no-label "Monitor" $def_button \
                        --yesno "$dlg_text" 8 60
@@ -170,6 +170,19 @@ dialog_input_file() {
                     "given with escaped whitespaces.\n\nFor details see"\
                     "section 2.5 inside the documentation.")
     predef_input_dialog "Input file" "$dlg_text" 17 60 "$1"
+}
+
+dialog_no_info() {
+    if [ $1 -eq 0 ]; then
+        def_button="--defaultno"
+    else
+        def_button=""
+    fi
+
+    dlg_text="Do you want to display an information header and footer?"
+    dialog $dlg_shadow --title "Information header and footer" \
+                       --yes-label "Yes" --no-label "No" $def_button \
+                       --yesno "$dlg_text" 8 60
 }
 
 dialog_prompt_on_exit() {

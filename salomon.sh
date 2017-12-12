@@ -432,6 +432,16 @@ else
             usage "The wait value must be an integer greater than zero"
         fi
     fi
+    
+    # Information header and footer
+    if [ $interactive -eq 1 ]; then
+        dialog_no_info $header
+        if [ $? -eq 0 ]; then
+            header=1
+        else
+            header=0
+        fi
+    fi
 
     # Check requirements
     check_command grep 0 grep
