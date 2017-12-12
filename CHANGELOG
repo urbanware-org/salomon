@@ -3,6 +3,9 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
     
+        * Added a dialog (when using interactive mode) for displaying the
+          information header and footer.
+
         * Revised the highlighting related command-line arguments (added short
           variants of the arguments)
 
