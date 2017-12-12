@@ -247,15 +247,15 @@ dialog_startup_notice() {
         return
     fi
 
-    dlg_text=$(echo "Notice that the interactive mode is \Z1not\Z0 (yet) a"\
-                    "complete alternative to the command-line arguments."\
-                    "\n\nFor details see section 2.6 inside the"\
-                    "documentation.\n\nYou can \Z1cancel\Z0 interactive mode"\
-                    "at any time either by holding \Z4Ctrl\Z0+\Z4C\Z0 or"\
-                    "pressing those keys multiple times.")
-    dialog $dlg_shadow --title "SaLoMon interactive mode notice" \
+    dlg_text=$(echo "Welcome to the interactive dialogs!\n\nFor details"\
+                    "about this feature see section 2.6 inside the"\
+                    "documentation.\n\nYou can \Z1cancel\Z0 this interactive"\
+                    "mode at any time either by holding \Z4Ctrl\Z0+\Z4C\Z0"\
+                    "or pressing those keys multiple times. Some dialogs"\
+                    "also contain an \Z4Exit\Z0 button to do so.")
+    dialog $dlg_shadow --title "SaLoMon interactive dialogs notice" \
                        --colors --yes-label "Proceed" --no-label "Exit" \
-                       --yesno "$dlg_text" 11 60
+                       --yesno "$dlg_text" 12 60
 
     if [ $? -ne 0 ]; then
         clear
@@ -319,7 +319,8 @@ predef_input_dialog() {
     fi
 
     user_input=$(dialog $dlg_shadow --title "$dialog_title" \
-                                    --cancel-label "Cancel" \
+                                    --ok-label "Proceed" \
+                                    --cancel-label "Exit" \
                                     --inputbox "$dialog_text" \
                                         $dialog_height $dialog_width \
                                         "$dialog_init" \
