@@ -92,15 +92,15 @@ else
             -\?|--help)
                 usage
             ;;
-            --highlight-all)
+            -ha|--highlight-all)
                 highlight_all=1
                 shift
             ;;
-            --highlight-matches)
+            -hm|--highlight-matches)
                 highlight_matches=1
                 shift
             ;;
-            --highlight-upper)
+            -hu|--highlight-upper)
                 highlight_upper=1
                 shift
             ;;

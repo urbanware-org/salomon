@@ -191,12 +191,14 @@ usage() {
                                  "filter pattern,"
     echo "                        only (for details see section 4 inside the"
     echo "                        documentation file)"
-    echo "  --highlight-all       highlight the whole lines by inverting"\
+    echo "  -ha, --highlight-all  highlight the whole lines by inverting"\
                                  "their color (no"
     echo "                        filter required)"
-    echo "  --highlight-matches   highlight the filter matches by inverting"\
+    echo "  -hm, --highlight-matches"
+    echo "                        highlight the filter matches by inverting"\
                                  "their colors"
-    echo "  --highlight-upper     same as '--highlight-matches' and with"\
+    echo "  -hu, --highlight-upper"
+    echo "                        same as '--highlight-matches' and with"\
                                  "to uppercase"
     echo "                        converted letters"
     echo "  --ignore-case         ignore the case of the given filter pattern"

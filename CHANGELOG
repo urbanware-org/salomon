@@ -1,6 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+    
+        * Revised the highlighting related command-line arguments (added short
+          variants of the arguments)
+
     Version 1.9.3 (2017-12-11)
 
         + Added a global config file ('salomon.cfg') for certain options that
