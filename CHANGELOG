@@ -6,6 +6,7 @@ CHANGELOG (SaLoMon)
         * Added a dialog (when using interactive mode) for displaying the
           information header and footer.
 
+        * Revised the dialog core module (negligible changes).
         * Revised the highlighting related command-line arguments (added short
           variants of the arguments)
 
