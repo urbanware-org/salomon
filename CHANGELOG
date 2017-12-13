@@ -5,6 +5,9 @@ CHANGELOG (SaLoMon)
 
         * Added a dialog (when using interactive mode) for displaying the
           information header and footer.
+        * Added some code to check if the main scripts are being executed
+          using the Bash shell (instead of just checking if the Bash shell is
+          installed).
 
         * Revised the dialog core module (negligible changes).
         * Revised the highlighting related command-line arguments (added short
