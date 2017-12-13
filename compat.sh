@@ -10,7 +10,8 @@
 # GitHub: https://github.com/urbanware-org/salomon
 # ============================================================================
 
-# Check if the Bash shell is installed
+# Pre-check if the Bash shell is installed and if this script has been
+# executed using it
 separator="***************************************"
 bash --version >/dev/null 2>&1
 if [ "$?" != "0" ]; then
@@ -38,6 +39,9 @@ if [ "$?" != "0" ]; then
          "                 *"
     echo "${separator}${separator}"
     echo
+    exit 1
+elif [ ! -n "$BASH" ]; then
+    echo "error: This script must be executed using the Bash shell."
     exit 1
 fi
 
