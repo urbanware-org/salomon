@@ -24,9 +24,9 @@ elif [ ! -n "$BASH" ]; then
     exit 1
 fi
 
+# General preparation
 script_dir=$(dirname $(readlink -f $0))
 script_file=$(basename "$0")
-
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh
 source ${script_dir}/core/common.sh
