@@ -185,7 +185,7 @@ echo $em "Checking 'basename' command ..........................$temp"\
          "${check_basename}"
 echo $em "Checking 'declare' command ...........................$temp"\
          "${check_declare}"
-echo $em "Checking 'dialog' command ............................$temp"\
+echo $em "Checking 'dialog' command (optional) .................$temp"\
          "${check_dialog}"
 echo $em "Checking 'dirname' command ...........................$temp"\
          "${check_dirname}"
