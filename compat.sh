@@ -41,7 +41,30 @@ if [ "$?" != "0" ]; then
     echo
     exit 1
 elif [ ! -n "$BASH" ]; then
-    echo "error: This script must be executed using the Bash shell."
+    echo
+    echo "${separator}${separator}"
+    echo "* This script has determined that it has not been executed using"\
+         "the Bash    *"
+    echo "* shell, but (maybe explicitly) with another one which is not"\
+         "supported.     *"
+    echo "*                                                                "\
+         "           *"
+    echo "* The SaLoMon project was developed on (and for) the Bash shell,"\
+         "which is    *"
+    echo "* the default shell on many Unix-like systems (or at least on"\
+        "many Linux     *"
+    echo "* distributions).                                                "\
+         "           *"
+    echo "*                                                                "\
+         "           *"
+    echo "* No matter which shell you are using, the Bash shell must be"\
+         "installed in   *"
+    echo "* order to use SaLoMon. As a matter of fact, the SaLoMon project"\
+         "takes       *"
+    echo "* advantage of certain features provided by the Bash shell."\
+         "                 *"
+    echo "${separator}${separator}"
+    echo
     exit 1
 fi
 
