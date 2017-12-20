@@ -242,8 +242,20 @@ dialog_slow_down() {
                        --no-label "No" $def_button --yesno "$dlg_text" 8 60
 }
 
-dialog_startup_notice() {
-    if [ $dialog_show_startup_notice -ne 1 ]; then
+dialog_wait_on_match() {
+    if [ $dialog_show_wait -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
+    dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
+                    "\n\nIf yes, enter the amount of seconds, otherwise"\
+                    "leave blank to skip:")
+    predef_input_dialog "Wait on match" "$dlg_text" 11 60 "$1"
+}
+
+dialog_welcome() {
+    if [ $dialog_show_welcome -ne 1 ]; then
         return
     fi
 
@@ -263,18 +275,6 @@ dialog_startup_notice() {
     fi
 }
 
-dialog_wait_on_match() {
-    if [ $dialog_show_wait -ne 1 ]; then
-        user_input="$1"
-        return
-    fi
-
-    dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
-                    "\n\nIf yes, enter the amount of seconds, otherwise"\
-                    "leave blank to skip:")
-    predef_input_dialog "Wait on match" "$dlg_text" 11 60 "$1"
-}
-
 init_dialogs() {
     if [ $dialog_shadow -ne 1 ]; then
         dlg_shadow="--no-shadow"
@@ -282,7 +282,7 @@ init_dialogs() {
         dlg_shadow=""
     fi
 
-    dialog_startup_notice
+    dialog_welcome
 }
 
 predef_error_dialog() {
