@@ -52,7 +52,7 @@ check_command() {
     required_pkg=$3
 
     $check_command --help &>/dev/null
-    if [ $? != $expected_code ]; then
+    if [ $? -ne $expected_code ]; then
         usage "This script requires the '$required_pkg' package to work"
     fi
 }
