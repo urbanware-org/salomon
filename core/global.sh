@@ -3,7 +3,7 @@
 # ============================================================================
 # SaLoMon - Simple log file monitor and analyzer
 # Global variable core script
-# Copyright (C) 2017 by Ralf Kilian
+# Copyright (C) 2018 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # Website: http://www.urbanware.org
@@ -14,7 +14,7 @@ set_global_variables() {
     # Do not change any values below! See the 'salomon.cfg' file inside the
     # main directory of SaLoMon for configuration options.
 
-    version="1.9.3"
+    version="1.9.4"
 
     arg_case=""
     input_file=""
