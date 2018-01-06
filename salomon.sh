@@ -154,7 +154,8 @@ else
             --config-file)
                 shift
                 color_file="$1"
-                check_argument "-c/--config-file" "$color_file" "file"
+                check_argument "--config-file" "$color_file" "file"
+                deprecated_argument "--config-file" "--color-file"
                 shift
             ;;
             -h)
@@ -162,14 +163,17 @@ else
             ;;
             --highlight)
                 highlight_matches=1
+                deprecated_argument "--highlight" "--highlight-matches"
                 shift
             ;;
             -n|--no-follow)
                 follow=0
+                deprecated_argument "--no-follow" "--action"
                 shift
             ;;
             --no-header)
                 header=0
+                deprecated_argument "--no-header" "--no-info"
                 shift
             ;;
 

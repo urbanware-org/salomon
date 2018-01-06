@@ -84,6 +84,17 @@ check_patterns() {
     fi
 }
 
+deprecated_argument() {
+    arg_given="$1"
+    arg_instead="$2"
+
+    dep="The argument '\e[1;36m$arg_given\e[0m' is \e[1;33mdeprecated\e[0m."
+    ins="You may use '\e[1;36m$arg_instead\e[0m' instead."
+
+    echo -e "\e[1;34mnotice\e[0m: $dep $ins"
+    sleep 1
+}
+
 prepare_path() {
     path_input="$1"
     while true; do
@@ -229,7 +240,7 @@ usage() {
             clear
         else
             echo
-            echo "error: $error_msg."
+            echo -e "\e[1;31merror\e[0m: $error_msg."
         fi
         exit 1
     else
