@@ -3,11 +3,11 @@ CHANGELOG (SaLoMon)
 
     Version 1.9.4 (2018-01-10)
 
-        * Added a dialog (when using interactive mode) for displaying the
+        + Added a dialog (when using interactive mode) for displaying the
           information header and footer.
-        * Added a function to the common core module to print a notice in case
+        + Added a function to the common core module to print a notice in case
           deprecated command-line arguments have been given.
-        * Added some code to check if the main scripts are being executed
+        + Added some code to check if the main scripts are being executed
           using the Bash shell (instead of just checking if the Bash shell is
           installed).
 
