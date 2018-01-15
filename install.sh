@@ -102,6 +102,9 @@ else
     chown root:root $target_dir -R &>/dev/null
     echo "  - Set permissions on target directory."
 
+    chmod +x $target_dir/*.sh
+    echo "  - Set executable flag for main script files."
+
     ln -s ${target_dir}/salomon.sh ${symlink_sh}/salomon &>/dev/null
     echo "  - Created symbolic link for the main script."
 fi
