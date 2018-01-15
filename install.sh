@@ -84,25 +84,25 @@ fi
 confirm $script_mode
 echo
 echo $em "${color_lightgreen}Started $script_mode process:${color_none}"
-if [ "$script_mode" = "uninstall" ]; then
-    rm -f "${symlink_sh}/salomon" &>/dev/null
+if [ $script_mode = "uninstall" ]; then
+    rm -f ${symlink_sh}/salomon &>/dev/null
     echo "  - Removed symbolic link for the main script."
 
-    rm -fR "$target_dir" &>/dev/null
+    rm -fR $target_dir &>/dev/null
     echo $em "  - Removed project directory"\
              "'${color_yellow}${target_dir}${color_none}'."
 else
-    mkdir -p "$target_dir" &>/dev/null
+    mkdir -p $target_dir &>/dev/null
     echo $em "  - Created target directory"\
              "'${color_yellow}${target_dir}${color_none}'."
 
-    rsync -av "$script_dir"/* "$target_dir/" &>/dev/null
+    rsync -av $script_dir/* $target_dir/ &>/dev/null
     echo "  - Copied project data to target directory."
 
-    chown root:root "$target_dir" -R &>/dev/null
+    chown root:root $target_dir -R &>/dev/null
     echo "  - Set permissions on target directory."
 
-    ln -s "${target_dir}/salomon.sh" "${symlink_sh}/salomon" &>/dev/null
+    ln -s ${target_dir}/salomon.sh ${symlink_sh}/salomon &>/dev/null
     echo "  - Created symbolic link for the main script."
 fi
 echo $em "${color_lightgreen}Finished $script_mode process.${color_none}"
