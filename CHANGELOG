@@ -1,6 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised the common core module (negligible changes).
+        * Revised the installation script (negligible changes).
+
     Version 1.9.4 (2018-01-10)
 
         + Added a dialog (when using interactive mode) for displaying the

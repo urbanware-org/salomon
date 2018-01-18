@@ -153,27 +153,35 @@ read_filter() {
 usage() {
     error_msg=$1
 
-    echo "usage: $script_file -a {analyze,monitor} -i INPUT_FILE"\
-                           "[-c COLOR_FILE]"
-    echo "                  [-d DELAY] [-e EXCLUDE] [-f FILTER] [-h]"\
-                           "[--highlight]"
-    echo "                  [--ignore-case] [--no-info] [-p] [-r REMOVE]"
-    echo "                  [-s] [--version] [-w WAIT]"
+    no=$color_none
+    lb=$color_lightblue
+    lc=$color_lightcyan
+    lg=$color_lightgreen
+    lr=$color_lightred
+    yl=$color_yellow
+
+    echo -e "${lc}usage: ${yl}$script_file -a {analyze,monitor} -i"\
+                              "INPUT_FILE [-c COLOR_FILE]"
+    echo -e "                  [-d DELAY] [-e EXCLUDE] [-f FILTER] [-h]"\
+                              "[--highlight]"
+    echo -e "                  [--ignore-case] [--no-info] [-p] [-r REMOVE]"
+    echo -e "                  [-s] [--version] [-w WAIT]"
     echo
-    echo "Monitor and analyze log and plain text files with various filter"\
-         "and highlighting features."
+    echo -e "${lg}Monitor and analyze log and plain text files with various"\
+            "filter and"
+    echo -e "${lg}highlighting features."
     echo
-    echo "required arguments:"
+    echo -e "${lr}required arguments:${no}"
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
     echo "                        action (processing mode) to perform with"\
                                  "the given"
     echo "                        input file(s)"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
     echo "                        input file to analyze or monitor (can be"\
-                                 "given multiple"
-    echo "                        times)"
+                                 "given"
+    echo "                        multiple times)"
     echo
-    echo "optional arguments:"
+    echo -e "${lb}optional arguments:${no}"
     echo "  -c COLOR_FILE, --color-file COLOR_FILE"
     echo "                        color config file for colorizing lines"\
                                  "which contain"
@@ -231,9 +239,9 @@ usage() {
                                  "line"
     echo "  -?, --help            print this help message and exit"
     echo
-    echo "Further information and usage examples can be found inside the"\
-         "documentation"
-    echo "file for this script."
+    echo -e "${yl}Further information and usage examples can be found inside"\
+            "the documentation"
+    echo -e "file for this script.${no}"
         if [ ! -z "$error_msg" ]; then
         if [ $interactive -eq 1 ]; then
             predef_error_dialog "$error_msg"
