@@ -437,8 +437,8 @@ CHANGELOG (SaLoMon)
 
         * Revised the code to handle the given command-line arguments inside
           the main SaLoMon script.
-        * Revised the output header text the main SaLoMon script (added some
-          process details).
+        * Revised the output header text inside the main SaLoMon script (added
+          some process details).
 
     Version 1.0.0 (2014-04-10)
 
