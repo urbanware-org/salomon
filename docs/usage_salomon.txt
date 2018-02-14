@@ -51,7 +51,7 @@ USAGE (salomon.sh)
             on many Linux distributions).
 
             No matter which shell you are using, the Bash shell must be
-            installed in order to use SaLoMon.
+            installed in order to use the project.
 
             Please read the included documentation related to the shell
             compatibility before using SaLoMon.

@@ -45,7 +45,7 @@ confirm() {
     echo $em "This will $script_action SaLoMon. Do you wish to proceed"\
              "($yesno)? \c"
     read choice
-    
+
     egrep "^yes$|^y$" -i <<< $choice &>/dev/null
     if [ $? -ne 0 ]; then
         echo

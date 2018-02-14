@@ -14,7 +14,7 @@ USAGE (install.sh)
     1. Definition
 
         The SaLoMon installation script allows to install or uninstall the
-        project automatically.
+        project, which is optional and not necessary in order to use it.
 
     2. General stuff
 
@@ -37,7 +37,7 @@ USAGE (install.sh)
             on many Linux distributions).
 
             No matter which shell you are using, the Bash shell must be
-            installed in order to use SaLoMon.
+            installed in order to use the project.
 
             Please read the included documentation related to the shell
             compatibility before using SaLoMon.
@@ -51,27 +51,34 @@ USAGE (install.sh)
         directory '/usr/local/bin' does not exist, the symbolic link will be
         created inside '/usr/bin' instead.
 
-        Now, to install, type one of the following commands (all of them have
-        the same effect).
+        Now, to install, type one of the following commands, depending on the
+        way you prefer.
+
+        Either as normal user via 'sudo'
+
+            $ sudo ./install.sh
+
+        or directly when logged in as root:
 
             # ./install.sh
-            # ./install.sh -i
-            # ./install.sh --install
 
     4. Run the installed SaLoMon
 
         After installing SaLoMon, it can simply be run by typing its name in
-        lowercase followed by the arguments to use. For example:
+        lowercase (without a trailing '.sh') followed by the arguments to use.
+        For example:
 
             $ salomon --help
 
     5. Uninstall SaLoMon
 
-        Notice that this process requires superuser privileges.
+        Notice that this process also requires superuser privileges.
 
-        To uninstall the project, type one of the following commands (both of
-        them have the same effect).
+        Either as normal user via 'sudo'
+
+            $ sudo ./install.sh -u
+
+        or directly when logged in as root:
 
             # ./install.sh -u
-            # ./install.sh --uninstall
 

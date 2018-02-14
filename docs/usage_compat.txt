@@ -37,4 +37,3 @@ USAGE (compat.sh)
 
             $ ./compat.sh
 
-
