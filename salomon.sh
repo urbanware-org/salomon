@@ -94,7 +94,7 @@ else
                 filter_pattern="$1"
                 shift
             ;;
-            -\?|--help)
+            -\?|-h|--help)
                 usage
             ;;
             -ha|--highlight-all)
@@ -157,9 +157,6 @@ else
                 check_argument "--config-file" "$color_file" "file"
                 deprecated_argument "--config-file" "--color-file"
                 shift
-            ;;
-            -h)
-                usage
             ;;
             --highlight)
                 highlight_matches=1

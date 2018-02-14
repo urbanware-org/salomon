@@ -162,10 +162,12 @@ usage() {
 
     echo -e "${lc}usage: ${yl}$script_file -a {analyze,monitor} -i"\
                               "INPUT_FILE [-c COLOR_FILE]"
-    echo -e "                  [-d DELAY] [-e EXCLUDE] [-f FILTER] [-h]"\
-                              "[--highlight]"
-    echo -e "                  [--ignore-case] [--no-info] [-p] [-r REMOVE]"
-    echo -e "                  [-s] [--version] [-w WAIT]"
+    echo -e "                  [-d DELAY] [-e EXCLUDE] [-f FILTER]"\
+                              "[--highlight-all]"
+    echo -e "                  [--highlight-matches] [--highlight-upper]"\
+                              "[--ignore-case]"
+    echo -e "                  [--no-info] [-p] [-r REMOVE] [-s] [--version]"\
+                              "[-w WAIT]"
     echo
     echo -e "${lg}Monitor and analyze log and plain text files with various"\
             "filter and"
@@ -237,7 +239,7 @@ usage() {
     echo "  --version             print the version number and exit"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
                                  "line"
-    echo "  -?, --help            print this help message and exit"
+    echo "  -?, -h, --help        print this help message and exit"
     echo
     echo -e "${yl}Further information and usage examples can be found inside"\
             "the documentation"
