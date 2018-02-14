@@ -73,10 +73,11 @@ USAGE (salomon.sh)
 
             2.3.2 Highlight filter terms
 
-                The '--highlight' command-line argument allows to additionally
-                highlight the filter terms inside the corresponding lines (if
-                a filter was given) by inverting their colors (sort of marker
-                pen like). It can be used with and without a color config.
+                The '--highlight-matches' command-line argument allows to
+                additionally highlight the filter terms inside the
+                corresponding lines (if a filter was given) by inverting
+                their colors (sort of marker pen like). It can be used with
+                and without a color config.
 
                 You may also use '--highlight-upper', which works the same way
                 and additionally switches the letters of the filter terms to
@@ -85,8 +86,8 @@ USAGE (salomon.sh)
             2.3.3 Highlight whole lines
 
                 Instead of only highlighting the filter terms, you can also
-                highlight the whole line. This does neither require a color
-                config nor a filter.
+                highlight the whole line using '--highlight-all'. This does
+                neither require a color config nor a filter.
 
             2.3.4 No colorization and hightlighting
 
