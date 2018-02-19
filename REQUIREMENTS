@@ -8,7 +8,7 @@ REQUIREMENTS (SaLoMon)
     So, no matter which shell you are using, the Bash shell must be installed
     in order to use SaLoMon.
 
-    Additional package requirements:
+    Additional package requirements (should be pre-installed):
 
         - coreutils (version 2.85 or higher is recommended)
         - grep (version 2.18 or higher is recommended)
