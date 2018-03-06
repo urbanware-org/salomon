@@ -1,11 +1,11 @@
 # *SaLoMon* <img src="wiki/salomon.png" alt="SaLoMon logo" align="right"/>
 
 **Table of contents**
-* [Definition](#definition)
-* [Details](#details)
-* [Usage](#usage)
-* [Requirements](#requirements)
-* [Useless facts](#useless-facts)
+*   [Definition](#definition)
+*   [Details](#details)
+*   [Usage](#usage)
+*   [Requirements](#requirements)
+*   [Useless facts](#useless-facts)
 
 ----
 
@@ -53,8 +53,7 @@ Furthermore, it uses popular shell utilities that should be pre-installed by def
 
 ## Useless facts
 
-* The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
-* The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30<sup>th</sup>, 2015.
+*   The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
+*   The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30<sup>th</sup>, 2015.
 
 [Top](#)
-
