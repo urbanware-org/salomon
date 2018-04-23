@@ -152,12 +152,21 @@ read_filter() {
 usage() {
     error_msg=$1
 
-    no=$color_none
-    lb=$color_lightblue
-    lc=$color_lightcyan
-    lg=$color_lightgreen
-    lr=$color_lightred
-    yl=$color_yellow
+    if [ "$usage_color" = "1" ]; then
+        no=$color_none
+        lb=$color_lightblue
+        lc=$color_lightcyan
+        lg=$color_lightgreen
+        lr=$color_lightred
+        yl=$color_yellow
+    else
+        no=$color_none
+        lb=$color_none
+        lc=$color_none
+        lg=$color_none
+        lr=$color_none
+        yl=$color_none
+    fi
 
     echo -e "${lc}usage: ${yl}$script_file -a {analyze,monitor} -i"\
                               "INPUT_FILE [-c COLOR_FILE]"
