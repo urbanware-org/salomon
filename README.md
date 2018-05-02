@@ -5,6 +5,7 @@
 *   [Details](#details)
 *   [Usage](#usage)
 *   [Requirements](#requirements)
+*   [Contact](#contact)
 *   [Useless facts](#useless-facts)
 
 ----
@@ -48,6 +49,16 @@ In the `docs` sub-directory of the project, there are plain text files containin
 The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
+
+[Top](#salomon-)
+
+## Contact
+
+Any suggestions, questions, bugs to report or feedback to give?
+
+You can contact me by sending an email to <dev@urbanware.org>.
+
+Further information can be found inside the `CONTACT` file.
 
 [Top](#salomon-)
 
