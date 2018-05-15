@@ -5,6 +5,8 @@ CHANGELOG (SaLoMon)
 
         * Revised the common core module (negligible changes).
         * Revised the installation script (negligible changes).
+        * Revised the shell compatibility script (replaced inconvenient check
+          commands with some consistent ones).
 
     Version 1.9.4 (2018-01-10)
 
