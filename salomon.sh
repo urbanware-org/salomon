@@ -11,7 +11,7 @@
 
 # Pre-check if the Bash shell is installed and if this script has been
 # executed using it
-bash --version >/dev/null 2>&1
+command -v bash >/dev/null 2>&1
 if [ "$?" != "0" ]; then
     echo "error: The Bash shell does not seem to be installed, run the"\
                 "compatibility"
