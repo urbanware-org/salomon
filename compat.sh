@@ -6,13 +6,14 @@
 # Copyright (C) 2018 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
+# Website: http://www.urbanware.org
 # GitHub: https://github.com/urbanware-org/salomon
 # ============================================================================
 
 # Pre-check if the Bash shell is installed and if this script has been
 # executed using it
 separator="***************************************"
-bash --version >/dev/null 2>&1
+command -v bash >/dev/null 2>&1
 if [ "$?" != "0" ]; then
     echo
     echo "${separator}${separator}"
@@ -80,115 +81,109 @@ echo
 echo $em "${color_lightcyan}SaLoMon compatibility check script"\
          "${color_none}"
 
-if [ "$em" = "" ]; then
-    check_error=" [!]"
-    check_echo="${color_lightred}FAILURE${color_none}${check_error}"
-    temp="............"
-else
-    check_error=""
-    check_echo="${color_lightgreen}SUCCESS${color_none}"
-    temp="................"
-fi
-
-check_basename="${color_lightred}FAILURE${color_none}${check_error}"
-check_declare="${color_lightred}FAILURE${color_none}${check_error}"
-check_dialog="${color_yellow}MISSING${color_none}${check_error}"
-check_dirname="${color_lightred}FAILURE${color_none}${check_error}"
-check_grep="${color_lightred}FAILURE${color_none}${check_error}"
-check_paste="${color_lightred}FAILURE${color_none}${check_error}"
-check_printf="${color_lightred}FAILURE${color_none}${check_error}"
-check_readlink="${color_lightred}FAILURE${color_none}${check_error}"
-check_sed="${color_lightred}FAILURE${color_none}${check_error}"
-check_tail="${color_lightred}FAILURE${color_none}${check_error}"
-check_trap="${color_lightred}FAILURE${color_none}${check_error}"
-check_function="${color_lightred}FAILURE${color_none}${check_error}"
+check_basename="${color_lightred}FAILURE${color_none}"
+check_declare="${color_lightred}FAILURE${color_none}"
+check_dialog="${color_yellow}MISSING${color_none}"
+check_dirname="${color_lightred}FAILURE${color_none}"
+check_grep="${color_lightred}FAILURE${color_none}"
+check_paste="${color_lightred}FAILURE${color_none}"
+check_printf="${color_lightred}FAILURE${color_none}"
+check_readlink="${color_lightred}FAILURE${color_none}"
+check_sed="${color_lightred}FAILURE${color_none}"
+check_tail="${color_lightred}FAILURE${color_none}"
+check_trap="${color_lightred}FAILURE${color_none}"
+check_whiptail="${color_yellow}MISSING${color_none}"
+check_echo="${color_lightgreen}SUCCESS${color_none}"
+check_function="${color_lightred}FAILURE${color_none}"
 check_failed=0
 check_overall="${color_lightred}FAILURE${color_none}"
+line="................"
 
-touch $script_temp
-chmod +x $script_temp
-
-basename $script_temp &>/dev/null
+command -v basename &>/dev/null
 if [ $? -eq 0 ]; then
     check_basename="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-echo "#!/bin/bash" > $script_temp
-echo "declare salomon=foobar" >> $script_temp
-$script_temp &>/dev/null
+command -v declare &>/dev/null
 if [ $? -eq 0 ]; then
     check_declare="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-dialog --help &>/dev/null
+command -v dialog &>/dev/null
 if [ $? -eq 0 ]; then
     check_dialog="${color_lightgreen}SUCCESS${color_none}"
 fi
 
-dirname $script_temp &>/dev/null
+command -v dirname &>/dev/null
 if [ $? -eq 0 ]; then
     check_dirname="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-grep "sh" <<< $script_temp &>/dev/null
+command -v grep &>/dev/null
 if [ $? -eq 0 ]; then
     check_grep="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-paste --help &>/dev/null
+command -v paste &>/dev/null
 if [ $? -eq 0 ]; then
     check_paste="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-printf ""
+command -v printf &>/dev/null
 if [ $? -eq 0 ]; then
     check_printf="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-readlink -f $script_temp &>/dev/null
+command -v readlink &>/dev/null
 if [ $? -eq 0 ]; then
     check_readlink="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-sed -e "s/sh/foo/g" <<< $script_temp &>/dev/null
+command -v sed &>/dev/null
 if [ $? -eq 0 ]; then
     check_sed="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-tail $script_temp &>/dev/null
+command -v tail &>/dev/null
 if [ $? -eq 0 ]; then
     check_tail="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
-trap &>/dev/null
+command -v trap &>/dev/null
 if [ $? -eq 0 ]; then
     check_trap="${color_lightgreen}SUCCESS${color_none}"
 else
     check_failed=1
 fi
 
+command -v whiptail &>/dev/null
+if [ $? -eq 0 ]; then
+    check_whiptail="${color_lightgreen}SUCCESS${color_none}"
+fi
+
 echo "#!/bin/bash" > $script_temp
 echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
 echo "}" >> $script_temp
+chmod +x $script_temp
 $script_temp &>/dev/null
 if [ $? -eq 0 ]; then
     check_function="${color_lightgreen}SUCCESS${color_none}"
@@ -203,34 +198,36 @@ else
 fi
 
 echo
-echo $em "Checking 'basename' command ..........................$temp"\
+echo $em "Checking 'basename' command ..........................$line"\
          "${check_basename}"
-echo $em "Checking 'declare' command ...........................$temp"\
+echo $em "Checking 'declare' command ...........................$line"\
          "${check_declare}"
-echo $em "Checking 'dialog' command (optional) .................$temp"\
+echo $em "Checking 'dialog' command (optional) .................$line"\
          "${check_dialog}"
-echo $em "Checking 'dirname' command ...........................$temp"\
+echo $em "Checking 'dirname' command ...........................$line"\
          "${check_dirname}"
-echo $em "Checking 'grep' command ..............................$temp"\
+echo $em "Checking 'grep' command ..............................$line"\
          "${check_grep}"
-echo $em "Checking 'paste' command .............................$temp"\
+echo $em "Checking 'paste' command .............................$line"\
          "${check_printf}"
-echo $em "Checking 'printf' command ............................$temp"\
+echo $em "Checking 'printf' command ............................$line"\
          "${check_printf}"
-echo $em "Checking 'readlink' command ..........................$temp"\
+echo $em "Checking 'readlink' command ..........................$line"\
          "${check_readlink}"
-echo $em "Checking 'sed' command ...............................$temp"\
+echo $em "Checking 'sed' command ...............................$line"\
          "${check_sed}"
-echo $em "Checking 'tail' command ..............................$temp"\
+echo $em "Checking 'tail' command ..............................$line"\
          "${check_tail}"
-echo $em "Checking 'trap' command ..............................$temp"\
+echo $em "Checking 'trap' command ..............................$line"\
          "${check_trap}"
-echo $em "Checking capabilities of the 'echo' command ..........$temp"\
+echo $em "Checking 'whiptail' command (optional) ...............$line"\
+         "${check_whiptail}"
+echo $em "Checking capabilities of the 'echo' command ..........$line"\
          "${check_echo}"
-echo $em "Checking definition of functions .....................$temp"\
+echo $em "Checking definition of functions .....................$line"\
          "${check_function}"
 echo
-echo $em "Overall status .......................................$temp"\
+echo $em "Overall status .......................................$line"\
          "${check_overall}"
 echo
 
