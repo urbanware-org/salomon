@@ -3,6 +3,9 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
+        + Added the support for the 'whiptail' dialog program when using
+          interactive dialogs.
+
         * Revised the common core module (negligible changes).
         * Revised the installation script (negligible changes).
         * Revised the shell compatibility script (replaced inconvenient check
