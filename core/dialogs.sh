@@ -16,7 +16,7 @@ dialog_action() {
         def_button=""
     fi
 
-    dlg_text="hat do you want to do with the input file(s)?"
+    dlg_text="What do you want to do with the input file(s)?"
     dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
                        --no-label "Monitor" $def_button \
                        --yesno "$dlg_text" 8 60
