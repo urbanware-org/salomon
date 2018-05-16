@@ -179,6 +179,9 @@ USAGE (salomon.sh)
             example, the dialog window asking for the input file will already
             contain '/tmp/foobar.log', which can still be changed.
 
+            SaLoMon supports the dialog programs 'dialog' and 'whiptail'. You
+            can set the one you want to use inside the 'salomon.cfg' file.
+
     3. Processing input file
 
         The following examples use a color config file. See section 2.3 for

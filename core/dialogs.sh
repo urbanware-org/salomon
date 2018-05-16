@@ -17,9 +17,16 @@ dialog_action() {
     fi
 
     dlg_text="What do you want to do with the input file(s)?"
-    dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
-                       --no-label "Monitor" $def_button \
-                       --yesno "$dlg_text" 8 60
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Processing mode" --yes-label "Analyze" \
+                           --no-label "Monitor" $def_button \
+                           --yesno "$dlg_text" 8 60
+    else
+        whiptail --title "Processing mode" --yes-button "Analyze" \
+                 --no-button "Monitor" $def_button \
+                 --yesno "$dlg_text" 7 60
+    fi
 }
 
 dialog_color_file() {
@@ -31,6 +38,7 @@ dialog_color_file() {
     dlg_text=$(echo "Do you want to use a color file?\n\nEnter the path of"\
                     "the color config file or leave blank to disable"\
                     "highlighting:")
+    
     predef_input_dialog "Color configuration file" "$dlg_text" 11 60 "$1"
 }
 
@@ -55,6 +63,7 @@ dialog_exclude_pattern() {
                     "about the exclude pattern syntax, see\nsection 5 inside"\
                     "the documentation.\n\nEnter the desired information or"\
                     "leave blank to skip:")
+
     predef_input_dialog "Exclude pattern" "$dlg_text" 13 60 "$1"
 }
 
@@ -70,11 +79,13 @@ dialog_filter_pattern() {
                     "details about the filter syntax, see section 4.1 inside"\
                     "the documentation.\n\nEnter the desired information or"\
                     "leave blank to skip:")
+
     predef_input_dialog "Filter pattern" "$dlg_text" 17 60 "$1"
 }
 
 dialog_highlight() {
     def_item="1"
+    dlg_text="Do you want to highlight the output?"
 
     if [ -z "$filter_pattern" ]; then
         if [ $highlight_all -eq 1 ]; then
@@ -95,14 +106,27 @@ dialog_highlight() {
         highlight_matches=0
         highlight_upper=0
 
-        user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
-                            --title "Highlight mode" \
-                            --menu "Do you want to highlight the output?" \
+        if [ $dialog_program = "dialog" ]; then
+            user_input=$(dialog $dlg_shadow --no-cancel \
+                                --default-item $def_item \
+                                --title "Highlight mode" \
+                                --menu "$dlg_text" \
                                     10 60 20 \
                                     "1" "Do not highlight" \
                                     "2" "Highlight whole lines (filled)" \
                                     "3" "Highlight whole lines (cut-off)" \
-                            3>&1 1>&2 2>&3 3>&-)
+                                3>&1 1>&2 2>&3 3>&-)
+        else
+            user_input=$(whiptail --nocancel --default-item $def_item \
+                                  --title "Highlight mode" \
+                                  --menu "$dlg_text" \
+                                    13 60 3 \
+                                    "1" "Do not highlight" \
+                                    "2" "Highlight whole lines (filled)" \
+                                    "3" "Highlight whole lines (cut-off)" \
+                                  3>&1 1>&2 2>&3 3>&-)
+
+        fi
     else
         if [ $highlight_all -eq 1 ]; then
             if [ $highlight_cut_off -eq 1 ]; then
@@ -128,16 +152,31 @@ dialog_highlight() {
 
         hlw="Highlight all lines"
         hlf="Highlight filter matches"
-        user_input=$(dialog $dlg_shadow --no-cancel --default-item $def_item \
-                            --title "Highlight mode" \
-                            --menu "Do you want to highlight the output?" \
-                                12 60 20 \
-                                "1" "Do not highlight" \
-                                "2" "$hlw (filled, filter independent)" \
-                                "3" "$hlw (cut-off, filter independent)" \
-                                "4" "$hlf" \
-                                "5" "$hlf and convert to uppercase"\
-                            3>&1 1>&2 2>&3 3>&-)
+
+        if [ $dialog_program = "dialog" ]; then
+            user_input=$(dialog $dlg_shadow --no-cancel \
+                                --default-item $def_item \
+                                --title "Highlight mode" \
+                                --menu "$dlg_text" \
+                                    12 60 20 \
+                                    "1" "Do not highlight" \
+                                    "2" "$hlw (filled, filter independent)" \
+                                    "3" "$hlw (cut-off, filter independent)" \
+                                    "4" "$hlf" \
+                                    "5" "$hlf and convert to uppercase"\
+                                3>&1 1>&2 2>&3 3>&-)
+        else
+            user_input=$(whiptail --nocancel --default-item $def_item \
+                                  --title "Highlight mode" \
+                                  --menu "$dlg_text" \
+                                    13 60 5 \
+                                    "1" "Do not highlight" \
+                                    "2" "$hlw (filled, filter independent)" \
+                                    "3" "$hlw (cut-off, filter independent)" \
+                                    "4" "$hlf" \
+                                    "5" "$hlf and convert to uppercase"\
+                                  3>&1 1>&2 2>&3 3>&-)
+        fi
     fi
 }
 
@@ -157,8 +196,15 @@ dialog_ignore_case() {
     fi
 
     dlg_text="Do you wish ignore the case of the given filter pattern?"
-    dialog $dlg_shadow --title "Ignore case" --yes-label "Yes" \
-                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Ignore case" --yes-label "Yes" \
+                           --no-label "No" $def_button --yesno "$dlg_text" \
+                           8 60
+    else
+        whiptail --title "Ignore case" --yes-button "Yes" --no-button "No" \
+                 $def_button --yesno "$dlg_text" 7 60
+    fi
 }
 
 dialog_input_file() {
@@ -168,6 +214,7 @@ dialog_input_file() {
                     "either be enclosed with (single or double) quotes or"\
                     "given with escaped whitespaces.\n\nFor details see"\
                     "section 2.5 inside the documentation.")
+
     predef_input_dialog "Input file" "$dlg_text" 17 60 "$1"
 }
 
@@ -179,9 +226,15 @@ dialog_no_info() {
     fi
 
     dlg_text="Do you want to display an information header and footer?"
-    dialog $dlg_shadow --title "Information header and footer" \
-                       --yes-label "Yes" --no-label "No" $def_button \
-                       --yesno "$dlg_text" 8 60
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Information header and footer" \
+                           --yes-label "Yes" --no-label "No" $def_button \
+                           --yesno "$dlg_text" 8 60
+    else
+        whiptail --title "Information header and footer" --yes-button "Yes" \
+                 --no-button "No" $def_button --yesno "$dlg_text" 7 60
+    fi
 }
 
 dialog_prompt_on_exit() {
@@ -199,11 +252,18 @@ dialog_prompt_on_exit() {
         def_button="--defaultno"
     fi
 
+    
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")
-    dialog $dlg_shadow --title "Prompt on exit" --yes-label "Yes" \
-                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Prompt on exit" --yes-label "Yes" \
+                           --no-label "No" $def_button --yesno "$dlg_text" 8 60
+    else
+        whiptail  --title "Prompt on exit" --yes-button "Yes" \
+                  --no-button "No" $def_button --yesno "$dlg_text" 7 60
+    fi
 }
 
 dialog_remove_pattern() {
@@ -216,6 +276,7 @@ dialog_remove_pattern() {
                     "about the remove pattern syntax, see\nsection 6 inside"\
                     "the documentation.\n\nEnter the desired information or"\
                     "leave blank to skip:")
+
     predef_input_dialog "Remove pattern" "$dlg_text" 13 60 "$1"
 }
 
@@ -237,8 +298,15 @@ dialog_slow_down() {
     dlg_text=$(echo "Do you want to slow down the output of the lines?"\
                     "\n\nThis will decrease the CPU usage depending on the"\
                     "amount of output data. Usually, this is not required.")
-    dialog $dlg_shadow --title "Slow down output" --yes-label "Yes" \
-                       --no-label "No" $def_button --yesno "$dlg_text" 8 60
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Slow down output" --yes-label "Yes" \
+                           --no-label "No" $def_button --yesno "$dlg_text" \
+                           8 60
+    else
+        whiptail --title "Slow down output" --yes-button "Yes" \
+                 --no-button "No" $def_button --yesno "$dlg_text" 7 60
+    fi
 }
 
 dialog_wait_on_match() {
@@ -250,6 +318,7 @@ dialog_wait_on_match() {
     dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
                     "\n\nIf yes, enter the amount of seconds, otherwise"\
                     "leave blank to skip:")
+
     predef_input_dialog "Wait on match" "$dlg_text" 11 60 "$1"
 }
 
@@ -260,13 +329,26 @@ dialog_welcome() {
 
     dlg_text=$(echo "Welcome to the interactive dialogs!\n\nFor details"\
                     "about this feature see section 2.6 inside the"\
-                    "documentation.\n\nYou can \Z1cancel\Z0 this interactive"\
-                    "mode at any time either by holding \Z4Ctrl\Z0+\Z4C\Z0"\
-                    "or pressing those keys multiple times. Some dialogs"\
-                    "also contain an \Z4Exit\Z0 button to do so.")
-    dialog $dlg_shadow --title "SaLoMon interactive dialogs notice" \
-                       --colors --yes-label "Proceed" --no-label "Exit" \
-                       --yesno "$dlg_text" 12 60
+                    "documentation.\n\n")
+
+    if [ $dialog_program = "dialog" ]; then
+        dlg_notice=$(echo "You can \Z1cancel\Z0 this interactive"\
+                          "mode at any time either by holding"\
+                          "\Z4Ctrl\Z0+\Z4C\Z0 or pressing those keys"\
+                          "multiple times. Some dialogs also contain an"\
+                          "\Z4Exit\Z0 button to do so.")
+        dialog $dlg_shadow --title "SaLoMon interactive dialogs notice" \
+                           --colors --yes-label "Proceed" --no-label "Exit" \
+                           --yesno "${dlg_text}${dlg_notice}" 12 60
+    else
+        dlg_text=$(sed -e "s/\\\Z[0-9]//g" <<< "$dlg_text")
+        dlg_notice=$(echo "You can cancel this interactive mode using"\
+                          "the 'Exit' buttons on this and many of the"\
+                          "following dialogs.")
+        whiptail --title "SaLoMon interactive dialogs notice" \
+                 --yes-button "Proceed" --no-button "Exit" \
+                 --yesno "${dlg_text}${dlg_notice}" 13 60
+    fi
 
     if [ $? -ne 0 ]; then
         clear
@@ -293,8 +375,13 @@ predef_error_dialog() {
         dlg_shadow=""
     fi
 
-    dialog $dlg_shadow --title "Error" --colors --ok-label "Exit" \
-                       --msgbox "\Z1${dialog_text}." 8 60
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Error" --colors --ok-label "Exit" \
+                           --msgbox "\Z1${dialog_text}." 8 60
+    else
+        whiptail --title "Error" --ok-button "Exit" \
+                 --msgbox "${dialog_text}." 8 60
+    fi
 }
 
 predef_input_dialog() {
@@ -317,13 +404,21 @@ predef_input_dialog() {
         dlg_shadow=""
     fi
 
-    user_input=$(dialog $dlg_shadow --title "$dialog_title" \
-                                    --ok-label "Proceed" \
-                                    --cancel-label "Exit" \
-                                    --inputbox "$dialog_text" \
-                                        $dialog_height $dialog_width \
-                                        "$dialog_init" \
-                        3>&1 1>&2 2>&3 3>&-)
+    if [ $dialog_program = "dialog" ]; then
+        user_input=$(dialog $dlg_shadow --title "$dialog_title" \
+                                        --ok-label "Proceed" \
+                                        --cancel-label "Exit" \
+                                        --inputbox "$dialog_text" \
+                                            $dialog_height $dialog_width \
+                                            "$dialog_init" \
+                            3>&1 1>&2 2>&3 3>&-)
+    else
+        user_input=$(whiptail --title  "$dialog_title" --ok-button "Proceed" \
+                              --cancel-button "Exit" \
+                              --inputbox "$dialog_text" \
+                              $dialog_height $dialog_width \
+                              "$dialog_init" 3>&1 1>&2 2>&3 3>&-)
+    fi
 
     if [ $? -ne 0 ]; then
         clear
