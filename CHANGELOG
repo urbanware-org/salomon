@@ -11,6 +11,9 @@ CHANGELOG (SaLoMon)
         * Revised the shell compatibility script (replaced inconvenient check
           commands with some consistent ones).
 
+        # Fixed the interactive mode config bug (option to display the dialog
+          for the information header inside the config file was ignored before
+          and the dialog has always been shown).
         # Fixed the interactive mode error bug (in case no supported dialog
           program is installed, error messages will be printed on the shell
           instead of trying to display them via dialog program).

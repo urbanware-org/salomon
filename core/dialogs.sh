@@ -219,6 +219,14 @@ dialog_input_file() {
 }
 
 dialog_no_info() {
+    if [ $dialog_show_noinfo -ne 1 ]; then
+        if [ $1 -eq 1 ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+    
     if [ $1 -eq 0 ]; then
         def_button="--defaultno"
     else
