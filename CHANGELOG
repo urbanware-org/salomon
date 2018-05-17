@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.9.5 (2018-05-17)
 
         + Added the support for the 'whiptail' dialog program when using
           interactive dialogs.
@@ -10,6 +10,10 @@ CHANGELOG (SaLoMon)
         * Revised the installation script (negligible changes).
         * Revised the shell compatibility script (replaced inconvenient check
           commands with some consistent ones).
+
+        # Fixed the interactive mode error bug (in case no supported dialog
+          program is installed, error messages will be printed on the shell
+          instead of trying to display them via dialog program).
 
     Version 1.9.4 (2018-01-10)
 

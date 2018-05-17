@@ -38,7 +38,7 @@ dialog_color_file() {
     dlg_text=$(echo "Do you want to use a color file?\n\nEnter the path of"\
                     "the color config file or leave blank to disable"\
                     "highlighting:")
-    
+
     predef_input_dialog "Color configuration file" "$dlg_text" 11 60 "$1"
 }
 
@@ -252,7 +252,7 @@ dialog_prompt_on_exit() {
         def_button="--defaultno"
     fi
 
-    
+
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
                     "on exit.")

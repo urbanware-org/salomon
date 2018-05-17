@@ -253,7 +253,7 @@ usage() {
             "the documentation"
     echo -e "file for this script.${no}"
         if [ ! -z "$error_msg" ]; then
-        if [ $interactive -eq 1 ]; then
+        if [ $interactive -eq 1 ] && [ ! -z $dialog_program ]; then
             predef_error_dialog "$error_msg"
             clear
         else

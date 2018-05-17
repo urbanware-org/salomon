@@ -191,6 +191,37 @@ else
     input_file="$temp"
 
     if [ $interactive -eq 1 ]; then
+        if [ "$dialog_program" = "auto" ]; then
+            command -v dialog &>/dev/null
+            if [ $? -eq 0 ]; then
+                dialog_program="dialog"
+            else
+                command -v whiptail &>/dev/null
+                if [ $? -eq 0 ]; then
+                    dialog_program="whiptail"
+                else
+                    dialog_program=""
+                fi
+            fi
+        elif [ "$dialog_program" = "dialog" ]; then
+            command -v dialog &>/dev/null
+            if [ $? -ne 0 ]; then
+                dialog_program=""
+            fi
+        elif [ "$dialog_program" = "whiptail" ]; then
+            command -v whiptail &>/dev/null
+            if [ $? -ne 0 ]; then
+                dialog_program=""
+            fi
+        else
+            dialog_program=""
+            usage "The given dialog program is not supported"
+        fi
+
+        if [ "$dialog_program" = "" ]; then
+            usage "No supported dialog program found"
+        fi
+
         init_dialogs
         dialog_input_file "$input_file"
         input_file=$user_input
