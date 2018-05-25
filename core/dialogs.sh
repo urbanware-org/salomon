@@ -226,7 +226,7 @@ dialog_no_info() {
             return 1
         fi
     fi
-    
+
     if [ $1 -eq 0 ]; then
         def_button="--defaultno"
     else
@@ -259,7 +259,6 @@ dialog_prompt_on_exit() {
     else
         def_button="--defaultno"
     fi
-
 
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
                     "when running SaLoMon in a terminal window which closes"\
