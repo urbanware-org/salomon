@@ -201,8 +201,6 @@ echo $em "Checking 'basename' command ..........................$line"\
          "${check_basename}"
 echo $em "Checking 'declare' command ...........................$line"\
          "${check_declare}"
-echo $em "Checking 'dialog' command (optional) .................$line"\
-         "${check_dialog}"
 echo $em "Checking 'dirname' command ...........................$line"\
          "${check_dirname}"
 echo $em "Checking 'grep' command ..............................$line"\
@@ -219,12 +217,15 @@ echo $em "Checking 'tail' command ..............................$line"\
          "${check_tail}"
 echo $em "Checking 'trap' command ..............................$line"\
          "${check_trap}"
-echo $em "Checking 'whiptail' command (optional) ...............$line"\
-         "${check_whiptail}"
 echo $em "Checking capabilities of the 'echo' command ..........$line"\
          "${check_echo}"
 echo $em "Checking definition of functions .....................$line"\
          "${check_function}"
+echo
+echo $em "Checking optional 'dialog' command ...................$line"\
+         "${check_dialog}"
+echo $em "Checking optional 'whiptail' command .................$line"\
+         "${check_whiptail}"
 echo
 echo $em "Overall status .......................................$line"\
          "${check_overall}"
