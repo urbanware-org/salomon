@@ -83,6 +83,33 @@ check_patterns() {
     fi
 }
 
+check_update() {
+    link_latest="https://github.com/urbanware-org/salomon/releases/latest"
+    temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+
+    wget -q $link_latest -O $temp_file
+    if [ $? -ne 0 ]; then
+        rm -f $temp_file
+        usage "Unable to retrieve update information"
+    else
+        version_latest=$(grep "css-truncate-target" $temp_file |
+                         sed -e "s/<\/.*//g" | sed -e "s/.*>//g")
+        rm -f $temp_file
+    fi
+
+    echo
+    if [ "$version" = "$version_latest" ]; then
+        echo "This version of SaLoMon is up-to-date."
+    else
+        echo "There is a newer version of SaLoMon available."
+        echo
+        echo "For details see: $link_latest"
+    fi
+    echo
+
+    exit
+}
+
 deprecated_argument() {
     arg_given="$1"
     arg_instead="$2"
@@ -245,6 +272,7 @@ usage() {
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
     echo "  --version             print the version number and exit"
+    echo "  --version-update      check for a newer version"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
                                  "line"
     echo "  -?, -h, --help        print this help message and exit"

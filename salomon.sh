@@ -142,6 +142,9 @@ else
                 echo "$version"
                 exit
             ;;
+            --version-update)
+                check_update
+            ;;
             -w|--wait)
                 shift
                 wait_match="$1"
