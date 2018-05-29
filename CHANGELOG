@@ -1,6 +1,13 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+    
+        + Added a command-line argument to check if SaLoMon is up-to-date.
+        
+        * Revised the global config file (negligible changes).
+        * Revised the shell compatibility script (negligible changes).
+
     Version 1.9.5 (2018-05-17)
 
         + Added the support for the 'whiptail' dialog program when using
