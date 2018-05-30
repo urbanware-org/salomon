@@ -26,6 +26,8 @@ set_global_variables() {
 
     action=""
     copy=0
+    export_file=""
+    export_log=0
     follow=1
     header=1
     highlight_all=0

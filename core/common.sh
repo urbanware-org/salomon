@@ -242,6 +242,11 @@ usage() {
     echo "                        exclude lines which a certain string (for"\
                                  "details see"
     echo "                        section 5 inside the documentation file)"
+    echo "  --export-file EXPORT_FILE"
+    echo "                        simultaneously export the output into a file"\
+                                 "(for"
+    echo "                        details see section 7 inside the"\
+                                 "documentation file)"
     echo "  -f FILTER, --filter FILTER"
     echo "                        print the lines that contain the given"\
                                  "filter pattern,"

@@ -28,6 +28,7 @@ USAGE (salomon.sh)
           4.2  Filter config file
         5.  Exclude lines
         6.  Remove certain strings
+        7.  Export output into a file
 
     1. Definition
 
@@ -385,4 +386,17 @@ USAGE (salomon.sh)
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
                            -r "example for ;foo;bar"
+
+    7. Export output into a file
+
+        Since version 1.9.6 you can simultaneously write the output of SaLoMon
+        into a file including the colors and highlighting.
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+                           --export-file /tmp/export.log
+
+        Now, by using e. g. 'cat' you can display the exported data as seen in
+        the output of SaLoMon. However, editing the file with an editor will
+        not work, due to the fact, that the editor will (or should) also print
+        the color and highlighting codes instead of interpreting them.
 

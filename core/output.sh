@@ -342,6 +342,9 @@ print_output_line() {
     fi
 
     echo $em "$output"
+    if [ $export_log -eq 1 ]; then
+        echo $em "$output" >> $export_file
+    fi
 
     count_lines=$(( count_lines + 1 ))
 

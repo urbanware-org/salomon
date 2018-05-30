@@ -88,6 +88,12 @@ else
                 exclude_pattern="$1"
                 shift
             ;;
+            --export-file)
+                shift
+                export_file="$1"
+                export_log=1
+                shift
+            ;;
             -f|--filter)
                 shift
                 filter_pattern="$1"
@@ -242,6 +248,23 @@ else
             usage "The given input file path '$filepath' is not a file"
         fi
     done
+
+    # Export file
+    if [ $export_log -eq 1 ]; then
+        temp="The given export file path '$export_file'"
+        if [ -e "$export_file" ]; then
+            if [ -d "$export_file" ]; then
+                usage "$temp is not a file"
+            elif [ -f "$export_file" ]; then
+                usage "$temp already exists"
+            fi
+        fi
+
+        touch $export_file &>/dev/null
+        if [ $? -ne 0 ]; then
+            usage "$temp seems to be read-only"
+        fi
+    fi
 
     # Action to perform
     if [ $interactive -eq 1 ]; then
