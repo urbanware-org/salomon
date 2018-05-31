@@ -392,7 +392,19 @@ USAGE (salomon.sh)
         Since version 1.9.6 you can simultaneously write the output of SaLoMon
         into a file including the colors and highlighting.
 
-            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+        The purpose of this feature is that you have an exact copy of the
+        relevant output displayed on the screen without requiring the original
+        log file and the appropriate SaLoMon command-line arguments.
+
+        For example, to export the output of the following command
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log \
+                           -c /tmp/colors.cfg -f /tmp/filter.cfg
+
+        into the file '/tmp/export.log', the command would like this:
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log \
+                           -c /tmp/colors.cfg -f /tmp/filter.cfg \
                            --export-file /tmp/export.log
 
         Now, by using e. g. 'cat' you can display the exported data as seen in
