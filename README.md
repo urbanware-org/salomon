@@ -22,7 +22,7 @@ The main script was primarily built to monitor and analyze log as well as plain 
 
 These lines can also easily be colorized with user-defined colors (and additionally highlighted in different ways) depending on given criteria. For example, all lines which contain the word "error" can be displayed red.
 
-<img src="https://github.com/urbanware-org/salomon/blob/master/wiki/salomon_dialog_inputfile.png" alt="SaLoMon interactive dialog" align="right"/>
+<img src="https://raw.githubusercontent.com/urbanware-org/salomon/master/wiki/salomon_dialog_inputfile.png" alt="SaLoMon interactive dialog" align="right"/>
 
 There are various additional combinable features, for example giving a filter, exclude and remove pattern to filter and customize the output.
 
