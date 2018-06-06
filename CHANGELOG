@@ -3,7 +3,8 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
-        + Added a command-line argument to check if SaLoMon is up-to-date.
+        + Added a command-line argument (and feature) to check if SaLoMon is
+          up-to-date.
         + Added an optional command-line argument (and feature) to
           simultaneously export the SaLoMon output into a file including
           color and highlighting codes.
@@ -332,8 +333,8 @@ CHANGELOG (SaLoMon)
           SaLoMon script to wait after printing a colored line.
 
         * Revised the function to suppress the information header and footer
-          to the main SaLoMon script.
-        * Revised the monitoring function inside the the main SaLoMon script
+          in the main SaLoMon script.
+        * Revised the monitoring function inside the main SaLoMon script
           (also allows slowing down the shell output now).
 
         # Fixed the prompt bug when the monitoring process gets canceled on
