@@ -13,15 +13,19 @@ REQUIREMENTS (SaLoMon)
         - coreutils (version 2.85 or higher is recommended)
         - grep (version 2.18 or higher is recommended)
         - sed (version 2.50 or higher is recommended)
-        
+
     Optional package requirements:
-    
-        If you want to use the interactive dialog feature, the tool 'dialog'
-        (or 'cdialog') must be installed on the system. Notice that this
-        feature will not work with 'Xdialog' as SaLoMon is text-based user
-        interface intended.
-    
+
+        In order to use the interactive dialog feature, a dialog tool must be
+        installed, which usually is included by default in the system.
+
+        Supported tools are 'dialog' (or 'cdialog') and 'whiptail'.
+
             - dialog (version 1.1 or higher is recommended)
+            - whiptail (version 0.52.1 or higher is recommended)
+
+        Notice that this feature will not work with 'Xdialog' as SaLoMon is
+        text-based user interface intended.
 
     All the recommended versions of the required utilities mentioned above are
     the ones that have been used while developing SaLoMon. The project also
