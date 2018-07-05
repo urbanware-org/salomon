@@ -64,7 +64,6 @@ Further information can be found inside the `CONTACT` file.
 
 ## Useless facts
 
-*   The project name is an abbreviation for ***Sa****ne* ***Lo****g* *File* ***Mon****itor*.
-*   The first version uploaded on *GitHub* was *SaLoMon* 1.6.2 built on April 30<sup>th</sup>, 2015.
+Whoever cares can find them [here](../../wiki#useless-facts).
 
 [Top](#salomon-)
