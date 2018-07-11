@@ -12,7 +12,7 @@
 print_line() {
     indent=30
 
-    if [ "$1" = "" ]; then
+    if [ -z "$1" ]; then
         echo $em "${color_lightblue}*${color_none}"
     elif [ "$1" = "*" ]; then
         if [ "$em" = "-e" ]; then
@@ -77,11 +77,18 @@ print_output_header() {
         print_line
     fi
 
-    if [ "$color_file" = "" ]; then
+    if [ -z "$color_file" ]; then
         print_line "${color_white}Color file:" "${color_lightgray}None"
     else
         temp=$(readlink -f $color_file)
         print_line "${color_white}Color file:" "${color_yellow}$temp"
+    fi
+
+    if [ -z "$export_file" ]; then
+        print_line "${color_white}Export file:" "${color_lightgray}None"
+    else
+        temp=$(readlink -f $export_file)
+        print_line "${color_white}Export file:" "${color_yellow}$temp"
     fi
 
     print_line
@@ -244,7 +251,7 @@ print_output_line() {
     fi
 
     for color in $color_list; do
-        if [ "${colorize_[$color]}" = "" ]; then
+        if [ -z "${colorize_[$color]}" ]; then
             continue
         fi
 
@@ -354,4 +361,3 @@ print_output_line() {
 }
 
 # EOF
-
