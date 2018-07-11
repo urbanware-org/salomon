@@ -67,6 +67,20 @@ dialog_exclude_pattern() {
     predef_input_dialog "Exclude pattern" "$dlg_text" 13 60 "$1"
 }
 
+dialog_export_file() {
+    if [ $dialog_show_export -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
+    dlg_text=$(echo "Do you want to simultaneously export the output lines"\
+                    "into a file?\n\nFor details see section 7 inside the"\
+                    "documentation.\n\nEnter the desired output file path or"\
+                    "leave blank to skip:")
+
+    predef_input_dialog "Export output to file" "$dlg_text" 14 60 "$1"
+}
+
 dialog_filter_pattern() {
     if [ $dialog_show_filter -ne 1 ]; then
         user_input="$1"
@@ -434,4 +448,3 @@ predef_input_dialog() {
 }
 
 # EOF
-
