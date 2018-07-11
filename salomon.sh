@@ -249,23 +249,6 @@ else
         fi
     done
 
-    # Export file
-    if [ $export_log -eq 1 ]; then
-        temp="The given export file path '$export_file'"
-        if [ -e "$export_file" ]; then
-            if [ -d "$export_file" ]; then
-                usage "$temp is not a file"
-            elif [ -f "$export_file" ]; then
-                usage "$temp already exists"
-            fi
-        fi
-
-        touch $export_file &>/dev/null
-        if [ $? -ne 0 ]; then
-            usage "$temp seems to be read-only"
-        fi
-    fi
-
     # Action to perform
     if [ $interactive -eq 1 ]; then
         dialog_action "$action"
@@ -445,6 +428,33 @@ else
         remove=1
     fi
 
+    # Export file
+    if [ $interactive -eq 1 ]; then
+        dialog_export_file $export_file
+        export_file="$user_input"
+        export_log=1
+    fi
+
+    if [ $export_log -eq 1 ]; then
+        temp="The given export file path '$export_file'"
+        if [ -z "$export_file" ]; then
+            export_log=0
+        else
+            if [ -e "$export_file" ]; then
+                if [ -d "$export_file" ]; then
+                    usage "$temp is not a file"
+                elif [ -f "$export_file" ]; then
+                    usage "$temp already exists"
+                fi
+            fi
+
+            touch $export_file &>/dev/null
+            if [ $? -ne 0 ]; then
+                usage "$temp seems to be read-only"
+            fi
+        fi
+    fi
+
     # Slow down (delay)
     if [ $interactive -eq 1 ]; then
         dialog_slow_down "$slow"
@@ -528,4 +538,3 @@ else
 fi
 
 # EOF
-
