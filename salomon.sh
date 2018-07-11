@@ -227,7 +227,7 @@ else
             usage "The given dialog program is not supported"
         fi
 
-        if [ "$dialog_program" = "" ]; then
+        if [ -z "$dialog_program" ]; then
             usage "No supported dialog program found"
         fi
 

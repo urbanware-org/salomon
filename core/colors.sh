@@ -95,7 +95,7 @@ read_colors() {
             color_line="$color_temp"
         done < $temp_file
 
-        if [ "$color_line" = "" ]; then
+        if [ -z "$color_line" ]; then
             continue
         fi
 
