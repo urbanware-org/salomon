@@ -106,4 +106,3 @@ read_colors() {
 }
 
 # EOF
-

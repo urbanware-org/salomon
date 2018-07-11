@@ -135,4 +135,3 @@ echo $em "${color_lightgreen}Finished $script_mode process.${color_none}"
 echo
 
 # EOF
-

@@ -88,4 +88,3 @@ set_global_variables() {
 }
 
 # EOF
-
