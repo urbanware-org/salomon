@@ -7,6 +7,7 @@
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/salomon
+# GitLab: https://gitlab.com/urbanware-org/salomon
 # ============================================================================
 
 get_color_code() {
