@@ -23,7 +23,7 @@ USAGE (salomon.sh)
           3.2  Monitor the file
           3.3  Analyze the file
           3.4  Multiple input files
-          3.5  Non-existent imput file path
+          3.5  Non-existent input file path
         4.  Applying a filter
           4.1  Filter pattern
           4.2  Filter config file
@@ -238,7 +238,7 @@ USAGE (salomon.sh)
                 $ ./salomon.sh -a monitor -i /tmp/foo.log -i /tmp/bar.log \
                                -c /tmp/colors.cfg
 
-        3.5 Non-existent imput file path
+        3.5 Non-existent input file path
 
             In case a given input file path does not exist, SaLoMon also
             checks the default log file path '/var/log' for the file.
