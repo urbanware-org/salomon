@@ -241,14 +241,24 @@ else
         usage "No input file(s) given"
     fi
 
-    for file in $input_file; do
-        filepath=$(sed -e "s/^ *//g;s/ *$//g;s/\/\//\ /g" <<< $file)
-        if [ ! -e "$filepath" ]; then
-            usage "The given input file '$filepath' does not exist"
-        elif [ ! -f "$filepath" ]; then
-            usage "The given input file path '$filepath' is not a file"
+    for item in $input_file; do
+        file=$(sed -e "s/^ *//g;s/ *$//g;s/\/\//\ /g" <<< $item)
+        if [ -e "$file" ]; then
+            filepath="$file"
+        elif [ -e "/var/log/$file" ]; then
+            filepath="/var/log/$file"
+        else
+            usage "The given input file '$file' does not exist"
         fi
+
+        if [ ! -f "$filepath" ]; then
+            usage "The given input file path '$file' is not a file"
+        fi
+
+        temp="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
+        filelist="$temp"
     done
+    input_file="$filelist"
 
     # Action to perform
     if [ $interactive -eq 1 ]; then
