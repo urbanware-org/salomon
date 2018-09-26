@@ -226,11 +226,11 @@ print_output_line() {
         line_length=${#line_lower}
 
         while true; do
-            if [ $line_length -ge $term_width ]; then
-                line_length=$(( line_length - term_width + 1 ))
-            else
+            if [ $line_length -lt $term_width ]; then
                 break
             fi
+
+            line_length=$(( line_length - term_width + 1 ))
         done
 
         line_filler=$(( term_width - line_length ))
