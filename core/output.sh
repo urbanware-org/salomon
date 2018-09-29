@@ -260,14 +260,11 @@ print_output_line() {
         for item in $items; do
             if [[ "$line_lower" = *$item* ]]; then
                 color_match=1
-                break
+                get_color_code "$color"
             fi
         done
 
-        if [ $color_match -eq 1 ]; then
-            get_color_code "$color"
-            break
-        else
+        if [ $color_match -ne 1 ]; then
             item=""
         fi
     done
