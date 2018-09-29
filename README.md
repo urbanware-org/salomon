@@ -5,6 +5,7 @@
 *   [Details](#details)
 *   [Usage](#usage)
 *   [Requirements](#requirements)
+*   [Support the project](#support-the-project)
 *   [Contact](#contact)
 *   [Useless facts](#useless-facts)
 
@@ -49,6 +50,14 @@ In the `docs` sub-directory of the project, there are plain text files containin
 The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
+
+[Top](#salomon-)
+
+## Support the project
+
+You do not need to be a software developer to support and improve the *SaLoMon* project.
+
+For example, if you have created a color config file for a log file and want to share it, you can send it to me so I can add it to the included *SaLoMon* color config files.
 
 [Top](#salomon-)
 
