@@ -9,6 +9,8 @@ CHANGELOG (SaLoMon)
         * Revised the global config file (added an additional option for the
           export dialog when using interactive mode).
         * Revised the input file path validation (added additional path check).
+        * Revised the method of parsing color config files inside the output
+          core script.
         * Revised the output core script (negligible changes).
 
     Version 1.9.6 (2018-06-11)
