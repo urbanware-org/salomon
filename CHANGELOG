@@ -1,8 +1,9 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.9.7 (2018-10-02)
 
+        + Added additional color config files for various log files.
         + Added an interactive dialog for the feature to simultaneously export
           the SaLoMon output into a file.
 
