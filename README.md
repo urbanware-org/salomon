@@ -57,7 +57,9 @@ Furthermore, it uses popular shell utilities that should be pre-installed by def
 
 You do not need to be a software developer to support and improve the *SaLoMon* project.
 
-For example, if you have created a color config file for a log file and want to share it, you can send it to me so I can add it to the included *SaLoMon* color config files.
+For example, if you have created a color config file for a log file which you want to share, you can send it to me so I can add it to the color config files distributed with *SaLoMon*.
+
+This also applies to suggestions, requests and improvements for color config files.
 
 [Top](#salomon-)
 
