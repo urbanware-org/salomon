@@ -93,8 +93,9 @@ check_update() {
         rm -f $temp_file
         usage "Unable to retrieve update information"
     else
-        version_latest=$(grep "css-truncate-target" $temp_file |
-                         sed -e "s/<\/.*//g" | sed -e "s/.*>//g")
+        temp=$(grep "css-truncate-target" $temp_file | 
+               sed -e "s/<\/.*//g" | sed -e "s/.*>//g ")
+        version_latest=$(echo $temp | awk '{ print $1 }')
         rm -f $temp_file
     fi
 
