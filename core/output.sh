@@ -260,9 +260,12 @@ print_output_line() {
         items=$temp
     done
 
+    color_match=0
     for item in $items; do
         item_color=$(grep "$item" $color_file | tail -n1 | awk '{ print $1 }')
-        if [[ "$line_lower" = *$item* ]]; then
+        if [ -z "$item_color" ]; then
+            break
+        elif [[ "$line_lower" = *$item* ]]; then
             color_match=1
             break
         fi
