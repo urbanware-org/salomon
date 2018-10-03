@@ -354,7 +354,14 @@ print_output_line() {
         fi
     fi
 
-    echo $em "$output"
+    if [ "$color_code" = "999" ]; then
+        temp=$(sed -e "s/^$color_code//g" <<< "$output")
+        output=$(sed -e "s/\\\e\[.*//g" <<< "$temp")
+        rnd_colors "$output"
+    else
+        echo $em "$output"
+    fi
+
     if [ $export_log -eq 1 ]; then
         echo $em "$output" >> $export_file
     fi
