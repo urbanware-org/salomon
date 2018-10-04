@@ -93,7 +93,7 @@ check_update() {
         rm -f $temp_file
         usage "Unable to retrieve update information"
     else
-        temp=$(grep "css-truncate-target" $temp_file | 
+        temp=$(grep "css-truncate-target" $temp_file |
                sed -e "s/<\/.*//g" | sed -e "s/.*>//g ")
         version_latest=$(echo $temp | awk '{ print $1 }')
         rm -f $temp_file
@@ -130,7 +130,7 @@ prepare_path() {
         if [ $? -ne 0 ]; then
             break
         fi
-        
+
         temp=$(sed -e "s/\/\//\//g" <<< $path_input)
         path_input=$temp
     done
