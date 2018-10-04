@@ -287,7 +287,7 @@ usage() {
     echo -e "${yl}Further information and usage examples can be found inside"\
             "the documentation"
     echo -e "file for this script.${no}"
-        if [ ! -z "$error_msg" ]; then
+    if [ ! -z "$error_msg" ]; then
         if [ $interactive -eq 1 ] && [ ! -z $dialog_program ]; then
             predef_error_dialog "$error_msg"
             clear
