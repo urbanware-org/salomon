@@ -282,7 +282,7 @@ else
             usage "The action '$action' does not exist"
         fi
     else
-        usage "No action given"
+        usage "No action given (must be either 'analyze' or 'monitor')"
     fi
 
     # Prompt before exit
