@@ -55,34 +55,57 @@ confirm() {
     fi
 }
 
-error() {
+usage() {
+    error_msg=$1
+    given_arg=$2
+
+    echo "usage: salomon.sh [-i] [-u]"
     echo
-    if [ -z "$2" ]; then
-        echo $em "${color_lightred}error:${color_none} $1"
+    echo "  -i, --install         install SaLoMon"
+    echo "  -u, --uninstall       uninstall SaLoMon"
+    echo "  -?, -h, --help        print this help message and exit"
+    echo
+    echo "Further information and usage examples can be found inside the"\
+         "documentation"
+    echo "file for this script."
+    if [ ! -z "$error_msg" ]; then
+        echo
+        if [ -z "$given_arg" ]; then
+            echo $em "${color_lightred}error:${color_none} $error_msg"
+        else
+            echo $em "${color_lightred}error:${color_none} $error_msg"\
+                     "'${color_yellow}${given_arg}${color_none}'"
+        fi
+        exit 1
     else
-        echo $em "${color_lightred}error:${color_none} $1"\
-                 "'${color_yellow}${2}${color_none}'"
+        exit 0
     fi
-    echo
-    exit 1
 }
 
-if [ "$(whoami)" != "root" ]; then
-    error "Superuser privileges are required"
-fi
-
 if [ $# -gt 1 ]; then
-    error "Too many arguments"
+    usage "Too many arguments"
+elif [ $# -lt 1 ]; then
+    usage "Missing arguments"
 fi
 
-if [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
-    script_mode="uninstall"
-    script_action="${color_lightred}${script_mode}${color_none}"
-elif [ "$1" = "--install" ] || [ "$1" = "-i" ] || [ -z "$1" ]; then
+if [ "$1" = "--install" ] || [ "$1" = "-i" ] || [ -z "$1" ]; then
     script_mode="install"
     script_action="${color_lightgreen}${script_mode}${color_none}"
+elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
+    script_mode="uninstall"
+    script_action="${color_lightred}${script_mode}${color_none}"
+elif [ "$1" = "-?" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    usage
 else
-    error "Invalid argument" "$1"
+    usage "Invalid argument" "$1"
+fi
+
+if [ "$(whoami)" != "root" ]; then
+    error="${color_lightred}error:${color_none}"
+    echo
+    echo -e "$error Superuser privileges are required"
+    echo
+    exit 1
 fi
 
 if [ ! -d "$symlink_sh" ]; then
