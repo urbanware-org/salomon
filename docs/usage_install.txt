@@ -21,14 +21,8 @@ USAGE (install.sh)
         2.1 Overview of all command-line arguments
 
             The script requires command-line arguments to operate. You can get
-            an overview of all arguments available, by simply running the main
+            an overview of all arguments available, by simply running the
             script with the '--help' argument.
-
-            Running it without any arguments will implicitly install SaLoMon
-            and running it explicitly with the argument '--uninstall' will
-            remove the project again.
-
-            Details can be found below.
 
         2.2 Important notice
 
@@ -56,11 +50,11 @@ USAGE (install.sh)
 
         Either as normal user via 'sudo'
 
-            $ sudo ./install.sh
+            $ sudo ./install.sh -i
 
         or directly when logged in as root:
 
-            # ./install.sh
+            # ./install.sh -i
 
     4. Run the installed SaLoMon
 
