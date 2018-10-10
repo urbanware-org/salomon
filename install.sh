@@ -88,7 +88,7 @@ elif [ $# -lt 1 ]; then
     usage "Missing arguments"
 fi
 
-if [ "$1" = "--install" ] || [ "$1" = "-i" ] || [ -z "$1" ]; then
+if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
     script_mode="install"
     script_action="${color_lightgreen}${script_mode}${color_none}"
 elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
