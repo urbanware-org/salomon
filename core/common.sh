@@ -264,6 +264,9 @@ usage() {
     echo "                        same as '--highlight-matches' and with"\
                                  "to uppercase"
     echo "                        converted letters"
+    echo "  --head HEAD           only return the given number of first"\
+                                 "lines of the"
+    echo "                        input file"
     echo "  --ignore-case         ignore the case of the given filter pattern"
     echo "  --interactive         same as '--dialogs'"
     echo "  --no-info             do not display the information header and"\
@@ -278,6 +281,9 @@ usage() {
                                  "file)"
     echo "  -s, --slow            slow down the process (decreases CPU"\
                                  "usage)"
+    echo "  --tail TAIL           only return the given number of last lines"\
+                                 "of the"
+    echo "                        input file"
     echo "  --version             print the version number and exit"
     echo "  --version-update      check for a newer version"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
