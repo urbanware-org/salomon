@@ -31,6 +31,7 @@ set_global_variables() {
     export_log=0
     follow=1
     header=1
+    head_lines=0
     highlight_all=0
     highlight_cut_off=0
     highlight_matches=0
@@ -38,7 +39,7 @@ set_global_variables() {
     interactive=0
     prompt=0
     slow=0
-    start_line=1
+    tail_lines=0
     wait_match=0
 
     color_code=""
