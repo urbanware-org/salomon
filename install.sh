@@ -33,7 +33,6 @@ set_global_variables
 shell_precheck
 
 script_mode=""
-symlink_sh="/usr/local/bin/"
 target_dir="/opt/salomon"
 target="${color_yellow}${target_dir}${color_none}"
 yesno="${color_yellow}Y${color_none}/${color_yellow}N${color_none}"
@@ -108,7 +107,10 @@ if [ "$(whoami)" != "root" ]; then
     exit 1
 fi
 
-if [ ! -d "$symlink_sh" ]; then
+grep "\/usr\/local\/bin" <<< $PATH &>/dev/null
+if [ $? -eq 0 ]; then
+    symlink_sh="/usr/local/bin/"
+else
     symlink_sh="/usr/bin/"
 fi
 
