@@ -445,6 +445,7 @@ else
     fi
 
     # Head and tail
+    input_count=$(wc -w <<< "$input_file")
     re='^[0-9]+$'
     if [[ ! $head_lines =~ $re ]]; then
         usage "The argument '--head' expects a numeric value"
@@ -452,8 +453,15 @@ else
     if [[ ! $tail_lines =~ $re ]]; then
         usage "The argument '--tail' expects a numeric value"
     fi
+
     if [ $head_lines -gt 0 ] && [ $tail_lines -gt 0 ]; then
         usage "Use either '--head' or '--tail', not both at the same time"
+    elif [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
+        if [ $input_count -gt 1 ]; then
+           temp="'--head' or '--tail'"
+           usage \
+               "When using $temp only one input file can be given"
+        fi
     fi
 
     # Export file
