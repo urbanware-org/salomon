@@ -197,7 +197,7 @@ usage() {
         yl=$color_none
     fi
 
-    echo -e "${lc}usage: ${yl}$script_file -a {analyze,monitor} -i"\
+    echo -e "${lc}usage: ${no}$script_file -a {analyze,monitor} -i"\
                               "INPUT_FILE [-c COLOR_FILE]"
     echo -e "                  [-d DELAY] [-e EXCLUDE] [-f FILTER]"\
                               "[--highlight-all]"
