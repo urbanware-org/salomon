@@ -42,17 +42,21 @@ analyze_input_file() {
 
     timestamp=$(date "+%Y%m%d%H%M%S%N")
     temp_file="$(dirname $(mktemp -u))/salomon_${timestamp}.tmp"
-    paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
+
+    if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
+        paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
+    elif [ $head_lines -gt 0 ]; then
+        paste -d "\n" $input_file_list | head -n $head_lines | grep -v "^$" \
+              > $temp_file
+    elif [ $tail_lines -gt 0 ]; then
+        paste -d "\n" $input_file_list | tail -n $tail_lines | grep -v "^$" \
+              > $temp_file
+    fi
     input_file=$temp_file
 
     count=0
     while read line; do
-        if [ $start_line -gt 1 ]; then
-            if [ $count -lt $start_line ]; then
-                count=$(( count + 1 ))
-                continue
-            fi
-        fi
+        count=$(( count + 1 ))
 
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
