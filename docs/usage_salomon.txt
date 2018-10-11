@@ -416,7 +416,7 @@ USAGE (salomon.sh)
         Notice that this does not work with multiple input files.
 
         There is also a very similar feature to return a certain amount of
-        first lines of the input file, see section 8 for details.
+        last lines of the input file, see section 8 for details.
 
     8. Tail feature
 
