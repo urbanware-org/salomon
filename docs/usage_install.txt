@@ -42,8 +42,8 @@ USAGE (install.sh)
 
         The project will be installed to '/opt/salomon' and a symbolic link to
         its main script will be created in '/usr/local/bin' by default. If the
-        directory '/usr/local/bin' does not exist, the symbolic link will be
-        created inside '/usr/bin' instead.
+        directory is not part of the path related environment variable, the
+        symbolic link will be created inside '/usr/bin' instead.
 
         Now, to install, type one of the following commands, depending on the
         way you prefer.
