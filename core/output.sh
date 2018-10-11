@@ -32,15 +32,17 @@ print_line() {
 }
 
 print_line_count() {
-    if [ ! $count_lines -eq $count_total ]; then
-        if [ $count_lines -eq 0 ]; then
-            count=$(printf "%+8s" "0")
-            temp="${color_white}Lines returned: ${color_lightgray}"
-            print_line "${temp}${count} (due to the given filter)"
-        else
-            count=$(printf "%+8s" $count_lines)
-            temp="${color_white}Lines returned: ${color_yellow}${count}"
-            print_line "$temp ${color_lightgray}(due to the given filter)"
+    if [ $filter -gt 0 ]; then
+        if [ ! $count_lines -eq $count_total ]; then
+            if [ $count_lines -eq 0 ]; then
+                count=$(printf "%+8s" "0")
+                temp="${color_white}Lines returned: ${color_lightgray}"
+                print_line "${temp}${count} (due to the given filter)"
+            else
+                count=$(printf "%+8s" $count_lines)
+                temp="${color_white}Lines returned: ${color_yellow}${count}"
+                print_line "$temp ${color_lightgray}(due to the given filter)"
+            fi
         fi
     fi
 
