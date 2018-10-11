@@ -247,7 +247,7 @@ usage() {
     echo "  --export-file EXPORT_FILE"
     echo "                        simultaneously export the output into a file"\
                                  "(for"
-    echo "                        details see section 7 inside the"\
+    echo "                        details see section 9 inside the"\
                                  "documentation file)"
     echo "  -f FILTER, --filter FILTER"
     echo "                        print the lines that contain the given"\

@@ -75,7 +75,7 @@ dialog_export_file() {
     fi
 
     dlg_text=$(echo "Do you want to simultaneously export the output lines"\
-                    "into a file?\n\nFor details see section 7 inside the"\
+                    "into a file?\n\nFor details see section 9 inside the"\
                     "documentation.\n\nEnter the desired output file path or"\
                     "leave blank to skip:")
 
