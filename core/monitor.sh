@@ -12,7 +12,7 @@
 
 monitor_input_file() {
     check_patterns
-    echo "OK"
+
     spaces=0
     for file in $input_file; do
         temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
