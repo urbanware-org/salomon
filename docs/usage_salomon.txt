@@ -29,7 +29,8 @@ USAGE (salomon.sh)
           4.2  Filter config file
         5.  Exclude lines
         6.  Remove certain strings
-        
+        7.  Head feature
+        8.  Tail feature        
         9.  Export output into a file
 
     1. Definition
@@ -401,6 +402,36 @@ USAGE (salomon.sh)
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
                            -r "example for ;foo;bar"
+
+    7. Head feature
+
+        When analyzing large files it may take a while until the whole file
+        has been printed on the output. For example, if you just need the
+        first 30 lines of a log file, you can use the '--head' command-line
+        argument:
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+                           --head 30
+
+        Notice that this does not work with multiple input files.
+
+        There is also a very similar feature to return a certain amount of
+        first lines of the input file, see section 8 for details.
+
+    8. Tail feature
+
+        When analyzing large files it may take a while until the whole file
+        has been printed on the output. For example, if you just need the
+        last 30 lines of a log file, you can use the '--head' command-line
+        argument:
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+                           --tail 30
+
+        Notice that this does not work with multiple input files.
+
+        There is also a very similar feature to return a certain amount of
+        first lines of the input file, see section 7 for details.
 
     9. Export output into a file
 
