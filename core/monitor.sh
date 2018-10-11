@@ -12,7 +12,7 @@
 
 monitor_input_file() {
     check_patterns
-
+    echo "OK"
     spaces=0
     for file in $input_file; do
         temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
@@ -40,7 +40,7 @@ monitor_input_file() {
 
     done
 
-    tail -n $start_line -F $input_file_list 2>/dev/null | while read line; do
+    tail -F $input_file_list 2>/dev/null | while read line; do
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
             sleep 0.$delay
