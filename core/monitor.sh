@@ -40,7 +40,7 @@ monitor_input_file() {
 
     done
 
-    tail -n $start_line -F $input_file_list 2>/dev/null| while read line; do
+    tail -n $start_line -F $input_file_list 2>/dev/null | while read line; do
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
             sleep 0.$delay
