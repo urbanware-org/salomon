@@ -115,6 +115,11 @@ else
                 highlight_upper=1
                 shift
             ;;
+            --head)
+                shift
+                head_lines="$1"
+                shift
+            ;;
             --ignore-case)
                 arg_case="-i"
                 shift
@@ -140,9 +145,9 @@ else
                 slow=1
                 shift
             ;;
-            --start-line)
+            --tail)
                 shift
-                start_line="$1"
+                tail_lines="$1"
                 shift
             ;;
             --version)
@@ -437,6 +442,12 @@ else
                            -e "s/\ /#/g" \
                            -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
+    fi
+
+    # Head and tail
+
+    if [ $head_lines -gt 0 ] && [ $tail_lines -gt 0 ]; then
+        usage "Use either '--head' or '--tail', not both at the same time"
     fi
 
     # Export file
