@@ -453,7 +453,9 @@ else
     if [[ ! $tail_lines =~ $re ]]; then
         usage "The argument '--tail' expects a numeric value"
     fi
-
+    if [ $head_lines -gt 0 ] && [ $follow = 1 ]; then
+        usage "The '--head' argument cannot be used with monitoring mode"
+    fi
     if [ $head_lines -gt 0 ] && [ $tail_lines -gt 0 ]; then
         usage "Use either '--head' or '--tail', not both at the same time"
     elif [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
