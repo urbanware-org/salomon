@@ -165,12 +165,10 @@ else
 
             # Alternatives to the required arguments
             --analyze)
-                shift
                 action="analyze"
                 shift
             ;;
             --monitor)
-                shift
                 action="monitor"
                 shift
             ;;
