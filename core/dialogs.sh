@@ -98,6 +98,18 @@ dialog_filter_pattern() {
     predef_input_dialog "Filter pattern" "$dlg_text" 17 60 "$1"
 }
 
+dialog_head_lines() {
+    if [ $dialog_show_head_lines -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
+    dlg_text=$(echo "Do you only want to display a certain amount of first"\
+                    "lines of the given input file?\n\nEnter the desired"\
+                    "amount or set it to '0' to skip:")
+    predef_input_dialog "Number of first lines" "$dlg_text" 11 60 "$1"
+}
+
 dialog_highlight() {
     def_item="1"
     dlg_text="Do you want to highlight the output?"
@@ -329,6 +341,24 @@ dialog_slow_down() {
         whiptail --title "Slow down output" --yes-button "Yes" \
                  --no-button "No" $def_button --yesno "$dlg_text" 7 60
     fi
+}
+
+dialog_tail_lines() {
+    if [ $dialog_show_tail_lines -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
+    if [ $follow -eq 1 ]; then
+        dlt="also"
+    else
+        dlt="only"
+    fi
+
+    dlg_text=$(echo "Do you $dlt want to display a certain amount of last"\
+                    "lines of the given input file?\n\nEnter the desired"\
+                    "amount or set it to '0' to skip:")
+    predef_input_dialog "Number of last lines" "$dlg_text" 11 60 "$1"
 }
 
 dialog_wait_on_match() {

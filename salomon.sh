@@ -455,6 +455,25 @@ else
     fi
 
     # Head and tail
+    if [ $interactive -eq 1 ]; then
+        if [ $follow -eq 0 ]; then
+            dialog_head_lines "$head_lines"
+            if [ -z "$user_input" ]; then
+                head_lines=0
+            else
+                head_lines="$user_input"
+            fi
+        fi
+        if [ $head_lines -eq 0 ]; then
+            dialog_tail_lines "$tail_lines"
+            if [ -z "$user_input" ]; then
+                tail_lines=0
+            else
+                tail_lines="$user_input"
+            fi
+        fi
+    fi
+
     input_count=$(wc -w <<< "$input_file")
     re='^[0-9]+$'
     if [[ ! $head_lines =~ $re ]]; then
