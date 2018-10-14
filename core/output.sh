@@ -176,6 +176,23 @@ print_output_header() {
         fi
     fi
 
+    if [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
+        print_line
+        if [ $head_lines -gt 0 ]; then
+            temp="${color_white}First lines (only):"
+            print_line "$temp" "${color_yellow}$head_lines"
+        fi
+        if [ $tail_lines -gt 0 ]; then
+            if [ $follow -eq 1 ]; then
+                temp="${color_white}Last lines (also):"
+                print_line "$temp" "${color_yellow}$tail_lines"
+            else
+                temp="${color_white}Last lines (only):"
+                print_line "$temp" "${color_yellow}$tail_lines"
+            fi
+        fi
+    fi
+
     print_line
     print_line "${ce}"
     if [ "$em" = "-e" ]; then
