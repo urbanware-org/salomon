@@ -1,6 +1,24 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        + Added a command-line argument (and feature) to return a certain
+          amount of first lines (head) of the input file.
+        + Added another command-line argument (and feature) to return a
+          certain amount of last lines (tail) of the input file.
+        + Added the alternative command-line arguments '--analyze' and
+          '--monitor' which can be used instead of '-a' followed by the
+          action.
+
+        * Revised the installation script (significant changes).
+        * Revised the main SaLoMon script (negligible changes).
+
+        # Fixed the symlink bug inside the installation scipt (symlinks to the
+          main SaLoMon script did not work when '/usr/local/bin' did not exist
+          inside the global path variable '$PATH').
+        # Fixed the update check bug inside the main SaLoMon script.
+
     Version 1.9.7 (2018-10-02)
 
         + Added additional color config files for various log files.
