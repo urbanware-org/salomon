@@ -70,10 +70,10 @@ usage() {
     if [ ! -z "$error_msg" ]; then
         echo
         if [ -z "$given_arg" ]; then
-            echo $em "${color_lightred}error:${color_none} $error_msg"
+            echo $em "${color_lightred}error:${color_none} $error_msg."
         else
             echo $em "${color_lightred}error:${color_none} $error_msg"\
-                     "'${color_yellow}${given_arg}${color_none}'"
+                     "'${color_yellow}${given_arg}${color_none}'."
         fi
         exit 1
     else
