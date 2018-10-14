@@ -163,6 +163,18 @@ else
                 shift
             ;;
 
+            # Alternatives to the required arguments
+            --analyze)
+                shift
+                action="analyze"
+                shift
+            ;;
+            --monitor)
+                shift
+                action="monitor"
+                shift
+            ;;
+
             # Backwards compatibility arguments (still existing, but no longer
             # listed inside the usage information)
             --config-file)
@@ -287,7 +299,7 @@ else
             usage "The action '$action' does not exist"
         fi
     else
-        usage "No action given (must be either 'analyze' or 'monitor')"
+        usage "No action given (must either be '--analyze' or '--monitor')"
     fi
 
     # Prompt before exit

@@ -217,6 +217,9 @@ USAGE (salomon.sh)
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
 
+            Alternatively, you can also give the '--monitor' command-line
+            argument instead of '-a monitor'.
+
         3.3 Analyze the file
 
             Instead of monitoring a file, it is also possible to analyze it.
@@ -228,6 +231,9 @@ USAGE (salomon.sh)
 
                 $ ./salomon.sh -a analyze -i /tmp/foobar.log \
                                -c /tmp/colors.cfg
+
+            Alternatively, you can also give the '--analyze' command-line
+            argument instead of '-a analyze'.                               
 
         3.4 Multiple input files
 

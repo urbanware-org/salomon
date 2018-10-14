@@ -214,7 +214,9 @@ usage() {
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
     echo "                        action (processing mode) to perform with"\
                                  "the given"
-    echo "                        input file(s)"
+    echo "                        input file(s) (this can also be given via"\
+                                 "'--anaylze'"
+    echo "                        'or '--monitor' instead)"
     echo "  -i INPUT_FILE, --input-file INPUT_FILE"
     echo "                        input file to analyze or monitor (can be"\
                                  "given"
