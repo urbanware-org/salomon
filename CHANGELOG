@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.10.0 (2018-10-16)
 
         + Added a command-line argument (and feature) to return a certain
           amount of first lines (head) of the input file.
@@ -11,7 +11,9 @@ CHANGELOG (SaLoMon)
           '--monitor' which can be used instead of '-a' followed by the
           action.
 
-        * Revised the installation script (significant changes).
+        * Revised the color config files (added additional terms).
+        * Revised the installation script (requires an explicit argument and
+          does not implicitly install SaLoMon anymore).
         * Revised the main SaLoMon script (negligible changes).
 
         # Fixed the symlink bug inside the installation scipt (symlinks to the
