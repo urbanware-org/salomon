@@ -6,6 +6,7 @@ USAGE (compat.sh)
         1.  Definition
         2.  Shell requirements
         3.  Compatibility check
+        4.  Exit codes
 
     1. Definition
 
@@ -36,4 +37,14 @@ USAGE (compat.sh)
         without any arguments. There are no command-line arguments anyway.
 
             $ ./compat.sh
+
+    4. Exit codes
+
+        If you want to redirect or suppress the standard output, you can
+        evaluate the exit codes of the script as follows:
+
+            0 - Compatibility check succeeded
+            1 - Bash shell missing or not used to execute the script
+            2 - Compatibility check failed
+            3 - Compatibility check succeeded, except for optional tools
 

@@ -96,6 +96,7 @@ check_whiptail="${color_yellow}MISSING${color_none}"
 check_echo="${color_lightgreen}SUCCESS${color_none}"
 check_function="${color_lightred}FAILURE${color_none}"
 check_failed=0
+check_missing=0
 check_overall="${color_lightred}FAILURE${color_none}"
 line="................"
 
@@ -116,6 +117,8 @@ fi
 command -v dialog &>/dev/null
 if [ $? -eq 0 ]; then
     check_dialog="${color_lightgreen}SUCCESS${color_none}"
+else
+    check_missing=1
 fi
 
 command -v dirname &>/dev/null
@@ -177,6 +180,8 @@ fi
 command -v whiptail &>/dev/null
 if [ $? -eq 0 ]; then
     check_whiptail="${color_lightgreen}SUCCESS${color_none}"
+else
+    check_missing=1
 fi
 
 echo "#!/bin/bash" > $script_temp
@@ -193,8 +198,14 @@ fi
 
 if [ $check_failed -eq 0 ]; then
     check_overall="${color_lightgreen}SUCCESS${color_none}"
+    if [ $check_missing -eq 0 ]; then
+        return_code=0
+    else
+        return_code=3
+    fi
 else
     check_overall="${color_lightred}FAILURE${color_none}"
+    return_code=2
 fi
 
 echo
@@ -233,5 +244,7 @@ echo $em "Overall status .......................................$line"\
 echo
 
 rm -f $script_temp
+
+exit $return_code
 
 # EOF
