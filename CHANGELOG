@@ -16,8 +16,8 @@ CHANGELOG (SaLoMon)
           does not implicitly install SaLoMon anymore).
         * Revised the main SaLoMon script (negligible changes).
 
-        # Fixed the symlink bug inside the installation scipt (symlinks to the
-          main SaLoMon script did not work when '/usr/local/bin' did not exist
+        # Fixed the symlink bug inside the installation script (symlinks to
+          main SaLoMon script did not work when '/usr/local/bin' was missing
           inside the global path variable '$PATH').
         # Fixed the update check bug inside the main SaLoMon script.
 
