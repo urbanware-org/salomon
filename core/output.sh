@@ -241,18 +241,18 @@ print_output_line() {
     fi
 
     if [ $highlight_cut_off = 0 ]; then
-        term_width=$(( $(tput cols) + 1 ))
+        term_cols=$(( $(tput cols) + 1 ))
         line_length=${#line_lower}
 
         while true; do
-            if [ $line_length -lt $term_width ]; then
+            if [ $line_length -lt $term_cols ]; then
                 break
             fi
 
-            line_length=$(( line_length - term_width + 1 ))
+            line_length=$(( line_length - term_cols + 1 ))
         done
 
-        line_filler=$(( term_width - line_length ))
+        line_filler=$(( term_cols - line_length ))
         line_spaces=$(seq -s " " ${line_filler} | tr -d '[:digit:]')
     else
         line_spaces=""
