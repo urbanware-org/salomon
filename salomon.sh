@@ -134,7 +134,8 @@ else
             ;;
             -p|--pause)
                 shift
-                pause="$1"
+                pause_lines="$1"
+                pause=1
                 shift
             ;;
             -p|--prompt)
@@ -503,8 +504,11 @@ else
     fi
 
     # Pause
+    if [ $pause -eq 1 ] && [ $follow -eq 1 ]; then
+        usage "The '--pause' argument cannot be used with monitoring mode"
+    fi
     re='^[0-9]+$'
-    if [[ ! $pause =~ $re ]]; then
+    if [[ ! $pause_lines =~ $re ]]; then
         usage "The argument '--pause' expects a numeric value"
     fi
 
