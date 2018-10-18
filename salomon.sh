@@ -134,7 +134,7 @@ else
             ;;
             -p|--pause)
                 shift
-                pause_count="$1"
+                pause="$1"
                 shift
             ;;
             -p|--prompt)
@@ -500,6 +500,12 @@ else
            usage \
                "When using $temp only one input file can be given"
         fi
+    fi
+
+    # Pause
+    re='^[0-9]+$'
+    if [[ ! $pause =~ $re ]]; then
+        usage "The argument '--pause' expects a numeric value"
     fi
 
     # Export file
