@@ -132,6 +132,11 @@ else
                 header=0
                 shift
             ;;
+            -p|--pause)
+                shift
+                pause_count="$1"
+                shift
+            ;;
             -p|--prompt)
                 prompt=1
                 shift
