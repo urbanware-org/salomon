@@ -37,6 +37,7 @@ set_global_variables() {
     highlight_matches=0
     highlight_upper=0
     interactive=0
+    pause=0
     prompt=0
     slow=0
     tail_lines=0
