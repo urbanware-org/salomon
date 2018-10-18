@@ -407,7 +407,9 @@ else
         fi
     fi
 
-    highlight_params=$(( highlight_all + highlight_matches + highlight_upper ))
+    highlight_params=$((
+        highlight_all + highlight_matches + highlight_upper ))
+
     if [ $highlight_params -gt 1 ]; then
         usage \
             "Multiple highlighting arguments given (only one allowed)"
