@@ -57,6 +57,13 @@ analyze_input_file() {
     count=0
     while read line; do
         count=$(( count + 1 ))
+        term_lines=$(tput lines)
+
+        if [ $pause -gt 0 ]; then
+            if [ $(( count % pause )) -eq 0 ]; then
+                pause_output
+            fi
+        fi
 
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
