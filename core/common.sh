@@ -199,12 +199,15 @@ usage() {
 
     echo -e "${lc}usage: ${no}$script_file -a {analyze,monitor} -i"\
                               "INPUT_FILE [-c COLOR_FILE]"
-    echo -e "                  [-d DELAY] [-e EXCLUDE] [-f FILTER]"\
-                              "[--highlight-all]"
-    echo -e "                  [--highlight-matches] [--highlight-upper]"\
-                              "[--ignore-case]"
-    echo -e "                  [--no-info] [-p] [-r REMOVE] [-s] [--version]"\
-                              "[-w WAIT]"
+    echo -e "                  [--cut-off] [-d DELAY] [--dialogs]"\
+                              "[-e EXCLUDE]"
+    echo -e "                  [--export-file EXPORT_FILE] [-f FILTER]"\
+                              "[--head HEAD]"
+    echo -e "                  [--highlight-all] [--highlight-matches]"\
+                              "[--highlight-upper]"
+    echo -e "                  [--ignore-case] [--no-info] [-p]"\
+                              "[--pause PAUSE] [-r REMOVE]"
+    echo -e "                  [-s] [--tail TAIL] [--version] [-w WAIT]"
     echo
     echo -e "${lg}Monitor and analyze log and plain text files with various"\
             "filter and"
@@ -247,8 +250,8 @@ usage() {
                                  "details see"
     echo "                        section 5 inside the documentation file)"
     echo "  --export-file EXPORT_FILE"
-    echo "                        simultaneously export the output into a file"\
-                                 "(for"
+    echo "                        simultaneously export the output into a"\
+                                 "file (for"
     echo "                        details see section 9 inside the"\
                                  "documentation file)"
     echo "  -f FILTER, --filter FILTER"
@@ -275,7 +278,8 @@ usage() {
                                  "footer"
     echo "  -p, --prompt          prompt before exit (in case the process"\
                                  "gets canceled"
-    echo "                        on user request)"
+    echo "  --pause PAUSE         Pause output after a certain amount of"\
+                                 "lines"
     echo "  -r REMOVE, --remove REMOVE"
     echo "                        remove a certain string from each line"\
                                  "(for details"
