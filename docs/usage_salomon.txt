@@ -29,8 +29,8 @@ USAGE (salomon.sh)
           4.2  Filter config file
         5.  Exclude lines
         6.  Remove certain strings
-        7.  Head feature
-        8.  Tail feature
+        7.  Head and tail feature
+        8.  Pause output
         9.  Export output into a file
 
     1. Definition
@@ -409,35 +409,46 @@ USAGE (salomon.sh)
             $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
                            -r "example for ;foo;bar"
 
-    7. Head feature
+    7. Head and tail feature
+        
+        Notice that both features do not work with multiple input files.
 
-        When analyzing large files it may take a while until the whole file
-        has been printed on the output. For example, if you just need the
-        first 30 lines of a log file, you can use the '--head' command-line
-        argument:
+        7.1 Head feature
 
-            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
-                           --head 30
+            When analyzing large files it may take a while until the whole
+            file has been printed on the output. For example, if you just
+            need the first 30 lines of a log file, you can use the '--head'
+            command-line argument:
 
-        Notice that this does not work with multiple input files.
+                $ ./salomon.sh -a monitor -i /tmp/foobar.log \
+                               -c /tmp/colors.cfg --head 30
 
-        There is also a very similar feature to return a certain amount of
-        last lines of the input file, see section 8 for details.
+        7.2 Tail feature
 
-    8. Tail feature
+            When analyzing large files it may take a while until the whole
+            file has been printed on the output. For example, if you just
+            need the last 30 lines of a log file, you can use the '--tail'
+            command-line argument:
 
-        When analyzing large files it may take a while until the whole file
-        has been printed on the output. For example, if you just need the
-        last 30 lines of a log file, you can use the '--head' command-line
-        argument:
+                $ ./salomon.sh -a monitor -i /tmp/foobar.log \
+                               -c /tmp/colors.cfg --tail 30
 
-            $ ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
-                           --tail 30
+    8. Pause output
 
-        Notice that this does not work with multiple input files.
+        When analyzing large files, the output can be very cluttered. With
+        the '--pause' argument you can pause the output either after user-
+        defined amount of lines or automatically by determining the number
+        of lines of the terminal SaLoMon is currently running in.
 
-        There is also a very similar feature to return a certain amount of
-        first lines of the input file, see section 7 for details.
+        For example, to pause the output after 30 lines, the command would
+        look like this:
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause 30
+
+        When you use the value 0, the script determines the height of the
+        terminal (number of lines).
+
+            $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause 0
 
     9. Export output into a file
 
