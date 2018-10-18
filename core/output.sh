@@ -201,12 +201,12 @@ print_output_header() {
         temp="* "
     fi
 
-    cl_c=${color_lightcyan}
-    cl_g=${color_lightgreen}
-    cl_l=${color_lightgray}
-    cl_r=${color_lightred}
-    cl_w=${color_white}
-    cl_y=${color_yellow}
+    cl_c=$color_lightcyan
+    cl_g=$color_lightgreen
+    cl_l=$color_lightgray
+    cl_r=$color_lightred
+    cl_w=$color_white
+    cl_y=$color_yellow
 
     echo $em "${temp}${cl_w}Press"\
              "${cl_c}Ctrl${cl_l}+${cl_c}C"\
