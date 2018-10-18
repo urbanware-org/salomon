@@ -30,6 +30,8 @@ USAGE (salomon.sh)
         5.  Exclude lines
         6.  Remove certain strings
         7.  Head and tail feature
+          7.1  Head feature
+          7.2  Tail feature
         8.  Pause output
         9.  Export output into a file
 
