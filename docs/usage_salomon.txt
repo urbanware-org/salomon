@@ -30,7 +30,7 @@ USAGE (salomon.sh)
         5.  Exclude lines
         6.  Remove certain strings
         7.  Head feature
-        8.  Tail feature        
+        8.  Tail feature
         9.  Export output into a file
 
     1. Definition
