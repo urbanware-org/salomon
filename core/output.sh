@@ -11,15 +11,16 @@
 # ============================================================================
 
 pause_output() {
-  cl_g=$color_lightgreen
-  cl_r=$color_lightred
-  cl_y=$color_yellow
-  cl_n=$color_none
+    cl_g=$color_lightgreen
+    cl_r=$color_lightred
+    cl_y=$color_yellow
+    cl_n=$color_none
 
-  message="${cl_y}Press any key${cl_n} to ${cl_g}continue${cl_n}"
-  echo -e "$cl_r[$cl_n ${message} $cl_r]$cl_n\c"
-  read -n 1 -s -r </dev/tty
-  echo
+    anykey="${cl_r}Press ${cl_y}any key${cl_n} to ${cl_g}continue${cl_n}"
+    message="\e[1;30m==\e[0;37m[\e[1;33m$anykey\e[0;37m]\e[1;30m"
+    echo -e "${message}=================================================\r\c"
+    read -n 1 -s -r </dev/tty
+    echo
 }
 
 print_line() {
