@@ -106,7 +106,7 @@ dialog_head_lines() {
 
     dlg_text=$(echo "Do you only want to display a certain amount of first"\
                     "lines of the given input file?\n\nEnter the desired"\
-                    "amount or set it to '0' to skip:")
+                    "amount or leave blank to skip:")
     predef_input_dialog "Number of first lines" "$dlg_text" 11 60 "$1"
 }
 
@@ -370,7 +370,7 @@ dialog_tail_lines() {
 
     dlg_text=$(echo "Do you $dlt want to display a certain amount of last"\
                     "lines of the given input file?\n\nEnter the desired"\
-                    "amount or set it to '0' to skip:")
+                    "amount or leave blank to skip:")
     predef_input_dialog "Number of last lines" "$dlg_text" 11 60 "$1"
 }
 
