@@ -465,7 +465,11 @@ else
     # Head and tail
     if [ $interactive -eq 1 ]; then
         if [ $follow -eq 0 ]; then
-            dialog_head_lines "$head_lines"
+            if [ "$head_lines" = "0" ]; then
+                dialog_head_lines ""
+            else
+                dialog_head_lines "$head_lines"
+            fi
             if [ -z "$user_input" ]; then
                 head_lines=0
             else
@@ -473,7 +477,11 @@ else
             fi
         fi
         if [ $head_lines -eq 0 ]; then
-            dialog_tail_lines "$tail_lines"
+            if [ "$tail_lines" = "0" ]; then
+                dialog_tail_lines ""
+            else
+                dialog_tail_lines "$tail_lines"
+            fi
             if [ -z "$user_input" ]; then
                 tail_lines=0
             else
@@ -483,33 +491,53 @@ else
     fi
 
     input_count=$(wc -w <<< "$input_file")
-    re='^[0-9]+$'
-    if [[ ! $head_lines =~ $re ]]; then
-        usage "The argument '--head' expects a numeric value"
-    fi
-    if [[ ! $tail_lines =~ $re ]]; then
-        usage "The argument '--tail' expects a numeric value"
-    fi
-    if [ $head_lines -gt 0 ] && [ $follow = 1 ]; then
-        usage "The '--head' argument cannot be used with monitoring mode"
-    fi
-    if [ $head_lines -gt 0 ] && [ $tail_lines -gt 0 ]; then
-        usage "Use either '--head' or '--tail', not both at the same time"
-    elif [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
-        if [ $input_count -gt 1 ]; then
-           temp="'--head' or '--tail'"
-           usage \
-               "When using $temp only one input file can be given"
+    if [ -z "$head_lines" ]; then
+        head_lines=0
+    else
+        re='^[0-9]+$'
+        if [[ ! $head_lines =~ $re ]]; then
+            usage "The argument '--head' expects a numeric value"
+        fi
+        if [[ ! $tail_lines =~ $re ]]; then
+            usage "The argument '--tail' expects a numeric value"
+        fi
+        if [ $head_lines -gt 0 ] && [ $follow = 1 ]; then
+            usage "The '--head' argument cannot be used with monitoring mode"
+        fi
+        if [ $head_lines -gt 0 ] && [ $tail_lines -gt 0 ]; then
+            usage "Use either '--head' or '--tail', not both at the same time"
+        elif [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
+            if [ $input_count -gt 1 ]; then
+               temp="'--head' or '--tail'"
+               usage \
+                   "When using $temp only one input file can be given"
+            fi
         fi
     fi
 
     # Pause
+    if [ $interactive -eq 1 ]; then
+        if [ "$pause_lines" = "0" ]; then
+            dialog_pause_output ""
+        else
+            dialog_pause_output "$pause_lines"
+        fi
+        pause_lines="$user_input"
+        pause=1
+    fi
+
     if [ $pause -eq 1 ] && [ $follow -eq 1 ]; then
         usage "The '--pause' argument cannot be used with monitoring mode"
     fi
-    re='^[0-9]+$'
-    if [[ ! $pause_lines =~ $re ]]; then
-        usage "The argument '--pause' expects a numeric value"
+    if [ -z "$pause_lines" ] || [ "$pause_lines" = "0" ]; then
+        pause=0
+    elif [ "$pause_lines" = "auto" ]; then
+        pause=1
+    else
+        re='^[0-9]+$'
+        if [[ ! $pause_lines =~ $re ]]; then
+            usage "The argument '--pause' expects a numeric value"
+        fi
     fi
 
     # Export file
