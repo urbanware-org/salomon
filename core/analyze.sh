@@ -81,7 +81,7 @@ analyze_input_file() {
         echo
         temp="Reached the end of the given input file."
         print_line "*"
-        print_line "${color_lightcyan}${temp}"
+        print_line "${cl_lc}${temp}"
         print_line
         print_line_count
         print_line "*"

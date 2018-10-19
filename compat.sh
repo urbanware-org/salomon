@@ -78,108 +78,108 @@ set_global_variables
 shell_precheck
 
 echo
-echo $em "${color_lightcyan}SaLoMon compatibility check script"\
-         "${color_none}"
+echo $em "${cl_lc}SaLoMon compatibility check script"\
+         "${cl_n}"
 
-check_basename="${color_lightred}FAILURE${color_none}"
-check_declare="${color_lightred}FAILURE${color_none}"
-check_dialog="${color_yellow}MISSING${color_none}"
-check_dirname="${color_lightred}FAILURE${color_none}"
-check_grep="${color_lightred}FAILURE${color_none}"
-check_paste="${color_lightred}FAILURE${color_none}"
-check_printf="${color_lightred}FAILURE${color_none}"
-check_readlink="${color_lightred}FAILURE${color_none}"
-check_sed="${color_lightred}FAILURE${color_none}"
-check_tail="${color_lightred}FAILURE${color_none}"
-check_trap="${color_lightred}FAILURE${color_none}"
-check_whiptail="${color_yellow}MISSING${color_none}"
-check_echo="${color_lightgreen}SUCCESS${color_none}"
-check_function="${color_lightred}FAILURE${color_none}"
+check_basename="${cl_lr}FAILURE${cl_n}"
+check_declare="${cl_lr}FAILURE${cl_n}"
+check_dialog="${cl_yl}MISSING${cl_n}"
+check_dirname="${cl_lr}FAILURE${cl_n}"
+check_grep="${cl_lr}FAILURE${cl_n}"
+check_paste="${cl_lr}FAILURE${cl_n}"
+check_printf="${cl_lr}FAILURE${cl_n}"
+check_readlink="${cl_lr}FAILURE${cl_n}"
+check_sed="${cl_lr}FAILURE${cl_n}"
+check_tail="${cl_lr}FAILURE${cl_n}"
+check_trap="${cl_lr}FAILURE${cl_n}"
+check_whiptail="${cl_yl}MISSING${cl_n}"
+check_echo="${cl_lg}SUCCESS${cl_n}"
+check_function="${cl_lr}FAILURE${cl_n}"
 check_failed=0
 check_missing=0
-check_overall="${color_lightred}FAILURE${color_none}"
+check_overall="${cl_lr}FAILURE${cl_n}"
 line="................"
 
 command -v basename &>/dev/null
 if [ $? -eq 0 ]; then
-    check_basename="${color_lightgreen}SUCCESS${color_none}"
+    check_basename="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v declare &>/dev/null
 if [ $? -eq 0 ]; then
-    check_declare="${color_lightgreen}SUCCESS${color_none}"
+    check_declare="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v dialog &>/dev/null
 if [ $? -eq 0 ]; then
-    check_dialog="${color_lightgreen}SUCCESS${color_none}"
+    check_dialog="${cl_lg}SUCCESS${cl_n}"
 else
     check_missing=1
 fi
 
 command -v dirname &>/dev/null
 if [ $? -eq 0 ]; then
-    check_dirname="${color_lightgreen}SUCCESS${color_none}"
+    check_dirname="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v grep &>/dev/null
 if [ $? -eq 0 ]; then
-    check_grep="${color_lightgreen}SUCCESS${color_none}"
+    check_grep="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v paste &>/dev/null
 if [ $? -eq 0 ]; then
-    check_paste="${color_lightgreen}SUCCESS${color_none}"
+    check_paste="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v printf &>/dev/null
 if [ $? -eq 0 ]; then
-    check_printf="${color_lightgreen}SUCCESS${color_none}"
+    check_printf="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v readlink &>/dev/null
 if [ $? -eq 0 ]; then
-    check_readlink="${color_lightgreen}SUCCESS${color_none}"
+    check_readlink="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v sed &>/dev/null
 if [ $? -eq 0 ]; then
-    check_sed="${color_lightgreen}SUCCESS${color_none}"
+    check_sed="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v tail &>/dev/null
 if [ $? -eq 0 ]; then
-    check_tail="${color_lightgreen}SUCCESS${color_none}"
+    check_tail="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v trap &>/dev/null
 if [ $? -eq 0 ]; then
-    check_trap="${color_lightgreen}SUCCESS${color_none}"
+    check_trap="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 command -v whiptail &>/dev/null
 if [ $? -eq 0 ]; then
-    check_whiptail="${color_lightgreen}SUCCESS${color_none}"
+    check_whiptail="${cl_lg}SUCCESS${cl_n}"
 else
     check_missing=1
 fi
@@ -191,20 +191,20 @@ echo "}" >> $script_temp
 chmod +x $script_temp
 $script_temp &>/dev/null
 if [ $? -eq 0 ]; then
-    check_function="${color_lightgreen}SUCCESS${color_none}"
+    check_function="${cl_lg}SUCCESS${cl_n}"
 else
     check_failed=1
 fi
 
 if [ $check_failed -eq 0 ]; then
-    check_overall="${color_lightgreen}SUCCESS${color_none}"
+    check_overall="${cl_lg}SUCCESS${cl_n}"
     if [ $check_missing -eq 0 ]; then
         return_code=0
     else
         return_code=3
     fi
 else
-    check_overall="${color_lightred}FAILURE${color_none}"
+    check_overall="${cl_lr}FAILURE${cl_n}"
     return_code=2
 fi
 

@@ -11,13 +11,8 @@
 # ============================================================================
 
 pause_output() {
-    cl_g=$color_lightgreen
-    cl_r=$color_lightred
-    cl_y=$color_yellow
-    cl_n=$color_none
-
-    anykey="${cl_r}Press ${cl_y}any key${cl_n} to ${cl_g}continue${cl_n}"
-    message="\e[1;30m==\e[0;37m[\e[1;33m$anykey\e[0;37m]\e[1;30m"
+    anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
+    message="${cl_dy}==${cl_ly}[$anykey${cl_ly}]${cl_dy}"
     echo -e "${message}=================================================\r\c"
     read -n 1 -s -r </dev/tty
     echo
@@ -27,20 +22,20 @@ print_line() {
     indent=30
 
     if [ -z "$1" ]; then
-        echo $em "${color_lightblue}*${color_none}"
+        echo $em "${cl_lb}*${cl_n}"
     elif [ "$1" = "*" ]; then
         if [ "$em" = "-e" ]; then
-            echo $em "${color_lightblue}${ce}"
+            echo $em "${cl_lb}${ce}"
             for number in $(seq 1 78); do
                 echo $em "*${ce}"
             done
-            echo $em "${color_none}"
+            echo $em "${cl_n}"
         else
             echo "${separator}${separator}"
         fi
     else
         temp=$(printf "%-${indent}s" "$1")
-        echo $em "${color_lightblue}* ${temp}${2}${color_none}"
+        echo $em "${cl_lb}* ${temp}${2}${cl_n}"
     fi
 }
 
@@ -49,23 +44,23 @@ print_line_count() {
         if [ ! $count_lines -eq $count_total ]; then
             if [ $count_lines -eq 0 ]; then
                 count=$(printf "%+8s" "0")
-                temp="${color_white}Lines returned: ${color_lightgray}"
+                temp="${cl_wh}Lines returned: ${cl_ly}"
                 print_line "${temp}${count} (due to the given filter)"
             else
                 count=$(printf "%+8s" $count_lines)
-                temp="${color_white}Lines returned: ${color_yellow}${count}"
-                print_line "$temp ${color_lightgray}(due to the given filter)"
+                temp="${cl_wh}Lines returned: ${cl_yl}${count}"
+                print_line "$temp ${cl_ly}(due to the given filter)"
             fi
         fi
     fi
 
     count=$(printf "%+8s" $count_total)
     if [ $count_total -eq 0 ]; then
-        temp="${color_white}Lines total:    ${color_lightgray}"
-        print_line "${temp}${count}${color_lightgray}"
+        temp="${cl_wh}Lines total:    ${cl_ly}"
+        print_line "${temp}${count}${cl_ly}"
     else
-        temp="${color_white}Lines total:    ${color_yellow}"
-        print_line "${temp}${count}${color_lightgray}"
+        temp="${cl_wh}Lines total:    ${cl_yl}"
+        print_line "${temp}${count}${cl_ly}"
     fi
 }
 
@@ -76,7 +71,7 @@ print_output_header() {
     input_count=$(wc -w <<< $input_file)
     if [ $input_count -eq 1 ]; then
         filepath=$(readlink -f $input_file)
-        print_line "${color_white}Input file:" "${color_yellow}$filepath"
+        print_line "${cl_wh}Input file:" "${cl_yl}$filepath"
     else
         desc="Input files:"
         for file in $input_file; do
@@ -85,7 +80,7 @@ print_output_header() {
             if [ -z "$filepath" ]; then
                 continue
             fi
-            print_line "${color_white}$desc" "${color_yellow}$filepath"
+            print_line "${cl_wh}$desc" "${cl_yl}$filepath"
             if [ ! -z "$desc" ]; then
                 desc=""
             fi
@@ -94,36 +89,36 @@ print_output_header() {
     fi
 
     if [ -z "$color_file" ]; then
-        print_line "${color_white}Color file:" "${color_lightgray}None"
+        print_line "${cl_wh}Color file:" "${cl_ly}None"
     else
         temp=$(readlink -f $color_file)
-        print_line "${color_white}Color file:" "${color_yellow}$temp"
+        print_line "${cl_wh}Color file:" "${cl_yl}$temp"
     fi
 
     if [ -z "$export_file" ]; then
-        print_line "${color_white}Export file:" "${color_lightgray}None"
+        print_line "${cl_wh}Export file:" "${cl_ly}None"
     else
         temp=$(readlink -f $export_file)
-        print_line "${color_white}Export file:" "${color_yellow}$temp"
+        print_line "${cl_wh}Export file:" "${cl_yl}$temp"
     fi
 
     print_line
     if [ $follow -eq 1 ]; then
-        print_line "${color_white}Follow (monitor):" "${color_lightgreen}Yes"
+        print_line "${cl_wh}Follow (monitor):" "${cl_lg}Yes"
         if [ $prompt -eq 1 ]; then
-            temp="${color_lightgreen}Yes"
+            temp="${cl_lg}Yes"
         else
-            temp="${color_lightred}No"
+            temp="${cl_lr}No"
         fi
-        print_line "${color_white}Prompt on exit:" "$temp"
+        print_line "${cl_wh}Prompt on exit:" "$temp"
     else
-        print_line "${color_white}Follow (monitor):" "${color_lightred}No"
+        print_line "${cl_wh}Follow (monitor):" "${cl_lr}No"
         if [ $slow -eq 1 ]; then
-            temp="${color_lightgreen}Yes ${color_yellow}(0.$delay seconds)"
+            temp="${cl_lg}Yes ${cl_yl}(0.$delay seconds)"
         else
-            temp="${color_lightred}No"
+            temp="${cl_lr}No"
         fi
-        print_line "${color_white}Slow down:" "$temp"
+        print_line "${cl_wh}Slow down:" "$temp"
     fi
 
     if [ $wait_match -gt 0 ]; then
@@ -132,76 +127,76 @@ print_output_header() {
         else
             sec="seconds"
         fi
-        temp="${color_lightgreen}Yes ${color_yellow}($wait_match $sec)"
+        temp="${cl_lg}Yes ${cl_yl}($wait_match $sec)"
     else
-        temp="${color_lightred}No"
+        temp="${cl_lr}No"
     fi
-    print_line "${color_white}Wait (on match):" "$temp"
+    print_line "${cl_wh}Wait (on match):" "$temp"
 
     print_line
     if [ $exclude -eq 1 ]; then
-        temp="${color_yellow}$exclude_pattern"
+        temp="${cl_yl}$exclude_pattern"
     else
-        temp="${color_lightgray}None"
+        temp="${cl_ly}None"
     fi
-    print_line "${color_white}Exclude pattern:" "$temp"
+    print_line "${cl_wh}Exclude pattern:" "$temp"
 
     if [ $remove -eq 1 ]; then
-        temp="${color_yellow}$remove_pattern"
+        temp="${cl_yl}$remove_pattern"
     else
-        temp="${color_lightgray}None"
+        temp="${cl_ly}None"
     fi
-    print_line "${color_white}Remove pattern:" "$temp"
+    print_line "${cl_wh}Remove pattern:" "$temp"
 
     if [ $filter -eq 1 ]; then
         if [ ! -z "$filter_file" ]; then
-            temp="${color_white}Filter file:"
-            print_line "$temp" "${color_yellow}$filter_file"
+            temp="${cl_wh}Filter file:"
+            print_line "$temp" "${cl_yl}$filter_file"
         fi
 
-        temp="${color_white}Filter pattern:"
-        print_line "$temp" "${color_yellow}$filter_pattern"
+        temp="${cl_wh}Filter pattern:"
+        print_line "$temp" "${cl_yl}$filter_pattern"
         if [ "$arg_case" = "-i" ]; then
-            temp="${color_lightgreen}Yes"
+            temp="${cl_lg}Yes"
         else
-            temp="${color_lightred}No"
+            temp="${cl_lr}No"
         fi
-        print_line "${color_white}Ignore case:" "${color_lightred}${temp}"
+        print_line "${cl_wh}Ignore case:" "${cl_lr}${temp}"
 
         if [ $highlight_matches -eq 1 ]; then
-            temp="${color_lightgreen}Filter matches"
+            temp="${cl_lg}Filter matches"
         elif [ $highlight_upper -eq 1 ]; then
-            temp="${color_lightgreen}Filter matches (in uppercase)"
+            temp="${cl_lg}Filter matches (in uppercase)"
         elif [ $highlight_all -eq 1 ]; then
-            temp="${color_lightgreen}All lines"
+            temp="${cl_lg}All lines"
         else
-            temp="${color_lightred}No"
+            temp="${cl_lr}No"
         fi
-        print_line "${color_white}Highlight:" "$temp"
+        print_line "${cl_wh}Highlight:" "$temp"
     else
-        print_line "${color_white}Filter pattern:" "${color_lightgray}None"
+        print_line "${cl_wh}Filter pattern:" "${cl_ly}None"
         if [ $highlight_all -eq 1 ]; then
-            temp="${color_lightgreen}All lines"
-            print_line "${color_white}Highlight:" "$temp"
+            temp="${cl_lg}All lines"
+            print_line "${cl_wh}Highlight:" "$temp"
         else
-            temp="${color_lightred}No"
-            print_line "${color_white}Highlight:" "$temp"
+            temp="${cl_lr}No"
+            print_line "${cl_wh}Highlight:" "$temp"
         fi
     fi
 
     if [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
         print_line
         if [ $head_lines -gt 0 ]; then
-            temp="${color_white}First lines (only):"
-            print_line "$temp" "${color_yellow}$head_lines"
+            temp="${cl_wh}First lines (only):"
+            print_line "$temp" "${cl_yl}$head_lines"
         fi
         if [ $tail_lines -gt 0 ]; then
             if [ $follow -eq 1 ]; then
-                temp="${color_white}Last lines (also):"
-                print_line "$temp" "${color_yellow}$tail_lines"
+                temp="${cl_wh}Last lines (also):"
+                print_line "$temp" "${cl_yl}$tail_lines"
             else
-                temp="${color_white}Last lines (only):"
-                print_line "$temp" "${color_yellow}$tail_lines"
+                temp="${cl_wh}Last lines (only):"
+                print_line "$temp" "${cl_yl}$tail_lines"
             fi
         fi
     fi
@@ -214,20 +209,13 @@ print_output_header() {
         temp="* "
     fi
 
-    cl_c=$color_lightcyan
-    cl_g=$color_lightgreen
-    cl_l=$color_lightgray
-    cl_r=$color_lightred
-    cl_w=$color_white
-    cl_y=$color_yellow
-
-    echo $em "${temp}${cl_w}Press"\
-             "${cl_c}Ctrl${cl_l}+${cl_c}C"\
-             "${cl_w}to ${cl_r}cancel${cl_w},"\
-             "${cl_c}Ctrl${cl_l}+${cl_c}S"\
-             "${cl_w}to ${cl_y}freeze${cl_w} and"\
-             "${cl_c}Ctrl${cl_l}+${cl_c}Q"\
-             "${cl_w}to ${cl_g}defreeze${cl_w} the output."
+    echo $em "${temp}${cl_wh}Press"\
+             "${cl_lc}Ctrl${cl_ly}+${cl_lc}C"\
+             "${cl_wh}to ${cl_lr}cancel${cl_wh},"\
+             "${cl_lc}Ctrl${cl_ly}+${cl_lc}S"\
+             "${cl_wh}to ${cl_yl}freeze${cl_wh} and"\
+             "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q"\
+             "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
 
     print_line "*"
     echo
@@ -247,8 +235,8 @@ print_output_line() {
             temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
             fp=$(readlink -f "$temp")
             ln=$(printf -- "-%.0s" $(seq 0 80))
-            separator="\e[1;30m--\e[0;37m[\e[1;33m$fp\e[0;37m]\e[1;30m$ln"
-            echo -e "$separator\e[0m" | cut -c 1-113
+            separator="${cl_dy}--${cl_ly}[${cl_yl}${fp}${cl_ly}]${cl_dy}$ln"
+            echo -e "${separator}${cl_n}" | cut -c 1-113
             return
         fi
     fi
@@ -310,10 +298,10 @@ print_output_line() {
     fi
 
     if [ "$color_code" = "0" ]; then
-        color_code="$color_none"
+        color_code="$cl_n"
     fi
 
-    output="${color_code}${line}${color_none}${line_spaces}"
+    output="${color_code}${line}${cl_n}${line_spaces}"
     if [ ! -z "$filter_list" ]; then
         if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             if [ $color_match -eq 1 ]; then
@@ -340,10 +328,10 @@ print_output_line() {
                     else
                         term_case=$term
                     fi
-                    temp=$(echo $em "${color_high}${term_case}${color_none}"\
+                    temp=$(echo $em "${color_high}${term_case}${cl_n}"\
                                     "${bs}${color_code}")
 
-                    output=$(echo $em "${color_code}${line}${color_none}" | \
+                    output=$(echo $em "${color_code}${line}${cl_n}" | \
                              sed -e "s/$term_upper/$temp/ig")
 
                     line="$output"
@@ -357,7 +345,7 @@ print_output_line() {
 
                 grep $arg_case "$term" <<< "$line" &>/dev/null
                 if [ $? -eq 0 ]; then
-                    output="${color_code}${line}${color_none}${line_spaces}"
+                    output="${color_code}${line}${cl_n}${line_spaces}"
                     filter_match=1
                     break
                 fi
@@ -382,7 +370,7 @@ print_output_line() {
     else
         if [ $highlight_all -eq 1 ]; then
             temp=$(echo $em "\e[7m$output" | sed -e "s/0m/7m/g")
-            output="$temp\e[0m"
+            output="${temp}${cl_n}"
         fi
     fi
 

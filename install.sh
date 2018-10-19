@@ -34,12 +34,12 @@ shell_precheck
 
 script_mode=""
 target_dir="/opt/salomon"
-target="${color_yellow}${target_dir}${color_none}"
-yesno="${color_yellow}Y${color_none}/${color_yellow}N${color_none}"
+target="${cl_yl}${target_dir}${cl_n}"
+yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
 
 confirm() {
     echo
-    echo $em "${color_lightcyan}SaLoMon install/uninstall script${color_none}"
+    echo $em "${cl_lc}SaLoMon install/uninstall script${cl_n}"
     echo
     echo $em "This will $script_action SaLoMon. Do you wish to proceed"\
              "($yesno)? \c"
@@ -48,7 +48,7 @@ confirm() {
     egrep "^yes$|^y$" -i <<< $choice &>/dev/null
     if [ $? -ne 0 ]; then
         echo
-        echo $em "${color_lightred}Canceled${color_none} on user request."
+        echo $em "${cl_lr}Canceled${cl_n} on user request."
         echo
         exit
     fi
@@ -70,10 +70,10 @@ usage() {
     if [ ! -z "$error_msg" ]; then
         echo
         if [ -z "$given_arg" ]; then
-            echo $em "${color_lightred}error:${color_none} $error_msg."
+            echo $em "${cl_lr}error:${cl_n} $error_msg."
         else
-            echo $em "${color_lightred}error:${color_none} $error_msg"\
-                     "'${color_yellow}${given_arg}${color_none}'."
+            echo $em "${cl_lr}error:${cl_n} $error_msg"\
+                     "'${cl_yl}${given_arg}${cl_n}'."
         fi
         exit 1
     else
@@ -89,10 +89,10 @@ fi
 
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
     script_mode="install"
-    script_action="${color_lightgreen}${script_mode}${color_none}"
+    script_action="${cl_lg}${script_mode}${cl_n}"
 elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
     script_mode="uninstall"
-    script_action="${color_lightred}${script_mode}${color_none}"
+    script_action="${cl_lr}${script_mode}${cl_n}"
 elif [ "$1" = "-?" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     usage
 else
@@ -100,7 +100,7 @@ else
 fi
 
 if [ "$(whoami)" != "root" ]; then
-    error="${color_lightred}error:${color_none}"
+    error="${cl_lr}error:${cl_n}"
     echo
     echo -e "$error Superuser privileges are required"
     echo
@@ -116,7 +116,7 @@ fi
 
 confirm $script_mode
 echo
-echo $em "${color_lightgreen}Started $script_mode process:${color_none}"
+echo $em "${cl_lg}Started $script_mode process:${cl_n}"
 if [ $script_mode = "uninstall" ]; then
     cd $(pwd | sed -e "s/\/salomon$//g")
 
@@ -157,7 +157,7 @@ else
         echo "  - Created symbolic link for the main script."
     fi
 fi
-echo $em "${color_lightgreen}Finished $script_mode process.${color_none}"
+echo $em "${cl_lg}Finished $script_mode process.${cl_n}"
 echo
 
 # EOF

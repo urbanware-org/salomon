@@ -54,7 +54,7 @@ set_global_variables() {
     color_table=0
 
     color_none="\e[0m"            ; cl_n=$color_none
-    color_black="\e[0;30m"        ; cl_bl=$color_black
+    color_black="\e[0;30m"        ; cl_bk=$color_black
     color_brown="\e[0;33m"        ; cl_br=$color_brown
     color_darkblue="\e[0;34m"     ; cl_db=$color_darkblue
     color_darkcyan="\e[0;36m"     ; cl_dc=$color_darkcyan

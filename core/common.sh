@@ -13,8 +13,8 @@
 cancel_process() {
     echo
     print_line "*"
-    temp="${color_lightred}Canceled ${color_lightgray}on"
-    print_line "${temp}${color_lightcyan} user request${color_lightgray}."
+    temp="${cl_lr}Canceled ${cl_ly}on"
+    print_line "${temp}${cl_lc} user request${cl_ly}."
 
     if [ $follow -eq 0 ]; then
         print_line
@@ -23,7 +23,7 @@ cancel_process() {
     if [ $prompt -eq 1 ]; then
         trap - 2 20
         print_line
-        print_line "${color_lightgray}Press any key to exit."
+        print_line "${cl_ly}Press any key to exit."
         print_line "*"
         read -n1 -r
     else
@@ -113,13 +113,13 @@ check_update() {
 }
 
 deprecated_argument() {
-    arg_given="$1"
-    arg_instead="$2"
+    arg_g="$1"
+    arg_i="$2"
 
-    dep="The argument '\e[1;36m$arg_given\e[0m' is \e[1;33mdeprecated\e[0m."
-    ins="You may use '\e[1;36m$arg_instead\e[0m' instead."
+    dep="The argument '${cl_lc}${arg_g}${cl_n}' is ${cl_yl}deprecated${cl_n}."
+    ins="You may use '${cl_lc}${arg_i}${cl_n}' instead."
 
-    echo -e "\e[1;34mnotice\e[0m: $dep $ins"
+    echo -e "${cl_lb}notice${cl_n}: $dep $ins"
     sleep 1
 }
 
@@ -140,23 +140,23 @@ prepare_path() {
 shell_precheck() {
     precheck=$(echo -e "precheck" | grep "\-e")
     if [ $? -eq 0 ]; then
-        color_none=""
-        color_black=""
-        color_brown=""
-        color_darkblue=""
-        color_darkcyan=""
-        color_darkgray=""
-        color_darkgreen=""
-        color_darkpurple=""
-        color_darkred=""
-        color_lightblue=""
-        color_lightcyan=""
-        color_lightgray=""
-        color_lightgreen=""
-        color_lightpurple=""
-        color_lightred=""
-        color_white=""
-        color_yellow=""
+        color_none=""                 ; cl_n=$color_none
+        color_black=""                ; cl_bk=$color_black
+        color_brown=""                ; cl_br=$color_brown
+        color_darkblue=""             ; cl_db=$color_darkblue
+        color_darkcyan=""             ; cl_dc=$color_darkcyan
+        color_darkgray=""             ; cl_dy=$color_darkgray
+        color_darkgreen=""            ; cl_dg=$color_darkgreen
+        color_darkpurple=""           ; cl_dp=$color_darkpurple
+        color_darkred=""              ; cl_dr=$color_darkred
+        color_lightblue=""            ; cl_lb=$color_lightblue
+        color_lightcyan=""            ; cl_lc=$color_lightcyan
+        color_lightgray=""            ; cl_ly=$color_lightgray
+        color_lightgreen=""           ; cl_lg=$color_lightgreen
+        color_lightpurple=""          ; cl_lp=$color_lightpurple
+        color_lightred=""             ; cl_lr=$color_lightred
+        color_white=""                ; cl_wh=$color_white
+        color_yellow=""               ; cl_yl=$color_yellow
         bs=""
         ce=""
         em=""
@@ -182,19 +182,19 @@ usage() {
     error_msg=$1
 
     if [ "$usage_color" = "1" ]; then
-        no=$color_none
-        lb=$color_lightblue
-        lc=$color_lightcyan
-        lg=$color_lightgreen
-        lr=$color_lightred
-        yl=$color_yellow
+        no=$cl_n
+        lb=$cl_lb
+        lc=$cl_lc
+        lg=$cl_lg
+        lr=$cl_lr
+        yl=$cl_yl
     else
-        no=$color_none
-        lb=$color_none
-        lc=$color_none
-        lg=$color_none
-        lr=$color_none
-        yl=$color_none
+        no=$cl_n
+        lb=$cl_n
+        lc=$cl_n
+        lg=$cl_n
+        lr=$cl_n
+        yl=$cl_n
     fi
 
     echo -e "${lc}usage: ${no}$script_file -a {analyze,monitor} -i"\
@@ -305,7 +305,7 @@ usage() {
             clear
         else
             echo
-            echo -e "\e[1;31merror\e[0m: $error_msg."
+            echo -e "${cl_lr}error:${cl_n} $error_msg."
         fi
         exit 1
     else

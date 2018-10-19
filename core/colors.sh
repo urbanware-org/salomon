@@ -14,37 +14,37 @@ get_color_code() {
     color_name=$1
 
     if [ "$color_name" = "black" ]; then
-        color_code="$color_black"
+        color_code="$cl_bk"
     elif [ "$color_name" = "brown" ]; then
-        color_code="$color_brown"
+        color_code="$cl_br"
     elif [ "$color_name" = "darkblue" ]; then
-        color_code="$color_darkblue"
+        color_code="$cl_db"
     elif [ "$color_name" = "darkcyan" ]; then
-        color_code="$color_darkcyan"
+        color_code="$cl_dc"
     elif [ "$color_name" = "darkgray" ]; then
-        color_code="$color_darkgray"
+        color_code="$cl_dy"
     elif [ "$color_name" = "darkgreen" ]; then
-        color_code="$color_darkgreen"
+        color_code="$cl_dg"
     elif [ "$color_name" = "darkpurple" ]; then
-        color_code="$color_darkpurple"
+        color_code="$cl_dp"
     elif [ "$color_name" = "darkred" ]; then
-        color_code="$color_darkred"
+        color_code="$cl_dr"
     elif [ "$color_name" = "lightblue" ]; then
-        color_code="$color_lightblue"
+        color_code="$cl_lb"
     elif [ "$color_name" = "lightcyan" ]; then
-        color_code="$color_lightcyan"
+        color_code="$cl_lc"
     elif [ "$color_name" = "lightgray" ]; then
-        color_code="$color_lightgray"
+        color_code="$cl_ly"
     elif [ "$color_name" = "lightgreen" ]; then
-        color_code="$color_lightgreen"
+        color_code="$cl_lg"
     elif [ "$color_name" = "lightpurple" ]; then
-        color_code="$color_lightpurple"
+        color_code="$cl_lp"
     elif [ "$color_name" = "lightred" ]; then
-        color_code="$color_lightred"
+        color_code="$cl_lr"
     elif [ "$color_name" = "white" ]; then
-        color_code="$color_white"
+        color_code="$cl_wh"
     elif [ "$color_name" = "yellow" ]; then
-        color_code="$color_yellow"
+        color_code="$cl_yl"
     else
         # Support for 256 colors (color code instead of name)
         if [ "$color_name" = "random" ]; then
@@ -65,7 +65,7 @@ print_color_table() {
 
     cpl=1
     for color in $(seq 0 255); do
-        printf "\x1b[48;5;%sm%4d\e[0m" "$color" "$color";
+        printf "\x1b[48;5;%sm%4d${cl_n}" "$color" "$color";
         cpl=$(( ++cpl ))
         if [ $cpl -gt 19 ] || [ $color -eq 255 ]; then
             echo
@@ -124,15 +124,15 @@ rnd_colors() {
         if [ $highlight_random -eq 1 ]; then
             color_highlight=$(shuf -i 0-1 -n 1)
             if [ $color_highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
             fi
         else
             if [ $highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
             fi
         fi
 
