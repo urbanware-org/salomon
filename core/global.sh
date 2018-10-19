@@ -53,23 +53,23 @@ set_global_variables() {
     color_random_max=256
     color_table=0
 
-    color_none="\e[0m"
-    color_black="\e[0;30m"
-    color_brown="\e[0;33m"
-    color_darkblue="\e[0;34m"
-    color_darkcyan="\e[0;36m"
-    color_darkgray="\e[1;30m"
-    color_darkgreen="\e[0;32m"
-    color_darkpurple="\e[0;35m"
-    color_darkred="\e[0;31m"
-    color_lightblue="\e[1;34m"
-    color_lightcyan="\e[1;36m"
-    color_lightgray="\e[0;37m"
-    color_lightgreen="\e[1;32m"
-    color_lightpurple="\e[1;35m"
-    color_lightred="\e[1;31m"
-    color_white="\e[1;37m"
-    color_yellow="\e[1;33m"
+    color_none="\e[0m"            ; cl_n=$color_none
+    color_black="\e[0;30m"        ; cl_bl=$color_black
+    color_brown="\e[0;33m"        ; cl_br=$color_brown
+    color_darkblue="\e[0;34m"     ; cl_db=$color_darkblue
+    color_darkcyan="\e[0;36m"     ; cl_dc=$color_darkcyan
+    color_darkgray="\e[1;30m"     ; cl_dy=$color_darkgray
+    color_darkgreen="\e[0;32m"    ; cl_dg=$color_darkgreen
+    color_darkpurple="\e[0;35m"   ; cl_dp=$color_darkpurple
+    color_darkred="\e[0;31m"      ; cl_dr=$color_darkred
+    color_lightblue="\e[1;34m"    ; cl_lb=$color_lightblue
+    color_lightcyan="\e[1;36m"    ; cl_lc=$color_lightcyan
+    color_lightgray="\e[0;37m"    ; cl_ly=$color_lightgray
+    color_lightgreen="\e[1;32m"   ; cl_lg=$color_lightgreen
+    color_lightpurple="\e[1;35m"  ; cl_lp=$color_lightpurple
+    color_lightred="\e[1;31m"     ; cl_lr=$color_lightred
+    color_white="\e[1;37m"        ; cl_wh=$color_white
+    color_yellow="\e[1;33m"       ; cl_yl=$color_yellow
 
     count_lines=0
     count_total=0
