@@ -58,8 +58,8 @@ analyze_input_file() {
     while read line; do
         count=$(( count + 1 ))
 
-        if [ $pause -eq 1 ]; then
-            if [ $pause_lines -eq 0 ]; then
+        if [ $pause -gt 0 ]; then
+            if [ "$pause_lines" = "auto" ]; then
                 if [ $(( count % $(tput lines) )) -eq 0 ]; then
                     pause_output
                 fi
