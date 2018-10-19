@@ -272,6 +272,19 @@ dialog_no_info() {
     fi
 }
 
+dialog_pause_output() {
+    if [ $dialog_show_pause -ne 1 ]; then
+        user_input="$1"
+        return
+    fi
+
+    dlg_text=$(echo "Do you only want to pause the output after a certain"\
+                    "number of output lines?\n\nEnter the desired amount"\
+                    "of lines, enter 'auto' to pause based on the terminal"\
+                    "height or leave blank to skip:")
+    predef_input_dialog "Number of first lines" "$dlg_text" 12 60 "$1"
+}
+
 dialog_prompt_on_exit() {
     if [ $dialog_show_prompt -ne 1 ]; then
         if [ $1 -eq 1 ]; then
