@@ -108,6 +108,7 @@ print_color_table() {
 }
 
 read_color_file() {
+#  | xargs -n1 | sort -u | xargs
     while read line; do
         if [ -z "$line" ] || [[ $line == *"#"* ]]; then
             continue
@@ -115,7 +116,7 @@ read_color_file() {
         color_line_code=$(awk '{ print $1 }' <<< "$line")
         color_line_term=$(awk '{ print $2 }' <<< "$line")
         color_temp="$color_terms $color_line_term"
-        color_terms="$color_temp"
+        color_terms=$(xargs -n1 <<< "$color_temp" | sort -u | xargs)
         colorize+=( ["$color_line_term"]="$color_line_code" )
     done < $color_file
 }
