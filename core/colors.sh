@@ -9,11 +9,14 @@
 # GitHub: https://github.com/urbanware-org/salomon
 # GitLab: https://gitlab.com/urbanware-org/salomon
 # ============================================================================
+declare -A colorize
 
 get_color_code() {
     color_name=$1
 
-    if [ "$color_name" = "black" ]; then
+    if [ "$color_name" = "none" ] || [ -z "$color_name" ]; then
+        color_code="$cl_n"
+    elif [ "$color_name" = "black" ]; then
         color_code="$cl_bk"
     elif [ "$color_name" = "brown" ]; then
         color_code="$cl_br"
@@ -58,6 +61,26 @@ get_color_code() {
     fi
 }
 
+get_color_match() {
+    color_match=0
+    line_input="$1"
+    shopt -s nocasematch
+
+    for term in $color_terms; do
+        if [[ $line == *"$term"* ]]; then
+            color_match=1
+            break
+        fi
+    done
+
+    if [ $color_match -eq 1 ]; then
+        get_color_code ${colorize[$term]}
+    else
+        get_color_code none
+    fi
+    shopt -u nocasematch
+}
+
 print_color_table() {
     echo
     echo "This terminal emulator supports (can display) the following colors:"
@@ -84,28 +107,17 @@ print_color_table() {
     echo
 }
 
-read_colors() {
-    # Support for 256 colors
-    color_temp="$color_list random $(seq 1 256) confetti"
-    color_list="$color_temp"
-
-    for color in $(echo "$color_list"); do
-        color_line=""
-        (grep -v "#" | grep "^$color\ .*" | \
-         sed -e "s/^$color//g") < "$color_file" > $temp_file
-        while read line; do
-            color_temp="$color_line $line"
-            color_line="$color_temp"
-        done < $temp_file
-
-        if [ -z "$color_line" ]; then
+read_color_file() {
+    while read line; do
+        if [ -z "$line" ] || [[ $line == *"#"* ]]; then
             continue
         fi
-
-        colorize_[$color]=$(tr '[:upper:]' '[:lower:]' <<< "$color_line")
-    done
-
-    rm -f $temp_file
+        color_line_code=$(awk '{ print $1 }' <<< "$line")
+        color_line_term=$(awk '{ print $2 }' <<< "$line")
+        color_temp="$color_terms $color_line_term"
+        color_terms="$color_temp"
+        colorize+=( ["$color_line_term"]="$color_line_code" )
+    done < $color_file
 }
 
 rnd_colors() {

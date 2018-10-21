@@ -271,36 +271,8 @@ print_output_line() {
         done
     fi
 
-    items=""
-    for color in $color_list; do
-        if [ -z "${colorize_[$color]}" ]; then
-            continue
-        fi
-        temp=$(echo "$items ${colorize_[$color]}")
-        items=$temp
-    done
 
-    color_match=0
-    for item in $items; do
-        item_color=$(grep "$item" $color_file | tail -n1 | awk '{ print $1 }')
-        if [ -z "$item_color" ]; then
-            break
-        elif [[ "$line_lower" = *$item* ]]; then
-            color_match=1
-            break
-        fi
-    done
-
-    if [ $color_match -eq 1 ]; then
-        get_color_code "$item_color"
-    else
-        item=""
-    fi
-
-    if [ "$color_code" = "0" ]; then
-        color_code="$cl_n"
-    fi
-
+    get_color_match "$line"
     output="${color_code}${line}${cl_n}${line_spaces}"
     if [ ! -z "$filter_list" ]; then
         if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
