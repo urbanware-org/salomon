@@ -56,8 +56,8 @@ USAGE (salomon.sh)
             which is the default shell on many Unix-like systems (or at least
             on many Linux distributions).
 
-            No matter which shell you are using, the Bash shell must be
-            installed in order to use the project.
+            No matter which shell you are using, the Bash shell (version 4 or
+            higher) must be installed in order to use the project.
 
             Please read the included documentation related to the shell
             compatibility before using SaLoMon.
