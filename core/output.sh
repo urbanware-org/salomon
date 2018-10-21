@@ -119,6 +119,18 @@ print_output_header() {
             temp="${cl_lr}No"
         fi
         print_line "${cl_wh}Slow down:" "$temp"
+        if [ $pause -eq 1 ]; then
+            if [ "$pause_lines" = "auto" ]; then
+                temp="${cl_lg}Yes ${cl_yl}(based on terminal height)"
+            elif [ $pause_lines -eq 1 ]; then
+                temp="${cl_lg}Yes ${cl_yl}(after each line)"
+            else
+                temp="${cl_lg}Yes ${cl_yl}(after $pause_lines lines)"
+            fi
+        else
+            temp="${cl_lr}No"
+        fi
+        print_line "${cl_wh}Pause output:" "$temp"
     fi
 
     if [ $wait_match -gt 0 ]; then
