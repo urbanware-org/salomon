@@ -35,7 +35,6 @@ source ${script_dir}/core/global.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
 source ${script_dir}/salomon.cfg
-declare -A "colorize_"
 set_global_variables
 shell_precheck
 
@@ -341,7 +340,7 @@ else
         if [ ! -f "$color_file" ]; then
             usage "The given color config file path is not a file"
         else
-            read_colors "$color_file"
+            read_color_file "$color_file"
         fi
     fi
 
