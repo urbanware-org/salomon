@@ -22,6 +22,14 @@ elif [ ! -n "$BASH" ]; then
     echo "error: This script must be executed using the Bash shell, run the"
     echo "       compatibility script ('compat.sh') for details."
     exit 1
+else
+    bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
+    if [ $bash_major -lt 4 ]; then
+        echo "error: This script requires at least version 4 of the Bash"\
+                    "shell, run the"
+        echo "       compatibility script ('compat.sh') for details."
+        exit 1
+    fi
 fi
 
 # General preparation

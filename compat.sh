@@ -82,6 +82,7 @@ echo $em "${cl_lc}SaLoMon compatibility check script"\
          "${cl_n}"
 
 check_basename="${cl_lr}FAILURE${cl_n}"
+check_bash_major="${cl_lr}FAILURE${cl_n}"
 check_declare="${cl_lr}FAILURE${cl_n}"
 check_dialog="${cl_yl}MISSING${cl_n}"
 check_dirname="${cl_lr}FAILURE${cl_n}"
@@ -99,6 +100,13 @@ check_failed=0
 check_missing=0
 check_overall="${cl_lr}FAILURE${cl_n}"
 line="................"
+
+bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
+if [ $bash_major -ge 4 ]; then
+    check_bash_major="${cl_lg}SUCCESS${cl_n}"
+else
+    check_failed=1
+fi
 
 command -v basename &>/dev/null
 if [ $? -eq 0 ]; then
@@ -208,6 +216,9 @@ else
     return_code=2
 fi
 
+echo
+echo $em "Checking Bash version (at least version 4 required)...$line"\
+         "${check_bash_major}"
 echo
 echo $em "Checking 'basename' command ..........................$line"\
          "${check_basename}"
