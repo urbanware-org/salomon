@@ -522,7 +522,7 @@ else
         fi
     fi
 
-    # Pause
+    # Pause output
     if [ $interactive -eq 1 ]; then
         if [ "$pause_lines" = "0" ]; then
             dialog_pause_output ""
@@ -530,20 +530,27 @@ else
             dialog_pause_output "$pause_lines"
         fi
         pause_lines="$user_input"
-        pause=1
+        if [ -z "$pause_lines" ]; then
+            pause=0
+        else
+            pause=1
+        fi
     fi
 
     if [ $pause -eq 1 ] && [ $follow -eq 1 ]; then
         usage "The '--pause' argument cannot be used with monitoring mode"
     fi
-    if [ -z "$pause_lines" ] || [ "$pause_lines" = "0" ]; then
-        pause=0
+    if [ -z "$pause_lines" ] && [ $pause -eq 1 ]; then
+        usage foo
     elif [ "$pause_lines" = "auto" ]; then
         pause=1
     else
-        re='^[0-9]+$'
-        if [[ ! $pause_lines =~ $re ]]; then
-            usage "The argument '--pause' expects a numeric value or 'auto'"
+        if [ $pause -eq 1 ]; then
+            re='^[0-9]+$'
+            if [ $pause_lines -lt 1 ] || [[ ! $pause_lines =~ $re ]]; then
+                expects="expects a positive numeric value or 'auto'"
+                usage "The '--pause' argument $expects"
+            fi
         fi
     fi
 
