@@ -56,7 +56,20 @@ get_color_code() {
         elif [ "$color_name" = "confetti" ]; then
             color_code="999"
         else
-            color_code="\e[38;5;${color_name}m"
+            re='^[0-9]+$'
+            if [[ $color_name =~ $re ]]; then
+                if [ $color_name -lt 0 ] || [ $color_name -gt 256 ]; then
+                    warn "The color '${cl_yl}$color_name${cl_n}' is invalid" 1
+                    color_name=""
+                    color_code="${cl_n}"
+                else
+                    color_code="\e[38;5;${color_name}m"
+                fi
+            else
+                warn "The color '${cl_yl}$color_name${cl_n}' does not exist" 1
+                color_name=""
+                color_code="${cl_n}"
+            fi
         fi
     fi
 }
@@ -108,7 +121,6 @@ print_color_table() {
 }
 
 read_color_file() {
-#  | xargs -n1 | sort -u | xargs
     while read line; do
         if [ -z "$line" ] || [[ $line == *"#"* ]]; then
             continue
@@ -116,7 +128,14 @@ read_color_file() {
         color_line_code=$(awk '{ print $1 }' <<< "$line")
         color_line_term=$(awk '{ print $2 }' <<< "$line")
         color_temp="$color_terms $color_line_term"
-        color_terms=$(xargs -n1 <<< "$color_temp" | sort -u | xargs)
+        xargs -n1 <<< "$color_temp" &>/dev/null
+        if [ $? -ne 0 ]; then
+            warn "Please check the color config for quotes and remove them." 0
+            color_terms="$color_temp"
+        else
+            color_terms=$(xargs -n1 <<< "$color_temp" | sort -u | xargs)
+        fi
+
         colorize+=( ["$color_line_term"]="$color_line_code" )
     done < $color_file
 }
