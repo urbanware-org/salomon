@@ -56,21 +56,24 @@ analyze_input_file() {
 
     count=0
     while read line; do
+        print_output_line "$line"
         count=$(( count + 1 ))
 
         if [ $pause -gt 0 ]; then
             if [ "$pause_lines" = "auto" ]; then
-                if [ $(( count % $(tput lines) )) -eq 0 ]; then
+                term_lines=$(tput lines)
+                if [ $(( count % $(( term_lines - 1 )) )) -eq 0 ]; then
                     pause_output
+                    count=0
                 fi
             else
-                if [ $(( count % pause_lines )) -eq 0 ]; then
+                if [ $(( count %  pause_lines )) -eq 0 ]; then
                     pause_output
+                    count=0
                 fi
             fi
         fi
 
-        print_output_line "$line"
         if [ $slow -eq 1 ]; then
             sleep 0.$delay
         fi
