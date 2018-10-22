@@ -452,6 +452,14 @@ USAGE (salomon.sh)
         value.
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause auto
+            
+        When the corresponding number of lines is reached, a typical "Press
+        any key to continue" message appears. As this already suggests, the
+        output continues after pressing a key.
+        
+        However, you should avoid pressing certain keys such as the delete
+        key, arrow keys, F-keys and the right-click keyboard shortcut, as this
+        will result in skipping pauses.        
 
     9. Export output into a file
 
