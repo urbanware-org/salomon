@@ -5,8 +5,8 @@ REQUIREMENTS (SaLoMon)
     the default shell on many Unix-like systems (or at least Linux
     distributions).
 
-    So, no matter which shell you are using, the Bash shell must be installed
-    in order to use SaLoMon.
+    So, no matter which shell you are using, the Bash shell (version 4 or
+    higher) must be installed in order to use SaLoMon.
 
     Additional package requirements (should be pre-installed):
 
