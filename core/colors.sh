@@ -100,23 +100,23 @@ print_color_table() {
     echo
 
     cpl=1
+    echo -e "    \c"
     for color in $(seq 0 255); do
         printf "\x1b[48;5;%sm%4d${cl_n}" "$color" "$color";
         cpl=$(( ++cpl ))
-        if [ $cpl -gt 19 ] || [ $color -eq 255 ]; then
-            echo
+        if [ $cpl -gt 16 ] || [ $color -eq 255 ]; then
             cpl=1
+            echo -e "\n    \c"
         fi
     done
 
     echo
-    echo "All numbers that have a black background are colors cannot be"\
-         "displayed"
-    echo "(except for number 0, which actually has a black background)."
-    echo
-    echo "When running SaLoMon on a text-based user interface, there are"\
-         "most likely"
-    echo "only 16 colors available which occur multiple times in the table."
+    echo "All numbers with black background are colors that cannot be"\
+         "displayed (except"
+    echo "for number 0). When running SaLoMon on a text-based user interface"\
+         "there are"
+    echo "most likely only 16 colors available which occur multiple times in"\
+         "the table."
     echo
 }
 
