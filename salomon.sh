@@ -543,7 +543,7 @@ else
     else
         re='^[0-9]+$'
         if [[ ! $pause_lines =~ $re ]]; then
-            usage "The argument '--pause' expects a numeric value"
+            usage "The argument '--pause' expects a numeric value or 'auto'"
         fi
     fi
 
