@@ -282,7 +282,7 @@ dialog_pause_output() {
                     "number of output lines?\n\nEnter the desired amount"\
                     "of lines, enter 'auto' to pause based on the terminal"\
                     "height or leave blank to skip:")
-    predef_input_dialog "Number of first lines" "$dlg_text" 12 60 "$1"
+    predef_input_dialog "Pause output" "$dlg_text" 12 60 "$1"
 }
 
 dialog_prompt_on_exit() {
