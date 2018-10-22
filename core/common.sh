@@ -119,7 +119,7 @@ deprecated_argument() {
     dep="The argument '${cl_lc}${arg_g}${cl_n}' is ${cl_yl}deprecated${cl_n}."
     ins="You may use '${cl_lc}${arg_i}${cl_n}' instead."
 
-    echo -e "${cl_lb}notice${cl_n}: $dep $ins"
+    echo -e "${cl_lb}notice:${cl_n} $dep $ins"
     sleep 1
 }
 
@@ -310,6 +310,18 @@ usage() {
         exit 1
     else
         exit 0
+    fi
+}
+
+warn() {
+    message=$1
+    indent=$2
+
+    if [ $indent -eq 0; then ]
+        echo -e "${cl_yl}warning:${cl_n} ${message}."
+        sleep 1
+    else
+        echo -e "${cl_dy}==> ${cl_yl}warning:${cl_n} ${message}."
     fi
 }
 
