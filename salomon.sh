@@ -314,21 +314,12 @@ else
     fi
 
     # Prompt before exit
-    if [ $follow -eq 1 ]; then
-        if [ $interactive -eq 1 ]; then
-            dialog_prompt_on_exit $prompt
-            if [ $? -eq 0 ]; then
-                prompt=1
-            else
-                prompt=0
-            fi
-        fi
-    else
-        if [ $interactive -eq 0 ]; then
-            if [ $prompt -eq 1 ]; then
-                usage \
-                    "The analyzing mode does not support a prompt before exit"
-            fi
+    if [ $interactive -eq 1 ]; then
+        dialog_prompt_on_exit $prompt
+        if [ $? -eq 0 ]; then
+            prompt=1
+        else
+            prompt=0
         fi
     fi
 

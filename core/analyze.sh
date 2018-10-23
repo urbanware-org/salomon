@@ -87,8 +87,22 @@ analyze_input_file() {
         print_line "${cl_lc}${temp}"
         print_line
         print_line_count
-        print_line "*"
-        echo
+        if [ $prompt -eq 1 ]; then
+            print_line
+            print_line "${cl_ly}Press any key to exit."
+            print_line "*"
+            read -n1 -r
+        else
+            print_line "*"
+            echo
+        fi
+    else
+        if [ $prompt -eq 1 ]; then
+            anykey="${cl_ly}Press any key to exit${cl_n}"
+            message="${cl_dy}==${cl_ly}[$anykey${cl_ly}]${cl_dy}============"
+            echo -e "${message}=========================================\r\c"
+            read -n1 -r
+        fi
     fi
 }
 
