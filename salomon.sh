@@ -139,14 +139,14 @@ else
                 header=0
                 shift
             ;;
-            -p|--pause)
+            -p|--prompt)
+                prompt=1
+                shift
+            ;;
+            --pause)
                 shift
                 pause_lines="$1"
                 pause=1
-                shift
-            ;;
-            -p|--prompt)
-                prompt=1
                 shift
             ;;
             -r|--remove)
