@@ -25,7 +25,7 @@ cancel_process() {
         print_line
         print_line "${cl_ly}Press any key to exit."
         print_line "*"
-        read -n1 -r
+        read -n1 -r < /dev/tty
     else
         print_line "*"
         echo
