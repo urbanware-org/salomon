@@ -278,10 +278,10 @@ dialog_pause_output() {
         return
     fi
 
-    dlg_text=$(echo "Do you only want to pause the output after a certain"\
-                    "number of output lines?\n\nEnter the desired amount"\
-                    "of lines, enter 'auto' to pause based on the terminal"\
-                    "height or leave blank to skip:")
+    dlg_text=$(echo "Do you want to pause the output after a certain number"\
+                    "of output lines?\n\nEnter the desired amount of lines"\
+                    "enter 'auto' to pause based on the terminal height or"\
+                    "leave blank to skip:")
     predef_input_dialog "Pause output" "$dlg_text" 12 60 "$1"
 }
 
