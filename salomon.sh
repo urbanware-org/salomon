@@ -541,7 +541,8 @@ else
         usage "The '--pause' argument cannot be used with monitoring mode"
     fi
     if [ -z "$pause_lines" ] && [ $pause -eq 1 ]; then
-        usage foo
+        expects="expects a positive numeric value or 'auto'"
+        usage "The '--pause' argument $expects"
     elif [ "$pause_lines" = "auto" ]; then
         pause=1
     else
