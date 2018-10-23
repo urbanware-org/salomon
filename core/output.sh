@@ -14,7 +14,7 @@ pause_output() {
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
     message="${cl_dy}==${cl_ly}[$anykey${cl_ly}]${cl_dy}"
     echo -e "${message}=================================================\r\c"
-    read -n 1 -s -r </dev/tty
+    read -n1 -r -s < /dev/tty
     echo
 }
 
