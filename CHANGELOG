@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.11.0 (2018-10-24)
 
         + Added a command-line argument (and feature) to pause the output (by
           prompt) after a user-defined amount of lines.
