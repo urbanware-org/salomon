@@ -201,10 +201,13 @@ USAGE (salomon.sh)
 
             Furthermore, the Bash shell also provides built-in keystrokes to
             pause ("freeze") the output and, of course, to resume again.
-            Notice that they are part of the Bash not of SaLoMon.
+            Notice that they are part of the Bash.
 
             By pressing <Ctrl>+<S> the output freezes until defreezing it
             again using <Ctrl>+<Q> or <Return>.
+
+            SaLoMon also provides an optional pause feature based on the
+            number of output lines, see section 8 below.
 
         3.2 Monitor the file
 
@@ -456,7 +459,11 @@ USAGE (salomon.sh)
         When the corresponding number of lines is reached, a typical "Press
         any key to continue" message appears. As this already suggests, the
         output continues after pressing a key.
-        
+
+        The Return and Enter keys have a different behavior than the others.
+        If you press one of them, the previous "Press any key to continue"
+        prompt will be kept.
+ 
         However, you should avoid pressing certain keys such as the delete
         key, arrow keys, F-keys and the right-click keyboard shortcut, as this
         will result in skipping pauses.        
