@@ -11,7 +11,7 @@ CHANGELOG (SaLoMon)
           codes or color terms containing invalid characters were given).
 
         * Revised most of the color related code inside the core modules (for
-          parsing the config files and colorizing output) for more efficient
+          parsing the config files and colorizing lines) for more efficient
           output.
         * Revised the compatibility script (added specific exit codes).
         * Revised the output header (added additional information).
