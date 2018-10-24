@@ -48,8 +48,8 @@ CHANGELOG (SaLoMon)
           export dialog when using interactive mode).
         * Revised the input file path validation (added additional path check).
         * Revised the method of parsing color config files inside the output
-          core script.
-        * Revised the output core script (negligible changes).
+          core module.
+        * Revised the output core module (negligible changes).
 
     Version 1.9.6 (2018-06-11)
 
@@ -102,7 +102,7 @@ CHANGELOG (SaLoMon)
           information (negligible changes).
         * Revised the dialog core module (added cancel buttons to input
           dialogs and also some negligible changes).
-        * Revised the output header inside the output core script (negligible
+        * Revised the output header inside the output core module (negligible
           changes).
         * Revised the output of the 256-color table (added further information
           and optimized the output for a 80x25 text-based user interface).
@@ -144,8 +144,8 @@ CHANGELOG (SaLoMon)
     Version 1.8.3 (2017-10-14)
 
         * Revised the code to process the input files inside the main SaLoMon
-          as well as the analyzing and monitoring core script.
-        * Revised the output header inside the output core script (negligible
+          as well as the analyzing and monitoring core module.
+        * Revised the output header inside the output core module (negligible
           changes related to multiple input files).
         * Revised the separator when processing multiple input files (replaced
           the previous one with a line of hyphens).
@@ -156,7 +156,7 @@ CHANGELOG (SaLoMon)
 
         * Revised the code in various SaLoMon components to allow multiple
           input files at once.
-        * Revised the output header inside the output core script (removed
+        * Revised the output header inside the output core module (removed
           information duplicates).
         * Revised the shell compatibility check script (added check for the
           'paste' tool, removed duplicate of 'trap').
@@ -185,7 +185,7 @@ CHANGELOG (SaLoMon)
         + Added the support for 256-color highlighting.
 
         * Revised the command-line argument parser in the main SaLoMon script.
-        * Revised the output header inside the output core script (added all
+        * Revised the output header inside the output core module (added all
           relevant keystrokes).
 
         # Fixed the ignore-case information bug inside the output header (not
@@ -195,7 +195,7 @@ CHANGELOG (SaLoMon)
 
         * Revised the exit codes of the scripts in general (including exit
           code 1 in case the Bash shell is missing).
-        * Revised the output header inside the output core script (negligible
+        * Revised the output header inside the output core module (negligible
           changes).
 
     Version 1.7.3 (2017-02-08)
@@ -214,8 +214,8 @@ CHANGELOG (SaLoMon)
 
     Version 1.7.2 (2017-02-01)
 
-        + Added a variable into the global variable core script containing the
-          version number (instead of such a variable in each non-core script).
+        + Added a variable into the global variable core module containing the
+          version number (instead of such a variable in each non-core module).
 
         * Revised the main and the install script (abbreviated the notice
           about the missing Bash shell and referred to the shell compatibility
@@ -226,7 +226,7 @@ CHANGELOG (SaLoMon)
           components.
 
         - Removed the variables containing the version number inside the non-
-          core scripts (now a global variable).
+          core modules (now a global variable).
 
     Version 1.7.1 (2017-01-03)
 
@@ -235,7 +235,7 @@ CHANGELOG (SaLoMon)
 
         * Revised the highlight feature (highlight all filter terms in an
           output line if multiple occur).
-        * Revised the usage information inside the SaLoMon common core script
+        * Revised the usage information inside the SaLoMon common core module
           (negligible changes).
 
         # Fixed the exclude information bug inside the output header (missing
@@ -266,7 +266,7 @@ CHANGELOG (SaLoMon)
 
         * Revised all of the SaLoMon components to check if the required shell
           is being installed.
-        * Revised the SaLoMon global variable core script.
+        * Revised the SaLoMon global variable core module.
 
     Version 1.6.0 (2015-04-24)
 
@@ -312,10 +312,10 @@ CHANGELOG (SaLoMon)
 
     Version 1.5.5 (2015-01-13)
 
-        * Revised some code inside the monitoring core script (negligible
+        * Revised some code inside the monitoring core module (negligible
           changes).
 
-        # Fixed the freeze bug inside the SaLoMon monitoring core script (in
+        # Fixed the freeze bug inside the SaLoMon monitoring core module (in
           case the input file has been temporarily moved e. g. by a log
           rotation process).
 
