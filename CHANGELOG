@@ -7,7 +7,8 @@ CHANGELOG (SaLoMon)
           prompt) after a user-defined amount of lines.
         + Added a version check for the Bash shell (some code requires at
           least version 4).
-        + Added some warnings (if an invalid color code or name was given).
+        + Added some warnings (if non-existent color names, invalid color
+          codes or color terms containing invalid characters were given).
 
         * Revised most of the color related code inside the core modules (for
           parsing the config files and colorizing output) for more efficient
