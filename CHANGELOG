@@ -1,6 +1,23 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        + Added a command-line argument (and feature) to pause the output (by
+          prompt) after a user-defined amount of lines.
+        + Added a version check for the Bash shell (some code requires at
+          least version 4).
+        + Added some warnings (if an invalid color code or name was given).
+
+        * Revised most of the color related code inside the core modules (for
+          parsing the config files and colorizing output) for more efficient
+          output.
+        * Revised the compatibility script (added specific exit codes).
+        * Revised the output header (added additional information).
+        * Revised the prompt on exit argument (can also be used with analyze
+          mode now).
+        * Revised the usage information from the main SaLoMon script.
+
     Version 1.10.0 (2018-10-16)
 
         + Added a command-line argument (and feature) to return a certain
