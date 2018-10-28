@@ -13,13 +13,13 @@
 
 ## Definition
 
-The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other plain text files.
+The *SaLoMon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other text files.
 
 [Top](#salomon-)
 
 ## Details
 
-<img src="https://github.com/urbanware-org/salomon/blob/master/wiki/salomon_output.png" alt="SaLoMon sample output" width=320px align="right"/>The project was primarily built to monitor and analyze log files inside a terminal emulator and also on systems without a graphical user interface. Of course, you can use *SaLoMon* to also process (most likely analyze) other text-based files of any kind.
+<img src="https://github.com/urbanware-org/salomon/blob/master/wiki/salomon_output.png" alt="SaLoMon sample output" width=320px align="right"/>The project was primarily built to monitor and analyze log files inside a terminal emulator and also on systems without a graphical user interface. Of course, you can use *SaLoMon* to also process (most likely analyze) other plain text files of any kind.
 
 These lines can also easily be colorized with user-defined colors (and additionally highlighted in different ways) depending on given criteria. For example, all lines which contain the word "error" can be displayed red (as shown above). Fruthermore the output can be filtered to only return certain lines instead of all.
 
