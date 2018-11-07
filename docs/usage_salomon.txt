@@ -59,8 +59,8 @@ USAGE (salomon.sh)
             No matter which shell you are using, the Bash shell (version 4 or
             higher) must be installed in order to use the project.
 
-            Please read the included documentation related to the shell
-            compatibility before using SaLoMon.
+            Further information can be found inside the included documentation
+            for the shell compatibility script.
 
         2.3 Colorize and highlight certain lines
 
@@ -238,7 +238,7 @@ USAGE (salomon.sh)
                                -c /tmp/colors.cfg
 
             Alternatively, you can also give the '--analyze' command-line
-            argument instead of '-a analyze'.                               
+            argument instead of '-a analyze'.
 
         3.4 Multiple input files
 
@@ -415,7 +415,7 @@ USAGE (salomon.sh)
                            -r "example for ;foo;bar"
 
     7. Head and tail feature
-        
+
         Notice that both features do not work with multiple input files.
 
         7.1 Head feature
@@ -455,7 +455,7 @@ USAGE (salomon.sh)
         value.
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause auto
-            
+
         When the corresponding number of lines is reached, a typical "Press
         any key to continue" message appears. As this already suggests, the
         output continues after pressing a key.
@@ -463,10 +463,10 @@ USAGE (salomon.sh)
         The Return and Enter keys have a different behavior than the others.
         If you press one of them, the previous "Press any key to continue"
         prompt will be kept.
- 
+
         However, you should avoid pressing certain keys such as the delete
         key, arrow keys, F-keys and the right-click keyboard shortcut, as this
-        will result in skipping pauses.        
+        will result in skipping pauses.
 
     9. Export output into a file
 
@@ -492,4 +492,3 @@ USAGE (salomon.sh)
         the output of SaLoMon. However, editing the file with an editor will
         not work, due to the fact, that the editor will (or should) also print
         the color and highlighting codes instead of interpreting them.
-

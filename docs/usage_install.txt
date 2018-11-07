@@ -33,8 +33,8 @@ USAGE (install.sh)
             No matter which shell you are using, the Bash shell must be
             installed in order to use the project.
 
-            Please read the included documentation related to the shell
-            compatibility before using SaLoMon.
+            Further information can be found inside the included documentation
+            for the shell compatibility script.
 
     3. Install SaLoMon
 
@@ -75,4 +75,3 @@ USAGE (install.sh)
         or directly when logged in as root:
 
             # ./install.sh -u
-
