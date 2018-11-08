@@ -1,6 +1,10 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        - Remove deprecated and unnecessary shell precheck function.
+
     Version 1.11.0 (2018-10-24)
 
         + Added a command-line argument (and feature) to pause the output (by
