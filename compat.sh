@@ -216,7 +216,7 @@ else
 fi
 
 echo
-echo $em "Checking Bash version (version 4 or higher required)..$line"\
+echo $em "Checking Bash shell (version 4 or higher required)....$line"\
          "${check_bash_major}"
 echo
 echo $em "Checking 'basename' command ..........................$line"\
