@@ -57,12 +57,12 @@ elif [ ! -n "$BASH" ]; then
          "           *"
     echo "*                                                                "\
          "           *"
-    echo "* No matter which shell you are using, the Bash shell must be"\
-         "installed in   *"
-    echo "* order to use SaLoMon. As a matter of fact, the SaLoMon project"\
-         "takes       *"
-    echo "* advantage of certain features provided by the Bash shell."\
-         "                 *"
+    echo "* No matter which shell you are using, the Bash shell (version 4"\
+         "or higher)  *"
+    echo "* must be installed in order to use SaLoMon, as the project"\
+         "takes advantage  *"
+    echo "* of certain features provided by the Bash shell."\
+         "                           *"
     echo "${separator}${separator}"
     echo
     exit 1
