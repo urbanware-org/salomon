@@ -75,7 +75,6 @@ script_temp="$(dirname $(mktemp -u))/salomon_compat.sh"
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/global.sh
 set_global_variables
-shell_precheck
 
 echo
 echo $em "${cl_lc}SaLoMon compatibility check script"\

@@ -137,32 +137,6 @@ prepare_path() {
     path_prepared=$(sed -e "s/^ *//g;s/ *$//g;s/\ /\/\//g" <<< $path_input)
 }
 
-shell_precheck() {
-    precheck=$(echo -e "precheck" | grep "\-e")
-    if [ $? -eq 0 ]; then
-        color_none=""                 ; cl_n=$color_none
-        color_black=""                ; cl_bk=$color_black
-        color_brown=""                ; cl_br=$color_brown
-        color_darkblue=""             ; cl_db=$color_darkblue
-        color_darkcyan=""             ; cl_dc=$color_darkcyan
-        color_darkgray=""             ; cl_dy=$color_darkgray
-        color_darkgreen=""            ; cl_dg=$color_darkgreen
-        color_darkpurple=""           ; cl_dp=$color_darkpurple
-        color_darkred=""              ; cl_dr=$color_darkred
-        color_lightblue=""            ; cl_lb=$color_lightblue
-        color_lightcyan=""            ; cl_lc=$color_lightcyan
-        color_lightgray=""            ; cl_ly=$color_lightgray
-        color_lightgreen=""           ; cl_lg=$color_lightgreen
-        color_lightpurple=""          ; cl_lp=$color_lightpurple
-        color_lightred=""             ; cl_lr=$color_lightred
-        color_white=""                ; cl_wh=$color_white
-        color_yellow=""               ; cl_yl=$color_yellow
-        bs=""
-        ce=""
-        em=""
-    fi
-}
-
 read_filter() {
     (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
     if [ $? -eq 0 ]; then

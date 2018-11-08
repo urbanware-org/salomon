@@ -30,7 +30,6 @@ script_file=$(basename "$0")
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/global.sh
 set_global_variables
-shell_precheck
 
 script_mode=""
 target_dir="/opt/salomon"

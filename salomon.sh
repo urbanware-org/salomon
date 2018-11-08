@@ -44,7 +44,6 @@ source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
 source ${script_dir}/salomon.cfg
 set_global_variables
-shell_precheck
 
 # Check command-line arguments
 if [ $# -eq 0 ]; then
