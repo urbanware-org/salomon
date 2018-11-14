@@ -283,7 +283,6 @@ print_output_line() {
         done
     fi
 
-
     get_color_match "$line"
     output="${color_code}${line}${cl_n}${line_spaces}"
     if [ ! -z "$filter_list" ]; then
