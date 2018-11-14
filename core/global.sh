@@ -21,9 +21,6 @@ set_global_variables() {
     input_count=0
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
 
-    bs="\b"
-    ce="\c"
-
     action=""
     copy=0
     export_file=""

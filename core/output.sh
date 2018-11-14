@@ -24,9 +24,9 @@ print_line() {
     if [ -z "$1" ]; then
         echo -e "${cl_lb}*${cl_n}"
     elif [ "$1" = "*" ]; then
-        echo -e "${cl_lb}${ce}"
+        echo -e "${cl_lb}\c"
         for number in $(seq 1 78); do
-            echo -e "*${ce}"
+            echo -e "*\c"
         done
         echo -e "${cl_n}"
     else
@@ -210,7 +210,7 @@ print_output_header() {
     fi
 
     print_line
-    print_line "${ce}"
+    print_line "\c"
 
     echo -e "${cl_wh}Press"\
             "${cl_lc}Ctrl${cl_ly}+${cl_lc}C"\
@@ -299,7 +299,7 @@ print_output_line() {
                         term_case=$term
                     fi
                     temp=$(echo -e "${color_high}${term_case}${cl_n}"\
-                                    "${bs}${color_code}")
+                                   "\b${color_code}")
 
                     output=$(echo -e "${color_code}${line}${cl_n}" | \
                              sed -e "s/$term_upper/$temp/ig")
