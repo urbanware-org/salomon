@@ -3,7 +3,11 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
-        - Remove deprecated and unnecessary shell precheck function.
+        - Removed a deprecated and unnecessary shell precheck function.
+        - Removed some unnecessary variables.
+        
+        # Fixed the highlight match bug (the '--highlight-matches' argument
+          did not have any effect when using color codes).
 
     Version 1.11.0 (2018-10-24)
 
@@ -51,7 +55,8 @@ CHANGELOG (SaLoMon)
 
         * Revised the global config file (added an additional option for the
           export dialog when using interactive mode).
-        * Revised the input file path validation (added additional path check).
+        * Revised the input file path validation (added additional path
+          check).
         * Revised the method of parsing color config files inside the output
           core module.
         * Revised the output core module (negligible changes).
