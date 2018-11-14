@@ -279,9 +279,12 @@ print_output_line() {
     if [ ! -z "$filter_list" ]; then
         if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             if [ $color_match -eq 1 ]; then
-                color_high=$((sed -e "s/\[0;/\[7;/g" | \
-                              sed -e "s/\[1;/\[7;/g" | \
-                              sed -e "s/\[38;/\[48;/g") <<< "$color_code")
+                if [ -z "$(grep "\[38" <<< "$color_code")" ]; then
+                    color_high=$((sed -e "s/\[0;/\[7;/g" | \
+                                  sed -e "s/\[1;/\[7;/g") <<< "$color_code")
+                else
+                    color_high="\e[0m$((sed -e "s/\[38;/\[48;/g") <<< "$color_code")"
+                fi
             else
                 color_code="\e[0m"
                 color_high="\e[7m"
