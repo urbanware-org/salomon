@@ -23,7 +23,6 @@ set_global_variables() {
 
     bs="\b"
     ce="\c"
-    em="-e"
 
     action=""
     copy=0

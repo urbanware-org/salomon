@@ -38,16 +38,16 @@ yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
 
 confirm() {
     echo
-    echo $em "${cl_lc}SaLoMon install/uninstall script${cl_n}"
+    echo -e "${cl_lc}SaLoMon install/uninstall script${cl_n}"
     echo
-    echo $em "This will $script_action SaLoMon. Do you wish to proceed"\
+    echo -e "This will $script_action SaLoMon. Do you wish to proceed"\
              "($yesno)? \c"
     read choice
 
     egrep "^yes$|^y$" -i <<< $choice &>/dev/null
     if [ $? -ne 0 ]; then
         echo
-        echo $em "${cl_lr}Canceled${cl_n} on user request."
+        echo -e "${cl_lr}Canceled${cl_n} on user request."
         echo
         exit
     fi
@@ -69,9 +69,9 @@ usage() {
     if [ ! -z "$error_msg" ]; then
         echo
         if [ -z "$given_arg" ]; then
-            echo $em "${cl_lr}error:${cl_n} $error_msg."
+            echo -e "${cl_lr}error:${cl_n} $error_msg."
         else
-            echo $em "${cl_lr}error:${cl_n} $error_msg"\
+            echo -e "${cl_lr}error:${cl_n} $error_msg"\
                      "'${cl_yl}${given_arg}${cl_n}'."
         fi
         exit 1
@@ -115,7 +115,7 @@ fi
 
 confirm $script_mode
 echo
-echo $em "${cl_lg}Started $script_mode process:${cl_n}"
+echo -e "${cl_lg}Started $script_mode process:${cl_n}"
 if [ $script_mode = "uninstall" ]; then
     cd $(pwd | sed -e "s/\/salomon$//g")
 
@@ -128,16 +128,16 @@ if [ $script_mode = "uninstall" ]; then
 
     if [ -d $target_dir ]; then
         rm -fR $target_dir &>/dev/null
-        echo $em "  - Removed project directory '${target}'."
+        echo -e "  - Removed project directory '${target}'."
     else
-        echo $em "  - Project directory '${target}' does not exist."
+        echo -e "  - Project directory '${target}' does not exist."
     fi
 else
     if [ -d $target_dir ]; then
-        echo $em "  - Target directory '${target}' already exists."
+        echo -e "  - Target directory '${target}' already exists."
     else
         mkdir -p $target_dir &>/dev/null
-        echo $em "  - Created target directory '${target}'."
+        echo -e "  - Created target directory '${target}'."
     fi
 
     rsync -av $script_dir/* $target_dir/ &>/dev/null
@@ -156,7 +156,7 @@ else
         echo "  - Created symbolic link for the main script."
     fi
 fi
-echo $em "${cl_lg}Finished $script_mode process.${cl_n}"
+echo -e "${cl_lg}Finished $script_mode process.${cl_n}"
 echo
 
 # EOF

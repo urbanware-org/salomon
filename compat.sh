@@ -77,7 +77,7 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 echo
-echo $em "${cl_lc}SaLoMon compatibility check script"\
+echo -e "${cl_lc}SaLoMon compatibility check script"\
          "${cl_n}"
 
 check_basename="${cl_lr}FAILURE${cl_n}"
@@ -216,40 +216,40 @@ else
 fi
 
 echo
-echo $em "Checking Bash shell (version 4 or higher required)....$line"\
+echo -e "Checking Bash shell (version 4 or higher required)....$line"\
          "${check_bash_major}"
 echo
-echo $em "Checking 'basename' command ..........................$line"\
+echo -e "Checking 'basename' command ..........................$line"\
          "${check_basename}"
-echo $em "Checking 'declare' command ...........................$line"\
+echo -e "Checking 'declare' command ...........................$line"\
          "${check_declare}"
-echo $em "Checking 'dirname' command ...........................$line"\
+echo -e "Checking 'dirname' command ...........................$line"\
          "${check_dirname}"
-echo $em "Checking 'grep' command ..............................$line"\
+echo -e "Checking 'grep' command ..............................$line"\
          "${check_grep}"
-echo $em "Checking 'paste' command .............................$line"\
+echo -e "Checking 'paste' command .............................$line"\
          "${check_printf}"
-echo $em "Checking 'printf' command ............................$line"\
+echo -e "Checking 'printf' command ............................$line"\
          "${check_printf}"
-echo $em "Checking 'readlink' command ..........................$line"\
+echo -e "Checking 'readlink' command ..........................$line"\
          "${check_readlink}"
-echo $em "Checking 'sed' command ...............................$line"\
+echo -e "Checking 'sed' command ...............................$line"\
          "${check_sed}"
-echo $em "Checking 'tail' command ..............................$line"\
+echo -e "Checking 'tail' command ..............................$line"\
          "${check_tail}"
-echo $em "Checking 'trap' command ..............................$line"\
+echo -e "Checking 'trap' command ..............................$line"\
          "${check_trap}"
-echo $em "Checking capabilities of the 'echo' command ..........$line"\
+echo -e "Checking capabilities of the 'echo' command ..........$line"\
          "${check_echo}"
-echo $em "Checking definition of functions .....................$line"\
+echo -e "Checking definition of functions .....................$line"\
          "${check_function}"
 echo
-echo $em "Checking optional 'dialog' command ...................$line"\
+echo -e "Checking optional 'dialog' command ...................$line"\
          "${check_dialog}"
-echo $em "Checking optional 'whiptail' command .................$line"\
+echo -e "Checking optional 'whiptail' command .................$line"\
          "${check_whiptail}"
 echo
-echo $em "Overall status .......................................$line"\
+echo -e "Overall status .......................................$line"\
          "${check_overall}"
 echo
 

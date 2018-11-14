@@ -22,20 +22,16 @@ print_line() {
     indent=30
 
     if [ -z "$1" ]; then
-        echo $em "${cl_lb}*${cl_n}"
+        echo -e "${cl_lb}*${cl_n}"
     elif [ "$1" = "*" ]; then
-        if [ "$em" = "-e" ]; then
-            echo $em "${cl_lb}${ce}"
-            for number in $(seq 1 78); do
-                echo $em "*${ce}"
-            done
-            echo $em "${cl_n}"
-        else
-            echo "${separator}${separator}"
-        fi
+        echo -e "${cl_lb}${ce}"
+        for number in $(seq 1 78); do
+            echo -e "*${ce}"
+        done
+        echo -e "${cl_n}"
     else
         temp=$(printf "%-${indent}s" "$1")
-        echo $em "${cl_lb}* ${temp}${2}${cl_n}"
+        echo -e "${cl_lb}* ${temp}${2}${cl_n}"
     fi
 }
 
@@ -215,19 +211,14 @@ print_output_header() {
 
     print_line
     print_line "${ce}"
-    if [ "$em" = "-e" ]; then
-        temp=""
-    else
-        temp="* "
-    fi
 
-    echo $em "${temp}${cl_wh}Press"\
-             "${cl_lc}Ctrl${cl_ly}+${cl_lc}C"\
-             "${cl_wh}to ${cl_lr}cancel${cl_wh},"\
-             "${cl_lc}Ctrl${cl_ly}+${cl_lc}S"\
-             "${cl_wh}to ${cl_yl}freeze${cl_wh} and"\
-             "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q"\
-             "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
+    echo -e "${cl_wh}Press"\
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}C"\
+            "${cl_wh}to ${cl_lr}cancel${cl_wh},"\
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}S"\
+            "${cl_wh}to ${cl_yl}freeze${cl_wh} and"\
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q"\
+            "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
 
     print_line "*"
     echo
@@ -291,13 +282,8 @@ print_output_line() {
                 color_high=$((sed -e "s/0;/7;/g" | \
                               sed -e "s/1;/7;/g") <<< "$color_code")
             else
-                if [ "$em" = "-e" ]; then
-                    color_code="\e[0m"
-                    color_high="\e[7m"
-                else
-                    color_code=""
-                    color_high=""
-                fi
+                color_code="\e[0m"
+                color_high="\e[7m"
             fi
 
             for filter_term in $filter_list; do
@@ -311,10 +297,10 @@ print_output_line() {
                     else
                         term_case=$term
                     fi
-                    temp=$(echo $em "${color_high}${term_case}${cl_n}"\
+                    temp=$(echo -e "${color_high}${term_case}${cl_n}"\
                                     "${bs}${color_code}")
 
-                    output=$(echo $em "${color_code}${line}${cl_n}" | \
+                    output=$(echo -e "${color_code}${line}${cl_n}" | \
                              sed -e "s/$term_upper/$temp/ig")
 
                     line="$output"
@@ -343,7 +329,7 @@ print_output_line() {
     if [ $remove -eq 1 ]; then
         for string in $remove_list; do
             temp=$(sed -e "s/#/\ /g" <<< "$string")
-            line=$(echo $em "$output" | sed -e "s/${temp}//ig")
+            line=$(echo -e "$output" | sed -e "s/${temp}//ig")
             output="$line"
         done
     fi
@@ -352,7 +338,7 @@ print_output_line() {
         highlight_all=0
     else
         if [ $highlight_all -eq 1 ]; then
-            temp=$(echo $em "\e[7m$output" | sed -e "s/0m/7m/g")
+            temp=$(echo -e "\e[7m$output" | sed -e "s/0m/7m/g")
             output="${temp}${cl_n}"
         fi
     fi
@@ -362,11 +348,11 @@ print_output_line() {
         output=$(sed -e "s/\\\e\[.*//g" <<< "$temp")
         rnd_colors "$output"
     else
-        echo $em "$output"
+        echo -e "$output"
     fi
 
     if [ $export_log -eq 1 ]; then
-        echo $em "$output" >> $export_file
+        echo -e "$output" >> $export_file
     fi
 
     count_lines=$(( count_lines + 1 ))
