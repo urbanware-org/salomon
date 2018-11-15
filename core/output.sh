@@ -283,7 +283,7 @@ print_output_line() {
                     color_high=$((sed -e "s/\[0;/\[7;/g" | \
                                   sed -e "s/\[1;/\[7;/g") <<< "$color_code")
                 else
-                    color_high="\e[0m$((sed -e "s/\[38;/\[48;/g") \
+                    color_high="${hl_fgcolor}$((sed -e "s/\[38;/\[48;/g") \
                                 <<< "$color_code")"
                 fi
             else
