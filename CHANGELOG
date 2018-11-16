@@ -4,7 +4,7 @@ CHANGELOG (SaLoMon)
     Version 1.11.1 (2018-11-16)
 
         + Added an option to the global config file to manually set the
-          foreground color of highlighted matches.          
+          foreground color of highlighted matches.
 
         # Fixed the highlight match bug (the '--highlight-matches' argument
           did not have any effect when using color codes).
