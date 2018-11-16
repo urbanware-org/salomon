@@ -9,7 +9,7 @@ CHANGELOG (SaLoMon)
         # Fixed the highlight match bug (the '--highlight-matches' argument
           did not have any effect when using color codes).
 
-        - Removed a deprecated and unnecessary shell precheck function.
+        - Removed a deprecated and unnecessary shell pre-check function.
         - Removed some unnecessary global variables.
 
     Version 1.11.0 (2018-10-24)
