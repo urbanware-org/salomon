@@ -1,11 +1,14 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.11.1 (2018-11-16)
+
+        + Added an option to the global config file to manually set the
+          foreground color of highlighted matches.          
 
         - Removed a deprecated and unnecessary shell precheck function.
-        - Removed some unnecessary variables.
-        
+        - Removed some unnecessary global variables.
+
         # Fixed the highlight match bug (the '--highlight-matches' argument
           did not have any effect when using color codes).
 
