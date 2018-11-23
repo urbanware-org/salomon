@@ -1,6 +1,16 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised an option inside the global config file (new option values). 
+        * Revised the compatibility script (cleaned up color related code). 
+        * Revised the foreground color related code inside the output core
+          module.
+
+        # Fixed the output style of colored lines (removed bold font style
+          by default).
+
     Version 1.11.1 (2018-11-16)
 
         + Added an option to the global config file to manually set the
