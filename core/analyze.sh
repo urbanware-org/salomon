@@ -67,7 +67,7 @@ analyze_input_file() {
                     count=0
                 fi
             else
-                if [ $(( count %  pause_lines )) -eq 0 ]; then
+                if [ $(( count % pause_lines )) -eq 0 ]; then
                     pause_output
                     count=0
                 fi
