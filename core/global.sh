@@ -52,23 +52,23 @@ set_global_variables() {
     color_table=0
     color_terms=""
 
-    color_none="\e[0m"            ; cl_n=$color_none
-    color_black="\e[0;30m"        ; cl_bk=$color_black
-    color_brown="\e[0;33m"        ; cl_br=$color_brown
-    color_darkblue="\e[0;34m"     ; cl_db=$color_darkblue
-    color_darkcyan="\e[0;36m"     ; cl_dc=$color_darkcyan
-    color_darkgray="\e[1;30m"     ; cl_dy=$color_darkgray
-    color_darkgreen="\e[0;32m"    ; cl_dg=$color_darkgreen
-    color_darkpurple="\e[0;35m"   ; cl_dp=$color_darkpurple
-    color_darkred="\e[0;31m"      ; cl_dr=$color_darkred
-    color_lightblue="\e[1;34m"    ; cl_lb=$color_lightblue
-    color_lightcyan="\e[1;36m"    ; cl_lc=$color_lightcyan
-    color_lightgray="\e[0;37m"    ; cl_ly=$color_lightgray
-    color_lightgreen="\e[1;32m"   ; cl_lg=$color_lightgreen
-    color_lightpurple="\e[1;35m"  ; cl_lp=$color_lightpurple
-    color_lightred="\e[1;31m"     ; cl_lr=$color_lightred
-    color_white="\e[1;37m"        ; cl_wh=$color_white
-    color_yellow="\e[1;33m"       ; cl_yl=$color_yellow
+    color_none="\e[0m"                ; cl_n=$color_none
+    color_black="\e[30m"              ; cl_bk=$color_black
+    color_brown="\e[33m"              ; cl_br=$color_brown
+    color_darkblue="\e[34m"           ; cl_db=$color_darkblue
+    color_darkcyan="\e[36m"           ; cl_dc=$color_darkcyan
+    color_darkgray="\e[90m"           ; cl_dy=$color_darkgray
+    color_darkgreen="\e[32m"          ; cl_dg=$color_darkgreen
+    color_darkpurple="\e[35m"         ; cl_dp=$color_darkpurple
+    color_darkred="\e[31m"            ; cl_dr=$color_darkred
+    color_lightblue="\e[94m"          ; cl_lb=$color_lightblue
+    color_lightcyan="\e[96m"          ; cl_lc=$color_lightcyan
+    color_lightgray="\e[37m"          ; cl_ly=$color_lightgray
+    color_lightgreen="\e[92m"         ; cl_lg=$color_lightgreen
+    color_lightpurple="\e[95m"        ; cl_lp=$color_lightpurple
+    color_lightred="\e[91m"           ; cl_lr=$color_lightred
+    color_white="\e[97m"              ; cl_wh=$color_white
+    color_yellow="\e[93m"             ; cl_yl=$color_yellow
 
     count_lines=0
     count_total=0
