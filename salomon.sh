@@ -423,9 +423,11 @@ else
             "The '--cut-off' argument can only be used with '--highlight-all'"
     fi
     
-    if [ "$highlight_forecolor" = "1" ]; then
+    if [ "$highlight_forecolor" = "1" ] || \
+       [ "$highlight_forecolor" = "black" ]; then
         hl_fgcolor="$cl_bk"
-    elif [ "$highlight_forecolor" = "2" ]; then
+    elif [ "$highlight_forecolor" = "2" ] || \
+         [ "$highlight_forecolor" = "white" ]; then
         hl_fgcolor="$cl_wh"
     else
         hl_fgcolor="$cl_n"
