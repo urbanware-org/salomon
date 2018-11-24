@@ -16,37 +16,37 @@ get_color_code() {
 
     if [ "$color_name" = "none" ] || [ -z "$color_name" ]; then
         color_code="$cl_n"
-    elif [ "$color_name" = "black" ]; then
+    elif [ ! -z $(grep "^black" <<< "$color_name") ]; then
         color_code="$cl_bk"
-    elif [ "$color_name" = "brown" ]; then
+    elif [ ! -z $(grep "^brown" <<< "$color_name") ]; then
         color_code="$cl_br"
-    elif [ "$color_name" = "darkblue" ]; then
+    elif [ ! -z $(grep "^darkblue" <<< "$color_name") ]; then
         color_code="$cl_db"
-    elif [ "$color_name" = "darkcyan" ]; then
+    elif [ ! -z $(grep "^darkcyan" <<< "$color_name") ]; then
         color_code="$cl_dc"
-    elif [ "$color_name" = "darkgray" ]; then
+    elif [ ! -z $(grep "^darkgray" <<< "$color_name") ]; then
         color_code="$cl_dy"
-    elif [ "$color_name" = "darkgreen" ]; then
+    elif [ ! -z $(grep "^darkgreen" <<< "$color_name") ]; then
         color_code="$cl_dg"
-    elif [ "$color_name" = "darkpurple" ]; then
+    elif [ ! -z $(grep "^darkpurple" <<< "$color_name") ]; then
         color_code="$cl_dp"
-    elif [ "$color_name" = "darkred" ]; then
+    elif [ ! -z $(grep "^darkred" <<< "$color_name") ]; then
         color_code="$cl_dr"
-    elif [ "$color_name" = "lightblue" ]; then
+    elif [ ! -z $(grep "^lightblue" <<< "$color_name") ]; then
         color_code="$cl_lb"
-    elif [ "$color_name" = "lightcyan" ]; then
+    elif [ ! -z $(grep "^lightcyan" <<< "$color_name") ]; then
         color_code="$cl_lc"
-    elif [ "$color_name" = "lightgray" ]; then
+    elif [ ! -z $(grep "^lightgray" <<< "$color_name") ]; then
         color_code="$cl_ly"
-    elif [ "$color_name" = "lightgreen" ]; then
+    elif [ ! -z $(grep "^lightgreen" <<< "$color_name") ]; then
         color_code="$cl_lg"
-    elif [ "$color_name" = "lightpurple" ]; then
+    elif [ ! -z $(grep "^lightpurple" <<< "$color_name") ]; then
         color_code="$cl_lp"
-    elif [ "$color_name" = "lightred" ]; then
+    elif [ ! -z $(grep "^lightred" <<< "$color_name") ]; then
         color_code="$cl_lr"
-    elif [ "$color_name" = "white" ]; then
+    elif [ ! -z $(grep "^white" <<< "$color_name") ]; then
         color_code="$cl_wh"
-    elif [ "$color_name" = "yellow" ]; then
+    elif [ ! -z $(grep "^yellow" <<< "$color_name") ]; then
         color_code="$cl_yl"
     else
         # Support for 256 colors (color code instead of name)
@@ -71,6 +71,14 @@ get_color_code() {
                 color_code="${cl_n}"
             fi
         fi
+    fi
+
+    if [ ! -z $(grep "\-bold$" <<< "$color_name") ]; then
+        temp=$(sed -e "s/\[/\[1;/g" <<< $color_code)
+        color_code="$temp"
+    elif [ ! -z $(grep "\-underlined$" <<< "$color_name") ]; then
+        temp=$(sed -e "s/\[/\[4;/g" <<< $color_code)
+        color_code="$temp"
     fi
 }
 
