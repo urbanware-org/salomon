@@ -73,8 +73,9 @@ get_color_code() {
         fi
     fi
 
-    if [[ $color_name =~ \-b\-u$ ]] || \
-       [[ $color_name =~ \-bold\-underlined$ ]]; then
+    if [[ $color_name =~ \-b\-u$ ]] || [[ $color_name =~ \-u\-b$ ]] || \
+       [[ $color_name =~ \-bold\-underlined$ ]] || \
+       [[ $color_name =~ \-underlined\-bold$ ]]; then
         temp=$(sed -e "s/\[/\[1;4;/g" <<< $color_code)
         color_code="$temp"
     elif [[ $color_name =~ \-b$ ]] || [[ $color_name =~ \-bold$ ]]; then
