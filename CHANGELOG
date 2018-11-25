@@ -6,8 +6,8 @@ CHANGELOG (SaLoMon)
         + Added the feature for bold and underlined text formatting options
           for highlighted lines.
 
-        * Revised an option inside the global config file (new option values). 
-        * Revised the compatibility script (cleaned up color related code). 
+        * Revised an option inside the global config file (new option values).
+        * Revised the compatibility script (cleaned up color related code).
         * Revised the foreground color related code inside the output core
           module.
 
