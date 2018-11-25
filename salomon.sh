@@ -422,7 +422,7 @@ else
         usage \
             "The '--cut-off' argument can only be used with '--highlight-all'"
     fi
-    
+
     if [ "$highlight_forecolor" = "1" ] || \
        [ "$highlight_forecolor" = "black" ]; then
         hl_fgcolor="$cl_bk"
@@ -432,7 +432,7 @@ else
     else
         hl_fgcolor="$cl_n"
     fi
-    
+
     # Exclude pattern
     if [ $interactive -eq 1 ]; then
         dialog_exclude_pattern "$exclude_pattern"
