@@ -510,7 +510,7 @@ CHANGELOG (SaLoMon)
         * Revised some output text messages to the main SaLoMon script (for
           more clarity).
         * Revised the command-line argument parser inside the main SaLoMon
-          script(less code, more flexible).
+          script (less code, more flexible).
         * Revised the command-line argument for the filter pattern of the main
           SaLoMon script (added support for patterns that contain spaces).
 
