@@ -291,7 +291,7 @@ warn() {
     message=$1
     indent=$2
 
-    if [ $indent -eq 0; then ]
+    if [ $indent -eq 0 ]; then
         echo -e "${cl_yl}warning:${cl_n} ${message}."
         sleep 1
     else
