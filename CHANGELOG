@@ -4,15 +4,15 @@ CHANGELOG (SaLoMon)
     Version 1.12.0 (2018-11-25)
 
         + Added the feature for bold and underlined text formatting options
-          for highlighted lines.
+          for colorized lines.
 
         * Revised an option inside the global config file (new option values).
         * Revised the compatibility script (cleaned up color related code).
         * Revised the foreground color related code inside the output core
           module.
 
-        # Fixed the output style of colored lines (removed bold font style
-          by default).
+        # Fixed the output format of colorized lines (removed default bold
+          font style when using light colors).
 
     Version 1.11.1 (2018-11-16)
 
@@ -406,7 +406,7 @@ CHANGELOG (SaLoMon)
         + Added some details to the information header of the main SaLoMon
           script.
         + Added the optional command-line argument (and feature) to the main
-          SaLoMon script to wait after printing a colored line.
+          SaLoMon script to wait after printing a colorized line.
 
         * Revised the function to suppress the information header and footer
           in the main SaLoMon script.
