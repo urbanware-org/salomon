@@ -281,7 +281,8 @@ print_output_line() {
             if [ $color_match -eq 1 ]; then
                 if [ -z "$(grep "\[38;" <<< "$color_code")" ]; then
                     color_temp=$((sed -e "s/\[3/\[7;3/g" | \
-                                  sed -e "s/\[9/\[7;9/g") <<< "$color_code")
+                                  sed -e "s/\[9/\[7;9/g" | \
+                                  sed -e "s/\[1;/\[1;7;/g") <<< "$color_code")
                     color_high="${hl_fgcolor}${color_temp}"
                 else
                     if [ "$hl_fgcolor" = "$cl_n" ]; then
