@@ -50,20 +50,21 @@ get_color_code() {
         color_code="$cl_yl"
     else
         # Support for 256 colors (color code instead of name)
-        if [ "$color_name" = "random" ]; then
+        if [[ $color_name =~ ^random ]]; then
             temp=$(shuf -i ${color_random_min}-${color_random_max} -n 1)
             color_code="\e[38;5;${temp}m"
         elif [ "$color_name" = "confetti" ]; then
             color_code="999"
         else
-            re='^[0-9]+$'
+            re='^[0-9]+'
             if [[ $color_name =~ $re ]]; then
-                if [ $color_name -lt 0 ] || [ $color_name -gt 256 ]; then
+                temp=$(cut -d '-' -f1 <<< $color_name)
+                if [ $temp -lt 0 ] || [ $temp -gt 256 ]; then
                     warn "The color '${cl_yl}$color_name${cl_n}' is invalid" 1
                     color_name=""
                     color_code="${cl_n}"
                 else
-                    color_code="\e[38;5;${color_name}m"
+                    color_code="\e[38;5;${temp}m"
                 fi
             else
                 warn "The color '${cl_yl}$color_name${cl_n}' does not exist" 1
