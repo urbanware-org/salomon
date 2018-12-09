@@ -1,6 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised the feature for bold and underlined text formatting options
+          for colorized lines (works with color codes now).
+
+        # Fixed the bug which caused that highlight matches did not work with
+          bold and/or underlined text format.
+        # Fixed the syntax error inside the warning method.
+
     Version 1.12.0 (2018-11-25)
 
         + Added the feature for bold and underlined text formatting options
