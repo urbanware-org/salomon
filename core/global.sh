@@ -16,7 +16,7 @@ set_global_variables() {
     # main directory of SaLoMon for configuration options.
     # ------------------------------------------------------------------------
 
-    version="1.12.0"
+    version="1.12.1"
 
     arg_case=""
     input_file=""
