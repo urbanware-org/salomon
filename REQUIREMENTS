@@ -31,3 +31,6 @@ REQUIREMENTS (SaLoMon)
     the ones that have been used while developing SaLoMon. The project also
     works most likely with earlier versions.
 
+    You may run the compatibility check script 'compat.sh' to get a quick
+    overview if all requirements are fulfilled.
+
