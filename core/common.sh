@@ -161,6 +161,7 @@ usage() {
         lc=$cl_lc
         lg=$cl_lg
         lr=$cl_lr
+        ly=$cl_ly
         yl=$cl_yl
     else
         no=$cl_n
@@ -168,6 +169,7 @@ usage() {
         lc=$cl_n
         lg=$cl_n
         lr=$cl_n
+        ly=$cl_n
         yl=$cl_n
     fi
 
@@ -186,6 +188,8 @@ usage() {
     echo -e "${lg}Monitor and analyze log and plain text files with various"\
             "filter and"
     echo -e "${lg}highlighting features."
+
+    # Required arguments
     echo
     echo -e "${lr}required arguments:${no}"
     echo "  -a {analyze,monitor}, --action {analyze,monitor}"
@@ -198,17 +202,14 @@ usage() {
     echo "                        input file to analyze or monitor (can be"\
                                  "given"
     echo "                        multiple times)"
+
+    # Optional arguments to enhance the required ones
     echo
     echo -e "${lb}optional arguments:${no}"
     echo "  -c COLOR_FILE, --color-file COLOR_FILE"
     echo "                        color config file for colorizing lines"\
                                  "which contain"
     echo "                        certain terms"
-    echo "  --color-table         print the 256-color table to see which"\
-                                 "colors are"
-    echo "                        supported (can be displayed) by the"\
-                                 "terminal emulator"
-    echo "                        currently used and exit"
     echo "  --cut-off             remove the trailing whitespaces used to"\
                                  "fill the line"
     echo "                        when using '--highlight-all'"
@@ -264,11 +265,21 @@ usage() {
     echo "  --tail TAIL           only return the given number of last lines"\
                                  "of the"
     echo "                        input file"
-    echo "  --version             print the version number and exit"
-    echo "  --version-update      check for a newer version"
     echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
                                  "line"
+
+    # General arguments which return something and exit
+    echo
+    echo -e "${ly}general arguments:${no}"
+    echo "  --color-table         print the 256-color table to see which"\
+                                 "colors are"
+    echo "                        supported (can be displayed) by the"\
+                                 "terminal emulator"
+    echo "                        currently used and exit"
+    echo "  --version             print the version number and exit"
+    echo "  --version-update      check for a newer version and exit"
     echo "  -?, -h, --help        print this help message and exit"
+
     echo
     echo -e "${yl}Further information and usage examples can be found inside"\
             "the documentation"
