@@ -73,10 +73,6 @@ else
                 check_argument "-c/--color-file" "$color_file" "file"
                 shift
             ;;
-            --color-table)
-                color_table=1
-                shift
-            ;;
             --cut-off)
                 highlight_cut_off=1
                 shift
@@ -105,9 +101,6 @@ else
                 shift
                 filter_pattern="$1"
                 shift
-            ;;
-            -\?|-h|--help)
-                usage
             ;;
             -ha|--highlight-all)
                 highlight_all=1
@@ -162,6 +155,17 @@ else
                 tail_lines="$1"
                 shift
             ;;
+            -w|--wait)
+                shift
+                wait_match="$1"
+                shift
+            ;;
+
+            # General arguments
+            --color-table)
+                color_table=1
+                shift
+            ;;
             --version)
                 echo "$version"
                 exit
@@ -169,10 +173,8 @@ else
             --version-update)
                 check_update
             ;;
-            -w|--wait)
-                shift
-                wait_match="$1"
-                shift
+            -\?|-h|--help)
+                usage
             ;;
 
             # Alternatives to the required arguments
