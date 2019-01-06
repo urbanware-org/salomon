@@ -306,7 +306,8 @@ dialog_prompt_on_exit() {
 
     if [ $dialog_program = "dialog" ]; then
         dialog $dlg_shadow --title "Prompt on exit" --yes-label "Yes" \
-                           --no-label "No" $def_button --yesno "$dlg_text" 8 60
+                           --no-label "No" $def_button --yesno "$dlg_text" \
+                           8 60
     else
         whiptail  --title "Prompt on exit" --yes-button "Yes" \
                   --no-button "No" $def_button --yesno "$dlg_text" 7 60
