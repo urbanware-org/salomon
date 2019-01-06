@@ -3,7 +3,7 @@
 # ============================================================================
 # SaLoMon - Simple log file monitor and analyzer
 # File monitoring core script
-# Copyright (C) 2018 by Ralf Kilian
+# Copyright (C) 2019 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/salomon
