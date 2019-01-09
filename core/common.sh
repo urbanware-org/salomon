@@ -145,8 +145,12 @@ prepare_path() {
 
 print_arg_list() {
     clear
-    echo -e "${cl_lc}Command-line:${cl_n}"
+    arg_lh="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]"
+    arg_ld="===================================================="
+    echo -e "${cl_dy}==${arg_lh}${cl_dy}${arg_ld}${cl_n}"
+    echo
     echo "$arg_list"
+    echo
     pause_output
 }
 
