@@ -30,6 +30,29 @@ dialog_action() {
     fi
 }
 
+dialog_arg_list() {
+    def_button="--defaultno"
+
+    dlg_text=$(echo "Do you want to see what the command-line looks like"\
+                    "with the arguments given?\n\nThis can be copied and"\
+                    "used for e. g. aliases, desktop shortcuts or scripts.")
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Command-line arguments" \
+                           --yes-label "Yes" --no-label "No" \
+                           $def_button --yesno "$dlg_text" 9 60
+    else
+        whiptail --title "Processing mode" --yes-button "Yes" \
+                 --no-button "No" $def_button \
+                 --yesno "$dlg_text" 8 60
+    fi
+    
+    if [ $? -eq 0 ]; then
+        clear
+        print_arg_list 
+    fi 
+}
+
 dialog_color_file() {
     if [ $dialog_show_color -ne 1 ]; then
         user_input="$1"
