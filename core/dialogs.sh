@@ -46,11 +46,11 @@ dialog_arg_list() {
                  --no-button "No" $def_button \
                  --yesno "$dlg_text" 8 60
     fi
-    
+
     if [ $? -eq 0 ]; then
         clear
         print_arg_list 
-    fi 
+    fi
 }
 
 dialog_color_file() {
