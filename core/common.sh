@@ -112,6 +112,12 @@ check_update() {
     exit
 }
 
+concat_arg() {
+    arg_a="$1"
+    concat="$arg_list $1"
+    arg_list=$concat
+}
+
 deprecated_argument() {
     arg_g="$1"
     arg_i="$2"
@@ -135,6 +141,13 @@ prepare_path() {
         path_input=$temp
     done
     path_prepared=$(sed -e "s/^ *//g;s/ *$//g;s/\ /\/\//g" <<< $path_input)
+}
+
+print_arg_list() {
+    clear
+    echo -e "${cl_lc}Command-line:${cl_n}"
+    echo "$arg_list"
+    pause_output
 }
 
 read_filter() {
