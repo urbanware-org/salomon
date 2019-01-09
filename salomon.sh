@@ -626,7 +626,7 @@ else
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
         if [ $? -eq 0 ]; then
-            if [ $wait_match -lt 0 ]; then
+            if [ $wait_match -le 0 ]; then
                 wait=0
             fi
         else
