@@ -49,7 +49,7 @@ dialog_arg_list() {
 
     if [ $? -eq 0 ]; then
         clear
-        print_arg_list 
+        print_arg_list
     fi
 }
 
