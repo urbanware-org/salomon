@@ -1,6 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        + Added a dialog to print the command-line arguments in interactive
+          mode (can be copied and used for e. g. aliases, desktop shortcuts or
+          scripts).
+
+        * Revised the usage information output (divided the optional arguments
+          into optional and general ones).
+
     Version 1.12.1 (2018-12-13)
 
         * Revised the feature for bold and underlined text formatting options
