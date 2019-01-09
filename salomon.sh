@@ -264,6 +264,7 @@ else
         init_dialogs
         dialog_input_file "$input_file"
         input_file=$user_input
+        concat_arg "-i $user_input"
     fi
 
     if [ -z "$input_file" ]; then
@@ -298,6 +299,7 @@ else
         else
             action="monitor"
         fi
+        concat_arg "-a $action"
     fi
 
     if [ ! -z "$action" ]; then
@@ -319,6 +321,7 @@ else
         dialog_prompt_on_exit $prompt
         if [ $? -eq 0 ]; then
             prompt=1
+            concat_arg "-p"
         else
             prompt=0
         fi
@@ -328,6 +331,7 @@ else
     if [ $interactive -eq 1 ]; then
         dialog_color_file "$color_file"
         color_file="$user_input"
+        concat_arg "-c $color_file"
     fi
 
     if [ ! -z "$color_file" ]; then
@@ -355,9 +359,11 @@ else
             if [[ $filter_pattern == *"#"* ]]; then
                 usage "The filter pattern must not contain any hashes"
             fi
+            concat_arg "-f $filter_pattern"
             dialog_ignore_case "$arg_case"
             if [ $? -eq 0 ]; then
                 arg_case="-i"
+                concat_arg "--ignore-case"
             else
                 arg_case=""
             fi
@@ -402,13 +408,17 @@ else
         dialog_highlight
         if [ $user_input -eq 2 ]; then
             highlight_all=1
+            concat_arg "-ha"
         elif [ $user_input -eq 3 ]; then
             highlight_all=1
             highlight_cut_off=1
+            concat_arg "-ha --cut-off"
         elif [ $user_input -eq 4 ]; then
             highlight_matches=1
+            concat_arg "-hm"
         elif [ $user_input -eq 5 ]; then
             highlight_upper=1
+            concat_arg "-hu"
         fi
     fi
 
@@ -451,6 +461,7 @@ else
                             -e "s/\ /#/g" \
                             -e "s/;/\n/g") <<< "$exclude_pattern")
         exclude=1
+        concat_arg "-e $exclude_pattern"
     fi
 
     # Remove pattern
@@ -469,6 +480,7 @@ else
                            -e "s/\ /#/g" \
                            -e "s/;/\n/g") <<< "$remove_pattern")
         remove=1
+        concat_arg "-r $remove_pattern"
     fi
 
     # Head and tail
@@ -483,6 +495,7 @@ else
                 head_lines=0
             else
                 head_lines="$user_input"
+                concat_arg "--head $head_lines"
             fi
         fi
         if [ $head_lines -eq 0 ]; then
@@ -495,6 +508,7 @@ else
                 tail_lines=0
             else
                 tail_lines="$user_input"
+                concat_arg "--tail $tail_lines"
             fi
         fi
     fi
@@ -536,6 +550,7 @@ else
             pause=0
         else
             pause=1
+            concat_arg "--pause"
         fi
     fi
 
@@ -581,6 +596,8 @@ else
             if [ $? -ne 0 ]; then
                 usage "$temp seems to be read-only"
             fi
+            
+            concat_arg "--export-file $export_file"
         fi
     fi
 
@@ -591,6 +608,7 @@ else
             slow=1
             dialog_delay "$delay"
             delay="$user_input"
+            concat_arg "-s $delay"
         fi
     fi
 
@@ -628,6 +646,8 @@ else
         if [ $? -eq 0 ]; then
             if [ $wait_match -le 0 ]; then
                 wait=0
+            else
+                concat_arg "-w $wait_match"
             fi
         else
             usage "The wait value must be an integer greater than zero"
@@ -641,6 +661,7 @@ else
             header=1
         else
             header=0
+            concat_arg "--no-info"
         fi
     fi
 
@@ -650,9 +671,9 @@ else
     check_command tail 0 coreutils
 fi
 
-# Prepare output first
 if [ $interactive -eq 1 ]; then
-    clear
+    dialog_arg_list
+    clear       
 fi
 
 if [ $header -eq 1 ]; then
