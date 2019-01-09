@@ -19,6 +19,7 @@ set_global_variables() {
     version="1.12.1"
 
     arg_case=""
+    arg_list=$(readlink -e "$0")
     input_file=""
     input_count=0
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
