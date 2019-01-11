@@ -144,28 +144,28 @@ prepare_path() {
 }
 
 print_arg_list() {
+    arg_temp="/tmp/salomon_args_$$.txt"
+    echo "$arg_list" > $arg_temp
+
     clear
     arg_lh="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]"
     arg_ld="===================================================="
     echo -e "${cl_dy}==${arg_lh}${cl_dy}${arg_ld}${cl_n}"
     echo
-    echo "With the given information, the command line would look like this"\
-         "(without"
-    echo "'--dialog' or '--interactive' argument):"
+    echo -e "With the given information, the command line would look like"\
+            "this (without"
+    echo -e "'${cl_lc}--dialog${cl_n}' or '${cl_lc}--interactive${cl_n}'"\
+            "argument):"
     echo
-    echo "    $arg_list"
+    echo -e "    ${cl_yl}$arg_list${cl_n}"
     echo
     echo "In case you are on text-based user interface and cannot select and"\
          "copy the"
     echo "above command, it has also been written into the following"\
          "temporary file:"
     echo
-    echo "    $arg_temp"
+    echo -e "    ${cl_yl}$arg_temp${cl_n}"
     echo
-
-    arg_temp="/tmp/salomon_args_$$.txt"
-    echo "$arg_list" > $arg_temp
-    
     pause_output
 }
 
