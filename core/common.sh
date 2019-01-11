@@ -149,8 +149,23 @@ print_arg_list() {
     arg_ld="===================================================="
     echo -e "${cl_dy}==${arg_lh}${cl_dy}${arg_ld}${cl_n}"
     echo
-    echo "$arg_list"
+    echo "With the given information, the command line would look like this"\
+         "(without"
+    echo "'--dialog' or '--interactive' argument):"
     echo
+    echo "    $arg_list"
+    echo
+    echo "In case you are on text-based user interface and cannot select and"\
+         "copy the"
+    echo "above command, it has also been written into the following"\
+         "temporary file:"
+    echo
+    echo "    $arg_temp"
+    echo
+
+    arg_temp="/tmp/salomon_args_$$.txt"
+    echo "$arg_list" > $arg_temp
+    
     pause_output
 }
 
