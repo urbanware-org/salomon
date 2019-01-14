@@ -596,7 +596,7 @@ else
             if [ $? -ne 0 ]; then
                 usage "$temp seems to be read-only"
             fi
-            
+
             concat_arg "--export-file $export_file"
         fi
     fi
@@ -673,7 +673,7 @@ fi
 
 if [ $interactive -eq 1 ]; then
     dialog_arg_list
-    clear       
+    clear
 fi
 
 if [ $header -eq 1 ]; then
