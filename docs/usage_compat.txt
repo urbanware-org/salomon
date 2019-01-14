@@ -34,8 +34,9 @@ USAGE (compat.sh)
 
     3. Compatibility check
 
-        To check the compatibility, simply run the compatibility check script
-        without any arguments. There are no command-line arguments anyway.
+        To check if SaLoMon will work in the current environment, simply run
+        the compatibility check script without any arguments (there are no
+        command-line arguments available anyway) and check the results.
 
             $ ./compat.sh
 
