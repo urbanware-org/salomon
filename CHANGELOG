@@ -1,11 +1,13 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.13.0 (2019-01-14)
 
         + Added a dialog to print the command-line arguments in interactive
           mode (can be copied and used for e. g. aliases, desktop shortcuts or
           scripts).
+        + Added an option to force dark or light font colors (depending on
+          the background color of the terminal emulator).
         + Added the support for the HTML specification color names (only for
           the 16 pre-defined colors).
 
