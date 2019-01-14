@@ -48,8 +48,7 @@ set_global_variables() {
     color_temp="$color_list darkred lightblue lightcyan lightgray lightgreen"
     color_list="$color_temp lightpurple lightred white yellow"
     color_temp="$color_list $(seq 1 256) random confetti"
-    color_list="$color_temp"
-    color_html="$color_list aqua blue fuchsia gray green lime maroon navy"
+    color_html="$color_temp aqua blue fuchsia gray green lime maroon navy"
     color_temp="$color_html olive purple red silver teal"
     color_list="$color_temp"
     color_random_min=1
