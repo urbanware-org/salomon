@@ -266,6 +266,8 @@ usage() {
                                  "filter pattern,"
     echo "                        only (for details see section 4 inside the"
     echo "                        documentation file)"
+    echo "  --force-dark          force using dark text colors"
+    echo "  --force-light         force using light text colors"
     echo "  -ha, --highlight-all  highlight the whole lines by inverting"\
                                  "their color (no"
     echo "                        filter required)"

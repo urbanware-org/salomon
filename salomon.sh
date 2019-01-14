@@ -102,6 +102,14 @@ else
                 filter_pattern="$1"
                 shift
             ;;
+            --force-dark)
+                color_force="dark"
+                shift
+            ;;
+            --force-light)
+                color_force="light"
+                shift
+            ;;
             -ha|--highlight-all)
                 highlight_all=1
                 shift
@@ -663,6 +671,27 @@ else
             header=0
             concat_arg "--no-info"
         fi
+    fi
+
+    # Force dark/light text colors
+    if [ "$color_force" = "dark" ]; then
+        color_lightblue=$cl_db            ; cl_lb=$color_lightblue
+        color_lightcyan=$cl_dc            ; cl_lc=$color_lightcyan
+        color_lightgray=$cl_dy            ; cl_ly=$color_lightgray
+        color_lightgreen=$cl_dg           ; cl_lg=$color_lightgreen
+        color_lightpurple=$cl_dp          ; cl_lp=$color_lightpurple
+        color_lightred=$cl_dr             ; cl_lr=$color_lightred
+        color_white=$cl_bk                ; cl_wh=$color_white
+        color_yellow=$cl_br               ; cl_yl=$color_yellow
+    elif [ "$color_force" = "light" ]; then
+        color_black=$cl_wh                ; cl_bk=$color_black
+        color_brown=$cl_yl                ; cl_br=$color_brown
+        color_darkblue=$cl_lb             ; cl_db=$color_darkblue
+        color_darkcyan=$cl_dc             ; cl_dc=$color_darkcyan
+        color_darkgray=$cl_ly             ; cl_dy=$color_darkgray
+        color_darkgreen=$cl_lg            ; cl_dg=$color_darkgreen
+        color_darkpurple=$cl_lp           ; cl_dp=$color_darkpurple
+        color_darkred=$cl_lr              ; cl_dr=$color_darkred
     fi
 
     # Check requirements

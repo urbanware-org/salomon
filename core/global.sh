@@ -54,6 +54,7 @@ set_global_variables() {
     color_random_min=1
     color_random_max=256
     color_table=0
+    color_force=""
     color_terms=""
 
     color_none="\e[0m"                ; cl_n=$color_none
