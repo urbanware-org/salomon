@@ -55,13 +55,11 @@ Furthermore, it uses popular shell utilities that should be pre-installed by def
 
 ## Support the project
 
-If you have any suggestions for improving the code, the documentation or the color schemes, just let me know.
+You do not need to be a software developer to support the project.
 
-So, you do not need to be a software developer to support and improve the project.
+If you have any requests or suggestions for improving or extending *SaLoMon*, its documentation or the color schemes, just let me know.
 
 For example, if you have created a color config file for a log file which you want to share, you can send it to me so I can add it to the color config files distributed with *SaLoMon* by default.
-
-This also applies to suggestions, requests and improvements for color config files.
 
 [Top](#salomon-)
 
