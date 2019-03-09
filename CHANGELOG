@@ -1,6 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
+    Next release (outstanding)
+
+        * Revised the head and tail command-line arguments (added short
+          variants of the arguments).
+
     Version 1.13.0 (2019-01-14)
 
         + Added a dialog to print the command-line arguments in interactive
