@@ -205,119 +205,80 @@ usage() {
         yl=$cl_n
     fi
 
-    echo -e "${lc}usage: ${no}$script_file -a {analyze,monitor} -i"\
-                              "INPUT_FILE [-c COLOR_FILE]"
-    echo -e "                  [--cut-off] [-d DELAY] [--dialogs]"\
-                              "[-e EXCLUDE]"
-    echo -e "                  [--export-file EXPORT_FILE] [-f FILTER]"\
-                              "[--head HEAD]"
-    echo -e "                  [--highlight-all] [--highlight-matches]"\
-                              "[--highlight-upper]"
-    echo -e "                  [--ignore-case] [--no-info] [-p]"\
-                              "[--pause PAUSE] [-r REMOVE]"
-    echo -e "                  [-s] [--tail TAIL] [--version] [-w WAIT]"
-    echo
-    echo -e "${lg}Monitor and analyze log and plain text files with various"\
-            "filter and"
-    echo -e "${lg}highlighting features."
+    usage="${lc}usage: ${no}$script_file"
+    echo -e "$usage -a {analyze,monitor} -i INPUT_FILE [-c COLOR_FILE]
+                  [--cut-off] [-d DELAY] [--dialogs] [-e EXCLUDE]
+                  [--export-file EXPORT_FILE] [-f FILTER] [--head HEAD]
+                  [--highlight-all] [--highlight-matches] [--highlight-upper]
+                  [--ignore-case] [--no-info] [-p] [--pause PAUSE] [-r REMOVE]
+                  [-s] [--tail TAIL] [--version] [-w WAIT]
+${lg}
+Monitor and analyze log and plain text files with various filter and
+highlighting features.
+${no}
+${lr}required arguments:${no}
+  -a {analyze,monitor}, --action {analyze,monitor}
+                        action (processing mode) to perform with the given
+                        input file(s) (this can also be given via '--analyze'
+                        or '--monitor' instead)
+  -i INPUT_FILE, --input-file INPUT_FILE
+                        input file to analyze or monitor (can be given
+                        multiple times)
 
-    # Required arguments
-    echo
-    echo -e "${lr}required arguments:${no}"
-    echo "  -a {analyze,monitor}, --action {analyze,monitor}"
-    echo "                        action (processing mode) to perform with"\
-                                 "the given"
-    echo "                        input file(s) (this can also be given via"\
-                                 "'--analyze'"
-    echo "                        or '--monitor' instead)"
-    echo "  -i INPUT_FILE, --input-file INPUT_FILE"
-    echo "                        input file to analyze or monitor (can be"\
-                                 "given"
-    echo "                        multiple times)"
+${lb}optional arguments:${no}
+  -c COLOR_FILE, --color-file COLOR_FILE
+                        color config file for colorizing lines which contain
+                        certain terms
+  --cut-off             remove the trailing whitespaces used to fill the line
+                        when using '--highlight-all'
+  -d, --delay DELAY     delay for the '--slow' argument below (milliseconds,
+                        integer between 100 and 900, default is $delay)
+  --dialogs             use interactive dialogs (for details see section 2.6
+                        inside the documentation)
+  -e EXCLUDE, --exclude EXCLUDE
+                        exclude lines which a certain string (for details see
+                        section 5 inside the documentation file)
+  --export-file EXPORT_FILE
+                        simultaneously export the output into a file (for
+                        details see section 9 inside the documentation file)
+  -f FILTER, --filter FILTER
+                        print the lines that contain the given filter pattern,
+                        only (for details see section 4 inside the
+                        documentation file)
+  --force-dark          force using dark text colors
+  --force-light         force using light text colors
+  -ha, --highlight-all  highlight the whole lines by inverting their color (no
+                        filter required)
+  -hm, --highlight-matches
+                        highlight the filter matches by inverting their colors
+  -hu, --highlight-upper
+                        same as '--highlight-matches' and with to uppercase
+                        converted letters
+  --head HEAD           only return the given number of first lines of the
+                        input file
+  --ignore-case         ignore the case of the given filter pattern
+  --interactive         same as '--dialogs'
+  --no-info             do not display the information header and footer
+  -p, --prompt          prompt before exit (in case the process gets canceled
+  --pause PAUSE         Pause output after a certain amount of lines
+  -r REMOVE, --remove REMOVE
+                        remove a certain string from each line (for details
+                        see section 6 inside the documentation file)
+  -s, --slow            slow down the process (decreases CPU usage)
+  --tail TAIL           only return the given number of last lines of the
+                        input file
+  -w, --wait WAIT       seconds to wait after printing a colorized line
 
-    # Optional arguments to enhance the required ones
-    echo
-    echo -e "${lb}optional arguments:${no}"
-    echo "  -c COLOR_FILE, --color-file COLOR_FILE"
-    echo "                        color config file for colorizing lines"\
-                                 "which contain"
-    echo "                        certain terms"
-    echo "  --cut-off             remove the trailing whitespaces used to"\
-                                 "fill the line"
-    echo "                        when using '--highlight-all'"
-    echo "  -d, --delay DELAY     delay for the '--slow' argument below"\
-                                 "(milliseconds,"
-    echo "                        integer between 100 and 900, default is"\
-                                 "$delay)"
-    echo "  --dialogs             use interactive dialogs (for details see"\
-                                 "section 2.6"
-    echo "                        inside the documentation)"
-    echo "  -e EXCLUDE, --exclude EXCLUDE"
-    echo "                        exclude lines which a certain string (for"\
-                                 "details see"
-    echo "                        section 5 inside the documentation file)"
-    echo "  --export-file EXPORT_FILE"
-    echo "                        simultaneously export the output into a"\
-                                 "file (for"
-    echo "                        details see section 9 inside the"\
-                                 "documentation file)"
-    echo "  -f FILTER, --filter FILTER"
-    echo "                        print the lines that contain the given"\
-                                 "filter pattern,"
-    echo "                        only (for details see section 4 inside the"
-    echo "                        documentation file)"
-    echo "  --force-dark          force using dark text colors"
-    echo "  --force-light         force using light text colors"
-    echo "  -ha, --highlight-all  highlight the whole lines by inverting"\
-                                 "their color (no"
-    echo "                        filter required)"
-    echo "  -hm, --highlight-matches"
-    echo "                        highlight the filter matches by inverting"\
-                                 "their colors"
-    echo "  -hu, --highlight-upper"
-    echo "                        same as '--highlight-matches' and with"\
-                                 "to uppercase"
-    echo "                        converted letters"
-    echo "  --head HEAD           only return the given number of first"\
-                                 "lines of the"
-    echo "                        input file"
-    echo "  --ignore-case         ignore the case of the given filter pattern"
-    echo "  --interactive         same as '--dialogs'"
-    echo "  --no-info             do not display the information header and"\
-                                 "footer"
-    echo "  -p, --prompt          prompt before exit (in case the process"\
-                                 "gets canceled"
-    echo "  --pause PAUSE         Pause output after a certain amount of"\
-                                 "lines"
-    echo "  -r REMOVE, --remove REMOVE"
-    echo "                        remove a certain string from each line"\
-                                 "(for details"
-    echo "                        see section 6 inside the documentation"\
-                                 "file)"
-    echo "  -s, --slow            slow down the process (decreases CPU"\
-                                 "usage)"
-    echo "  --tail TAIL           only return the given number of last lines"\
-                                 "of the"
-    echo "                        input file"
-    echo "  -w, --wait WAIT       seconds to wait after printing a colorized"\
-                                 "line"
-
-    # General arguments which return something and exit
-    echo
-    echo -e "${ly}general arguments:${no}"
-    echo "  --color-table         print the 256-color table to see which"\
-                                 "colors are"
-    echo "                        supported (can be displayed) by the"\
-                                 "terminal emulator"
-    echo "                        currently used and exit"
-    echo "  --version             print the version number and exit"
-    echo "  --version-update      check for a newer version and exit"
-    echo "  -?, -h, --help        print this help message and exit"
-
-    echo
-    echo -e "${yl}Further information and usage examples can be found inside"\
-            "the documentation"
-    echo -e "file for this script.${no}"
+${ly}general arguments:${no}
+  --color-table         print the 256-color table to see which colors are
+                        supported (can be displayed) by the terminal emulator
+                        currently used and exit
+  --version             print the version number and exit
+  --version-update      check for a newer version and exit
+  -?, -h, --help        print this help message and exit
+${yl}
+Further information and usage examples can be found inside the documentation
+file for this script.${no}"
     if [ ! -z "$error_msg" ]; then
         if [ $interactive -eq 1 ] && [ ! -z $dialog_program ]; then
             predef_error_dialog "$error_msg"
