@@ -231,7 +231,8 @@ ${lb}optional arguments:${no}
                         certain terms
   --cut-off             remove the trailing whitespaces used to fill the line
                         when using '--highlight-all'
-  -d, --delay DELAY     delay for the '--slow' argument below (milliseconds,
+  -d DELAY, --delay DELAY
+                        delay for the '--slow' argument below (milliseconds,
                         integer between 100 and 900, default is $delay)
   --dialogs             use interactive dialogs (for details see section 2.6
                         inside the documentation)
@@ -254,7 +255,7 @@ ${lb}optional arguments:${no}
   -hu, --highlight-upper
                         same as '--highlight-matches' and with to uppercase
                         converted letters
-  --head HEAD           only return the given number of first lines of the
+  -h HEAD, --head HEAD  only return the given number of first lines of the
                         input file
   --ignore-case         ignore the case of the given filter pattern
   --interactive         same as '--dialogs'
@@ -265,9 +266,9 @@ ${lb}optional arguments:${no}
                         remove a certain string from each line (for details
                         see section 6 inside the documentation file)
   -s, --slow            slow down the process (decreases CPU usage)
-  --tail TAIL           only return the given number of last lines of the
+  -t TAIL, --tail TAIL  only return the given number of last lines of the
                         input file
-  -w, --wait WAIT       seconds to wait after printing a colorized line
+  -w WAIT, --wait WAIT  seconds to wait after printing a colorized line
 
 ${ly}general arguments:${no}
   --color-table         print the 256-color table to see which colors are
@@ -275,7 +276,7 @@ ${ly}general arguments:${no}
                         currently used and exit
   --version             print the version number and exit
   --version-update      check for a newer version and exit
-  -?, -h, --help        print this help message and exit
+  -?, --help            print this help message and exit
 ${yl}
 Further information and usage examples can be found inside the documentation
 file for this script.${no}"
