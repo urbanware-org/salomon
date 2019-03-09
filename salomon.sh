@@ -110,6 +110,11 @@ else
                 color_force="light"
                 shift
             ;;
+            -h|--head)
+                shift
+                head_lines="$1"
+                shift
+            ;;
             -ha|--highlight-all)
                 highlight_all=1
                 shift
@@ -120,11 +125,6 @@ else
             ;;
             -hu|--highlight-upper)
                 highlight_upper=1
-                shift
-            ;;
-            --head)
-                shift
-                head_lines="$1"
                 shift
             ;;
             --ignore-case)
@@ -158,7 +158,7 @@ else
                 slow=1
                 shift
             ;;
-            --tail)
+            -t|--tail)
                 shift
                 tail_lines="$1"
                 shift
@@ -181,7 +181,7 @@ else
             --version-update)
                 check_update
             ;;
-            -\?|-h|--help)
+            -\?|--help)
                 usage
             ;;
 
