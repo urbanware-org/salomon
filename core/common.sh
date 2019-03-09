@@ -248,6 +248,8 @@ ${lb}optional arguments:${no}
                         documentation file)
   --force-dark          force using dark text colors
   --force-light         force using light text colors
+  -h HEAD, --head HEAD  only return the given number of first lines of the
+                        input file
   -ha, --highlight-all  highlight the whole lines by inverting their color (no
                         filter required)
   -hm, --highlight-matches
@@ -255,8 +257,6 @@ ${lb}optional arguments:${no}
   -hu, --highlight-upper
                         same as '--highlight-matches' and with to uppercase
                         converted letters
-  -h HEAD, --head HEAD  only return the given number of first lines of the
-                        input file
   --ignore-case         ignore the case of the given filter pattern
   --interactive         same as '--dialogs'
   --no-info             do not display the information header and footer
