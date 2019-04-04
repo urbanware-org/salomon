@@ -257,7 +257,7 @@ ${lb}optional arguments:${no}
   -hu, --highlight-upper
                         same as '--highlight-matches' and with to uppercase
                         converted letters
-  --ignore-case         ignore the case of the given filter pattern
+  -ic, --ignore-case    ignore the case of the given filter pattern
   --interactive         same as '--dialogs'
   --no-info             do not display the information header and footer
   -p, --prompt          prompt before exit (in case the process gets canceled
