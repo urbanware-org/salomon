@@ -127,7 +127,7 @@ else
                 highlight_upper=1
                 shift
             ;;
-            --ic|--ignore-case)
+            -ic|--ignore-case)
                 arg_case="-i"
                 shift
             ;;
