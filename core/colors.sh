@@ -167,7 +167,7 @@ read_color_file() {
     done < $color_file
 }
 
-rnd_colors() {
+random_colors() {
     # Useless function with the side effect of increasing CPU load
     highlight=$2
     highlight_random=0
@@ -179,19 +179,19 @@ rnd_colors() {
     fi
 
     for char in $(sed -e "s/\(.\)/\1\n/g" <<< "$line_input"); do
-        color_confetti=$(shuf -i 1-256 -n 1)
+        color_random=$(shuf -i 1-256 -n 1)
         if [ $highlight_random -eq 1 ]; then
             color_highlight=$(shuf -i 0-1 -n 1)
             if [ $color_highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
+                color_char="\e[48;5;${color_random}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
+                color_char="\e[38;5;${color_random}m${char}${cl_n}"
             fi
         else
             if [ $highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
+                color_char="\e[48;5;${color_random}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
+                color_char="\e[38;5;${color_random}m${char}${cl_n}"
             fi
         fi
 

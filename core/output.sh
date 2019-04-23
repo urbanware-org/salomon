@@ -360,7 +360,7 @@ print_output_line() {
     if [ "$color_code" = "999" ]; then
         temp=$(sed -e "s/^$color_code//g" <<< "$output")
         output=$(sed -e "s/\\\e\[.*//g" <<< "$temp")
-        rnd_colors "$output"
+        random_colors "$output"
     else
         echo -e "$output"
     fi
