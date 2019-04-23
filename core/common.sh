@@ -126,7 +126,7 @@ deprecated_argument() {
     ins="You may use '${cl_lc}${arg_i}${cl_n}' instead."
 
     echo -e "${cl_lb}notice:${cl_n} $dep $ins"
-    sleep 1
+    sleep 3
 }
 
 prepare_path() {
