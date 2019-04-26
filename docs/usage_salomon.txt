@@ -188,6 +188,16 @@ USAGE (salomon.sh)
             SaLoMon supports the dialog programs 'dialog' and 'whiptail'. You
             can set the one you want to use inside the 'salomon.cfg' file.
 
+            Furthermore, you can set which dialogs should be shown when using
+            interactice mode. For example, if you want to disable the welcome
+            dialog, also edit 'salomon.cfg' and change the value of the option
+
+                dialog_show_welcome=1
+
+            to the following:
+
+                dialog_show_welcome=0
+
     3. Processing input file
 
         The following examples use a color config file. See section 2.3 for
