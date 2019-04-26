@@ -492,3 +492,4 @@ USAGE (salomon.sh)
         the output of SaLoMon. However, editing the file with an editor will
         not work, due to the fact, that the editor will (or should) also print
         the color and highlighting codes instead of interpreting them.
+
