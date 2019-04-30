@@ -42,7 +42,17 @@ source ${script_dir}/core/dialogs.sh
 source ${script_dir}/core/global.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
-source ${script_dir}/salomon.cfg
+
+if [ -f "${script_dir}/salomon.cfg" ]; then
+    source ${script_dir}/salomon.cfg
+elif [ -f "${script_dir}/salomon.conf" ]; then
+    source ${script_dir}/salomon.conf
+elif [ -f "${script_dir}/salomon.cf" ]; then
+    # Postfix anyone?
+    source ${script_dir}/salomon.cf
+else
+    usage "Global configuration file missing"
+fi
 set_global_variables
 
 # Check command-line arguments
