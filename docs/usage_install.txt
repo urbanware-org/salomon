@@ -6,7 +6,7 @@ USAGE (install.sh)
         1.  Definition
         2.  General stuff
           2.1  Overview of all command-line arguments
-          2.2  Important notice
+          2.2  Shell requirements
         3.  Install SaLoMon
         4.  Run the installed SaLoMon
         5.  Uninstall SaLoMon
@@ -24,7 +24,7 @@ USAGE (install.sh)
             an overview of all arguments available, by simply running the
             script with the '--help' argument.
 
-        2.2 Important notice
+        2.2 Shell requirements
 
             The SaLoMon project was developed on (and for) the Bash shell,
             which is the default shell on many Unix-like systems (or at least

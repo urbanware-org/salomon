@@ -6,7 +6,7 @@ USAGE (salomon.sh)
         1.  Definition
         2.  General stuff
           2.1  Overview of all command-line arguments
-          2.2  Important notice
+          2.2  Shell requirements
           2.3  Colorize and highlight certain lines
              2.3.1  Color config files
              2.3.2  Highlight filter terms
@@ -50,7 +50,7 @@ USAGE (salomon.sh)
 
                 $ ./salomon.sh --help
 
-        2.2 Important notice
+        2.2 Shell requirements
 
             The SaLoMon project was developed on (and for) the Bash shell,
             which is the default shell on many Unix-like systems (or at least
