@@ -705,9 +705,9 @@ else
     fi
 
     # Check requirements
-    check_command grep 0 grep
-    check_command sed 0 sed
-    check_command tail 0 coreutils
+    check_command grep grep
+    check_command sed sed
+    check_command tail coreutils
 fi
 
 if [ $interactive -eq 1 ]; then
