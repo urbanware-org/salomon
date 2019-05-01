@@ -48,11 +48,10 @@ check_argument() {
 
 check_command() {
     check_command=$1
-    expected_code=$2
-    required_pkg=$3
+    required_pkg=$2
 
-    $check_command --help &>/dev/null
-    if [ $? -ne $expected_code ]; then
+    command -v $check_command &>/dev/null
+    if [ $? -ne 0 ]; then
         usage "This script requires the '$required_pkg' package to work"
     fi
 }
