@@ -195,7 +195,7 @@ else
     check_missing=1
 fi
 
-echo "#!/bin/bash" > $script_temp
+echo "#!${BASH}" > $script_temp
 echo "foobar() {" >> $script_temp
 echo "    echo \"foobar\"" >> $script_temp
 echo "}" >> $script_temp
