@@ -53,6 +53,12 @@ The *SaLoMon* project was developed on (and for) the *Bash* shell, which is the 
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
 
+### Shebang
+
+The default shebang inside the scripts points to `/bin/bash`. This should work on all *Linux* distributions.
+
+In case the scripts will not run and return a "bad interpreter" error, simply run the included `shebang.sh` script (without any arguments). This will automatically determine the path to the `bash` binary and adjust the shebang inside all other *SaLoMon* script files.
+
 [Top](#salomon-)
 
 ## Support the project
