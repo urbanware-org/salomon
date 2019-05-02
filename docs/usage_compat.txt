@@ -27,10 +27,11 @@ USAGE (compat.sh)
         Due to the shebang in the header of each script file, each component
         uses the Bash shell, even if the script is being run on another shell.
 
-        Without the Bash shell, the scripts can also be executed, but will
-        either not work properly or most likely not work at all. Maybe there
-        are other shells which provide the features needed, but there is no
-        guarantee for that.
+        The default shebang inside the scripts points to '/bin/bash'. This
+        should work on all Linux distributions. In case the scripts will not
+        run and return a "bad interpreter" error, simply run the included
+        shebang adjustment script. Further information can be found inside the
+        included documentation for that script.
 
     3. Compatibility check
 
