@@ -38,5 +38,5 @@ USAGE (shebang.sh)
         without any arguments (there are no command-line arguments available
         anyway) and check the results.
 
-            $ ./shebang.sh
+            $ bash shebang.sh
 
