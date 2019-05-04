@@ -1,7 +1,7 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.14.0 (2019-05-04)
 
         + Added some alternative file extensions for the global config file.
         + Added the shebang adjustment script (required in case the shebang

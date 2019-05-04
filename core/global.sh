@@ -15,7 +15,7 @@ set_global_variables() {
     # Do not change any of the values below! See the 'salomon.cfg' file inside
     # the main directory of SaLoMon for configuration options.
     # ------------------------------------------------------------------------
-    version="1.13.1"
+    version="1.14.0"
 
     arg_case=""
     arg_list=$(readlink -f "$0")
