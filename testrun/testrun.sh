@@ -70,7 +70,7 @@ echo "==  Press Ctrl+C now once to  cancel  this monitoring process." \
 echo "==" >> $salomon_sample_log_temp
 $salomon_script --monitor -i $salomon_sample_log_temp \
                 -f "2014; cancel ;=" \
-                -c $salomon_sample_colors  -hm -ic --prompt -t 14
+                -c $salomon_sample_colors -hu -ic --prompt -t 14
 if [ $? -ne 2 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 rm -f $salomon_sample_log_temp
@@ -78,7 +78,8 @@ clear
 echo -e "\e[93m\c"
 echo ' _____         _                           _        _             '
 echo '|_   _|__  ___| |_ _ __ _   _ _ __     ___| |_ __ _| |_ _   _ ___ '
-echo '  | |/ _ \/ __| __| ´__| | | | ´_ \   / __| __/ _` | __| | | / __|'
+echo \
+ '  | |/ _ \/ __| __| '\''__| | | | '\''_ \   / __| __/ _'\'' | __| | | / __|'
 echo '  | |  __/\__ \ |_| |  | |_| | | | |  \__ \ || (_| | |_| |_| \__ \'
 echo '  |_|\___||___/\__|_|   \__,_|_| |_|  |___/\__\__,_|\__|\__,_|___/'
 echo -e "\e[0m"
