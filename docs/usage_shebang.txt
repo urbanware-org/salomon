@@ -5,7 +5,7 @@ USAGE (shebang.sh)
 
         1.  Definition
         2.  Shell requirements
-        3.  Adjust shebangs 
+        3.  Adjust shebangs
 
     1. Definition
 
