@@ -169,6 +169,7 @@ read_color_file() {
 
 random_colors() {
     # Useless function with the side effect of increasing CPU load
+    
     highlight=$2
     highlight_random=0
     line_input="$1"
