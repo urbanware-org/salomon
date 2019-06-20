@@ -116,23 +116,7 @@ fi
 confirm $script_mode
 echo
 echo -e "${cl_lg}Started $script_mode process:${cl_n}"
-if [ $script_mode = "uninstall" ]; then
-    cd $(pwd | sed -e "s/\/salomon$//g")
-
-    if [ -f ${symlink_sh}/salomon ]; then
-        rm -f ${symlink_sh}/salomon &>/dev/null
-        echo "  - Removed symbolic link for the main script."
-    else
-        echo "  - Symbolic link for the main script does not exist."
-    fi
-
-    if [ -d $target_dir ]; then
-        rm -fR $target_dir &>/dev/null
-        echo -e "  - Removed project directory '${target}'."
-    else
-        echo -e "  - Project directory '${target}' does not exist."
-    fi
-else
+if [ $script_mode = "install" ]; then
     if [ -d $target_dir ]; then
         echo -e "  - Target directory '${target}' already exists."
     else
@@ -154,6 +138,22 @@ else
     else
         ln -s ${target_dir}/salomon.sh ${symlink_sh}/salomon &>/dev/null
         echo "  - Created symbolic link for the main script."
+    fi
+else  # uninstall
+    cd $(pwd | sed -e "s/\/salomon$//g")
+
+    if [ -f ${symlink_sh}/salomon ]; then
+        rm -f ${symlink_sh}/salomon &>/dev/null
+        echo "  - Removed symbolic link for the main script."
+    else
+        echo "  - Symbolic link for the main script does not exist."
+    fi
+
+    if [ -d $target_dir ]; then
+        rm -fR $target_dir &>/dev/null
+        echo -e "  - Removed project directory '${target}'."
+    else
+        echo -e "  - Project directory '${target}' does not exist."
     fi
 fi
 echo -e "${cl_lg}Finished $script_mode process.${cl_n}"
