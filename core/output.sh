@@ -350,7 +350,7 @@ print_output_line() {
 
     if [ -z "$output" ]; then
         return
-    fi    
+    fi
 
     if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
         highlight_all=0
