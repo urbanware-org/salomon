@@ -123,27 +123,47 @@ get_color_match() {
 
 print_color_table() {
     echo
-    echo "This terminal emulator supports (can display) the following colors:"
-    echo
+    is_tty=$(grep "/tty" <<< $(tty))
+    if [ -z "$is_tty" ]; then
+        echo "This terminal emulator supports (can display) the following"\
+             "colors:"
+        echo
 
-    cpl=1
-    echo -e "    \c"
-    for color in $(seq 0 255); do
-        printf "\x1b[48;5;%sm%4d${cl_n}" "$color" "$color";
-        cpl=$(( ++cpl ))
-        if [ $cpl -gt 16 ] || [ $color -eq 255 ]; then
-            cpl=1
-            echo -e "\n    \c"
-        fi
-    done
+        cpl=1
+        echo -e "    \c"
+        for color in $(seq 0 255); do
+            printf "\x1b[48;5;%sm%4d${cl_n}" "$color" "$color";
+            cpl=$(( ++cpl ))
+            if [ $cpl -gt 16 ] || [ $color -eq 255 ]; then
+                cpl=1
+                echo -e "\n    \c"
+            fi
+        done
 
-    echo
-    echo "All numbers with black background are colors that cannot be"\
-         "displayed (except"
-    echo "for number 0). When running SaLoMon on a text-based user interface"\
-         "there are"
-    echo "most likely only 16 colors available which occur multiple times in"\
-         "the table."
+        echo
+        echo "All numbers with black background are colors that cannot be"\
+             "displayed (except"
+        echo "for number 0). When running SaLoMon on a pure text-based"\
+             "interface (tty) there"
+        echo "only are 16 colors available."
+    else
+        echo "This is a pure text-based interface (tty) which only supports"\
+             "(can display)"
+        echo "the following 16 colors (sorted alphabetically):"
+        echo
+        echo -e "    black, ${cl_br}brown${cl_n}, ${cl_db}darkblue${cl_n},"\
+                "${cl_dc}darkcyan${cl_n}, ${cl_dy}darkgray${cl_n},"\
+                "${cl_dg}darkgreen${cl_n}," \
+                "${cl_dp}darkpurple${cl_n},"
+        echo -e "    ${cl_dr}darkred${cl_n}, ${cl_lb}lightblue${cl_n},"\
+                "${cl_lc}lightcyan${cl_n}, ${cl_ly}lightgray${cl_n},"\
+                "${cl_lg}lightgreen${cl_n}, ${cl_lp}lightpurple${cl_n},"
+        echo -e "    ${cl_lr}lightred${cl_n}, ${cl_wh}white${cl_n},"\
+                "${cl_yl}yellow${cl_n}"
+        echo
+        echo "Terminal emulators on a graphical user interface support up" \
+             "to 256 colors."
+    fi
     echo
 }
 
@@ -169,7 +189,7 @@ read_color_file() {
 
 random_colors() {
     # Useless function with the side effect of increasing CPU load
-    
+
     highlight=$2
     highlight_random=0
     line_input="$1"
