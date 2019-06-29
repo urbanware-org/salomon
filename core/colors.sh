@@ -149,7 +149,7 @@ print_color_table() {
     else
         echo "This is a pure text-based interface (tty) which only supports"\
              "(can display)"
-        echo "the following 16 colors (sorted alphabetically):"
+        echo "the following 8 or 16 colors (sorted alphabetically):"
         echo
         echo -e "    black, ${cl_br}brown${cl_n}, ${cl_db}darkblue${cl_n},"\
                 "${cl_dc}darkcyan${cl_n}, ${cl_dy}darkgray${cl_n},"\
