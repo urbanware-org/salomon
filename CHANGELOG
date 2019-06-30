@@ -2,10 +2,9 @@
 CHANGELOG (SaLoMon)
 
     Next release (outstanding)
-    
-        * Revised the color core module (negligible changes).
+
         * Revised the color table output (adjusted color information for pure
-          text-based interfaces).          
+          text-based interfaces).
         * Revised the installation script (negligible changes).
 
     Version 1.14.0 (2019-05-04)
