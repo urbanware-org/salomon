@@ -1,11 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
-    Next release (outstanding)
+    Version 1.14.1 (2019-08-06)
+
+        + Added debug feature for core scripts (these scripts can be modified
+          without backup by copying them into a separate debug directory).
 
         * Revised the color table output (adjusted color information for pure
           text-based interfaces).
         * Revised the installation script (negligible changes).
+        * Revised the output core module (negligible changes).
 
     Version 1.14.0 (2019-05-04)
 
