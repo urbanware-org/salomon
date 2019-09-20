@@ -31,7 +31,7 @@ CHANGELOG (SaLoMon)
     Version 1.13.0 (2019-01-14)
 
         + Added a dialog to print the command-line arguments in interactive
-          mode (can be copied and used for e. g. aliases, desktop shortcuts or
+          mode (can be copied and used for e.g. aliases, desktop shortcuts or
           scripts).
         + Added an option to force dark or light font colors (depending on
           the background color of the terminal emulator).
@@ -393,7 +393,7 @@ CHANGELOG (SaLoMon)
           changes).
 
         # Fixed the freeze bug inside the SaLoMon monitoring core module (in
-          case the input file has been temporarily moved e. g. by a log
+          case the input file has been temporarily moved e.g. by a log
           rotation process).
 
     Version 1.5.4 (2014-12-17)

@@ -35,7 +35,7 @@ dialog_arg_list() {
 
     dlg_text=$(echo "Do you want to see what the command-line looks like"\
                     "with the arguments given?\n\nThis can be copied and"\
-                    "used for e. g. aliases, desktop shortcuts or scripts.")
+                    "used for e.g. aliases, desktop shortcuts or scripts.")
 
     if [ $dialog_program = "dialog" ]; then
         dialog $dlg_shadow --title "Command-line arguments" \

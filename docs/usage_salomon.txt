@@ -279,7 +279,7 @@ USAGE (salomon.sh)
         The following examples use a color config file. See section 2.3 for
         details.
 
-        It is possible to filter the output to e. g. only return lines that
+        It is possible to filter the output to e.g. only return lines that
         contain certain terms. There is also the optional '--ignore-case'
         argument to ignore the case of the given filter pattern.
 
@@ -498,7 +498,7 @@ USAGE (salomon.sh)
                            -c /tmp/colors.cfg -f /tmp/filter.cfg \
                            --export-file /tmp/export.log
 
-        Now, by using e. g. 'cat' you can display the exported data as seen in
+        Now, by using e.g. 'cat' you can display the exported data as seen in
         the output of SaLoMon. However, editing the file with an editor will
         not work, due to the fact, that the editor will (or should) also print
         the color and highlighting codes instead of interpreting them.
