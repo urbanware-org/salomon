@@ -1,4 +1,4 @@
-# *SaLoMon* <img src="https://raw.githubusercontent.com/urbanware-org/salomon/master/icons/salomon_256x256.png" alt="SaLoMon logo" height="48px" width="48px" align="right"/>
+# *SaLoMon* <img src="https://raw.githubusercontent.com/urbanware-org/salomon/master/icons/salomon_256x256.png" alt="SaLoMon logo" height="128px" width="128px" align="right"/>
 
 **Table of contents**
 *   [Definition](#definition)
