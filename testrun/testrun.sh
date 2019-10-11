@@ -65,7 +65,7 @@ if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
 echo "==" >> $salomon_sample_log_temp
-echo "==  Press Ctrl+C now once to  cancel  this monitoring process." \
+echo "==  Please press Ctrl+C now once to  cancel  this test (required)." \
      >> $salomon_sample_log_temp
 echo "==" >> $salomon_sample_log_temp
 $salomon_script --monitor -i $salomon_sample_log_temp \
