@@ -40,6 +40,13 @@ confirm() {
     echo
     echo -e "${cl_lc}SaLoMon install/uninstall script${cl_n}"
     echo
+    if [ "$script_mode" = "install" ]; then
+        echo -e "Installing SaLoMon is ${cl_yl}optional${cl_n} and not"\
+                "mandatory in order to use it. Further"
+        echo    "information can be found inside the documentation file for"\
+                "this script."
+        echo
+    fi
     echo -e "This will $script_action SaLoMon. Do you wish to proceed"\
              "($yesno)? \c"
     read choice
@@ -59,8 +66,10 @@ usage() {
 
     echo "usage: salomon.sh [-i] [-u]"
     echo
-    echo "  -i, --install         install SaLoMon"
-    echo "  -u, --uninstall       uninstall SaLoMon"
+    echo "  -i, --install         install SaLoMon (requires superuser"\
+         "privileges)"
+    echo "  -u, --uninstall       uninstall SaLoMon (requires superuser"\
+         "privileges)"
     echo "  -?, -h, --help        print this help message and exit"
     echo
     echo "Further information and usage examples can be found inside the"\

@@ -14,7 +14,7 @@ USAGE (install.sh)
     1. Definition
 
         The SaLoMon installation script allows to install or uninstall the
-        project, which is optional and not necessary in order to use it.
+        project, which is optional and not mandatory in order to use it.
 
     2. General stuff
 
@@ -45,7 +45,10 @@ USAGE (install.sh)
         directory is not part of the path related environment variable, the
         symbolic link will be created inside '/usr/bin' instead.
 
-        Now, to install, type one of the following commands, depending on the
+        After installing, you can directly run the 'salomon' command (system-
+        wide) without having to give the full path to the main script.
+
+        Now, to install, type one of the following commands depending on the
         way you prefer.
 
         Either as normal user via 'sudo'
