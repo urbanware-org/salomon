@@ -465,10 +465,10 @@ predef_error_dialog() {
     fi
 
     if [ $dialog_program = "dialog" ]; then
-        dialog $dlg_shadow --title "Error" --colors --ok-label "Exit" \
+        dialog $dlg_shadow --title "Error" --colors --ok-label "Back" \
                            --msgbox "\Z1${dialog_text}." 8 60
     else
-        whiptail --title "Error" --ok-button "Exit" \
+        whiptail --title "Error" --ok-button "Back" \
                  --msgbox "${dialog_text}." 8 60
     fi
 }
