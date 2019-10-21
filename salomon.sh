@@ -548,12 +548,12 @@ else
         color_darkpurple=$cl_lp           ; cl_dp=$color_darkpurple
         color_darkred=$cl_lr              ; cl_dr=$color_darkred
     fi
-
-    # Check requirements
-    check_command grep grep
-    check_command sed sed
-    check_command tail coreutils
 fi
+
+# Check requirements
+check_command grep grep
+check_command sed sed
+check_command tail coreutils
 
 if [ $header -eq 1 ]; then
     print_output_header
