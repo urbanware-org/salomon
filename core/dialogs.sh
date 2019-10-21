@@ -451,8 +451,6 @@ init_dialogs() {
     else
         dlg_shadow=""
     fi
-
-    dialog_welcome
 }
 
 predef_error_dialog() {
