@@ -648,7 +648,7 @@ else
         fi
         delay=$temp
     else
-        usage "The delay must be an integer between 100 and 900"
+        usage "The delay must be a number between 100 and 900"
     fi
 
     # Wait on match
@@ -676,7 +676,7 @@ else
                 concat_arg "-w $wait_match"
             fi
         else
-            usage "The wait value must be an integer greater than zero"
+            usage "The wait value must be a number greater than zero"
         fi
     fi
 
