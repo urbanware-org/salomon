@@ -473,6 +473,24 @@ predef_error_dialog() {
     fi
 }
 
+predef_info_dialog() {
+    dialog_text="$1"
+
+    if [ $dialog_shadow -ne 1 ]; then
+        dlg_shadow="$dlg_shadow"
+    else
+        dlg_shadow=""
+    fi
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Information" --colors --ok-label "OK" \
+                           --msgbox "${dialog_text}." 8 60
+    else
+        whiptail --title "Information" --ok-button "OK" \
+                 --msgbox "${dialog_text}." 8 60
+    fi
+}
+
 predef_input_dialog() {
     dialog_title="$1"
     dialog_text="$2"
