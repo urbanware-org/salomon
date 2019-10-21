@@ -40,6 +40,7 @@ source ${script_dir}/core/colors.sh
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/dialogs.sh
 source ${script_dir}/core/global.sh
+source ${script_dir}/core/interactive.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
 
