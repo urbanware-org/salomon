@@ -232,7 +232,7 @@ ${lb}optional arguments:${no}
                         when using '--highlight-all'
   -d DELAY, --delay DELAY
                         delay for the '--slow' argument below (milliseconds,
-                        integer between 100 and 900, default is $delay)
+                        number between 100 and 900, default is $delay)
   --dialogs             use interactive dialogs (for details see section 2.6
                         inside the documentation)
   -e EXCLUDE, --exclude EXCLUDE
