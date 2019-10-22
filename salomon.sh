@@ -545,10 +545,10 @@ else
     else
         re='^[0-9]+$'
         if [[ ! $head_lines =~ $re ]]; then
-            usage "The argument '--head' expects a numeric value"
+            usage "The argument '--head' expects a number greater than zero"
         fi
         if [[ ! $tail_lines =~ $re ]]; then
-            usage "The argument '--tail' expects a numeric value"
+            usage "The argument '--tail' expects a number greater than zero"
         fi
         if [ $head_lines -gt 0 ] && [ $follow = 1 ]; then
             usage "The '--head' argument cannot be used with monitoring mode"
@@ -584,7 +584,7 @@ else
         usage "The '--pause' argument cannot be used with monitoring mode"
     fi
     if [ -z "$pause_lines" ] && [ $pause -eq 1 ]; then
-        expects="expects a positive numeric value or 'auto'"
+        expects="expects a number greater than zero or 'auto'"
         usage "The '--pause' argument $expects"
     elif [ "$pause_lines" = "auto" ]; then
         pause=1
@@ -592,7 +592,7 @@ else
         if [ $pause -eq 1 ]; then
             re='^[0-9]+$'
             if [ $pause_lines -lt 1 ] || [[ ! $pause_lines =~ $re ]]; then
-                expects="expects a positive numeric value or 'auto'"
+                expects="expects a number greater than zero or 'auto'"
                 usage "The '--pause' argument $expects"
             fi
         fi
