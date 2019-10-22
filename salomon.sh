@@ -478,29 +478,6 @@ else
             fi
         fi
 
-        # Export file
-        if [ $export_log -eq 1 ]; then
-            temp="The given export file path '$export_file'"
-            if [ -z "$export_file" ]; then
-                export_log=0
-            else
-                if [ -e "$export_file" ]; then
-                    if [ -d "$export_file" ]; then
-                        usage "$temp is not a file"
-                    elif [ -f "$export_file" ]; then
-                        usage "$temp already exists"
-                    fi
-                fi
-
-                touch $export_file &>/dev/null
-                if [ $? -ne 0 ]; then
-                    usage "$temp seems to be read-only"
-                fi
-
-                concat_arg "--export-file $export_file"
-            fi
-        fi
-
         # Slow down (delay)
         grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
         if [ $? -eq 0 ]; then
@@ -528,6 +505,29 @@ else
                 fi
             else
                 usage "The wait value must be a number greater than zero"
+            fi
+        fi
+
+        # Export file
+        if [ $export_log -eq 1 ]; then
+            temp="The given export file path '$export_file'"
+            if [ -z "$export_file" ]; then
+                export_log=0
+            else
+                if [ -e "$export_file" ]; then
+                    if [ -d "$export_file" ]; then
+                        usage "$temp is not a file"
+                    elif [ -f "$export_file" ]; then
+                        usage "$temp already exists"
+                    fi
+                fi
+
+                touch $export_file &>/dev/null
+                if [ $? -ne 0 ]; then
+                    usage "$temp seems to be read-only"
+                fi
+
+                concat_arg "--export-file $export_file"
             fi
         fi
     fi
