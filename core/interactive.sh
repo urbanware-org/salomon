@@ -107,40 +107,52 @@ interactive_mode() {
             tail_lines=0
         fi
     fi
-}
 
-if [ $interactive -eq 1 ]; then
-    if [ "$pause_lines" = "0" ]; then
-        dialog_pause_output ""
-    else
-        dialog_pause_output "$pause_lines"
-    fi
-    pause_lines="$user_input"
-    if [ -z "$pause_lines" ]; then
+    if [ $follow -eq 1 ]; then
         pause=0
     else
-        pause=1
-        concat_arg "--pause"
+        dialog_valid=0
+        while [ $dialog_valid -eq 0 ]; do
+            get_pause_lines
+        done
     fi
-fi
 
-if [ $pause -eq 1 ] && [ $follow -eq 1 ]; then
-    usage "The '--pause' argument cannot be used with monitoring mode"
-fi
-if [ -z "$pause_lines" ] && [ $pause -eq 1 ]; then
-    expects="expects a positive numeric value or 'auto'"
-    usage "The '--pause' argument $expects"
-elif [ "$pause_lines" = "auto" ]; then
-    pause=1
-else
-    if [ $pause -eq 1 ]; then
-        re='^[0-9]+$'
-        if [ $pause_lines -lt 1 ] || [[ ! $pause_lines =~ $re ]]; then
-            expects="expects a positive numeric value or 'auto'"
-            usage "The '--pause' argument $expects"
-        fi
+    dialog_slow_down "$slow"
+    if [ $? -eq 0 ]; then
+        get_slow_down_delay
+    else
+        slow=0
     fi
-fi
+
+    dialog_valid=0
+    while [ $dialog_valid -eq 0 ]; do
+        get_wait_on_match
+    done
+
+    dialog_valid=0
+    while [ $dialog_valid -eq 0 ]; do
+        get_export_file
+    done
+
+    dialog_no_info $header
+    if [ $? -eq 0 ]; then
+        header=1
+    else
+        header=0
+        concat_arg "--no-info"
+    fi
+
+    dialog_arg_list
+    clear
+}
+
+get_slow_down_delay() {
+
+}
+
+get_wait_on_match() {
+
+}
 
 get_color_file() {
     dialog_color_file "$color_file"
@@ -194,6 +206,38 @@ get_exclude_pattern() {
             exclude=1
             concat_arg "-e $exclude_pattern"
             dialog_valid=1
+        fi
+    fi
+}
+
+get_export_file() {
+    dialog_export_file $export_file
+    export_file="$user_input"
+
+    if [ -z "$export_file" ]; then
+        export_log=0
+        dialog_valid=0
+        return
+    else
+        filemsg="The given export file path '$export_file'"
+        if [ -e "$export_file" ]; then
+            if [ -d "$export_file" ]; then
+                predef_info_dialog "$filemsg is not a file"
+                return
+            elif [ -f "$export_file" ]; then
+                predef_info_dialog "$filemsg already exists"
+                return
+            fi
+        else
+            touch $export_file &>/dev/null
+            if [ $? -ne 0 ]; then
+                predef_info_dialog "$filemsg seems to be read-only"
+                return
+            else
+                export_log=1
+                concat_arg "--export-file $export_file"
+                dialog_valid=1
+            fi
         fi
     fi
 }
@@ -304,6 +348,38 @@ get_input_file() {
 
     if [ $input_valid -eq 1 ]; then
         dialog_valid=1
+    fi
+}
+
+get_pause_lines() {
+    if [ "$pause_lines" = "0" ]; then
+        dialog_pause_output ""
+    else
+        dialog_pause_output "$pause_lines"
+    fi
+
+    pause_lines="$user_input"
+    if [ -z "$pause_lines" ] || [ $pause_lines -eq 0 ]; then
+        pause=0
+        dialog_valid=1
+        return
+    else
+        if [ "$pause_lines" = "auto" ]; then
+            pause=1
+            concat_arg "--pause auto"
+            dialog_valid=1
+            return
+        else
+            re='^[0-9]+$'
+            if [ $pause_lines -lt 1 ] || [[ ! $pause_lines =~ $re ]]; then
+                predef_error_dialog \
+                  "The amount must be a number greater than zero or 'auto'"
+            else
+                pause=1
+                concat_arg "--pause $pause_lines"
+                dialog_valid=1
+            fi
+        fi
     fi
 }
 
