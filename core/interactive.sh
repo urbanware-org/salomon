@@ -208,22 +208,22 @@ get_export_file() {
 
     if [ -z "$export_file" ]; then
         export_log=0
-        dialog_valid=0
+        dialog_valid=1
         return
     else
         filemsg="The given export file path '$export_file'"
         if [ -e "$export_file" ]; then
             if [ -d "$export_file" ]; then
-                predef_info_dialog "$filemsg is not a file"
+                predef_error_dialog "$filemsg is not a file"
                 return
             elif [ -f "$export_file" ]; then
-                predef_info_dialog "$filemsg already exists"
+                predef_error_dialog "$filemsg already exists"
                 return
             fi
         else
             touch $export_file &>/dev/null
             if [ $? -ne 0 ]; then
-                predef_info_dialog "$filemsg seems to be read-only"
+                predef_error_dialog "$filemsg seems to be read-only"
                 return
             else
                 export_log=1
@@ -394,14 +394,14 @@ get_remove_pattern() {
                                -e "s/\ /#/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
-            concat_arg "-e $remove_pattern"
+            concat_arg "-r $remove_pattern"
             dialog_valid=1
         fi
     fi
 }
 
 get_slow_down_delay() {
-    dialog_slow_down "$slow"
+    dialog_delay "$slow"
     delay="$user_input"
 
     if [ -z "$user_input" ] || [ $user_input -eq 0 ]; then
@@ -468,7 +468,7 @@ get_wait_on_match() {
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
         if [ $? -ne 0 ]; then
-            predef_info_dialog \
+            predef_error_dialog \
               "The wait value must be a number greater than zero"
         else
             if [ $wait_match -le 0 ]; then
