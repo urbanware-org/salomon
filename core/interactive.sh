@@ -146,14 +146,6 @@ interactive_mode() {
     clear
 }
 
-get_slow_down_delay() {
-
-}
-
-get_wait_on_match() {
-
-}
-
 get_color_file() {
     dialog_color_file "$color_file"
     color_file="$user_input"
@@ -408,6 +400,33 @@ get_remove_pattern() {
     fi
 }
 
+get_slow_down_delay() {
+    dialog_slow_down "$slow"
+    delay="$user_input"
+
+    if [ -z "$user_input" ] || [ $user_input -eq 0 ]; then
+        slow=0
+        dialog_valid=1
+        return
+    fi
+
+    grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
+    if [ $? -ne 0 ]; then
+        predef_error_dialog "The delay must be a number between 100 and 900"
+        return
+    else
+        temp=$delay
+        if [ $temp -lt 100 ]; then
+            delay=100
+        elif [ $temp -gt 900 ]; then
+            delay=900
+        fi
+        slow=1
+        concat_arg "-s --delay $delay"
+        dialog_valid=1
+  fi
+}
+
 get_tail_lines() {
     if [ "$tail_lines" = "0" ]; then
         dialog_tail_lines ""
@@ -432,6 +451,32 @@ get_tail_lines() {
         else
             concat_arg "--tail $tail_lines"
             dialog_valid=1
+        fi
+    fi
+}
+
+get_wait_on_match() {
+    if [ "$wait_match" = "0" ]; then
+        dialog_wait_on_match
+    else
+        dialog_wait_on_match "$wait_match"
+    fi
+
+    wait_match="$user_input"
+    if [ -z "$wait_match" ]; then
+        wait_match=0
+    else
+        grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
+        if [ $? -ne 0 ]; then
+            predef_info_dialog \
+              "The wait value must be a number greater than zero"
+        else
+            if [ $wait_match -le 0 ]; then
+                wait=0
+            else
+                concat_arg "-w $wait_match"
+                dialog_valid=1
+            fi
         fi
     fi
 }
