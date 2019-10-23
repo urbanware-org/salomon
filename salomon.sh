@@ -412,7 +412,6 @@ else
                                 -e "s/\ /#/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
-            concat_arg "-e $exclude_pattern"
         fi
 
         # Remove pattern
@@ -426,7 +425,6 @@ else
                                -e "s/\ /#/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
-            concat_arg "-r $remove_pattern"
         fi
 
         # Head and tail
@@ -500,8 +498,6 @@ else
             if [ $? -eq 0 ]; then
                 if [ $wait_match -le 0 ]; then
                     wait=0
-                else
-                    concat_arg "-w $wait_match"
                 fi
             else
                 usage "The wait value must be a number greater than zero"
@@ -526,8 +522,6 @@ else
                 if [ $? -ne 0 ]; then
                     usage "$temp seems to be read-only"
                 fi
-
-                concat_arg "--export-file $export_file"
             fi
         fi
     fi
