@@ -119,9 +119,13 @@ interactive_mode() {
 
     dialog_slow_down "$slow"
     if [ $? -eq 0 ]; then
-        get_slow_down_delay
+        dialog_valid=0    
+        while [ $dialog_valid -eq 0 ]; do
+            get_slow_down_delay
+        done
     else
         slow=0
+        delay=0
     fi
 
     dialog_valid=0
@@ -273,18 +277,13 @@ get_filter_pattern() {
 
 get_head_lines() {
     if [ "$head_lines" = "0" ]; then
-        dialog_head_lines ""
+        dialog_head_lines
     else
         dialog_head_lines "$head_lines"
     fi
+    head_lines="$user_input"
 
-    if [ -z "$user_input" ]; then
-        head_lines=0
-    else
-        head_lines="$user_input"
-    fi
-
-    if [ -z "$head_lines" ]; then
+    if [ -z "$head_lines" ] || [ $head_lines -eq 0 ]; then
         head_lines=0
         dialog_valid=1
         return
@@ -301,7 +300,7 @@ get_head_lines() {
 
 get_input_file() {
     dialog_input_file "$input_file"
-    input_file=$user_input
+    input_file="$user_input"
     input_valid=0
 
     if [ -z "$input_file" ]; then
@@ -345,12 +344,12 @@ get_input_file() {
 
 get_pause_lines() {
     if [ "$pause_lines" = "0" ]; then
-        dialog_pause_output ""
+        dialog_pause_output
     else
         dialog_pause_output "$pause_lines"
     fi
-
     pause_lines="$user_input"
+
     if [ -z "$pause_lines" ] || [ $pause_lines -eq 0 ]; then
         pause=0
         dialog_valid=1
@@ -401,26 +400,26 @@ get_remove_pattern() {
 }
 
 get_slow_down_delay() {
-    dialog_delay "$slow"
+    dialog_delay "$delay"
     delay="$user_input"
 
-    if [ -z "$user_input" ] || [ $user_input -eq 0 ]; then
+    if [ -z "$delay" ] || [ $delay -eq 0 ]; then
         slow=0
+        delay=0
         dialog_valid=1
         return
     fi
 
     grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
     if [ $? -ne 0 ]; then
-        predef_error_dialog "The delay must be a number between 100 and 900"
+        predef_error_dialog \
+          "The delay must be zero (for none) or a number between 100 and 900"
+        return
+    elif [ $delay -lt 100 ] || [ $delay -gt 900 ]; then
+        predef_error_dialog \
+          "The delay must be zero (for none) or a number between 100 and 900"
         return
     else
-        temp=$delay
-        if [ $temp -lt 100 ]; then
-            delay=100
-        elif [ $temp -gt 900 ]; then
-            delay=900
-        fi
         slow=1
         concat_arg "-s --delay $delay"
         dialog_valid=1
@@ -429,18 +428,13 @@ get_slow_down_delay() {
 
 get_tail_lines() {
     if [ "$tail_lines" = "0" ]; then
-        dialog_tail_lines ""
+        dialog_tail_lines
     else
         dialog_tail_lines "$tail_lines"
     fi
+    tail_lines="$user_input"
 
-    if [ -z "$user_input" ]; then
-        tail_lines=0
-    else
-        tail_lines="$user_input"
-    fi
-
-    if [ -z "$tail_lines" ]; then
+    if [ -z "$tail_lines" ] || [ $tail_lines -eq 0 ]; then
         tail_lines=0
         dialog_valid=1
         return
@@ -461,10 +455,12 @@ get_wait_on_match() {
     else
         dialog_wait_on_match "$wait_match"
     fi
-
     wait_match="$user_input"
-    if [ -z "$wait_match" ]; then
+
+    if [ -z "$wait_match" ] || [ $wait_match -eq 0 ]; then
         wait_match=0
+        dialog_valid=1
+        return
     else
         grep -E "^[0-9]*$" <<< "$wait_match" &>/dev/null
         if [ $? -ne 0 ]; then
