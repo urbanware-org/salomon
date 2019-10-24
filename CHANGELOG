@@ -1,6 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        * Revised the interactive mode (the main SaLoMon script does not exit
+          after error dialogs anymore and return to the previous dialog).
+
     Version 1.14.1 (2019-08-06)
 
         + Added debug feature for core scripts (these scripts can be modified
