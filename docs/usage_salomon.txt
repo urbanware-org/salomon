@@ -460,8 +460,8 @@ USAGE (salomon.sh)
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause 30
 
-        When you give 'auto' instead of a numeric value, SaLoMon determines
-        the height of the terminal (number of lines) and pauses based on that
+        When you give 'auto' instead of a number, SaLoMon determines the
+        height of the terminal (number of lines) and pauses based on that
         value.
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause auto

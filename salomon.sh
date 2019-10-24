@@ -486,6 +486,7 @@ else
                 temp=900
             fi
             delay=$temp
+
         else
             usage "The delay must be a number between 100 and 900"
         fi
