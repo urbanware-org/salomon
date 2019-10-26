@@ -180,6 +180,7 @@ get_color_file() {
                 predef_error_dialog \
                   "No read permission on the given input file '$filepath'"
             else
+                read_color_file "$color_file"
                 concat_arg "-c $color_file"
                 dialog_valid=1
             fi
