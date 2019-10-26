@@ -175,8 +175,14 @@ get_color_file() {
             color_file="$user_input"
             return
         else
-            concat_arg "-c $color_file"
-            dialog_valid=1
+            tail "$filepath" &>/dev/null
+            if [ $? -ne 0 ]; then
+                predef_error_dialog \
+                  "No read permission on the given input file '$filepath'"
+            else
+                concat_arg "-c $color_file"
+                dialog_valid=1
+            fi
         fi
     fi
 }
@@ -248,11 +254,23 @@ get_filter_pattern() {
         return
     else
         if [ -f "$filter_pattern" ]; then
-            filter_file="$filter_pattern"
-            read_filter
+            tail "$filter_file" &>/dev/null
+            if [ $? -ne 0 ]; then
+                predef_error_dialog \
+                  "No read permission on the given input file '$filepath'"
+            else
+                filter_file="$filter_pattern"
+                read_filter
+            fi
         elif [ -f "${filter_dir}${filter}" ]; then
             filter_file="${filter_dir}${filter}"
-            read_filter
+            tail "$filter_file" &>/dev/null
+            if [ $? -ne 0 ]; then
+                predef_error_dialog \
+                  "No read permission on the given input file '$filepath'"
+            else
+                read_filter
+            fi
         else
             if [[ $filter_pattern == *"#"* ]]; then
                 predef_error_dialog \
