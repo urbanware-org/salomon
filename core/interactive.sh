@@ -119,7 +119,7 @@ interactive_mode() {
 
     dialog_slow_down "$slow"
     if [ $? -eq 0 ]; then
-        dialog_valid=0    
+        dialog_valid=0
         while [ $dialog_valid -eq 0 ]; do
             get_slow_down_delay
         done
@@ -324,7 +324,7 @@ get_input_file() {
             predef_error_dialog "$filemsg path '$file' is not a file"
             return
         else
-            head "$filepath" -n1 &>/dev/null
+            tail "$filepath" &>/dev/null
             if [ $? -ne 0 ]; then
                 predef_error_dialog \
                   "No read permission on the given input file '$filepath'"
