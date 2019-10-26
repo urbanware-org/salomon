@@ -26,11 +26,6 @@ monitor_input_file() {
             spaces=0
         fi
 
-        tail "$filepath" &>/dev/null
-        if [ $? -ne 0 ]; then
-            usage "No read permission on the given input file '$filepath'"
-        fi
-
         if [ $spaces -eq 1 ]; then
             temp=$(sed -e "s/\ /\*/g" <<< $filepath)
             input_file_list="$input_file_list $temp"
