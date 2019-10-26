@@ -346,10 +346,11 @@ else
             if [ ! -f "$color_file" ]; then
                 usage "The given color config file path is not a file"
             else
+                msg="No read permission on the given color file"
                 tail "$color_file" &>/dev/null
                 if [ $? -ne 0 ]; then
                     usage \
-                      "No read permission on the given color file '$filepath'"
+                      "$msg '$color_file'"
                 else
                     read_color_file "$color_file"
                 fi
@@ -377,6 +378,7 @@ else
                 fi
             elif [ -f "${filter_dir}${filter}" ]; then
                 filter_file="${filter_dir}${filter}"
+                tail "$filepath" &>/dev/null
                 if [ $? -ne 0 ]; then
                     usage "$msg '$filepath'"
                 else
