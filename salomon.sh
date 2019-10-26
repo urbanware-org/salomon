@@ -309,6 +309,11 @@ else
                 usage "The given input file path '$file' is not a file"
             fi
 
+            tail "$filepath" &>/dev/null
+            if [ $? -ne 0 ]; then
+                usage "No read permission on the given input file '$filepath'"
+            fi
+
             temp="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
             filelist="$temp"
         done
@@ -341,7 +346,13 @@ else
             if [ ! -f "$color_file" ]; then
                 usage "The given color config file path is not a file"
             else
-                read_color_file "$color_file"
+                tail "$color_file" &>/dev/null
+                if [ $? -ne 0 ]; then
+                    usage \
+                      "No read permission on the given color file '$filepath'"
+                else
+                    read_color_file "$color_file"
+                fi
             fi
         fi
 
@@ -356,11 +367,21 @@ else
             fi
         else
             if [ -f "$filter_pattern" ]; then
+                msg="No read permission on the given filter file"
                 filter_file="$filter_pattern"
-                read_filter
+                tail "$filepath" &>/dev/null
+                if [ $? -ne 0 ]; then
+                    usage "$msg '$filepath'"
+                else
+                    read_filter
+                fi
             elif [ -f "${filter_dir}${filter}" ]; then
                 filter_file="${filter_dir}${filter}"
-                read_filter
+                if [ $? -ne 0 ]; then
+                    usage "$msg '$filepath'"
+                else
+                    read_filter
+                fi
             else
                 if [[ $filter_pattern == *"#"* ]]; then
                     usage "The filter pattern must not contain any hashes"
