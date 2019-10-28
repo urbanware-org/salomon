@@ -6,7 +6,7 @@ CHANGELOG (SaLoMon)
         * Revised the interactive mode (the main SaLoMon script does not exit
           after error dialogs anymore and returns to the previous dialog).
         * Revised the permission checks for given file paths (revised the
-          already existing and added new ones).
+          already existing ones and added some new).
 
     Version 1.14.1 (2019-08-06)
 
