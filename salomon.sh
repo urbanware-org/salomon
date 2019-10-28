@@ -337,20 +337,20 @@ else
 
         # Color file
         if [ ! -z "$color_file" ]; then
+            msg="The given color config file"
             if [ ! -e "$color_file" ]; then
                 color_file="${color_dir}${color_file}"
                 if [ ! -e "$color_file" ]; then
-                    usage "The given color config file does not exist"
+                    usage "$msg path '$user_input' does not exist"
                 fi
             fi
             if [ ! -f "$color_file" ]; then
-                usage "The given color config file path is not a file"
+                usage "$msg path '$user_input' is not a file"
             else
-                msg="No read permission on the given color file"
+                msg="No read permission"
                 tail "$color_file" &>/dev/null
                 if [ $? -ne 0 ]; then
-                    usage \
-                      "$msg '$color_file'"
+                    usage "$msg on the given color file '$color_file'"
                 else
                     read_color_file "$color_file"
                 fi
