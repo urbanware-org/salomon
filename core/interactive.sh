@@ -164,7 +164,7 @@ get_color_file() {
         if [ ! -e "$color_file" ]; then
             color_file="${color_dir}${color_file}"
             if [ ! -e "$color_file" ]; then
-                predef_error_dialog "$msg '$user_input' does not exist"
+                predef_error_dialog "$msg path '$user_input' does not exist"
                 color_file="$user_input"
                 return
             fi
@@ -335,7 +335,7 @@ get_input_file() {
         elif [ -e "/var/log/$file" ]; then
             filepath="/var/log/$file"
         else
-            predef_error_dialog "$msg '$file' does not exist"
+            predef_error_dialog "$msg path '$file' does not exist"
             return
         fi
 
