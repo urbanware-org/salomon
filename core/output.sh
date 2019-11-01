@@ -11,27 +11,61 @@
 # ============================================================================
 
 pause_output() {
+    if [ $boxdrawing_chars -eq 1 ]; then
+        ln="═"
+    else
+        ln="="
+    fi
+
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
-    message="${cl_dy}==${cl_ly}[$anykey${cl_ly}]${cl_dy}"
-    echo -e "${message}=================================================\r\c"
+    message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
+    echo -e "${message}\c"
+    for number in $(seq 1 49); do
+        echo -e "$ln\c"
+    done
+    echo -e "\r\c"
     read -n1 -r < /dev/tty
     echo
 }
 
 print_line() {
     indent=30
+    if [ -z "$2" ]; then
+        line_leading=0
+    else
+        line_leading=1
+    fi
+
+    if [ $boxdrawing_chars -eq 1 ]; then
+        ld_char="┃"
+    else
+        ld_char="*"
+    fi
 
     if [ -z "$1" ]; then
-        echo -e "${cl_lb}*${cl_n}"
+        echo -e "${cl_lb}$ld_char${cl_n}"
     elif [ "$1" = "*" ]; then
-        echo -e "${cl_lb}\c"
-        for number in $(seq 1 78); do
-            echo -e "*\c"
-        done
-        echo -e "${cl_n}"
+        if [ $ld_char = "*" ]; then
+            echo -e "${cl_lb}\c"
+            for number in $(seq 1 78); do
+                echo -e "*\c"
+            done
+            echo -e "${cl_n}"
+        else
+            if [ $line_leading -eq 1 ]; then
+                echo -e "${cl_lb}┏\c"
+            else
+                echo -e "${cl_lb}┗\c"
+            fi
+
+            for number in $(seq 1 77); do
+                echo -e "━\c"
+            done
+            echo -e "${cl_n}"
+        fi
     else
         temp=$(printf "%-${indent}s" "$1")
-        echo -e "${cl_lb}* ${temp}${2}${cl_n}"
+        echo -e "${cl_lb}$ld_char ${temp}${2}${cl_n}"
     fi
 }
 
@@ -62,7 +96,7 @@ print_line_count() {
 
 print_output_header() {
     echo
-    print_line "*"
+    print_line "*" 1
 
     input_count=$(wc -w <<< $input_file)
     if [ $input_count -eq 1 ]; then
