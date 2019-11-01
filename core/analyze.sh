@@ -104,7 +104,7 @@ analyze_input_file() {
             anykey="${cl_ly}Press any key to exit${cl_n}"
             message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
             echo -e "${message}\c"
-            for number in $(seq 1 52); do
+            for number in $(seq 1 53); do
                 echo -e "$ln\c"
             done
             echo -e "\r\c"
