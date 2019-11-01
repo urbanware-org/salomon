@@ -8,6 +8,9 @@ CHANGELOG (SaLoMon)
         * Revised the permission checks for given file paths (revised the
           already existing ones and added some new).
 
+        # Fixed the return empty files (blank lines) bug when analyzing
+          certain files.
+
     Version 1.14.1 (2019-08-06)
 
         + Added debug feature for core scripts (these scripts can be modified
