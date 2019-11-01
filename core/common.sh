@@ -143,14 +143,23 @@ prepare_path() {
 }
 
 print_arg_list() {
+    if [ $boxdrawing_chars -eq 1 ]; then
+        ln="═"
+    else
+        ln="="
+    fi
+
     arg_temp="/tmp/salomon_args_$$.txt"
     echo "$arg_list" > $arg_temp
 
     clear
-    arg_lh="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]"
-    arg_ld="===================================================="
-    echo -e "${cl_dy}==${arg_lh}${cl_dy}${arg_ld}${cl_n}"
-    echo
+    message="${cl_dy}$ln$ln${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
+    echo -e "${message}\c"
+    for number in $(seq 1 52); do
+        echo -e "$ln\c"
+    done
+
+    echo -e "\e[0m\n"
     echo -e "With the given information, the command line would look like"\
             "this (without"
     echo -e "'${cl_lc}--dialog${cl_n}' or '${cl_lc}--interactive${cl_n}'"\
