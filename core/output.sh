@@ -365,6 +365,8 @@ print_output_line() {
         temp=$(sed -e "s/^$color_code//g" <<< "$output")
         output=$(sed -e "s/\\\e\[.*//g" <<< "$temp")
         random_colors "$output"
+    elif [ "$color_code" = "\e[0m" ] && [ $highlight_all -eq 0 ]; then
+        echo -e "\e[0m$line\e[0m"
     else
         echo -e "$output"
     fi
