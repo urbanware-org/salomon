@@ -80,7 +80,7 @@ analyze_input_file() {
     if [ $header -eq 1 ]; then
         echo
         temp="Reached the end of the given input file."
-        print_line "*"
+        print_line "*" 1
         print_line "${cl_lc}${temp}"
         print_line
         print_line_count
@@ -95,9 +95,19 @@ analyze_input_file() {
         fi
     else
         if [ $prompt -eq 1 ]; then
+            if [ $boxdrawing_chars -eq 1 ]; then
+                ln="═"
+            else
+                ln="="
+            fi
+
             anykey="${cl_ly}Press any key to exit${cl_n}"
-            message="${cl_dy}==${cl_ly}[$anykey${cl_ly}]${cl_dy}============"
-            echo -e "${message}=========================================\r\c"
+            message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
+            echo -e "${message}\c"
+            for number in $(seq 1 52); do
+                echo -e "$ln\c"
+            done
+            echo -e "\r\c"
             read -n1 -r
         fi
     fi
