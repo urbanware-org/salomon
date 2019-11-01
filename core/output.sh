@@ -45,7 +45,7 @@ print_line() {
     if [ -z "$1" ]; then
         echo -e "${cl_lb}$ld_char${cl_n}"
     elif [ "$1" = "*" ]; then
-        if [ $ld_char = "*" ]; then
+        if [ "$ld_char" = "*" ]; then
             echo -e "${cl_lb}\c"
             for number in $(seq 1 78); do
                 echo -e "*\c"
@@ -57,7 +57,6 @@ print_line() {
             else
                 echo -e "${cl_lb}┗\c"
             fi
-
             for number in $(seq 1 77); do
                 echo -e "━\c"
             done
