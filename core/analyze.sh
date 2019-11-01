@@ -52,7 +52,9 @@ analyze_input_file() {
     count=0
     while read line; do
         print_output_line "$line"
-        count=$(( count + 1 ))
+        if [ ! -z "$output" ]; then
+            count=$(( count + 1 ))
+        fi
 
         if [ $pause -gt 0 ]; then
             if [ "$pause_lines" = "auto" ]; then
