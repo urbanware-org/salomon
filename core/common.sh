@@ -12,7 +12,7 @@
 
 cancel_process() {
     echo
-    print_line "*"
+    print_line "*" 1
     temp="${cl_lr}Canceled ${cl_ly}on"
     print_line "${temp}${cl_lc} user request${cl_ly}."
 
