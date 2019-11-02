@@ -266,13 +266,19 @@ print_output_line() {
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
 
     if [ $separator_line -eq 1 ]; then
+        if [ $boxdrawing_chars -eq 1 ]; then
+            ln="─"
+        else
+            ln="-"
+        fi
+
         grep "^==>.*<==$" <<< $1 &>/dev/null
         if [ $? -eq 0 ]; then
             temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
             fp=$(readlink -f "$temp")
-            ln=$(printf -- "-%.0s" $(seq 0 80))
-            separator="${cl_dy}--${cl_ly}[${cl_yl}${fp}${cl_ly}]${cl_dy}$ln"
-            echo -e "${separator}${cl_n}" | cut -c 1-113
+            lt=$(printf -- "$ln%.0s" $(seq 0 80))
+            separator="$ln$ln${cl_ly}[${cl_yl}${fp}${cl_ly}]${cl_dy}$lt"
+            echo -e "${cl_dy}${separator}${cl_n}" | cut -c 1-113
             return
         fi
     fi
