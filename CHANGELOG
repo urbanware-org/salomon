@@ -3,6 +3,9 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
+        + Added an option to the global config file to use box-drawing
+          characters for lines and separators.
+
         * Revised the interactive mode (the main SaLoMon script does not exit
           after error dialogs anymore and returns to the previous dialog).
         * Revised the permission checks for given file paths (revised the
