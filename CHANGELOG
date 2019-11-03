@@ -1,10 +1,11 @@
 
 CHANGELOG (SaLoMon)
 
-    Next version (outstanding)
+    Version 1.15.0 (2019-11-03)
 
         + Added an option to the global config file to use box-drawing
           characters for lines and separators.
+        + Added some code to validate the values from the global config file.
 
         * Revised the interactive mode (the main SaLoMon script does not exit
           after error dialogs anymore and returns to the previous dialog).
