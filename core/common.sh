@@ -222,8 +222,8 @@ print_arg_list() {
     echo "$arg_list" > $arg_temp
 
     clear
-    message="${cl_dy}$ln$ln${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
-    echo -e "${message}\c"
+    message="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
+    echo -e "${cl_dy}$ln$ln${message}\c"
     for number in $(seq 1 52); do
         echo -e "$ln\c"
     done
