@@ -119,6 +119,8 @@ check_config_value() {
             if [[ ! "$config_option" =~ $re ]]; then
                 config_value="$config_default"
             fi
+        else
+            config_value="$config_option"
         fi
     fi
 }
