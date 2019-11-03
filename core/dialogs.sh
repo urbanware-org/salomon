@@ -424,15 +424,16 @@ dialog_welcome() {
         dlg_notice=$(echo "You can \Z1cancel\Z0 this interactive"\
                           "mode at any time either by holding"\
                           "\Z4Ctrl\Z0+\Z4C\Z0 or pressing those keys"\
-                          "multiple times. Some dialogs also contain an"\
-                          "\Z4Exit\Z0 button to do so.")
+                          "multiple times. Furthermore, you can use the"\
+                          "\Z4Exit\Z0 button on this and many of the"\
+                          "following dialogs.")
         dialog $dlg_shadow --title "SaLoMon interactive dialogs notice" \
                            --colors --yes-label "Proceed" --no-label "Exit" \
-                           --yesno "${dlg_text}${dlg_notice}" 12 60
+                           --yesno "${dlg_text}${dlg_notice}" 13 60
     else
         dlg_text=$(sed -e "s/\\\Z[0-9]//g" <<< "$dlg_text")
         dlg_notice=$(echo "You can cancel this interactive mode using"\
-                          "the 'Exit' buttons on this and many of the"\
+                          "the 'Exit' button on this and many of the"\
                           "following dialogs.")
         whiptail --title "SaLoMon interactive dialogs notice" \
                  --yes-button "Proceed" --no-button "Exit" \
