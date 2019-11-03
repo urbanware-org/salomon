@@ -56,6 +56,73 @@ check_command() {
     fi
 }
 
+check_config() {
+    check_config_value "$boxdrawing_chars"        integer 0
+    boxdrawing_chars=$config_value
+    check_config_value "$delay"                   integer 200
+    delay=$config_value
+    check_config_value "$dialog_program"          string  "auto"
+    dialog_program=$config_value
+    check_config_value "$dialog_shadow"           integer 1
+    dialog_shadow=$config_value
+    check_config_value "$dialog_show_color"       integer 1
+    dialog_show_color=$config_value
+    check_config_value "$dialog_show_delay"       integer 1
+    dialog_show_delay=$config_value
+    check_config_value "$dialog_show_exclude"     integer 1
+    dialog_show_exclude=$config_value
+    check_config_value "$dialog_show_export"      integer 1
+    dialog_show_export=$config_value
+    check_config_value "$dialog_show_filter"      integer 1
+    dialog_show_filter=$config_value
+    check_config_value "$dialog_show_head_lines"  integer 1
+    dialog_show_head_lines=$config_value
+    check_config_value "$dialog_show_highlight"   integer 1
+    dialog_show_highlight=$config_value
+    check_config_value "$dialog_show_noinfo"      integer 1
+    dialog_show_noinfo=$config_value
+    check_config_value "$dialog_show_ignorecase"  integer 1
+    dialog_show_ignorecase=$config_value
+    check_config_value "$dialog_show_pause"       integer 1
+    dialog_show_pause=$config_value
+    check_config_value "$dialog_show_prompt"      integer 1
+    dialog_show_prompt=$config_value
+    check_config_value "$dialog_show_remove"      integer 1
+    dialog_show_remove=$config_value
+    check_config_value "$dialog_show_slowdown"    integer 1
+    dialog_show_slowdown=$config_value
+    check_config_value "$dialog_show_tail_lines"  integer 1
+    dialog_show_tail_lines=$config_value
+    check_config_value "$dialog_show_wait"        integer 1
+    dialog_show_wait=$config_value
+    check_config_value "$dialog_show_welcome"     integer 1
+    dialog_show_welcome=$config_value
+    check_config_value "$separator_line"          integer 1
+    separator_line=$config_value
+    check_config_value "$highlight_forecolor"     string  "terminal"
+    highlight_forecolor=$config_value
+    check_config_value "$usage_color"             integer 1
+    usage_color=$config_value
+}
+
+check_config_value() {
+    config_option="$1"
+    config_expect="$2"
+    config_default="$3"
+    config_value=""
+
+    if [ -z "$config_option" ]; then
+        config_value="$config_default"
+    else
+        if [ "$config_expect" = "integer" ]; then
+            re='^[0-9]+$'
+            if [[ ! "$config_option" =~ $re ]]; then
+                config_value="$config_default"
+            fi
+        fi
+    fi
+}
+
 check_patterns() {
     if [ ! -z "$filter_list" ]; then
         for filter_term in $filter_list; do
