@@ -21,7 +21,7 @@ The *SaLoMon* project is a simple log file monitor and analyzer with various fil
 
 ## Details
 
-<img src="https://raw.githubusercontent.com/urbanware-org/salomon/master/wiki/salomon_output.png" alt="SaLoMon sample output" width=320px align="right"/>The project was primarily built to monitor and analyze log files inside a terminal emulator and also on systems without a graphical user interface. Of course, you can use *SaLoMon* with other plain text files of any kind.
+<img src="https://raw.githubusercontent.com/urbanware-org/salomon/master/wiki/salomon_output.png" alt="SaLoMon sample output" width=320px align="right"/>The project was primarily built to monitor and analyze log files inside a terminal emulator and also on systems without a graphical user interface. Of course, you can use the features of *SaLoMon* with other plain text files of any kind.
 
 The input files will be processed line by line.
 
