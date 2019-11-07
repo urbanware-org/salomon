@@ -77,8 +77,7 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 echo
-echo -e "${cl_lc}SaLoMon compatibility check script"\
-         "${cl_n}"
+echo -e "${cl_lc}SaLoMon compatibility check script${cl_n}"
 
 failure="${cl_lr}FAILURE${cl_n}"
 missing="${cl_yl}MISSING${cl_n}"
