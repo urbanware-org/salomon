@@ -120,6 +120,8 @@ check_config_value() {
             re='^[0-9]+$'
             if [[ ! "$config_option" =~ $re ]]; then
                 config_value="$config_default"
+            else
+                config_value="$config_option"
             fi
         else
             config_value="$config_option"

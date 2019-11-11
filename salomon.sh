@@ -43,7 +43,6 @@ source ${script_dir}/core/global.sh
 source ${script_dir}/core/interactive.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
-check_config
 
 # Script files stored inside the 'debug' sub-directory (if existing) will be
 # loaded after the included ones listed above. This allows to overwrite
@@ -63,6 +62,7 @@ elif [ -f "${script_dir}/salomon.cf" ]; then
 else
     usage "Global configuration file missing"
 fi
+check_config
 set_global_variables
 
 # Check command-line arguments
