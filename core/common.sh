@@ -337,7 +337,7 @@ ${lb}optional arguments:${no}
   -ic, --ignore-case    ignore the case of the given filter pattern
   --interactive         same as '--dialogs'
   --no-info             do not display the information header and footer
-  -p, --prompt          prompt before exit (in case the process gets canceled
+  -p, --prompt          prompt before exit
   --pause PAUSE         Pause output after a certain amount of lines
   -r REMOVE, --remove REMOVE
                         remove a certain string from each line (for details
