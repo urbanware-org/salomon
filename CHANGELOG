@@ -1,6 +1,14 @@
 
 CHANGELOG (SaLoMon)
 
+    Next release (outstanding)
+
+        + Added an option to the global config file to automatically set the
+          width of lines (separators) based on the terminal size.
+
+        * Revised the output when using box-drawing characters (negligible
+          changes).
+
     Version 1.15.0 (2019-11-03)
 
         + Added an option to the global config file to use box-drawing
