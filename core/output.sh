@@ -20,8 +20,15 @@ pause_output() {
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
     message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
     echo -e "${message}\c"
-    for number in $(seq 1 49); do
-        echo -e "$ln\c"
+
+    if [ "$line_width" = "auto" ]; then
+        term_cols=$(( $(tput cols) - 29 ))
+    else
+        term_cols=49
+    fi
+    
+    for number in $(seq 1 $term_cols); do
+          echo -e "$ln\c"
     done
     echo -e "\r\c"
     read -n1 -r < /dev/tty
@@ -38,8 +45,18 @@ print_line() {
 
     if [ $boxdrawing_chars -eq 1 ]; then
         ld_char="┃"
+        if [ "$line_width" = "auto" ]; then
+            term_cols=$(( $(tput cols) - 1 ))
+        else
+            term_cols=77
+        fi
     else
         ld_char="*"
+        if [ "$line_width" = "auto" ]; then
+            term_cols=$(( $(tput cols) ))
+        else
+            term_cols=78
+        fi
     fi
 
     if [ -z "$1" ]; then
@@ -47,7 +64,7 @@ print_line() {
     elif [ "$1" = "*" ]; then
         if [ "$ld_char" = "*" ]; then
             echo -e "${cl_lb}\c"
-            for number in $(seq 1 78); do
+            for number in $(seq 1 $term_cols); do
                 echo -e "*\c"
             done
             echo -e "${cl_n}"
@@ -57,7 +74,7 @@ print_line() {
             else
                 echo -e "${cl_lb}┗\c"
             fi
-            for number in $(seq 1 77); do
+            for number in $(seq 1 $term_cols); do
                 echo -e "━\c"
             done
             echo -e "${cl_n}"
