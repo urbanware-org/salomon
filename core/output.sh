@@ -96,6 +96,8 @@ print_line_count() {
 print_output_header() {
     echo
     print_line "*" 1
+    print_line "${cl_lc}SaLoMon $version ${cl_n}started on ${cl_lc}$(date)"
+    print_line
 
     input_count=$(wc -w <<< $input_file)
     if [ $input_count -eq 1 ]; then
