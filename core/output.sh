@@ -26,7 +26,7 @@ pause_output() {
     else
         term_cols=49
     fi
-    
+
     for number in $(seq 1 $term_cols); do
           echo -e "$ln\c"
     done
@@ -295,9 +295,17 @@ print_output_line() {
         if [ $? -eq 0 ]; then
             temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
             fp=$(readlink -f "$temp")
-            lt=$(printf -- "$ln%.0s" $(seq 0 80))
-            separator="$ln$ln${cl_ly}[${cl_yl}${fp}${cl_ly}]${cl_dy}$lt"
-            echo -e "${cl_dy}${separator}${cl_n}" | cut -c 1-113
+            fp_len=$(wc -c <<< $fp)
+            if [ "$line_width" = "auto" ]; then
+                term_cols=$(( $(tput cols) + 1 - fp_len - 4))
+            else
+                term_cols=$(( 79 - fp_len - 4))
+            fi
+            echo -e "${cl_dy}$ln$ln${cl_ly}[${cl_yl}$fp${cl_ly}]${cl_dy}\c"
+            for number in $(seq 1 $term_cols); do
+                echo -e "$ln\c"
+            done
+            echo -e "${cl_n}"
             return
         fi
     fi
