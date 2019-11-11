@@ -57,7 +57,7 @@ check_command() {
 }
 
 check_config() {
-    check_config_value "$boxdrawing_chars"        integer 0
+    check_config_value "$boxdrawing_chars"        integer 1
     boxdrawing_chars=$config_value
     check_config_value "$delay"                   integer 200
     delay=$config_value
