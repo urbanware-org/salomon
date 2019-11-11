@@ -97,6 +97,8 @@ check_config() {
     dialog_show_wait=$config_value
     check_config_value "$dialog_show_welcome"     integer 1
     dialog_show_welcome=$config_value
+    check_config_value "$line_width"              string  "auto"
+    line_width=$config_value
     check_config_value "$separator_line"          integer 1
     separator_line=$config_value
     check_config_value "$highlight_forecolor"     string  "terminal"
