@@ -46,9 +46,9 @@ print_line() {
     if [ $boxdrawing_chars -eq 1 ]; then
         ld_char="┃"
         if [ "$line_width" = "auto" ]; then
-            term_cols=$(( $(tput cols) - 1 ))
+            term_cols=$(( $(tput cols) - 2 ))
         else
-            term_cols=77
+            term_cols=76
         fi
     else
         ld_char="*"
@@ -77,6 +77,11 @@ print_line() {
             for number in $(seq 1 $term_cols); do
                 echo -e "━\c"
             done
+            if [ $line_leading -eq 1 ]; then
+                echo -e "${cl_lb}┓\c"
+            else
+                echo -e "${cl_lb}┛\c"
+            fi
             echo -e "${cl_n}"
         fi
     else
