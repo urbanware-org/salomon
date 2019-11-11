@@ -8,6 +8,9 @@ CHANGELOG (SaLoMon)
 
         * Revised the output when using box-drawing characters (negligible
           changes).
+          
+        # Fixed the config value validation bug (the check function returned
+          empty values in some cases).
 
     Version 1.15.0 (2019-11-03)
 
