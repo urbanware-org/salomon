@@ -61,7 +61,8 @@ check_config() {
     boxdrawing_chars=$config_value
     check_config_value "$delay"                   integer 200
     delay=$config_value
-    check_config_value "$dialog_program"          string  "auto"
+    check_config_value "$dialog_program"          string  "auto" \
+      "auto dialog whiptail"
     dialog_program=$config_value
     check_config_value "$dialog_shadow"           integer 1
     dialog_shadow=$config_value
@@ -97,11 +98,12 @@ check_config() {
     dialog_show_wait=$config_value
     check_config_value "$dialog_show_welcome"     integer 1
     dialog_show_welcome=$config_value
-    check_config_value "$line_width"              string  "auto"
+    check_config_value "$line_width"              string  "auto" "auto fixed"
     line_width=$config_value
     check_config_value "$separator_line"          integer 1
     separator_line=$config_value
-    check_config_value "$highlight_forecolor"     string  "terminal"
+    check_config_value "$highlight_forecolor"     string  "terminal" \
+      "terminal black white"
     highlight_forecolor=$config_value
     check_config_value "$usage_color"             integer 1
     usage_color=$config_value
@@ -111,6 +113,7 @@ check_config_value() {
     config_option="$1"
     config_expect="$2"
     config_default="$3"
+    config_values="$4"
     config_value=""
 
     if [ -z "$config_option" ]; then
@@ -124,7 +127,13 @@ check_config_value() {
                 config_value="$config_option"
             fi
         else
-            config_value="$config_option"
+            for value in $config_values; do
+                config_value="$config_default"
+                if [ "$config_option" = "$value" ]; then
+                    config_value="$config_option"
+                    break
+                fi
+            done
         fi
     fi
 }
