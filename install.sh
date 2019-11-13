@@ -32,11 +32,38 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 script_mode=""
+temp_file="/tmp/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
+
 target="${cl_yl}${target_dir}${cl_n}"
 yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
+proceed="Do you wish to proceed"
+
+available="everyone"
+dirmod=775
+filemod=664
+execmod=$dirmod
 
 confirm() {
+    msg="$1"
+    while true; do
+        echo -e "$msg"
+        read choice
+        egrep "^yes$|^y$|^no$|^n$" -i <<< $choice &>/dev/null
+        if [ $? -eq 0 ]; then
+            egrep "^yes$|^y$" -i <<< $choice &>/dev/null
+            if [ $? -eq 0 ]; then
+                choice=1
+                break
+            else
+                choice=0
+                break
+            fi
+        fi
+    done
+}
+
+perform() {
     echo
     echo -e "${cl_lc}SaLoMon install/uninstall script${cl_n}"
     echo
@@ -47,17 +74,45 @@ confirm() {
                 "this script."
         echo
     fi
-    echo -e "This will $script_action SaLoMon. Do you wish to proceed"\
-             "($yesno)? \c"
-    read choice
-
-    egrep "^yes$|^y$" -i <<< $choice &>/dev/null
-    if [ $? -ne 0 ]; then
+    confirm "This will $script_action SaLoMon. $proceed ($yesno)? \c"
+    if [ $choice -ne 1 ]; then
         echo
         echo -e "${cl_lr}Canceled${cl_n} on user request."
         echo
         exit
     fi
+    echo
+    if [ "$script_mode" = "install" ]; then
+        echo "You can either make SaLoMon available for all users or only"\
+             "for root. Do you"
+        confirm "want to make it available for all users ($yesno)? \c"
+        if [ $choice -ne 1 ]; then
+            available="rootonly"
+        fi
+        echo
+    fi
+}
+
+set_permissions() {
+    chown -R root:root $target_dir
+    if [ "$available" = "rootonly" ]; then
+        dirmod=770
+        filemod=660
+        execmod=$dirmod
+    fi
+    find $target_dir > $temp_file
+    while read line; do
+        if [ -f "$line" ]; then
+            grep "\.sh$" <<< $line &>/dev/null
+            if [ $? -eq 0 ]; then
+                chmod $execmod $line
+            else
+                chmod $filemod $line
+            fi
+        elif [ -d "$line" ]; then
+            chmod $dirmod $line
+        fi
+    done < $temp_file
 }
 
 usage() {
@@ -81,7 +136,7 @@ usage() {
             echo -e "${cl_lr}error:${cl_n} $error_msg."
         else
             echo -e "${cl_lr}error:${cl_n} $error_msg"\
-                     "'${cl_yl}${given_arg}${cl_n}'."
+                    "'${cl_yl}${given_arg}${cl_n}'."
         fi
         exit 1
     else
@@ -92,7 +147,7 @@ usage() {
 if [ $# -gt 1 ]; then
     usage "Too many arguments"
 elif [ $# -lt 1 ]; then
-    usage "Missing arguments"
+    usage "Missing argument (to install or uninstall)"
 fi
 
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
@@ -122,50 +177,55 @@ else
     symlink_sh="/usr/bin/"
 fi
 
-confirm $script_mode
-echo
-echo -e "${cl_lg}Started $script_mode process:${cl_n}"
+perform $script_mode
 if [ $script_mode = "install" ]; then
+    echo -e "Creating target directory '${target}'... \c"
     if [ -d $target_dir ]; then
-        echo -e "  - Target directory '${target}' already exists."
+        echo -e "${cl_lb}(already exists)${cl_n}"
     else
         mkdir -p $target_dir &>/dev/null
-        echo -e "  - Created target directory '${target}'."
+        echo
     fi
 
+    echo "Copying project data into target directory..."
     rsync -av $script_dir/* $target_dir/ &>/dev/null
-    echo "  - Copied project data to target directory."
 
-    chown root:root $target_dir -R &>/dev/null
-    echo "  - Set permissions on target directory."
+    echo "Setting permissions on target directory..."
+    set_permissions
 
-    chmod +x $target_dir/*.sh
-    echo "  - Set executable flag for main script files."
-
+    echo -e "Creating symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
-        echo "  - Symbolic link for the main script already exists."
+        echo -e "${cl_lb}(already exists)${cl_n}"
     else
         ln -s ${target_dir}/salomon.sh ${symlink_sh}/salomon &>/dev/null
-        echo "  - Created symbolic link for the main script."
+        echo
     fi
 else  # uninstall
     cd $(pwd | sed -e "s/\/salomon$//g")
 
+    echo -e "Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
-        echo "  - Removed symbolic link for the main script."
+        echo
     else
-        echo "  - Symbolic link for the main script does not exist."
+        echo -e "${cl_lb}(does not exist)${cl_n}"
     fi
 
+    echo -e "Removing project directory '${target}'... \c"
     if [ -d $target_dir ]; then
         rm -fR $target_dir &>/dev/null
-        echo -e "  - Removed project directory '${target}'."
+        echo
     else
-        echo -e "  - Project directory '${target}' does not exist."
+        echo -e "${cl_lb}(does not exist)${cl_n}"
     fi
 fi
-echo -e "${cl_lg}Finished $script_mode process.${cl_n}"
+echo
+echo -e "SaLoMon has been ${script_mode}ed."
+#echo
+if [ $script_mode = "install" ]; then
+    echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command"\
+            "in order to use it."
+fi
 echo
 
 # EOF
