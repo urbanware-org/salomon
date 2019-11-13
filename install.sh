@@ -221,7 +221,6 @@ else  # uninstall
 fi
 echo
 echo -e "SaLoMon has been ${script_mode}ed."
-#echo
 if [ $script_mode = "install" ]; then
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command"\
             "in order to use it."
