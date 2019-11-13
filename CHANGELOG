@@ -1,16 +1,16 @@
 
 CHANGELOG (SaLoMon)
 
-    Next release (outstanding)
+    Version 1.15.1 (2019-11-13)
 
         + Added an option to the global config file to automatically set the
           width of lines (separators) based on the terminal size.
 
+        * Revised the config file validation code inside the common core
+          module (also included a bugfix).
+        * Revised the installation script significantly. 
         * Revised the output when using box-drawing characters (negligible
           changes).
-          
-        # Fixed the config value validation bug (the check function returned
-          empty values in some cases).
 
     Version 1.15.0 (2019-11-03)
 
