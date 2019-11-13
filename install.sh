@@ -173,9 +173,9 @@ fi
 
 grep "\/usr\/local\/bin" <<< $PATH &>/dev/null
 if [ $? -eq 0 ]; then
-    symlink_sh="/usr/local/bin/"
+    symlink_sh="/usr/local/bin"
 else
-    symlink_sh="/usr/bin/"
+    symlink_sh="/usr/bin"
 fi
 
 perform $script_mode
