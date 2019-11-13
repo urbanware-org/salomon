@@ -113,6 +113,7 @@ set_permissions() {
             chmod $dirmod $line
         fi
     done < $temp_file
+    rm -f $temp_file
 }
 
 usage() {
