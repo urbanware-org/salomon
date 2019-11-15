@@ -8,7 +8,7 @@ CHANGELOG (SaLoMon)
 
         * Revised the config file validation code inside the common core
           module (also included a bugfix).
-        * Revised the installation script significantly. 
+        * Revised the installation script significantly.
         * Revised the output when using box-drawing characters (negligible
           changes).
 
