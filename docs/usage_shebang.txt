@@ -27,7 +27,7 @@ USAGE (shebang.sh)
         uses the Bash shell, even if the script is being run on another shell.
 
         The default shebang inside the scripts points to `/bin/bash`. This
-        should work on all *Linux* distributions. In case the scripts will not
+        should work on all Linux distributions. In case the scripts will not
         run and return a "bad interpreter" error, simply run this script as it
         will automatically determine the path to the 'bash' binary and adjust
         the shebang inside all other SaLoMon script files.
