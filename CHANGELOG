@@ -30,7 +30,7 @@ CHANGELOG (SaLoMon)
 
     Version 1.14.1 (2019-08-06)
 
-        + Added debug feature for core scripts (these scripts can be modified
+        + Added debug feature for core modules (these scripts can be modified
           without backup by copying them into a separate debug directory).
 
         * Revised the color table output (adjusted color information for pure
@@ -275,7 +275,7 @@ CHANGELOG (SaLoMon)
         + Added an optional command-line argument (and feature) to remove the
           trailing whitespaces of a whole highlighted line.
 
-        * Revised some code inside the output core component for higher
+        * Revised some code inside the output core module for higher
           performance and less code.
         * Revised the output header when using analyze mode.
         * Revised the shell compatibility check script (added check for the
