@@ -44,25 +44,6 @@ dirmod=775
 filemod=664
 execmod=$dirmod
 
-confirm() {
-    msg="$1"
-    while true; do
-        echo -e "$msg"
-        read choice
-        egrep "^yes$|^y$|^no$|^n$" -i <<< $choice &>/dev/null
-        if [ $? -eq 0 ]; then
-            egrep "^yes$|^y$" -i <<< $choice &>/dev/null
-            if [ $? -eq 0 ]; then
-                choice=1
-                break
-            else
-                choice=0
-                break
-            fi
-        fi
-    done
-}
-
 perform() {
     echo
     echo -e "${cl_lc}SaLoMon install/uninstall script${cl_n}"

@@ -199,6 +199,25 @@ concat_arg() {
     arg_list=$concat
 }
 
+confirm() {
+    msg="$1"
+    while true; do
+        echo -e "$msg"
+        read choice
+        egrep "^yes$|^y$|^no$|^n$" -i <<< $choice &>/dev/null
+        if [ $? -eq 0 ]; then
+            egrep "^yes$|^y$" -i <<< $choice &>/dev/null
+            if [ $? -eq 0 ]; then
+                choice=1
+                break
+            else
+                choice=0
+                break
+            fi
+        fi
+    done
+}
+
 deprecated_argument() {
     arg_g="$1"
     arg_i="$2"
