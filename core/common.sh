@@ -218,6 +218,35 @@ confirm() {
     done
 }
 
+debug_notification() {
+    echo
+    print_line "*" 1
+    print_line "${cl_yl}This version of SaLoMon has been modified for debug "\
+               "purposes."
+    print_line
+    print_line "${cl_n}The '${cl_lc}debug${cl_n}' sub-directory contains "\
+               "script files which will be loaded when"
+    print_line "${cl_n}proceeding. This means that functions and variables "\
+               "defined in the core"
+    print_line "${cl_n}modules will be overwritten by those debug scripts"\
+               "which may cause unusual"
+    print_line "${cl_n}or faulty behavior."
+    print_line
+    print_line "${cl_n}You can disable this notification by adding the "\
+               "'${cl_lc}--debug${cl_n}' argument."
+    print_line "*"
+    echo
+    yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
+    confirm "Do you wish to proceed ($yesno)? \c"
+    if [ $choice -ne 1 ]; then
+        echo
+        echo -e "${cl_lr}Canceled${cl_n} on user request."
+        echo
+        exit
+    fi
+    echo
+}
+
 deprecated_argument() {
     arg_g="$1"
     arg_i="$2"
