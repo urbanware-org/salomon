@@ -51,7 +51,13 @@ set_global_variables
 # existing functions from scripts inside the 'core' sub-directory without
 # manipulating them
 if [ -d "${script_dir}/debug" ]; then
-    source ${script_dir}/debug/*.sh &>/dev/null
+    ls "${script_dir}/debug" | grep "\.sh$" &>/dev/null
+    if [ $? -eq 0 ]; then
+        if [[ ! $* == *"--debug"* ]]; then
+            debug_notification
+        fi
+        source ${script_dir}/debug/*.sh &>/dev/null
+    fi
 fi
 
 # Check command-line arguments
@@ -226,6 +232,12 @@ else
             --no-header)
                 header=0
                 deprecated_argument "--no-header" "--no-info"
+                shift
+            ;;
+
+            # Inofficial arguments
+            --debug)
+                debug=1
                 shift
             ;;
 
