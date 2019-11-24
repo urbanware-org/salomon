@@ -278,6 +278,19 @@ print_arg_list() {
     pause_output
 }
 
+read_config_file() {
+    if [ -f "${script_dir}/salomon.cfg" ]; then
+        source ${script_dir}/salomon.cfg
+    elif [ -f "${script_dir}/salomon.conf" ]; then
+        source ${script_dir}/salomon.conf
+    elif [ -f "${script_dir}/salomon.cf" ]; then
+        # Postfix anyone?
+        source ${script_dir}/salomon.cf
+    else
+        usage "Global configuration file missing"
+    fi
+}
+
 read_filter() {
     (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
     if [ $? -eq 0 ]; then

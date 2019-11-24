@@ -52,16 +52,7 @@ if [ -d "${script_dir}/debug" ]; then
     source ${script_dir}/debug/*.sh &>/dev/null
 fi
 
-if [ -f "${script_dir}/salomon.cfg" ]; then
-    source ${script_dir}/salomon.cfg
-elif [ -f "${script_dir}/salomon.conf" ]; then
-    source ${script_dir}/salomon.conf
-elif [ -f "${script_dir}/salomon.cf" ]; then
-    # Postfix anyone?
-    source ${script_dir}/salomon.cf
-else
-    usage "Global configuration file missing"
-fi
+read_config_file
 check_config
 set_global_variables
 
