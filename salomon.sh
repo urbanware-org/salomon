@@ -43,6 +43,8 @@ source ${script_dir}/core/global.sh
 source ${script_dir}/core/interactive.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
+read_config_file; check_config
+set_global_variables
 
 # Script files stored inside the 'debug' sub-directory (if existing) will be
 # loaded after the included ones listed above. This allows to overwrite
@@ -51,10 +53,6 @@ source ${script_dir}/core/output.sh
 if [ -d "${script_dir}/debug" ]; then
     source ${script_dir}/debug/*.sh &>/dev/null
 fi
-
-read_config_file
-check_config
-set_global_variables
 
 # Check command-line arguments
 if [ $# -eq 0 ]; then
