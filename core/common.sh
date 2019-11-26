@@ -410,6 +410,8 @@ ${lb}optional arguments:${no}
                         converted letters
   -ic, --ignore-case    ignore the case of the given filter pattern
   --interactive         same as '--dialogs'
+  --merge               merge all input files to a single sorted one (useful
+                        for files containing lines starting with timestamps)
   --no-info             do not display the information header and footer
   -p, --prompt          prompt before exit
   --pause PAUSE         pause output after a certain amount of lines

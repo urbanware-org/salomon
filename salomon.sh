@@ -150,6 +150,10 @@ else
                 interactive=1
                 shift
             ;;
+            --merge)
+                merge=1
+                shift
+            ;;
             --no-info)
                 header=0
                 shift
@@ -480,6 +484,11 @@ else
                        "When using $temp only one input file can be given"
                 fi
             fi
+        fi
+
+        # Merge input files
+        if [ $merge -eq 1 ] && [ $follow -eq 1 ]; then
+            usage "The '--merge' argument cannot be used with monitoring mode"
         fi
 
         # Pause output

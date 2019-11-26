@@ -166,6 +166,12 @@ print_output_header() {
         print_line "${cl_wh}Prompt on exit:" "$temp"
     else
         print_line "${cl_wh}Follow (monitor):" "${cl_lr}No"
+        if [ $merge -eq 1 ]; then
+            temp="${cl_lg}Yes"
+        else
+            temp="${cl_lr}No"
+        fi
+        print_line "${cl_wh}Merge input files:" "$temp"
         if [ $slow -eq 1 ]; then
             temp="${cl_lg}Yes ${cl_yl}(0.$delay seconds)"
         else

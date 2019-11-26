@@ -46,7 +46,14 @@ analyze_input_file() {
         paste -d "\n" $input_file_list | tail -n $tail_lines | grep -v "^$" \
               > $temp_file
     fi
-    input_file=$temp_file
+
+    if [ $merge -eq 1 ]; then
+        merge_file="${temp_file}.merge"
+        sort < $temp_file > $merge_file
+        input_file=$merge_file
+    else
+        input_file=$temp_file
+    fi
 
     count=0
     while read line; do
@@ -74,7 +81,7 @@ analyze_input_file() {
             sleep 0.$delay
         fi
     done < $input_file
-    rm -f $temp_file
+    rm -f ${temp_file}*
 
     if [ $header -eq 1 ]; then
         echo
