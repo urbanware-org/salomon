@@ -268,6 +268,34 @@ dialog_input_file() {
     predef_input_dialog "Input file" "$dlg_text" 17 60 "$1"
 }
 
+dialog_merge() {
+    if [ $dialog_show_merge -ne 1 ]; then
+        if [ $1 -eq 1 ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+
+    if [ $1 -eq 1 ]; then
+        def_button=""
+    else
+        def_button="--defaultno"
+    fi
+
+    dlg_text=$(echo "Do you wish to merge the input files?\n\nThis is useful"\
+                    "for files containing lines starting with timestamps.")
+
+    if [ $dialog_program = "dialog" ]; then
+        dialog $dlg_shadow --title "Merge input files" --yes-label "Yes" \
+                           --no-label "No" $def_button --yesno "$dlg_text" \
+                           8 60
+    else
+        whiptail  --title "Merge input files" --yes-button "Yes" \
+                  --no-button "No" $def_button --yesno "$dlg_text" 7 60
+    fi
+}
+
 dialog_no_info() {
     if [ $dialog_show_noinfo -ne 1 ]; then
         if [ $1 -eq 1 ]; then

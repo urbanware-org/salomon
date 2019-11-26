@@ -108,6 +108,16 @@ interactive_mode() {
         fi
     fi
 
+    if [ $follow -eq 0 ]; then
+        dialog_merge $merge
+        if [ $? -eq 0 ]; then
+            merge=1
+            concat_arg "--merge"
+        else
+            merge=0
+        fi
+    fi
+
     if [ $follow -eq 1 ]; then
         pause=0
     else
