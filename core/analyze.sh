@@ -32,7 +32,6 @@ analyze_input_file() {
         else
             input_file_list="$input_file_list $filepath"
         fi
-
     done
 
     timestamp=$(date "+%Y%m%d%H%M%S%N")
