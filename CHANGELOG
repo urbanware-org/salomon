@@ -1,6 +1,12 @@
 
 CHANGELOG (SaLoMon)
 
+    Next version (outstanding)
+
+        + Added a command-line argument (and feature) to merge the input files
+          when using analyze mode (useful for files containing lines starting
+          with timestamps).
+
     Version 1.15.1 (2019-11-13)
 
         + Added an option to the global config file to automatically set the
