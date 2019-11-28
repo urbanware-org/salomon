@@ -12,24 +12,32 @@
 
 cancel_process() {
     echo
-    print_line "*" 1
-    temp="${cl_lr}Canceled ${cl_ly}on"
-    print_line "${temp}${cl_lc} user request${cl_ly}."
+    if [ $header -eq 1 ]; then
+        print_line "*" 1
+        temp="${cl_lr}Canceled ${cl_ly}on"
+        print_line "${temp}${cl_lc} user request${cl_ly}."
 
-    if [ $follow -eq 0 ]; then
-        print_line
-        print_line_count
-    fi
-    if [ $prompt -eq 1 ]; then
-        trap - 2 20
-        print_line
-        print_line "${cl_ly}Press any key to exit."
-        print_line "*"
-        read -n1 -r < /dev/tty
+        if [ $follow -eq 0 ]; then
+            print_line
+            print_line_count
+        fi
+        if [ $prompt -eq 1 ]; then
+            trap - 2 20
+            print_line
+            print_line "${cl_ly}Press any key to exit."
+            print_line "*"
+            read -n1 -r < /dev/tty
+        else
+            print_line "*"
+        fi
     else
-        print_line "*"
-        echo
+        if [ $prompt -eq 1 ]; then
+            trap - 2 20
+            print_line "${cl_ly}Press any key to exit."
+            read -n1 -r < /dev/tty
+        fi
     fi
+    echo -e "\r\c"
 
     rm -f $temp_file
     exit 2
@@ -285,7 +293,14 @@ print_arg_list() {
     clear
     message="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
     echo -e "${cl_dy}$ln$ln${message}\c"
-    for number in $(seq 1 52); do
+
+    if [ "$line_width" = "auto" ]; then
+        term_cols=$(( $(tput cols) - 26 ))
+    else
+        term_cols=52
+    fi
+
+    for number in $(seq 1 $term_cols); do
         echo -e "$ln\c"
     done
 
