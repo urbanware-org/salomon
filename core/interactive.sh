@@ -108,7 +108,7 @@ interactive_mode() {
         fi
     fi
 
-    if [ $follow -eq 0 ]; then
+    if [ $follow -eq 0 ] && [ $input_count -gt 1 ]; then
         dialog_merge $merge
         if [ $? -eq 0 ]; then
             merge=1
@@ -116,6 +116,8 @@ interactive_mode() {
         else
             merge=0
         fi
+    else
+        merge=0
     fi
 
     if [ $follow -eq 1 ]; then
