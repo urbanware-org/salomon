@@ -3,9 +3,9 @@ CHANGELOG (SaLoMon)
 
     Next version (outstanding)
 
-        + Added a command-line argument (and feature) to merge the input files
-          when using analyze mode (useful for files containing lines starting
-          with timestamps).
+        + Added a command-line argument (and feature) to merge multiple input
+          files when using analyze mode (useful for files containing lines
+          starting with timestamps).
 
         * Revised some code in general (negligible changes).
         * Revised the code to handle cancel requests of the user.
