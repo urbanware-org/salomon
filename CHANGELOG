@@ -7,6 +7,13 @@ CHANGELOG (SaLoMon)
           when using analyze mode (useful for files containing lines starting
           with timestamps).
 
+        * Revised some code in general (negligible changes).
+        * Revised the code to handle cancel requests of the user.
+        * Revised the prompt output on exit (unified appearance).
+
+        # Fixed prompt on exit bug (did not work properly in some cases when
+          the information header and footer were not displayed).
+
     Version 1.15.1 (2019-11-13)
 
         + Added an option to the global config file to automatically set the
