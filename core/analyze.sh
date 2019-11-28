@@ -34,8 +34,7 @@ analyze_input_file() {
         fi
     done
 
-    timestamp=$(date "+%Y%m%d%H%M%S%N")
-    temp_file="$(dirname $(mktemp -u))/salomon_${timestamp}.tmp"
+    temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
         paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
