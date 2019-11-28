@@ -285,7 +285,6 @@ print_output_header() {
 
     print_line "*"
     echo
-    trap "cancel_process" 2 20
 }
 
 print_output_line() {

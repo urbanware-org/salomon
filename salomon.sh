@@ -595,6 +595,7 @@ if [ $header -eq 1 ]; then
 fi
 
 # Finally, process the given input file
+trap "cancel_process" 2 20
 if [ $follow -eq 1 ]; then
     monitor_input_file
 else
