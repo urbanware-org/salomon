@@ -100,18 +100,7 @@ analyze_input_file() {
         fi
     else
         if [ $prompt -eq 1 ]; then
-            if [ $boxdrawing_chars -eq 1 ]; then
-                ln="═"
-            else
-                ln="="
-            fi
-
-            anykey="${cl_ly}Press any key to exit${cl_n}"
-            message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
-            echo -e "${message}\c"
-            for number in $(seq 1 53); do
-                echo -e "$ln\c"
-            done
+            print_line "${cl_ly}Press any key to exit"
             echo -e "\r\c"
             read -n1 -r
         fi
