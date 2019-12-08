@@ -1,0 +1,140 @@
+##############################################################################
+#                                                                            #
+#  Global config file for SaLoMon.                                           #
+#                                                                            #
+#  This file contains various options which can be set. There is no need to  #
+#  change or set anything here to get SaLoMon running.                       #
+#                                                                            #
+#  The options inside this file cannot be set via command-line arguments.    #
+#                                                                            #
+#  Important notice:    Ensure that there are no spaces around the equal     #
+#                       signs of all options. Otherwise settings will not    #
+#                       be applied correctly or SaLoMon may even crash       #
+#                       under certain circumstances.                         #
+#                                                                            #
+##############################################################################
+
+# Delay:
+#
+#   The default amount of milliseconds to wait between each output line.
+#   Relevant only when using the command-line argument to slow down the
+#   output.
+#
+#   Options:
+#     100 = minimum
+#     200 = default
+#     900 = maximum
+#
+delay=200
+
+# Highlight foreground color
+#
+#   When using color codes for highlighting matches the foreground may be
+#   hard to recognize and read, so the foreground color for highlighted
+#   matches can be set manually.
+#
+#   Options:
+#     terminal = use the foreground color of the terminal (default)
+#     black    = always use black foreground
+#     white    = always use white foreground
+#
+highlight_forecolor=terminal
+
+# Separator line:
+#
+#   While monitoring multiple files, an obvious separator line will be added
+#   each time SaLoMon has received data from a different file. If disabled,
+#   the default separator of the 'tail' command will be used.
+#
+#   Options:
+#     0 = disabled
+#     1 = enabled (default)
+#
+separator_line=1
+
+# Line width
+#
+#   This option applies to the width of the lines of the information header
+#   and footer, the line of the prompt when using the '--pause' argument as
+#   well as the file separator line when monitoring multiple files. In earlier
+#   versions, these lines had a fixed width.
+#
+#   Options:
+#     auto  = automatically set the width based on the terminal size (default)
+#     fixed = use the fixed width of 78 characters
+#
+line_width=auto
+
+# Box-drawing characters:
+#
+#   Use box-drawing characters for the output messages instead of of asterisk,
+#   hyphen and equals chars.
+#
+#   Options:
+#     0 = disabled
+#     1 = enabled (default)
+#
+boxdrawing_chars=1
+
+# Usage information:
+#
+#   Print the usage information with colored text instead of the default
+#   shell color, only.
+#
+#   Options:
+#     0 = disabled
+#     1 = enabled (default)
+#
+usage_color=1
+
+# Interactive dialogs:
+#
+#   SaLoMon supports the following dialog programs to display those dialogs.
+#   When using the 'auto' option, it first tries to use 'dialog' and in case
+#   it is unavailable, it switches to 'whiptail'.
+#
+#   Options:
+#     auto (default)
+#     dialog
+#     whiptail
+#
+dialog_program=auto
+#
+#   When using the interactive mode, some dialogs asking for required and
+#   optional settings (such as paths, filters and values) will appear. The
+#   following options allow customizing which of them should be shown.
+#
+#   Notice that the dialogs for the required arguments cannot be disabled.
+#
+#   Options:
+#     0 = disabled
+#     1 = enabled (default for all)
+#
+dialog_show_color=1             # Show color configuration file dialog
+dialog_show_delay=1             # Show delay dialog (on slow down)
+dialog_show_exclude=1           # Show exclude pattern dialog
+dialog_show_export=1            # Show export to file dialog
+dialog_show_filter=1            # Show filter pattern dialog
+dialog_show_head_lines=1        # Show first lines (head) dialog
+dialog_show_highlight=1         # Show highlight dialog (highlighting modes)
+dialog_show_ignorecase=1        # Show ignore case dialog
+dialog_show_merge=1             # Show merge input files dialog
+dialog_show_noinfo=1            # Show information header and footer dialog
+dialog_show_pause=1             # Show pause output dialog
+dialog_show_prompt=1            # Show prompt on exit dialog
+dialog_show_remove=1            # Show remove pattern dialog
+dialog_show_slowdown=1          # Show slow down dialog
+dialog_show_tail_lines=1        # Show last lines (tail) dialog
+dialog_show_wait=1              # Show wait on match dialog
+dialog_show_welcome=1           # Show welcome dialog
+#
+#   The shadows of the dialogs can be disabled. However, this only works with
+#   the 'dialog' command (when using 'whiptail' this option will be ignored).
+#
+#   Options:
+#     0 = disabled
+#     1 = enabled (default)
+#
+dialog_shadow=1
+
+# EOF
