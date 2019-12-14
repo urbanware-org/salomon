@@ -33,6 +33,7 @@ check_declare="$failure"
 check_dialog="$missing"
 check_dirname="$failure"
 check_grep="$failure"
+#check_kernel="$failure"
 check_paste="$failure"
 check_printf="$failure"
 check_readlink="$failure"
@@ -46,6 +47,13 @@ check_failed=0
 check_missing=0
 check_overall="$failure"
 line="................"
+
+#kernel_name=$(uname -s | tr '[:upper:]' '[:lower:]')
+#if [ "$kernel_name" = "linux" ]; then
+#    check_kernel="$success"
+#else
+#    check_failed=0
+#fi
 
 bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
 if [ $bash_major -ge 4 ]; then
@@ -163,6 +171,8 @@ else
 fi
 
 echo
+#echo -e "Checking Linux kernel ................................$line"\
+#        "${check_kernel}"
 echo -e "Checking Bash shell (version 4 or higher required) ...$line"\
          "${check_bash_major}"
 echo
