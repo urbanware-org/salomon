@@ -174,40 +174,40 @@ echo
 #echo -e "Checking Linux kernel ................................$line"\
 #        "${check_kernel}"
 echo -e "Checking Bash shell (version 4 or higher required) ...$line"\
-         "${check_bash_major}"
+        "${check_bash_major}"
 echo
 echo -e "Checking 'basename' command ..........................$line"\
-         "${check_basename}"
+        "${check_basename}"
 echo -e "Checking 'declare' command ...........................$line"\
-         "${check_declare}"
+        "${check_declare}"
 echo -e "Checking 'dirname' command ...........................$line"\
-         "${check_dirname}"
+        "${check_dirname}"
 echo -e "Checking 'grep' command ..............................$line"\
-         "${check_grep}"
+        "${check_grep}"
 echo -e "Checking 'paste' command .............................$line"\
-         "${check_printf}"
+        "${check_printf}"
 echo -e "Checking 'printf' command ............................$line"\
-         "${check_printf}"
+        "${check_printf}"
 echo -e "Checking 'readlink' command ..........................$line"\
-         "${check_readlink}"
+        "${check_readlink}"
 echo -e "Checking 'sed' command ...............................$line"\
-         "${check_sed}"
+        "${check_sed}"
 echo -e "Checking 'tail' command ..............................$line"\
-         "${check_tail}"
+        "${check_tail}"
 echo -e "Checking 'trap' command ..............................$line"\
-         "${check_trap}"
+        "${check_trap}"
 echo -e "Checking capabilities of the 'echo' command ..........$line"\
-         "${check_echo}"
+        "${check_echo}"
 echo -e "Checking definition of functions .....................$line"\
-         "${check_function}"
+        "${check_function}"
 echo
 echo -e "Checking optional 'dialog' command ...................$line"\
-         "${check_dialog}"
+        "${check_dialog}"
 echo -e "Checking optional 'whiptail' command .................$line"\
-         "${check_whiptail}"
+        "${check_whiptail}"
 echo
 echo -e "Overall status .......................................$line"\
-         "${check_overall}"
+        "${check_overall}"
 echo
 
 rm -f $script_temp
