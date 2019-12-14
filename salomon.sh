@@ -10,30 +10,10 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 # ============================================================================
 
-# Pre-check if the Bash shell is installed and if this script has been
-# executed using it
-command -v bash >/dev/null 2>&1
-if [ "$?" != "0" ]; then
-    echo "error: The Bash shell does not seem to be installed, run the"\
-                "compatibility"
-    echo "       script ('compat.sh') for details."
-    exit 1
-elif [ ! -n "$BASH" ]; then
-    echo "error: This script must be executed using the Bash shell, run the"
-    echo "       compatibility script ('compat.sh') for details."
-    exit 1
-else
-    bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
-    if [ $bash_major -lt 4 ]; then
-        echo "error: This script requires at least version 4 of the Bash"\
-                    "shell, run the"
-        echo "       compatibility script ('compat.sh') for details."
-        exit 1
-    fi
-fi
-
-# General preparation
 script_dir=$(dirname $(readlink -f $0))
+. ${script_dir}/core/shell.sh
+shell_precheck
+
 script_file=$(basename "$0")
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh
