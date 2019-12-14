@@ -11,7 +11,7 @@
 # ============================================================================
 
 script_dir=$(dirname $(readlink -f $0))
-. ${script_dir}/core/shell.sh
+. ${script_dir}/core/shell.sh   # Use POSIX standard instead of 'source' here
 shell_precheck_compat
 
 script_file=$(basename "$0")

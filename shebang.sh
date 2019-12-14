@@ -9,7 +9,7 @@
 # ============================================================================
 
 script_dir=$(dirname $(readlink -f $0))
-. ${script_dir}/core/shell.sh
+. ${script_dir}/core/shell.sh   # Use POSIX standard instead of 'source' here
 shell_precheck
 
 temp_file_list="$(dirname $(mktemp -u))/salomon_file_list.tmp"
