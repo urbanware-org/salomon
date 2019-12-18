@@ -40,6 +40,7 @@ check_readlink="$failure"
 check_sed="$failure"
 check_tail="$failure"
 check_trap="$failure"
+check_wget="$missing"
 check_whiptail="$missing"
 check_echo="$success"
 check_function="$failure"
@@ -139,6 +140,13 @@ else
     check_failed=1
 fi
 
+command -v wget &>/dev/null
+if [ $? -eq 0 ]; then
+    check_wget="$success"
+else
+    check_missing=1
+fi
+
 command -v whiptail &>/dev/null
 if [ $? -eq 0 ]; then
     check_whiptail="$success"
@@ -195,6 +203,8 @@ echo -e "Checking 'sed' command ...............................$line"\
 echo -e "Checking 'tail' command ..............................$line"\
         "${check_tail}"
 echo -e "Checking 'trap' command ..............................$line"\
+        "${check_trap}"
+echo -e "Checking 'wget' command ..............................$line"\
         "${check_trap}"
 echo -e "Checking capabilities of the 'echo' command ..........$line"\
         "${check_echo}"
