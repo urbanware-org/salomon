@@ -49,11 +49,11 @@ check_missing=0
 check_overall="$failure"
 line="................"
 
-kernel_name=$(uname -s | tr '[:upper:]' '[:lower:]')
-if [ "$kernel_name" = "linux" ]; then
+kernel_name=$(uname -a | tr '[:upper:]' '[:lower:]')
+if [[ $kernel_name =~ linux ]]; then
     check_kernel="$success"
 else
-    check_failed=0
+    check_failed=1
 fi
 
 bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
