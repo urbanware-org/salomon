@@ -1,6 +1,15 @@
 
 CHANGELOG (SaLoMon)
 
+    Next release (outstanding)
+
+        + Added a copy of the default config file (no manual copy required).
+        + Added a shell pre-check core module (reduces code inside the main
+          scripts).
+
+        * Revised the compatibility script (added further checks and fixed
+          inconsistent indentation).
+
     Version 1.16.0 (2019-12-07)
 
         + Added a command-line argument (and feature) to merge multiple input
