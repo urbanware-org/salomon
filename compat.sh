@@ -179,7 +179,7 @@ else
 fi
 
 echo
-echo -e "Checking Linux kernel ................................$line"\
+echo -e "Checking operating system kernel .....................$line"\
         "${check_kernel}"
 echo -e "Checking Bash shell (version 4 or higher required) ...$line"\
         "${check_bash_major}"
