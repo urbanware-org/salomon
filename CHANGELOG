@@ -1,5 +1,5 @@
 
-CHANGELOG (SaLoMon)
+CHANGELOG (Salomon)
 
     Version 1.16.1 (2020-01-04)
 
@@ -40,7 +40,7 @@ CHANGELOG (SaLoMon)
           characters for lines and separators.
         + Added some code to validate the values from the global config file.
 
-        * Revised the interactive mode (the main SaLoMon script does not exit
+        * Revised the interactive mode (the main Salomon script does not exit
           after error dialogs anymore and returns to the previous dialog).
         * Revised the permission checks for given file paths (revised the
           already existing ones and added some new).
@@ -87,9 +87,9 @@ CHANGELOG (SaLoMon)
         + Added the support for the HTML specification color names (only for
           the 16 pre-defined colors).
 
-        * Revised some code inside the main SaLoMon script as well as in the
+        * Revised some code inside the main Salomon script as well as in the
           dialog core module (negligible changes).
-        * Revised the usage information output of the main SaLoMon script
+        * Revised the usage information output of the main Salomon script
           (divided the optional arguments into optional and general ones).
 
     Version 1.12.1 (2018-12-13)
@@ -141,7 +141,7 @@ CHANGELOG (SaLoMon)
         * Revised the output header (added additional information).
         * Revised the prompt on exit argument (can also be used with analyze
           mode now).
-        * Revised the usage information from the main SaLoMon script.
+        * Revised the usage information from the main Salomon script.
 
     Version 1.10.0 (2018-10-16)
 
@@ -155,19 +155,19 @@ CHANGELOG (SaLoMon)
 
         * Revised the color config files (added additional terms).
         * Revised the installation script (requires an explicit argument and
-          does not implicitly install SaLoMon anymore).
-        * Revised the main SaLoMon script (negligible changes).
+          does not implicitly install Salomon anymore).
+        * Revised the main Salomon script (negligible changes).
 
         # Fixed the symlink bug inside the installation script (symlinks to
-          main SaLoMon script did not work when '/usr/local/bin' was missing
+          main Salomon script did not work when '/usr/local/bin' was missing
           inside the global path variable '$PATH').
-        # Fixed the update check bug inside the main SaLoMon script.
+        # Fixed the update check bug inside the main Salomon script.
 
     Version 1.9.7 (2018-10-02)
 
         + Added additional color config files for various log files.
         + Added an interactive dialog for the feature to simultaneously export
-          the SaLoMon output into a file.
+          the Salomon output into a file.
 
         * Revised the global config file (added an additional option for the
           export dialog when using interactive mode).
@@ -179,10 +179,10 @@ CHANGELOG (SaLoMon)
 
     Version 1.9.6 (2018-06-11)
 
-        + Added a command-line argument (and feature) to check if SaLoMon is
+        + Added a command-line argument (and feature) to check if Salomon is
           up-to-date.
         + Added an optional command-line argument (and feature) to
-          simultaneously export the SaLoMon output into a file including
+          simultaneously export the Salomon output into a file including
           color and highlighting codes.
 
         * Revised the global config file (negligible changes).
@@ -256,7 +256,7 @@ CHANGELOG (SaLoMon)
 
         # Fixed the command-line argument issue with older versions of the
           'dialog' tool.
-        # Fixed the missing interactive check inside the main SaLoMon script
+        # Fixed the missing interactive check inside the main Salomon script
           when checking for prompt on exit.
 
     Version 1.9.0 (2017-11-15)
@@ -269,7 +269,7 @@ CHANGELOG (SaLoMon)
 
     Version 1.8.3 (2017-10-14)
 
-        * Revised the code to process the input files inside the main SaLoMon
+        * Revised the code to process the input files inside the main Salomon
           as well as the analyzing and monitoring core module.
         * Revised the output header inside the output core module (negligible
           changes related to multiple input files).
@@ -280,13 +280,13 @@ CHANGELOG (SaLoMon)
 
     Version 1.8.2 (2017-09-13)
 
-        * Revised the code in various SaLoMon components to allow multiple
+        * Revised the code in various Salomon components to allow multiple
           input files at once.
         * Revised the output header inside the output core module (removed
           information duplicates).
         * Revised the shell compatibility check script (added check for the
           'paste' tool, removed duplicate of 'trap').
-        * Revised various SaLoMon components (negligible changes).
+        * Revised various Salomon components (negligible changes).
 
         - Removed the optional command-line argument to analyze the given
           input files inside a temporary copy instead of the files themselves
@@ -302,7 +302,7 @@ CHANGELOG (SaLoMon)
         * Revised the output header when using analyze mode.
         * Revised the shell compatibility check script (added check for the
           'dialog' tool in advance).
-        * Revised various SaLoMon components (negligible changes).
+        * Revised various Salomon components (negligible changes).
 
     Version 1.8.0 (2017-06-08)
 
@@ -310,7 +310,7 @@ CHANGELOG (SaLoMon)
           the whole line (instead of only the filter terms).
         + Added the support for 256-color highlighting.
 
-        * Revised the command-line argument parser in the main SaLoMon script.
+        * Revised the command-line argument parser in the main Salomon script.
         * Revised the output header inside the output core module (added all
           relevant keystrokes).
 
@@ -331,7 +331,7 @@ CHANGELOG (SaLoMon)
 
         # Fixed the left-over temporary file bug when the process has been
           canceled.
-        # Fixed the version number bug inside the main SaLoMon script (the
+        # Fixed the version number bug inside the main Salomon script (the
           command-line argument to show the version information returned an
           empty string).
 
@@ -361,7 +361,7 @@ CHANGELOG (SaLoMon)
 
         * Revised the highlight feature (highlight all filter terms in an
           output line if multiple occur).
-        * Revised the usage information inside the SaLoMon common core module
+        * Revised the usage information inside the Salomon common core module
           (negligible changes).
 
         # Fixed the exclude information bug inside the output header (missing
@@ -390,15 +390,15 @@ CHANGELOG (SaLoMon)
 
     Version 1.6.1 (2015-04-27)
 
-        * Revised all of the SaLoMon components to check if the required shell
+        * Revised all of the Salomon components to check if the required shell
           is being installed.
-        * Revised the SaLoMon global variable core module.
+        * Revised the Salomon global variable core module.
 
     Version 1.6.0 (2015-04-24)
 
         + Added some additional checks to the compatibility check script.
 
-        * Revised all of the SaLoMon components to provide enhanced shell
+        * Revised all of the Salomon components to provide enhanced shell
           compatibility.
         * Revised (reorganized) the compatibility check script.
 
@@ -406,8 +406,8 @@ CHANGELOG (SaLoMon)
 
         * Revised (changed) the string comparison operators in all components
           (for shell compatibility reasons).
-        * Revised the main SaLoMon script (added a pre-check to check if the
-          currently used shell is suitable for running SaLoMon).
+        * Revised the main Salomon script (added a pre-check to check if the
+          currently used shell is suitable for running Salomon).
         * Revised the compatibility check script (also added a pre-check with
           additional information).
 
@@ -421,12 +421,12 @@ CHANGELOG (SaLoMon)
 
     Version 1.5.7 (2015-03-14)
 
-        + Added the action command-line argument to the main SaLoMon script
+        + Added the action command-line argument to the main Salomon script
           (replaces the previous analyze argument, which however still works
           for backwards compatibility purposes).
 
         * Revised the description of some already existing command-line
-          arguments of the main SaLoMon script (negligible changes).
+          arguments of the main Salomon script (negligible changes).
 
     Version 1.5.6 (2015-02-07)
 
@@ -441,131 +441,131 @@ CHANGELOG (SaLoMon)
         * Revised some code inside the monitoring core module (negligible
           changes).
 
-        # Fixed the freeze bug inside the SaLoMon monitoring core module (in
+        # Fixed the freeze bug inside the Salomon monitoring core module (in
           case the input file has been temporarily moved e.g. by a log
           rotation process).
 
     Version 1.5.4 (2014-12-17)
 
-        * Revised (reorganized) the core functionality of the main SaLoMon
+        * Revised (reorganized) the core functionality of the main Salomon
           script as well as the structure of the project itself.
         * Revised the code for formatting the shell output inside the main
-          SaLoMon script.
+          Salomon script.
         * Revised the compatibility check script (negligible changes).
 
     Version 1.5.3 (2014-12-08)
 
-        * Revised (reorganized) the filter code inside the main SaLoMon
+        * Revised (reorganized) the filter code inside the main Salomon
           script.
-        * Revised the output header inside the main SaLoMon script (added some
+        * Revised the output header inside the main Salomon script (added some
           information and changed some decriptions for more clarity).
 
-        # Fixed the color bug inside the main SaLoMon script (lines have not
+        # Fixed the color bug inside the main Salomon script (lines have not
           been colorized properly when no filter was given).
 
     Version 1.5.2 (2014-12-06)
 
         + Added an optional command-line argument (and feature) to the main
-          SaLoMon script that allows excluding lines containing certain terms.
+          Salomon script that allows excluding lines containing certain terms.
 
         * Revised the install script (added additional command-line
           arguments).
         * Revised the compatibility check script (negligible changes).
 
-        # Fixed the filter whitespace bug inside the main SaLoMon script
+        # Fixed the filter whitespace bug inside the main Salomon script
           (filters containing spaces have not been processed properly).
 
     Version 1.5.1 (2014-11-21)
 
-        * Revised the information header inside the main SaLoMon script (added
+        * Revised the information header inside the main Salomon script (added
           new and revised information details).
 
-        # Fixed the highlight bug inside the main SaLoMon script (terms have
+        # Fixed the highlight bug inside the main Salomon script (terms have
           not been highlighted if multiple filter terms were given).
-        # Fixed the wait on match bug inside the main SaLoMon script (did not
+        # Fixed the wait on match bug inside the main Salomon script (did not
           work properly).
 
     Version 1.5.0 (2014-11-19)
 
         + Added an optional command-line argument (and feature) to the main
-          SaLoMon script that additionally highlights the filter term.
+          Salomon script that additionally highlights the filter term.
 
-        * Revised (reorganized) the main SaLoMon script (for the new feature
+        * Revised (reorganized) the main Salomon script (for the new feature
           as well as for more clarity).
         * Revised the compatibility check script (improved the code to check
           for additional commands).
 
         - Removed backwards compatibility command-line arguments from the main
-          SaLoMon script (they still exist, but are no longer listed inside
+          Salomon script (they still exist, but are no longer listed inside
           the usage information).
-        - Removed start-up delay from the main SaLoMon script when displaying
+        - Removed start-up delay from the main Salomon script when displaying
           the detail header.
 
     Version 1.4.0 (2014-10-02)
 
-        + Added some details to the information header of the main SaLoMon
+        + Added some details to the information header of the main Salomon
           script.
         + Added the optional command-line argument (and feature) to the main
-          SaLoMon script to wait after printing a colorized line.
+          Salomon script to wait after printing a colorized line.
 
         * Revised the function to suppress the information header and footer
-          in the main SaLoMon script.
-        * Revised the monitoring function inside the main SaLoMon script
+          in the main Salomon script.
+        * Revised the monitoring function inside the main Salomon script
           (also allows slowing down the shell output now).
 
         # Fixed the prompt bug when the monitoring process gets canceled on
-          user request inside the main SaLoMon script (prompted even though
+          user request inside the main Salomon script (prompted even though
           the corresponding argument was missing).
         # Fixed the (negligible) default delay value bug inside the main
-          SaLoMon script (the value was different from the one shown in the
+          Salomon script (the value was different from the one shown in the
           usage information).
 
     Version 1.3.1 (2014-09-23)
 
-        + Added some details to the information header of the main SaLoMon
+        + Added some details to the information header of the main Salomon
           script.
-        + Added some details to the main SaLoMon script when analyzing a file
+        + Added some details to the main Salomon script when analyzing a file
           (information footer).
-        + Added the optional command-line argument to the main SaLoMon script
+        + Added the optional command-line argument to the main Salomon script
           to disable the information header.
 
         * Revised the description of some command-line arguments of the main
-          SaLoMon script for more clarity.
-        * Revised the main script in general (added a new function for SaLoMon
+          Salomon script for more clarity.
+        * Revised the main script in general (added a new function for Salomon
           related shell output and reduced some code).
 
     Version 1.3.0 (2014-09-19)
 
-        + Added an optional command-line argument to the main SaLoMon script
+        + Added an optional command-line argument to the main Salomon script
           to prompt before exit in case the process gets canceled on user
           request.
-        + Added an optional command-line argument to the main SaLoMon script
+        + Added an optional command-line argument to the main Salomon script
           to set the delay for the slow down feature.
 
-        * Revised the main SaLoMon script in general (several changes).
+        * Revised the main Salomon script in general (several changes).
         * Revised the compatibility check script (disabled unnecessary
           checks).
 
     Version 1.2.4 (2014-09-06)
 
         + Added an optional command-line argument (and feature) to the main
-          SaLoMon script to slow down the file analyzing process (decreases
+          Salomon script to slow down the file analyzing process (decreases
           CPU usage).
 
-        * Revised the command-line arguments inside main SaLoMon script in
+        * Revised the command-line arguments inside main Salomon script in
           general.
         * Revised the compatibility check script (improved the code to check
           for certain commands).
 
-        # Fixed the error message bug inside the main SaLoMon script (messages
+        # Fixed the error message bug inside the main Salomon script (messages
           were not displayed correctly).
 
     Version 1.2.3 (2014-08-04)
 
-        + Added a compatibility check script (which checks if SaLoMon runs on
+        + Added a compatibility check script (which checks if Salomon runs on
           the used shell).
 
-        * Revised the main SaLoMon script (removed deprecated code).
+        * Revised the main Salomon script (removed deprecated code).
 
     Version 1.2.2 (2014-07-30)
 
@@ -577,66 +577,66 @@ CHANGELOG (SaLoMon)
 
     Version 1.2.1 (2014-07-29)
 
-        + Added an install/uninstall script for SaLoMon.
+        + Added an install/uninstall script for Salomon.
 
         * Revised the code for processing command-line arguments of the main
-          SaLoMon script.
-        * Revised the variables used in the main SaLoMon script (set more
+          Salomon script.
+        * Revised the variables used in the main Salomon script (set more
           suggestive names, removed unnecessary ones).
 
     Version 1.2.0 (2014-07-28)
 
-        * Revised the code inside the main SaLoMon script for coloring the
+        * Revised the code inside the main Salomon script for coloring the
           lines (works way faster now and requires less resources).
-        * Revised the code inside the main SaLoMon script for processing color
+        * Revised the code inside the main Salomon script for processing color
           files significantly.
 
     Version 1.1.1 (2014-05-08)
 
-        + Added some code to the main SaLoMon script that allows omitting the
+        + Added some code to the main Salomon script that allows omitting the
           config file path if the file is located in the corresponding config
           sub-directory.
 
-        * Revised (reorganized) the code of the main SaLoMon script (added
+        * Revised (reorganized) the code of the main Salomon script (added
           some additional functions for increased readability).
-        * Revised the command-line arguments of the main SaLoMon script (and
+        * Revised the command-line arguments of the main Salomon script (and
           added an additional argument for backwards compatibility).
 
     Version 1.1.0 (2014-04-19)
 
         + Added additional options for applying a filter using a config file
-          to the main SaLoMon script.
+          to the main Salomon script.
 
-        * Revised some output text messages to the main SaLoMon script (for
+        * Revised some output text messages to the main Salomon script (for
           more clarity).
-        * Revised the command-line argument parser inside the main SaLoMon
+        * Revised the command-line argument parser inside the main Salomon
           script (less code, more flexible).
         * Revised the command-line argument for the filter pattern of the main
-          SaLoMon script (added support for patterns that contain spaces).
+          Salomon script (added support for patterns that contain spaces).
 
     Version 1.0.3 (2014-04-16)
 
         + Added a handler for unrecognized command-line arguments to the main
-          SaLoMon script.
+          Salomon script.
 
         # Fixed the negligible command-line argument validation bug inside the
-          main SaLoMon script (of those arguments that require a file path).
+          main Salomon script (of those arguments that require a file path).
 
     Version 1.0.2 (2014-04-15)
 
         * Revised the filter pattern command-line argument inside the main
-          SaLoMon script (added support for multiple patterns).
-        * Revised the output header text of the main SaLoMon script (added the
+          Salomon script (added support for multiple patterns).
+        * Revised the output header text of the main Salomon script (added the
           absolute path to the given file names, if missing).
 
     Version 1.0.1 (2014-04-14)
 
-        + Added an optional command-line argument to the the main SaLoMon
+        + Added an optional command-line argument to the the main Salomon
           script to print the version number of the script and exit.
 
         * Revised the code to handle the given command-line arguments inside
-          the main SaLoMon script.
-        * Revised the output header text inside the main SaLoMon script (added
+          the main Salomon script.
+        * Revised the output header text inside the main Salomon script (added
           some process details).
 
     Version 1.0.0 (2014-04-10)

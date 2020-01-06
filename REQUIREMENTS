@@ -1,12 +1,12 @@
 
-REQUIREMENTS (SaLoMon)
+REQUIREMENTS (Salomon)
 
-    The SaLoMon project was developed on (and for) the Bash shell, which is
+    The Salomon project was developed on (and for) the Bash shell, which is
     the default shell on many Unix-like systems (or at least Linux
     distributions).
 
     So, no matter which shell you are using, the Bash shell (version 4 or
-    higher) must be installed in order to use SaLoMon.
+    higher) must be installed in order to use Salomon.
 
     Additional package requirements (should be pre-installed):
 
@@ -24,11 +24,11 @@ REQUIREMENTS (SaLoMon)
             - dialog (version 1.1 or higher is recommended)
             - whiptail (version 0.52.1 or higher is recommended)
 
-        Notice that this feature will not work with 'Xdialog' as SaLoMon is
+        Notice that this feature will not work with 'Xdialog' as Salomon is
         text-based user interface intended.
 
     All the recommended versions of the required utilities mentioned above are
-    the ones that have been used while developing SaLoMon. The project also
+    the ones that have been used while developing Salomon. The project also
     works most likely with earlier versions.
 
     You may run the compatibility check script 'compat.sh' to get a quick

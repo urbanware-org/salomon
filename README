@@ -1,9 +1,9 @@
 
-README (SaLoMon)
+README (Salomon)
 
     Project
 
-        SaLoMon
+        Salomon
         Version 1.16.1
         Copyright (C) 2020 by Ralf Kilian
 
@@ -12,7 +12,7 @@ README (SaLoMon)
 
     Definition
 
-        The SaLoMon project is a simple log file monitor and analyzer with
+        The Salomon project is a simple log file monitor and analyzer with
         various highlighting features which can also be used with other plain
         text files.
 
@@ -32,7 +32,7 @@ README (SaLoMon)
 
     Requirements
 
-        The SaLoMon project takes advantage of some shell utilities which need
+        The Salomon project takes advantage of some shell utilities which need
         to be installed. Details about the requirements can be found inside
         the included 'REQUIREMENTS' file.
 

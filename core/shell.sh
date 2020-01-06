@@ -1,5 +1,5 @@
 # ============================================================================
-# SaLoMon - Simple log file monitor and analyzer
+# Salomon - Simple log file monitor and analyzer
 # Bash pre-check core script
 # Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
@@ -43,7 +43,7 @@ shell_precheck_compat() {
              "              *"
         echo "*                                                             "\
              "              *"
-        echo "* The SaLoMon project was developed on (and for) the Bash"\
+        echo "* The Salomon project was developed on (and for) the Bash"\
              "shell, which is    *"
         echo "* the default shell on many Unix-like systems (or at least on"\
             "many Linux     *"
@@ -53,7 +53,7 @@ shell_precheck_compat() {
              "              *"
         echo "* No matter which shell you are using, the Bash shell must be"\
              "installed in   *"
-        echo "* order to use SaLoMon. As a matter of fact, the SaLoMon"\
+        echo "* order to use Salomon. As a matter of fact, the Salomon"\
              "project takes       *"
         echo "* advantage of certain features provided by the Bash shell."\
              "                 *"
@@ -69,7 +69,7 @@ shell_precheck_compat() {
              "supported.     *"
         echo "*                                                             "\
              "              *"
-        echo "* The SaLoMon project was developed on (and for) the Bash"\
+        echo "* The Salomon project was developed on (and for) the Bash"\
              "shell, which is    *"
         echo "* the default shell on many Unix-like systems (or at least on"\
             "many Linux     *"
@@ -79,7 +79,7 @@ shell_precheck_compat() {
              "              *"
         echo "* No matter which shell you are using, the Bash shell (version"\
              "4 or higher)  *"
-        echo "* must be installed in order to use SaLoMon, as the project"\
+        echo "* must be installed in order to use Salomon, as the project"\
              "takes advantage  *"
         echo "* of certain features provided by the Bash shell."\
              "                           *"

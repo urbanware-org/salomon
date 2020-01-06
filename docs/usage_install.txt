@@ -7,13 +7,13 @@ USAGE (install.sh)
         2.  General stuff
           2.1  Overview of all command-line arguments
           2.2  Shell requirements
-        3.  Install SaLoMon
-        4.  Run the installed SaLoMon
-        5.  Uninstall SaLoMon
+        3.  Install Salomon
+        4.  Run the installed Salomon
+        5.  Uninstall Salomon
 
     1. Definition
 
-        The SaLoMon installation script allows to install or uninstall the
+        The Salomon installation script allows to install or uninstall the
         project, which is optional and not mandatory in order to use it.
 
     2. General stuff
@@ -26,7 +26,7 @@ USAGE (install.sh)
 
         2.2 Shell requirements
 
-            The SaLoMon project was developed on (and for) the Bash shell,
+            The Salomon project was developed on (and for) the Bash shell,
             which is the default shell on many Unix-like systems (or at least
             on many Linux distributions).
 
@@ -36,7 +36,7 @@ USAGE (install.sh)
             Further information can be found inside the included documentation
             for the shell compatibility script.
 
-    3. Install SaLoMon
+    3. Install Salomon
 
         Notice that this process requires superuser privileges.
 
@@ -59,15 +59,15 @@ USAGE (install.sh)
 
             # ./install.sh -i
 
-    4. Run the installed SaLoMon
+    4. Run the installed Salomon
 
-        After installing SaLoMon, it can simply be run by typing its name in
+        After installing Salomon, it can simply be run by typing its name in
         lowercase (without a trailing '.sh') followed by the arguments to use.
         For example:
 
             $ salomon --help
 
-    5. Uninstall SaLoMon
+    5. Uninstall Salomon
 
         Notice that this process also requires superuser privileges.
 

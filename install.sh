@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# SaLoMon - Simple log file monitor and analyzer
+# Salomon - Simple log file monitor and analyzer
 # Install and uninstall script
 # Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
@@ -34,16 +34,16 @@ execmod=$dirmod
 
 perform() {
     echo
-    echo -e "${cl_lc}SaLoMon install/uninstall script${cl_n}"
+    echo -e "${cl_lc}Salomon install/uninstall script${cl_n}"
     echo
     if [ "$script_mode" = "install" ]; then
-        echo -e "Installing SaLoMon is ${cl_yl}optional${cl_n} and not"\
+        echo -e "Installing Salomon is ${cl_yl}optional${cl_n} and not"\
                 "mandatory in order to use it. Further"
         echo    "information can be found inside the documentation file for"\
                 "this script."
         echo
     fi
-    confirm "This will $script_action SaLoMon. $proceed ($yesno)? \c"
+    confirm "This will $script_action Salomon. $proceed ($yesno)? \c"
     if [ $choice -ne 1 ]; then
         echo
         echo -e "${cl_lr}Canceled${cl_n} on user request."
@@ -52,7 +52,7 @@ perform() {
     fi
     echo
     if [ "$script_mode" = "install" ]; then
-        echo "You can either make SaLoMon available for all users or only"\
+        echo "You can either make Salomon available for all users or only"\
              "for root. Do you"
         confirm "want to make it available for all users ($yesno)? \c"
         if [ $choice -ne 1 ]; then
@@ -91,9 +91,9 @@ usage() {
 
     echo "usage: salomon.sh [-i] [-u]"
     echo
-    echo "  -i, --install         install SaLoMon (requires superuser"\
+    echo "  -i, --install         install Salomon (requires superuser"\
          "privileges)"
-    echo "  -u, --uninstall       uninstall SaLoMon (requires superuser"\
+    echo "  -u, --uninstall       uninstall Salomon (requires superuser"\
          "privileges)"
     echo "  -?, -h, --help        print this help message and exit"
     echo
@@ -190,7 +190,7 @@ else  # uninstall
     fi
 fi
 echo
-echo -e "SaLoMon has been ${script_mode}ed."
+echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command"\
             "in order to use it."

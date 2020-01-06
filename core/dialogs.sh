@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# SaLoMon - Simple log file monitor and analyzer
+# Salomon - Simple log file monitor and analyzer
 # Interactive dialog definition core script
 # Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
@@ -352,7 +352,7 @@ dialog_prompt_on_exit() {
     fi
 
     dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
-                    "when running SaLoMon in a terminal window which closes"\
+                    "when running Salomon in a terminal window which closes"\
                     "on exit.")
 
     if [ $dialog_program = "dialog" ]; then
@@ -455,7 +455,7 @@ dialog_welcome() {
                           "multiple times. Furthermore, you can use the"\
                           "\Z4Exit\Z0 button on this and many of the"\
                           "following dialogs.")
-        dialog $dlg_shadow --title "SaLoMon interactive dialogs notice" \
+        dialog $dlg_shadow --title "Salomon interactive dialogs notice" \
                            --colors --yes-label "Proceed" --no-label "Exit" \
                            --yesno "${dlg_text}${dlg_notice}" 13 60
     else
@@ -463,7 +463,7 @@ dialog_welcome() {
         dlg_notice=$(echo "You can cancel this interactive mode using"\
                           "the 'Exit' button on this and many of the"\
                           "following dialogs.")
-        whiptail --title "SaLoMon interactive dialogs notice" \
+        whiptail --title "Salomon interactive dialogs notice" \
                  --yes-button "Proceed" --no-button "Exit" \
                  --yesno "${dlg_text}${dlg_notice}" 13 60
     fi

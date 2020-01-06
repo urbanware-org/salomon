@@ -1,15 +1,15 @@
 ##############################################################################
 #                                                                            #
-#  Global config file for SaLoMon.                                           #
+#  Global config file for Salomon.                                           #
 #                                                                            #
 #  This file contains various options which can be set. There is no need to  #
-#  change or set anything here to get SaLoMon running.                       #
+#  change or set anything here to get Salomon running.                       #
 #                                                                            #
 #  The options inside this file cannot be set via command-line arguments.    #
 #                                                                            #
 #  Important notice:    Ensure that there are no spaces around the equal     #
 #                       signs of all options. Otherwise settings will not    #
-#                       be applied correctly or SaLoMon may even crash       #
+#                       be applied correctly or Salomon may even crash       #
 #                       under certain circumstances.                         #
 #                                                                            #
 ##############################################################################
@@ -43,7 +43,7 @@ highlight_forecolor=terminal
 # Separator line:
 #
 #   While monitoring multiple files, an obvious separator line will be added
-#   each time SaLoMon has received data from a different file. If disabled,
+#   each time Salomon has received data from a different file. If disabled,
 #   the default separator of the 'tail' command will be used.
 #
 #   Options:
@@ -89,7 +89,7 @@ usage_color=1
 
 # Interactive dialogs:
 #
-#   SaLoMon supports the following dialog programs to display those dialogs.
+#   Salomon supports the following dialog programs to display those dialogs.
 #   When using the 'auto' option, it first tries to use 'dialog' and in case
 #   it is unavailable, it switches to 'whiptail'.
 #

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# SaLoMon - Simple log file monitor and analyzer
+# Salomon - Simple log file monitor and analyzer
 # Output core script
 # Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
@@ -118,7 +118,7 @@ print_line_count() {
 print_output_header() {
     echo
     print_line "*" 1
-    print_line "${cl_lc}SaLoMon $version ${cl_n}started on ${cl_lc}$(date)"
+    print_line "${cl_lc}Salomon $version ${cl_n}started on ${cl_lc}$(date)"
     print_line
 
     input_count=$(wc -w <<< $input_file)

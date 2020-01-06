@@ -52,7 +52,7 @@ USAGE (salomon.sh)
 
         2.2 Shell requirements
 
-            The SaLoMon project was developed on (and for) the Bash shell,
+            The Salomon project was developed on (and for) the Bash shell,
             which is the default shell on many Unix-like systems (or at least
             on many Linux distributions).
 
@@ -64,7 +64,7 @@ USAGE (salomon.sh)
 
         2.3 Colorize and highlight certain lines
 
-            In first place, SaLoMon has been developed to monitor and analyze
+            In first place, Salomon has been developed to monitor and analyze
             files by colorizing lines which contain certain terms (which can
             also be highlighted) to get a fast overview of the contents (for
             example to easily detect error messages inside log files).
@@ -105,7 +105,7 @@ USAGE (salomon.sh)
         2.4 Config file paths
 
             Since version 1.1.1 you do not have to give the full path to the
-            config files for SaLoMon if these are located in the corresponding
+            config files for Salomon if these are located in the corresponding
             sub-directories.
 
             So, in case you only give the file name (instead of the path) for
@@ -114,10 +114,10 @@ USAGE (salomon.sh)
                 $ ./salomon.sh -a monitor -i /tmp/foobar.log -c colors.cfg \
                                -f filter.cfg
 
-            SaLoMon will first check the current working directory for these
+            Salomon will first check the current working directory for these
             config files. If these do not exist there, it will check for them
             inside the config sub-directories ('colors' and 'filters') of the
-            SaLoMon script directory.
+            Salomon script directory.
 
         2.5 File paths containing certain characters
 
@@ -185,7 +185,7 @@ USAGE (salomon.sh)
             example, the dialog window asking for the input file will already
             contain '/tmp/foobar.log', which can still be changed.
 
-            SaLoMon supports the dialog programs 'dialog' and 'whiptail'. You
+            Salomon supports the dialog programs 'dialog' and 'whiptail'. You
             can set the one you want to use inside the 'salomon.cfg' file.
 
             Furthermore, you can set which dialogs should be shown when using
@@ -205,7 +205,7 @@ USAGE (salomon.sh)
 
         3.1 Relevant keystrokes
 
-            The SaLoMon process (no matter if monitoring or analyzing) can be
+            The Salomon process (no matter if monitoring or analyzing) can be
             canceled at any time by pressing the universal and well-known
             <Ctrl>+<C> keystroke.
 
@@ -216,7 +216,7 @@ USAGE (salomon.sh)
             By pressing <Ctrl>+<S> the output freezes until defreezing it
             again using <Ctrl>+<Q> or <Return>.
 
-            SaLoMon also provides an optional pause feature based on the
+            Salomon also provides an optional pause feature based on the
             number of output lines, see section 8 below.
 
         3.2 Monitor the file
@@ -263,7 +263,7 @@ USAGE (salomon.sh)
 
         3.5 Non-existent input file path
 
-            In case a given input file path does not exist, SaLoMon also
+            In case a given input file path does not exist, Salomon also
             checks the default log file path '/var/log' for the file.
 
             For example, if you execute the following command
@@ -271,7 +271,7 @@ USAGE (salomon.sh)
                 $ ./salomon.sh -a monitor -i foo.log -c /tmp/colors.cfg
 
             and the file 'foo.log' does not exist inside the current working
-            directory, SaLoMon also checks for '/var/log/foo.log'. If that
+            directory, Salomon also checks for '/var/log/foo.log'. If that
             file exists, it will be monitored.
 
     4. Applying a filter
@@ -453,14 +453,14 @@ USAGE (salomon.sh)
         When analyzing large files, the output can be very cluttered. With
         the '--pause' argument you can pause the output either after user-
         defined amount of lines or automatically by determining the number
-        of lines of the terminal SaLoMon is currently running in.
+        of lines of the terminal Salomon is currently running in.
 
         For example, to pause the output after 30 lines, the command would
         look like this:
 
             $ ./salomon.sh -a monitor -i /tmp/foobar.log --pause 30
 
-        When you give 'auto' instead of a number, SaLoMon determines the
+        When you give 'auto' instead of a number, Salomon determines the
         height of the terminal (number of lines) and pauses based on that
         value.
 
@@ -480,12 +480,12 @@ USAGE (salomon.sh)
 
     9. Export output into a file
 
-        Since version 1.9.6 you can simultaneously write the output of SaLoMon
+        Since version 1.9.6 you can simultaneously write the output of Salomon
         into a file including the colors and highlighting.
 
         The purpose of this feature is that you have an exact copy of the
         relevant output displayed on the screen without requiring the original
-        log file and the appropriate SaLoMon command-line arguments.
+        log file and the appropriate Salomon command-line arguments.
 
         For example, to export the output of the following command
 
@@ -499,7 +499,7 @@ USAGE (salomon.sh)
                            --export-file /tmp/export.log
 
         Now, by using e.g. 'cat' you can display the exported data as seen in
-        the output of SaLoMon. However, editing the file with an editor will
+        the output of Salomon. However, editing the file with an editor will
         not work, due to the fact, that the editor will (or should) also print
         the color and highlighting codes instead of interpreting them.
 

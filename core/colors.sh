@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# SaLoMon - Simple log file monitor and analyzer
+# Salomon - Simple log file monitor and analyzer
 # Color management core script
 # Copyright (C) 2020 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
@@ -143,7 +143,7 @@ print_color_table() {
         echo
         echo "All numbers with black background are colors that cannot be"\
              "displayed (except"
-        echo "for number 0). When running SaLoMon on a pure text-based"\
+        echo "for number 0). When running Salomon on a pure text-based"\
              "interface (tty) there"
         echo "only are 16 colors available."
     else
