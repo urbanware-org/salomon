@@ -177,6 +177,11 @@ check_update() {
     link_latest="https://github.com/urbanware-org/salomon/releases/latest"
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
 
+    command -v wget &>/dev/null
+    if [ $? -ne 0 ]; then
+        usage "Retrieving update information requires 'wget' (not installed)"
+    fi
+    
     wget -q $link_latest -O $temp_file
     if [ $? -ne 0 ]; then
         rm -f $temp_file
