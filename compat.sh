@@ -211,9 +211,9 @@ echo -e "Checking capabilities of the 'echo' command ..........$line"\
 echo -e "Checking definition of functions .....................$line"\
         "${check_function}"
 echo
-echo -e "Checking optional 'dialog' command ...................$line"\
+echo -e "Checking for optional 'dialog' command ...............$line"\
         "${check_dialog}"
-echo -e "Checking optional 'whiptail' command .................$line"\
+echo -e "Checking for optional 'whiptail' command .............$line"\
         "${check_whiptail}"
 echo
 echo -e "Overall status .......................................$line"\
