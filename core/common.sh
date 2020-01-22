@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # ============================================================================
 # Salomon - Simple log file monitor and analyzer
@@ -181,7 +181,7 @@ check_update() {
     if [ $? -ne 0 ]; then
         usage "Retrieving update information requires 'wget' (not installed)"
     fi
-    
+
     wget -q $link_latest -O $temp_file
     if [ $? -ne 0 ]; then
         rm -f $temp_file
