@@ -49,11 +49,16 @@ In the `docs` sub-directory of the project, there are plain text files containin
 
 ## Requirements
 
-The *Salomon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
+The *Salomon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions). 
 
 Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
 
-In case the scripts will not run and return a "bad interpreter" error, simply run the included `shebang.sh` script (without any arguments). This will automatically determine the path to the `bash` binary and adjust the shebang inside all other *Salomon* script files.
+In case the scripts will not run and return a "bad interpreter" error, simply run the included shebang adjustment script `shebang.sh` (without any arguments). This will automatically determine the path to the `bash` binary and adjust the shebang inside all other *Salomon* script files.
+
+Due to the fact, that the script itself does not have a shebang it has to be explicitly executed using the *Bash* shell as follows:
+
+```bash
+bash shebang.sh
 
 [Top](#salomon-)
 
