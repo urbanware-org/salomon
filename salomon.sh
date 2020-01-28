@@ -130,7 +130,7 @@ else
                 interactive=1
                 shift
             ;;
-            --merge)
+            -m|--merge)
                 merge=1
                 shift
             ;;
