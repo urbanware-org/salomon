@@ -59,6 +59,7 @@ Due to the fact, that the script itself does not have a shebang it has to be exp
 
 ```bash
 bash shebang.sh
+```
 
 [Top](#salomon-)
 
