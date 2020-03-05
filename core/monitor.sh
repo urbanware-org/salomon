@@ -35,7 +35,13 @@ monitor_input_file() {
 
     done
 
-    tail -n $tail_lines -F $input_file_list 2>/dev/null | while read line; do
+    if [ $merge -eq 1 ]; then
+        merge="-q"
+    else
+        merge=""
+    fi
+
+    tail -n $tail_lines $merge -F $input_file_list 2>/dev/null | while read line; do
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
             sleep 0.$delay

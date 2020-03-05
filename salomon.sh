@@ -467,9 +467,7 @@ else
         fi
 
         # Merge input files
-        if [ $merge -eq 1 ] && [ $follow -eq 1 ]; then
-            usage "The '--merge' argument cannot be used with monitoring mode"
-        elif [ $merge -eq 1 ] && [ $input_count -lt 2 ]; then
+        if [ $merge -eq 1 ] && [ $input_count -lt 2 ]; then
             usage "The '--merge' argument requires at least two input files"
         fi
 
