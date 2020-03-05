@@ -1,6 +1,14 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.16.2 (outstanding)
+
+        + Added the merge functionality for the monitoring mode.
+
+        * Revised the '--merge' command-line argument (added a short variant).
+        * Revised the update check function (the 'wget' tool must be
+          installed)
+
     Version 1.16.1 (2020-01-04)
 
         + Added a copy of the default config file (no manual copy required).
