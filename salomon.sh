@@ -49,6 +49,9 @@ else
         case "$arg" in
             # Required arguments
             -a|--action)
+                if [ ! -z "$action" ]; then
+                    usage "The action argument can only be given once"
+                fi
                 shift
                 action="$1"
                 shift
@@ -63,6 +66,9 @@ else
 
             # Optional arguments
             -c|--color-file)
+                if [ ! -z "$color_file" ]; then
+                    usage "The color file argument can only be given once"
+                fi
                 shift
                 color_file="$1"
                 check_argument "-c/--color-file" "$color_file" "file"
@@ -82,26 +88,43 @@ else
                 shift
             ;;
             -e|--exclude)
+                if [ ! -z "$exclude_pattern" ]; then
+                    usage "The exclude argument can only be given once" \
+                          "Use use a pattern instead"
+                fi
                 shift
                 exclude_pattern="$1"
                 shift
             ;;
             --export-file)
+                if [ ! -z "$export_file" ]; then
+                    usage "The export argument can only be given once"
+                fi
                 shift
                 export_file="$1"
                 export_log=1
                 shift
             ;;
             -f|--filter)
+                if [ ! -z "$filter_pattern" ]; then
+                    usage "The filter argument can only be given once" \
+                          "Use use a pattern instead"
+                fi
                 shift
                 filter_pattern="$1"
                 shift
             ;;
             --force-dark)
+                if [ ! -z "$color_force" ]; then
+                    usage "The force dark argument can only be given once"
+                fi
                 color_force="dark"
                 shift
             ;;
             --force-light)
+                if [ ! -z "$color_force" ]; then
+                    usage "The force light argument can only be given once"
+                fi
                 color_force="light"
                 shift
             ;;
@@ -149,6 +172,10 @@ else
                 shift
             ;;
             -r|--remove)
+                if [ ! -z "$remove_pattern" ]; then
+                    usage "The remove argument can only be given once" \
+                          "Use use a pattern instead"
+                fi
                 shift
                 remove_pattern="$1"
                 shift
@@ -186,10 +213,16 @@ else
 
             # Alternatives to the required arguments
             --analyze)
+                if [ ! -z "$action" ]; then
+                    usage "An action argument can only be given once"
+                fi
                 action="analyze"
                 shift
             ;;
             --monitor)
+                if [ ! -z "$action" ]; then
+                    usage "An action argument can only be given once"
+                fi
                 action="monitor"
                 shift
             ;;
@@ -197,6 +230,9 @@ else
             # Backwards compatibility arguments (still existing, but no longer
             # listed inside the usage information)
             --config-file)
+                if [ ! -z "$color_file" ]; then
+                    usage "The color file argument can only be given once"
+                fi
                 shift
                 color_file="$1"
                 check_argument "--config-file" "$color_file" "file"
