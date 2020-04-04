@@ -357,6 +357,7 @@ read_filter() {
 
 usage() {
     error_msg=$1
+    error_msg_add=$2
 
     if [ "$usage_color" = "1" ]; then
         no=$cl_n
@@ -459,7 +460,11 @@ file for this script.${no}"
             clear
         else
             echo
-            echo -e "${cl_lr}error:${cl_n} $error_msg."
+            if [ -z "$error_msg_add" ]; then
+                echo -e "${cl_lr}error:${cl_n} $error_msg."
+            else
+                echo -e "${cl_lr}error:${cl_n} $error_msg. $error_msg_add."
+            fi
         fi
         exit 1
     else
