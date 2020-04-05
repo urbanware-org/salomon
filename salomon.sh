@@ -90,7 +90,7 @@ else
             -e|--exclude)
                 if [ ! -z "$exclude_pattern" ]; then
                     usage "The exclude argument can only be given once" \
-                          "Use use a pattern instead"
+                          "Use a pattern instead"
                 fi
                 shift
                 exclude_pattern="$1"
@@ -108,7 +108,7 @@ else
             -f|--filter)
                 if [ ! -z "$filter_pattern" ]; then
                     usage "The filter argument can only be given once" \
-                          "Use use a pattern instead"
+                          "Use a pattern instead"
                 fi
                 shift
                 filter_pattern="$1"
@@ -174,7 +174,7 @@ else
             -r|--remove)
                 if [ ! -z "$remove_pattern" ]; then
                     usage "The remove argument can only be given once" \
-                          "Use use a pattern instead"
+                          "Use a pattern instead"
                 fi
                 shift
                 remove_pattern="$1"
