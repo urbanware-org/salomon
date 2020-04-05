@@ -3,8 +3,8 @@ CHANGELOG (Salomon)
 
     Version 1.16.2 (2020-04-05)
 
-        + Added some command-line argument count checks (to prevent conflicing
-          arguments). 
+        + Added some command-line argument count checks (to prevent
+          conflicting arguments). 
         + Added the merge functionality for the monitoring mode.
 
         * Revised the common core module (negligible changes).
