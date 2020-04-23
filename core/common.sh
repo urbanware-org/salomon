@@ -335,6 +335,11 @@ read_config_file() {
     elif [ -f "${script_dir}/salomon.cf" ]; then
         # Postfix anyone?
         source ${script_dir}/salomon.cf
+    elif [ -f "${script_dir}/salomon.cfg.default" ]; then
+        # Fallback with the default config
+        source ${script_dir}/salomon.cfg.default
+        cp ${script_dir}/salomon.cfg.default \
+           ${script_dir}/salomon.cfg &>/dev/null
     else
         usage "Global configuration file missing"
     fi
