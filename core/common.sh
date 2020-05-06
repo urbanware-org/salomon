@@ -396,8 +396,8 @@ ${no}
 ${lr}required arguments:${no}
   -a {analyze,monitor}, --action {analyze,monitor}
                         action (processing mode) to perform with the given
-                        input file(s) (this can also be given via '--analyze'
-                        or '--monitor' instead)
+                        input file(s), this can also be given via '--analyze'
+                        or '--monitor' instead
   -i INPUT_FILE, --input-file INPUT_FILE
                         input file to analyze or monitor (can be given
                         multiple times)
