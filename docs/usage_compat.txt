@@ -37,7 +37,7 @@ USAGE (compat.sh)
         the compatibility check script without any arguments (there are no
         command-line arguments available anyway) and check the results.
 
-            $ ./compat.sh
+            ./compat.sh
 
     4. Exit codes
 
