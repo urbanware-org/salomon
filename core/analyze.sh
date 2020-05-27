@@ -35,6 +35,13 @@ analyze_input_file() {
     done
 
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    egrep_pattern=""
+    if [ ! -z "$filter_list" ]; then
+        for filter_term in $filter_list; do
+            temp="$egrep_pattern|$filter_term"
+            egrep_pattern="$temp"
+        done
+    fi
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
         paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
@@ -52,6 +59,11 @@ analyze_input_file() {
         input_file=$merge_file
     else
         input_file=$temp_file
+    fi
+
+    if [ ! -z "$egrep_pattern" ]; then
+        egrep -i $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file > ${temp_file}.presort
+        mv -f ${temp_file}.presort $input_file
     fi
 
     count=0
