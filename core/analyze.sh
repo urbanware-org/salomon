@@ -53,17 +53,18 @@ analyze_input_file() {
               > $temp_file
     fi
 
+    if [ ! -z "$egrep_pattern" ]; then
+        egrep -i $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file \
+              > ${temp_file}.presort
+        mv -f ${temp_file}.presort $temp_file
+    fi
+
     if [ $merge -eq 1 ]; then
         merge_file="${temp_file}.merge"
         sort < $temp_file > $merge_file
         input_file=$merge_file
     else
         input_file=$temp_file
-    fi
-
-    if [ ! -z "$egrep_pattern" ]; then
-        egrep -i $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file > ${temp_file}.presort
-        mv -f ${temp_file}.presort $input_file
     fi
 
     count=0
