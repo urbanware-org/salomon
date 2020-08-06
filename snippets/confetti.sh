@@ -24,9 +24,7 @@ confetti() {
                 color_char="\e[38;5;${color_confetti}m${char}\e[0m"
             fi
         fi
-
-        temp="${line_output}${color_char}"
-        line_output="$temp"
+        line_output="${line_output}${color_char}"
     done
 
     echo -e "$line_output"

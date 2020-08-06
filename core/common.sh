@@ -14,8 +14,8 @@ cancel_process() {
     echo
     if [ $header -eq 1 ]; then
         print_line "*" 1
-        temp="${cl_lr}Canceled ${cl_ly}on"
-        print_line "${temp}${cl_lc} user request${cl_ly}."
+        msg_cancel="${cl_lr}Canceled ${cl_ly}on"
+        print_line "${msg_cancel}${cl_lc} user request${cl_ly}."
 
         if [ $follow -eq 0 ]; then
             print_line
@@ -153,8 +153,8 @@ check_patterns() {
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
             if [ ! -z "$exclude_list" ]; then
                 for string in $exclude_list; do
-                    temp=$(sed -e "s/#/\ /g" <<< "$string")
-                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
+                    string=$(sed -e "s/#/\ /g" <<< "$string")
+                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
                     if [ "$term_upper" = "$string_upper" ]; then
                         usage "Exclude list must not contain a filter term"
                     fi
@@ -162,8 +162,8 @@ check_patterns() {
             fi
             if [ ! -z "$remove_list" ]; then
                 for string in $remove_list; do
-                    temp=$(sed -e "s/#/\ /g" <<< "$string")
-                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$temp")
+                    string=$(sed -e "s/#/\ /g" <<< "$string")
+                    string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
                     if [ "$term_upper" = "$string_upper" ]; then
                         usage "Remove list must not contain a filter term"
                     fi
@@ -187,9 +187,9 @@ check_update() {
         rm -f $temp_file
         usage "Unable to retrieve update information"
     else
-        temp=$(grep "css-truncate-target" $temp_file |
-               sed -e "s/<\/.*//g" | sed -e "s/.*>//g ")
-        version_latest=$(echo $temp | awk '{ print $1 }')
+        temp_file=$(grep "css-truncate-target" $temp_file |
+                    sed -e "s/<\/.*//g" | sed -e "s/.*>//g ")
+        version_latest=$(echo $temp_file | awk '{ print $1 }')
         rm -f $temp_file
     fi
 
@@ -279,8 +279,7 @@ prepare_path() {
             break
         fi
 
-        temp=$(sed -e "s/\/\//\//g" <<< $path_input)
-        path_input=$temp
+        path_input=$(sed -e "s/\/\//\//g" <<< $path_input)
     done
     path_prepared=$(sed -e "s/^ *//g;s/ *$//g;s/\ /\/\//g" <<< $path_input)
 }
@@ -354,8 +353,7 @@ read_filter() {
     filter_pattern=""
     (grep -v "#" | sed -e "s/\ /#/g") < "$filter_file" > $temp_file
     while read line; do
-        temp="$filter_pattern;$line"
-        filter_pattern="$temp"
+        filter_pattern="$filter_pattern;$line"
     done < $temp_file
     rm -f $temp_file
 }

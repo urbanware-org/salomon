@@ -64,20 +64,20 @@ get_color_code() {
     else
         # Support for 256 colors (color code instead of name)
         if [[ $color_name =~ ^random ]]; then
-            temp=$(shuf -i ${color_random_min}-${color_random_max} -n 1)
-            color_code="\e[38;5;${temp}m"
+            color_temp=$(shuf -i ${color_random_min}-${color_random_max} -n 1)
+            color_code="\e[38;5;${color_temp}m"
         elif [ "$color_name" = "confetti" ]; then
             color_code="999"
         else
             re='^[0-9]+'
             if [[ $color_name =~ $re ]]; then
-                temp=$(cut -d '-' -f1 <<< $color_name)
-                if [ $temp -lt 0 ] || [ $temp -gt 256 ]; then
+                color_temp=$(cut -d '-' -f1 <<< $color_name)
+                if [ $color_temp -lt 0 ] || [ $color_temp -gt 256 ]; then
                     warn "The color '${cl_yl}$color_name${cl_n}' is invalid" 1
                     color_name=""
                     color_code="${cl_n}"
                 else
-                    color_code="\e[38;5;${temp}m"
+                    color_code="\e[38;5;${color_temp}m"
                 fi
             else
                 warn "The color '${cl_yl}$color_name${cl_n}' does not exist" 1
@@ -90,14 +90,14 @@ get_color_code() {
     if [[ $color_name =~ \-b\-u$ ]] || [[ $color_name =~ \-u\-b$ ]] || \
        [[ $color_name =~ \-bold\-underlined$ ]] || \
        [[ $color_name =~ \-underlined\-bold$ ]]; then
-        temp=$(sed -e "s/\[/\[1;4;/g" <<< $color_code)
-        color_code="$temp"
+        color_temp=$(sed -e "s/\[/\[1;4;/g" <<< $color_code)
+        color_code="$color_temp"
     elif [[ $color_name =~ \-b$ ]] || [[ $color_name =~ \-bold$ ]]; then
-        temp=$(sed -e "s/\[/\[1;/g" <<< $color_code)
-        color_code="$temp"
+        color_temp=$(sed -e "s/\[/\[1;/g" <<< $color_code)
+        color_code="$color_temp"
     elif [[ $color_name =~ \-u$ ]] || [[ $color_name =~ \-underlined$ ]]; then
-        temp=$(sed -e "s/\[/\[4;/g" <<< $color_code)
-        color_code="$temp"
+        color_temp=$(sed -e "s/\[/\[4;/g" <<< $color_code)
+        color_code="$color_temp"
     fi
 }
 
@@ -216,8 +216,7 @@ random_colors() {
             fi
         fi
 
-        temp="${line_output}${color_char}"
-        line_output="$temp"
+        line_output="${line_output}${color_char}"
     done
 
     echo -e "$line_output"

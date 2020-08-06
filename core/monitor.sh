@@ -15,24 +15,23 @@ monitor_input_file() {
 
     spaces=0
     for file in $input_file; do
-        temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
+        file=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
 
-        grep "//" <<< "$temp" &>/dev/null
+        grep "//" <<< "$file" &>/dev/null
         if [ $? -eq 0 ]; then
-            filepath="$(sed -e "s/\/\//\ /g" <<< "$temp")"
+            filepath="$(sed -e "s/\/\//\ /g" <<< "$file")"
             spaces=1
         else
-            filepath="$temp"
+            filepath="$file"
             spaces=0
         fi
 
         if [ $spaces -eq 1 ]; then
-            temp=$(sed -e "s/\ /\*/g" <<< $filepath)
-            input_file_list="$input_file_list $temp"
+            filepath=$(sed -e "s/\ /\*/g" <<< $filepath)
+            input_file_list="$input_file_list $filepath"
         else
             input_file_list="$input_file_list $filepath"
         fi
-
     done
 
     if [ $merge -eq 1 ]; then

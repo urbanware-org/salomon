@@ -85,8 +85,8 @@ print_line() {
             echo -e "${cl_n}"
         fi
     else
-        temp=$(printf "%-${indent}s" "$1")
-        echo -e "${cl_lb}$ld_char ${temp}${2}${cl_n}"
+        string=$(printf "%-${indent}s" "$1")
+        echo -e "${cl_lb}$ld_char ${string}${2}${cl_n}"
     fi
 }
 
@@ -95,23 +95,23 @@ print_line_count() {
         if [ ! $count_lines -eq $count_total ]; then
             if [ $count_lines -eq 0 ]; then
                 count=$(printf "%+8s" "0")
-                temp="${cl_wh}Lines returned: ${cl_ly}"
-                print_line "${temp}${count} (due to the given filter)"
+                msg_lines="${cl_wh}Lines returned: ${cl_ly}"
+                print_line "${msg_lines}${count} (due to the given filter)"
             else
                 count=$(printf "%+8s" $count_lines)
-                temp="${cl_wh}Lines returned: ${cl_yl}${count}"
-                print_line "$temp ${cl_ly}(due to the given filter)"
+                msg_lines="${cl_wh}Lines returned: ${cl_yl}${count}"
+                print_line "$msg_lines ${cl_ly}(due to the given filter)"
             fi
         fi
     fi
 
     count=$(printf "%+8s" $count_total)
     if [ $count_total -eq 0 ]; then
-        temp="${cl_wh}Lines total:    ${cl_ly}"
-        print_line "${temp}${count}${cl_ly}"
+        msg_lines="${cl_wh}Lines total:    ${cl_ly}"
+        print_line "${msg_lines}${count}${cl_ly}"
     else
-        temp="${cl_wh}Lines total:    ${cl_yl}"
-        print_line "${temp}${count}${cl_ly}"
+        msg_lines="${cl_wh}Lines total:    ${cl_yl}"
+        print_line "${msg_lines}${count}${cl_ly}"
     fi
 }
 
@@ -128,8 +128,8 @@ print_output_header() {
     else
         desc="Input files:"
         for file in $input_file; do
-            temp=$(sed -e "s/^ *//g;s/ *$//g;s/\/\//\ /g" <<< "$file")
-            filepath=$(readlink -f "$temp")
+            file=$(sed -e "s/^ *//g;s/ *$//g;s/\/\//\ /g" <<< "$file")
+            filepath=$(readlink -f "$file")
             if [ -z "$filepath" ]; then
                 continue
             fi
@@ -144,52 +144,57 @@ print_output_header() {
     if [ -z "$color_file" ]; then
         print_line "${cl_wh}Color file:" "${cl_ly}None"
     else
-        temp=$(readlink -f $color_file)
-        print_line "${cl_wh}Color file:" "${cl_yl}$temp"
+        msg_color_file=$(readlink -f $color_file)
+        print_line "${cl_wh}Color file:" "${cl_yl}$msg_color_file"
     fi
 
     if [ -z "$export_file" ]; then
         print_line "${cl_wh}Export file:" "${cl_ly}None"
     else
-        temp=$(readlink -f $export_file)
-        print_line "${cl_wh}Export file:" "${cl_yl}$temp"
+        msg_export_file=$(readlink -f $export_file)
+        print_line "${cl_wh}Export file:" "${cl_yl}$msg_export_file"
     fi
 
     print_line
     if [ $follow -eq 1 ]; then
         print_line "${cl_wh}Follow (monitor):" "${cl_lg}Yes"
+
         if [ $prompt -eq 1 ]; then
-            temp="${cl_lg}Yes"
+            msg_prompt="${cl_lg}Yes"
         else
-            temp="${cl_lr}No"
+            msg_prompt="${cl_lr}No"
         fi
-        print_line "${cl_wh}Prompt on exit:" "$temp"
+        print_line "${cl_wh}Prompt on exit:" "$msg_prompt"
+
     else
         print_line "${cl_wh}Follow (monitor):" "${cl_lr}No"
+
         if [ $merge -eq 1 ]; then
-            temp="${cl_lg}Yes"
+            msg_merge="${cl_lg}Yes"
         else
-            temp="${cl_lr}No"
+            msg_merge="${cl_lr}No"
         fi
-        print_line "${cl_wh}Merge input files:" "$temp"
+        print_line "${cl_wh}Merge input files:" "$msg_merge"
+
         if [ $slow -eq 1 ]; then
-            temp="${cl_lg}Yes ${cl_yl}(0.$delay seconds)"
+            msg_slow="${cl_lg}Yes ${cl_yl}(0.$delay seconds)"
         else
-            temp="${cl_lr}No"
+            msg_slow="${cl_lr}No"
         fi
-        print_line "${cl_wh}Slow down:" "$temp"
+        print_line "${cl_wh}Slow down:" "$msg_slow"
+
         if [ $pause -eq 1 ]; then
             if [ "$pause_lines" = "auto" ]; then
-                temp="${cl_lg}Yes ${cl_yl}(based on terminal height)"
+                msg_pause="${cl_lg}Yes ${cl_yl}(based on terminal height)"
             elif [ $pause_lines -eq 1 ]; then
-                temp="${cl_lg}Yes ${cl_yl}(after each line)"
+                msg_pause="${cl_lg}Yes ${cl_yl}(after each line)"
             else
-                temp="${cl_lg}Yes ${cl_yl}(after $pause_lines lines)"
+                msg_pause="${cl_lg}Yes ${cl_yl}(after $pause_lines lines)"
             fi
         else
-            temp="${cl_lr}No"
+            msg_pause="${cl_lr}No"
         fi
-        print_line "${cl_wh}Pause output:" "$temp"
+        print_line "${cl_wh}Pause output:" "$msg_pause"
     fi
 
     if [ $wait_match -gt 0 ]; then
@@ -198,76 +203,77 @@ print_output_header() {
         else
             sec="seconds"
         fi
-        temp="${cl_lg}Yes ${cl_yl}($wait_match $sec)"
+        msg_wait="${cl_lg}Yes ${cl_yl}($wait_match $sec)"
     else
-        temp="${cl_lr}No"
+        msg_wait="${cl_lr}No"
     fi
-    print_line "${cl_wh}Wait (on match):" "$temp"
+    print_line "${cl_wh}Wait (on match):" "$msg_wait"
 
     print_line
     if [ $exclude -eq 1 ]; then
-        temp="${cl_yl}$exclude_pattern"
+        msg_exclude="${cl_yl}$exclude_pattern"
     else
-        temp="${cl_ly}None"
+        msg_exclude="${cl_ly}None"
     fi
-    print_line "${cl_wh}Exclude pattern:" "$temp"
+    print_line "${cl_wh}Exclude pattern:" "$msg_exclude"
 
     if [ $remove -eq 1 ]; then
-        temp="${cl_yl}$remove_pattern"
+        msg_remove="${cl_yl}$remove_pattern"
     else
-        temp="${cl_ly}None"
+        msg_remove="${cl_ly}None"
     fi
-    print_line "${cl_wh}Remove pattern:" "$temp"
+    print_line "${cl_wh}Remove pattern:" "$msg_remove"
 
     if [ $filter -eq 1 ]; then
         if [ ! -z "$filter_file" ]; then
-            temp="${cl_wh}Filter file:"
-            print_line "$temp" "${cl_yl}$filter_file"
+            msg_filter="${cl_wh}Filter file:"
+            print_line "$msg_filter" "${cl_yl}$filter_file"
         fi
 
-        temp="${cl_wh}Filter pattern:"
-        print_line "$temp" "${cl_yl}$filter_pattern"
+        msg_pattern="${cl_wh}Filter pattern:"
+        print_line "$msg_pattern" "${cl_yl}$filter_pattern"
+
         if [ "$arg_case" = "-i" ]; then
-            temp="${cl_lg}Yes"
+            msg_case="${cl_lg}Yes"
         else
-            temp="${cl_lr}No"
+            msg_case="${cl_lr}No"
         fi
-        print_line "${cl_wh}Ignore case:" "${cl_lr}${temp}"
+        print_line "${cl_wh}Ignore case:" "${cl_lr}${msg_case}"
 
         if [ $highlight_matches -eq 1 ]; then
-            temp="${cl_lg}Filter matches"
+            msg_highlight="${cl_lg}Filter matches"
         elif [ $highlight_upper -eq 1 ]; then
-            temp="${cl_lg}Filter matches (in uppercase)"
+            msg_highlight="${cl_lg}Filter matches (in uppercase)"
         elif [ $highlight_all -eq 1 ]; then
-            temp="${cl_lg}All lines"
+            msg_highlight="${cl_lg}All lines"
         else
-            temp="${cl_lr}No"
+            msg_highlight="${cl_lr}No"
         fi
-        print_line "${cl_wh}Highlight:" "$temp"
+        print_line "${cl_wh}Highlight:" "$msg_highlight"
     else
         print_line "${cl_wh}Filter pattern:" "${cl_ly}None"
         if [ $highlight_all -eq 1 ]; then
-            temp="${cl_lg}All lines"
-            print_line "${cl_wh}Highlight:" "$temp"
+            msg_highlight="${cl_lg}All lines"
+            print_line "${cl_wh}Highlight:" "$msg_highlight"
         else
-            temp="${cl_lr}No"
-            print_line "${cl_wh}Highlight:" "$temp"
+            msg_highlight="${cl_lr}No"
+            print_line "${cl_wh}Highlight:" "$msg_highlight"
         fi
     fi
 
     if [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
         print_line
         if [ $head_lines -gt 0 ]; then
-            temp="${cl_wh}First lines (only):"
-            print_line "$temp" "${cl_yl}$head_lines"
+            msg_head="${cl_wh}First lines (only):"
+            print_line "$msg_head" "${cl_yl}$head_lines"
         fi
         if [ $tail_lines -gt 0 ]; then
             if [ $follow -eq 1 ]; then
-                temp="${cl_wh}Last lines (also):"
-                print_line "$temp" "${cl_yl}$tail_lines"
+                msg_tail="${cl_wh}Last lines (also):"
+                print_line "$msg_tail" "${cl_yl}$tail_lines"
             else
-                temp="${cl_wh}Last lines (only):"
-                print_line "$temp" "${cl_yl}$tail_lines"
+                msg_tail="${cl_wh}Last lines (only):"
+                print_line "$msg_tail" "${cl_yl}$tail_lines"
             fi
         fi
     fi
@@ -303,8 +309,8 @@ print_output_line() {
 
         grep "^==>.*<==$" <<< $1 &>/dev/null
         if [ $? -eq 0 ]; then
-            temp=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
-            fp=$(readlink -f "$temp")
+            string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
+            fp=$(readlink -f "$string")
             fp_len=$(wc -c <<< $fp)
             if [ "$line_width" = "auto" ]; then
                 term_cols=$(( $(tput cols) + 1 - fp_len - 4))
@@ -339,9 +345,7 @@ print_output_line() {
 
     if [ $exclude -eq 1 ]; then
         for string in $exclude_list; do
-            temp=$(sed -e "s/#/\ /g" <<< "$string")
-            string="$temp"
-
+            string=$(sed -e "s/#/\ /g" <<< "$string")
             grep -i "$string" <<< "$line_lower" &>/dev/null
             if [ $? -eq 0 ]; then
                 return
@@ -361,12 +365,12 @@ print_output_line() {
                     color_high="${hl_fgcolor}${color_temp}"
                 else
                     if [ "$hl_fgcolor" = "$cl_n" ]; then
-                        temp='s/\[38;/\[30;48;/g'
-                        color_high="${hl_fgcolor}$((sed -e "$temp") \
+                        color_temp='s/\[38;/\[30;48;/g'
+                        color_high="${hl_fgcolor}$((sed -e "$color_temp") \
                                     <<< "$color_code")"
                     else
-                        temp='s/\[38;/\[48;/g'
-                        color_high="${hl_fgcolor}$((sed -e "$temp") \
+                        color_temp='s/\[38;/\[48;/g'
+                        color_high="${hl_fgcolor}$((sed -e "$color_temp") \
                                     <<< "$color_code")"
                     fi
                 fi
@@ -386,11 +390,11 @@ print_output_line() {
                     else
                         term_case=$term
                     fi
-                    temp=$(echo -e "${color_high}${term_case}${cl_n}"\
+                    color_temp=$(echo -e "${color_high}${term_case}${cl_n}"\
                                    "\b${color_code}")
 
                     output=$(echo -e "${color_code}${line}${cl_n}" | \
-                             sed -e "s/$term_upper/$temp/ig")
+                             sed -e "s/$term_upper/$color_temp/ig")
 
                     line="$output"
                     filter_match=1
@@ -418,8 +422,8 @@ print_output_line() {
 
     if [ $remove -eq 1 ]; then
         for string in $remove_list; do
-            temp=$(sed -e "s/#/\ /g" <<< "$string")
-            line=$(echo -e "$output" | sed -e "s/${temp}//ig")
+            string=$(sed -e "s/#/\ /g" <<< "$string")
+            line=$(echo -e "$output" | sed -e "s/${string}//ig")
             output="$line"
         done
     fi
@@ -432,14 +436,14 @@ print_output_line() {
         highlight_all=0
     else
         if [ $highlight_all -eq 1 ]; then
-            temp=$(echo -e "\e[7m$output" | sed -e "s/0m/7m/g")
-            output="${temp}${cl_n}"
+            line=$(echo -e "\e[7m$output" | sed -e "s/0m/7m/g")
+            output="${line}${cl_n}"
         fi
     fi
 
     if [ "$color_code" = "999" ]; then
-        temp=$(sed -e "s/^$color_code//g" <<< "$output")
-        output=$(sed -e "s/\\\e\[.*//g" <<< "$temp")
+        line=$(sed -e "s/^$color_code//g" <<< "$output")
+        output=$(sed -e "s/\\\e\[.*//g" <<< "$line")
         random_colors "$output"
     elif [ "$color_code" = "\e[0m" ] && [ $highlight_all -eq 0 ]; then
         echo -e "\e[0m$line\e[0m"

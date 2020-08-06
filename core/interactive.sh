@@ -290,14 +290,14 @@ get_filter_pattern() {
                   "The filter pattern must not contain any hashes"
                 return
             else
-                temp=$((tr -s ";;" ";" | \
+                filter_pattern=$((tr -s ";;" ";" | \
                         sed -e "s/^;//" \
                             -e "s/;$//") <<< "$filter_pattern")
                 filter_list=$(sed -e "s/^;*//g" \
                                   -e "s/;*$//g" \
                                   -e "s/\ /#/g" \
-                                  -e "s/;/\n/g" <<< "$temp")
-                filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
+                                  -e "s/;/\n/g" <<< "$filter_pattern")
+                filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
                 filter=1
                 concat_arg "-f $filter_pattern"
                 dialog_valid=1
@@ -362,8 +362,7 @@ get_input_file() {
             else
                 concat_arg "-i $filepath"
                 input_valid=1
-                temp="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
-                filelist="$temp"
+                filelist="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
             fi
         fi
     done

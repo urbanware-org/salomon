@@ -15,20 +15,20 @@ analyze_input_file() {
 
     spaces=0
     for file in $input_file; do
-        temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
+        file=$(sed -e "s/^ *//g;s/ *$//g" <<< "$file")
 
-        grep "//" <<< "$temp" &>/dev/null
+        grep "//" <<< "$file" &>/dev/null
         if [ $? -eq 0 ]; then
-            filepath="$(sed -e "s/\/\//\ /g" <<< "$temp")"
+            filepath="$(sed -e "s/\/\//\ /g" <<< "$file")"
             spaces=1
         else
-            filepath="$temp"
+            filepath="$file"
             spaces=0
         fi
 
         if [ $spaces -eq 1 ]; then
-            temp=$(sed -e "s/\ /\*/g" <<< $filepath)
-            input_file_list="$input_file_list $temp"
+            filepath=$(sed -e "s/\ /\*/g" <<< $filepath)
+            input_file_list="$input_file_list $filepath"
         else
             input_file_list="$input_file_list $filepath"
         fi
@@ -38,8 +38,7 @@ analyze_input_file() {
     egrep_pattern=""
     if [ ! -z "$filter_list" ]; then
         for filter_term in $filter_list; do
-            temp="$egrep_pattern|$filter_term"
-            egrep_pattern="$temp"
+            egrep_pattern="$egrep_pattern|$filter_term"
         done
     fi
 
@@ -97,9 +96,8 @@ analyze_input_file() {
 
     if [ $header -eq 1 ]; then
         echo
-        temp="Reached the end of the given input file."
         print_line "*" 1
-        print_line "${cl_lc}${temp}"
+        print_line "${cl_lc}Reached the end of the given input file."
         print_line
         print_line_count
         if [ $prompt -eq 1 ]; then
