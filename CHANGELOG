@@ -1,6 +1,18 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.16.3 (2020-08-10)
+
+        + Added a fallback to the default config file inside the common core
+          module (copy the default file and rename it appropriately).
+        + Added code to the analyzation core module to sort merged contents of
+          multiple input files.
+
+        * Revised some code in general (removed or replaced all unnecessary
+          variables).
+        * Revised the description of command-line arguments inside the common
+          core module (negligible changes).
+
     Version 1.16.2 (2020-04-05)
 
         + Added some command-line argument count checks (to prevent
