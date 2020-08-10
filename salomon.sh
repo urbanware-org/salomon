@@ -310,8 +310,7 @@ else
         interactive_mode
     else
         # Input file
-        temp=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
-        input_file="$temp"
+        input_file=$(sed -e "s/^ *//g;s/ *$//g" <<< "$input_file")
 
         if [ -z "$input_file" ]; then
             usage "No input file(s) given"
@@ -336,8 +335,7 @@ else
                 usage "No read permission on the given input file '$filepath'"
             fi
 
-            temp="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
-            filelist="$temp"
+            filelist="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
         done
         input_file="$filelist"
 
@@ -412,14 +410,14 @@ else
                 fi
             fi
 
-            temp=$((tr -s ";;" ";" | \
+            filter_pattern=$((tr -s ";;" ";" | \
                     sed -e "s/^;//" \
                         -e "s/;$//") <<< "$filter_pattern")
             filter_list=$(sed -e "s/^;*//g" \
                               -e "s/;*$//g" \
                               -e "s/\ /#/g" \
-                              -e "s/;/\n/g" <<< "$temp")
-            filter_pattern=$(sed -e "s/#/\ /g" <<< "$temp")
+                              -e "s/;/\n/g" <<< "$filter_pattern")
+            filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
             filter=1
         fi
 
@@ -495,9 +493,9 @@ else
                   "Use either '--head' or '--tail', not both at the same time"
             elif [ $head_lines -gt 0 ] || [ $tail_lines -gt 0 ]; then
                 if [ $input_count -gt 1 ]; then
-                   temp="'--head' or '--tail'"
+                   msg_args="'--head' or '--tail'"
                    usage \
-                       "When using $temp only one input file can be given"
+                       "When using $msg_args only one input file can be given"
                 fi
             fi
         fi
@@ -529,13 +527,11 @@ else
         # Slow down (delay)
         grep -E "^[0-9]*$" <<< "$delay" &>/dev/null
         if [ $? -eq 0 ]; then
-            temp=$delay
             if [ $delay -lt 100 ]; then
-                temp=100
+                delay=100
             elif [ $delay -gt 900 ]; then
-                temp=900
+                delay=900
             fi
-            delay=$temp
 
         else
             usage "The delay must be a number between 100 and 900"
@@ -557,21 +553,21 @@ else
 
         # Export file
         if [ $export_log -eq 1 ]; then
-            temp="The given export file path '$export_file'"
+            msg_export="The given export file path '$export_file'"
             if [ -z "$export_file" ]; then
                 export_log=0
             else
                 if [ -e "$export_file" ]; then
                     if [ -d "$export_file" ]; then
-                        usage "$temp is not a file"
+                        usage "$msg_export is not a file"
                     elif [ -f "$export_file" ]; then
-                        usage "$temp already exists"
+                        usage "$msg_export already exists"
                     fi
                 fi
 
                 touch $export_file &>/dev/null
                 if [ $? -ne 0 ]; then
-                    usage "$temp seems to be read-only"
+                    usage "$msg_export seems to be read-only"
                 fi
             fi
         fi
