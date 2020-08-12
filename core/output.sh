@@ -139,6 +139,12 @@ print_output_header() {
             fi
         done
         print_line
+        if [ $merge -eq 1 ]; then
+            print_line "${cl_wh}Merge input files:" "${cl_lg}Yes"
+        else
+            print_line "${cl_wh}Merge input files:" "${cl_lr}No"
+        fi
+        print_line
     fi
 
     if [ -z "$color_file" ]; then
