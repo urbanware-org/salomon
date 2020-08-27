@@ -179,13 +179,13 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
-    echo "Copying data to the installation directory..."
+    echo "Copying data to installation directory..."
     if [ $clean_install -eq 1 ]; then
         rm -fR $target_dir/*
     fi
     rsync -av $script_dir/* $target_dir/ &>/dev/null
 
-    echo "Setting permissions on installation directory..."
+    echo "Setting permissions for installation directory..."
     set_permissions
 
     echo -e "Creating symbolic link for main script... \c"
