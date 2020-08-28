@@ -27,60 +27,74 @@ echo
 sleep 1
 
 clear
+echo "Step  1 of 13"
 $salomon_script $salomon_args -f "2014" -hm | tee $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  2 of 13"
+echo
 $salomon_script $salomon_args -f "2014" -hm --no-info \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  3 of 13"
 $salomon_script $salomon_args -f "2014" -ha | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  4 of 13"
 $salomon_script $salomon_args -f "2014" -ha --cut-off \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  5 of 13"
 $salomon_script $salomon_args -f "config file" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  6 of 13"
 $salomon_script $salomon_args -f "config file" -hu -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  7 of 13"
 $salomon_script $salomon_args -f "config;file;success;foo" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  8 of 13"
 $salomon_script $salomon_args -e "process" | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step  9 of 13"
 $salomon_script $salomon_args -r "2014-04-02 " | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step 10 of 13"
 $salomon_script $salomon_args -h 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step 11 of 13"
 $salomon_script $salomon_args -t 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step 12 of 13"
 $salomon_script -i $salomon_sample_log --analyze --pause 4 \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 clear
+echo "Step 13 of 13"
 echo "==" >> $salomon_sample_log_temp
 echo "==  Please press Ctrl+C now once to  cancel  this test (required)." \
      >> $salomon_sample_log_temp
