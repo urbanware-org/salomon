@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ============================================================================
+#
 # Salomon - Simple log file monitor and analyzer
 # Simple testrun script
 # Copyright (C) 2020 by Ralf Kilian
@@ -8,7 +8,7 @@
 #
 # GitHub: https://github.com/urbanware-org/salomon
 # GitLab: https://gitlab.com/urbanware-org/salomon
-# ============================================================================
+#
 
 salomon_script_dir=$(dirname $(readlink -f $0) | sed -e "s/testrun//g")
 salomon_script="$salomon_script_dir/salomon.sh"
