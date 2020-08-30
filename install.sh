@@ -37,9 +37,9 @@ perform() {
     echo -e "${cl_lc}Salomon install/uninstall script${cl_n}"
     echo
     if [ "$script_mode" = "install" ]; then
-        echo -e "Installing Salomon is ${cl_yl}optional${cl_n} and not"\
+        echo -e "Installing Salomon is ${cl_yl}optional${cl_n} and not" \
                 "mandatory in order to use it. Further"
-        echo    "information can be found inside the documentation file for"\
+        echo    "information can be found inside the documentation file for" \
                 "this script."
         echo
     fi
@@ -52,7 +52,7 @@ perform() {
     fi
     echo
     if [ "$script_mode" = "install" ]; then
-        echo "You can make Salomon available either for all users or only"\
+        echo "You can make Salomon available either for all users or only" \
              "for root. Do you"
         confirm "want to make it available for all users ($yesno)? \c"
         if [ $choice -ne 1 ]; then
@@ -91,13 +91,13 @@ usage() {
 
     echo "usage: salomon.sh [-i] [-u]"
     echo
-    echo "  -i, --install         install Salomon (requires superuser"\
+    echo "  -i, --install         install Salomon (requires superuser" \
          "privileges)"
-    echo "  -u, --uninstall       uninstall Salomon (requires superuser"\
+    echo "  -u, --uninstall       uninstall Salomon (requires superuser" \
          "privileges)"
     echo "  -?, -h, --help        print this help message and exit"
     echo
-    echo "Further information and usage examples can be found inside the"\
+    echo "Further information and usage examples can be found inside the" \
          "documentation"
     echo "file for this script."
     if [ ! -z "$error_msg" ]; then
@@ -105,7 +105,7 @@ usage() {
         if [ -z "$given_arg" ]; then
             echo -e "${cl_lr}error:${cl_n} $error_msg."
         else
-            echo -e "${cl_lr}error:${cl_n} $error_msg"\
+            echo -e "${cl_lr}error:${cl_n} $error_msg" \
                     "'${cl_yl}${given_arg}${cl_n}'."
         fi
         exit 1
@@ -233,7 +233,7 @@ fi
 echo
 echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
-    echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command"\
+    echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
             "in order to use it."
 fi
 echo
