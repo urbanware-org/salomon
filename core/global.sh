@@ -10,12 +10,10 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
-set_global_variables() {
-    # ------------------------------------------------------------------------
-    # Do not change any of the values below! See the 'salomon.cfg' file inside
-    # the main directory of Salomon for configuration options.
-    # ------------------------------------------------------------------------
+# Warning:  Do not change any of the values below! See the 'salomon.cfg' file
+#           inside the main directory of Salomon for configuration options.
 
+set_global_variables() {
     version="1.16.3"
 
     arg_case=""
