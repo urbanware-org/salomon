@@ -1,4 +1,4 @@
-# ============================================================================
+#
 # Salomon - Simple log file monitor and analyzer
 # Bash pre-check core script
 # Copyright (C) 2020 by Ralf Kilian
@@ -6,7 +6,7 @@
 #
 # GitHub: https://github.com/urbanware-org/salomon
 # GitLab: https://gitlab.com/urbanware-org/salomon
-# ============================================================================
+#
 
 shell_precheck() {
     command -v bash >/dev/null 2>&1

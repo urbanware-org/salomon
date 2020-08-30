@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ============================================================================
+#
 # Salomon - Simple log file monitor and analyzer
 # Global variable core script
 # Copyright (C) 2020 by Ralf Kilian
@@ -8,7 +8,7 @@
 #
 # GitHub: https://github.com/urbanware-org/salomon
 # GitLab: https://gitlab.com/urbanware-org/salomon
-# ============================================================================
+#
 
 set_global_variables() {
     # ------------------------------------------------------------------------

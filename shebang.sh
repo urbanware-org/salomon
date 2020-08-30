@@ -1,4 +1,4 @@
-# ============================================================================
+#
 # Salomon - Simple log file monitor and analyzer
 # Shebang adjustment script
 # Copyright (C) 2020 by Ralf Kilian
@@ -6,7 +6,7 @@
 #
 # GitHub: https://github.com/urbanware-org/salomon
 # GitLab: https://gitlab.com/urbanware-org/salomon
-# ============================================================================
+#
 
 script_dir=$(dirname $(readlink -f $0))
 . ${script_dir}/core/shell.sh   # Use POSIX standard instead of 'source' here
