@@ -134,9 +134,7 @@ fi
 
 if [ "$(whoami)" != "root" ]; then
     error="${cl_lr}error:${cl_n}"
-    echo
-    echo -e "$error Superuser privileges are required"
-    echo
+    echo -e "$error Superuser privileges are required."
     exit 1
 fi
 
