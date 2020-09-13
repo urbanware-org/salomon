@@ -52,9 +52,10 @@ perform() {
     fi
     echo
     if [ "$script_mode" = "install" ]; then
-        echo "You can make Salomon available either for all users or only" \
-             "for root. Do you"
-        confirm "want to make it available for all users ($yesno)? \c"
+        echo -e "You can make Salomon available either for all users on" \
+                "this machine or only"
+        echo -e "for root. \c"
+        confirm "Do you want to make it available for all users ($yesno)? \c"
         if [ $choice -ne 1 ]; then
             available="rootonly"
         fi
