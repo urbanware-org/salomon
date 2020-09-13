@@ -178,10 +178,14 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
-    echo "Copying data to installation directory..."
-    if [ $clean_install -eq 1 ]; then
+    if [ $clean_install -eq 0 ]; then
+        echo "Copying data to installation directory..."
+    else
+        echo "Removing previous data from installation directory..."
         rm -fR $target_dir/*
+        echo "Copying data to installation directory..."
     fi
+
     rsync -av $script_dir/* $target_dir/ &>/dev/null
 
     echo "Setting permissions for installation directory..."
