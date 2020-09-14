@@ -237,9 +237,6 @@ else  # uninstall
         echo -e "${cl_lb}(kept on user request)${cl_n}"
     else
         if [ -d $target_dir ]; then
-            if [ $(pwd) = "$target_dir" ]; then
-                cd $(pwd | sed -e "s/\/salomon$//g")
-            fi
             rm -fR $target_dir &>/dev/null
             echo
         else
