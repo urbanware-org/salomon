@@ -197,7 +197,12 @@ if [ $script_mode = "install" ]; then
     echo "Copying data to installation directory..."
     rsync -av $script_dir/* $target_dir/ &>/dev/null
 
-    echo "Setting permissions for installation directory..."
+    echo -e "Setting permissions for installation directory... \c"
+    if [ $available = "rootonly" ]; then
+        echo -e "${cl_lb}(root only)${cl_n}"
+    else
+        echo -e "${cl_lb}(everyone)${cl_n}"
+    fi
     set_permissions
 
     if [ $clean_install -eq 1 ]; then
