@@ -23,6 +23,8 @@ script_mode=""
 temp_file="/tmp/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
+clean_install=0
+keep_directory=0
 target="${cl_yl}${target_dir}${cl_n}"
 yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
 proceed="Do you wish to proceed"
@@ -44,7 +46,7 @@ perform() {
         echo
     fi
     confirm "This will $script_action Salomon. $proceed ($yesno)? \c"
-    if [ $choice -ne 1 ]; then
+    if [ $choice -eq 0 ]; then
         echo
         echo -e "${cl_lr}Canceled${cl_n} on user request."
         echo
@@ -56,7 +58,7 @@ perform() {
                 "this machine or only"
         echo -e "for root. \c"
         confirm "Do you want to make it available for all users ($yesno)? \c"
-        if [ $choice -ne 1 ]; then
+        if [ $choice -eq 0 ]; then
             available="rootonly"
         fi
         echo
@@ -148,29 +150,43 @@ fi
 
 perform $script_mode
 if [ $script_mode = "install" ]; then
-    if [ ! "$script_dir" = "$target_dir" ] && [ -d "$target_dir" ]; then
-        echo -e "The target directory '$target' already exists. You can" \
-                "perform a clean"
-        echo -e "installation which will delete all files inside that" \
-                "directory and install the"
-        echo -e "original files. Notice that all user-defined configs and" \
-                "settings will also"
-        echo -e "be deleted then. \c"
-        confirm "Do you want to perform a clean installation ($yesno)? \c"
-        if [ $choice -ne 1 ]; then
-            clean_install=0
+    if [ -d "$target_dir" ]; then
+        if [ ! $(pwd) = "$target_dir" ]; then
+            echo -e "The target directory '$target' already exists. You can" \
+                    "perform a clean"
+            echo -e "installation which will delete the directory and" \
+                    "reinstall the original files."
+            echo -e "Notice that all user-defined configs and settings will" \
+                    "also be deleted then."
+            confirm "Do you want to perform a clean installation ($yesno)? \c"
+            clean_install=$choice
+            echo
         else
-            clean_install=1
+            # Performing a clean installation when running this script from
+            # the target directory would also delete the original files, so a
+            # clean installation is not possible here
+            if [ -d "$target_dir" ]; then
+                echo "You are running the this script from the installation" \
+                     "directory. Due to this,"
+                echo "a clean installation (removing and reinstalling the" \
+                     "files) is not possible."
+                echo
+            fi
         fi
-        echo
-    else
-        # Performing a clean installation when running this script from the
-        # target directory will also delete the original files, so a clean
-        # installation is not possible here
-        clean_install=0
     fi
 
-    echo -e "Creating installation directory '${target}'... \c"
+    echo -e "Installation directory is '${target}'."
+    if [ $clean_install -eq 1 ]; then
+        if [ "$(pwd)" = "$target_dir" ]; then
+            echo "Removing previous data from installation directory..."
+            rm -fR $target_dir/*
+        else
+            echo "Removing previous installation directory..."
+            rm -fR $target_dir
+        fi
+    fi
+
+    echo -e "Creating installation directory... \c"
     if [ -d $target_dir ]; then
         echo -e "${cl_lb}(already exists)${cl_n}"
     else
@@ -178,18 +194,18 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
-    if [ $clean_install -eq 0 ]; then
-        echo "Copying data to installation directory..."
-    else
-        echo "Removing previous data from installation directory..."
-        rm -fR $target_dir/*
-        echo "Copying data to installation directory..."
-    fi
-
+    echo "Copying data to installation directory..."
     rsync -av $script_dir/* $target_dir/ &>/dev/null
 
     echo "Setting permissions for installation directory..."
     set_permissions
+
+    if [ $clean_install -eq 1 ]; then
+        if [ -f ${symlink_sh}/salomon ]; then
+            echo "Removing existing symbolic link for main script..."
+            rm -f ${symlink_sh}/salomon &>/dev/null
+        fi
+    fi
 
     echo -e "Creating symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
@@ -203,10 +219,8 @@ else  # uninstall
             "delete all"
     echo -e "user-defined configs and settings. \c"
     confirm "Do you want to remove it ($yesno)? \c"
-    if [ $choice -ne 1 ]; then
+    if [ $choice -eq 0 ]; then
         keep_directory=1
-    else
-        keep_directory=0
     fi
     echo
 
@@ -223,7 +237,7 @@ else  # uninstall
         echo -e "${cl_lb}(kept on user request)${cl_n}"
     else
         if [ -d $target_dir ]; then
-            if [ "$(pwd)" = "$target_dir" ]; then
+            if [ $(pwd) = "$target_dir" ]; then
                 cd $(pwd | sed -e "s/\/salomon$//g")
             fi
             rm -fR $target_dir &>/dev/null
