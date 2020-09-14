@@ -221,10 +221,10 @@ confirm() {
         if [ $? -eq 0 ]; then
             egrep "^yes$|^y$" -i <<< $choice &>/dev/null
             if [ $? -eq 0 ]; then
-                choice=1
+                choice=1  # Yes
                 break
             else
-                choice=0
+                choice=0  # No
                 break
             fi
         fi
