@@ -151,7 +151,7 @@ fi
 perform $script_mode
 if [ $script_mode = "install" ]; then
     if [ -d "$target_dir" ]; then
-        if [ ! $(pwd) = "$target_dir" ]; then
+        if [ ! "$script_dir" = "$target_dir" ]; then
             echo -e "The target directory '$target' already exists. You can" \
                     "perform a clean"
             echo -e "installation which will delete the directory and" \
