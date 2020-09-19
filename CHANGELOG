@@ -1,6 +1,16 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.16.4 (2020-09-19)
+
+        * Revised the installation script in general (added a clean install
+          mode, added further output messages and revised existing ones). 
+        * Revised the output header of the main script (added merge
+          information).
+        * Revised the testrun script (negligible changes).
+
+        - Removed the shebang adjustment script (has become obsolete).
+
     Version 1.16.3 (2020-08-10)
 
         + Added a fallback to the default config file inside the common core
