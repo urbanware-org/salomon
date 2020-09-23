@@ -277,7 +277,6 @@ deprecated_argument() {
         wait_delay=$(( wait_delay - 1 ))
     done
     echo "        Proceeding.                                 "
-
 }
 
 prepare_path() {
