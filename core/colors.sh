@@ -126,7 +126,7 @@ print_color_table() {
     echo
     is_tty=$(grep "/tty" <<< $(tty))
     if [ -z "$is_tty" ]; then
-        echo "This terminal emulator supports (can display) the following"\
+        echo "This terminal emulator supports (can display) the following" \
              "colors:"
         echo
 
@@ -142,24 +142,24 @@ print_color_table() {
         done
 
         echo
-        echo "All numbers with black background are colors that cannot be"\
+        echo "All numbers with black background are colors that cannot be" \
              "displayed (except"
-        echo "for number 0). When running Salomon on a pure text-based"\
+        echo "for number 0). When running Salomon on a pure text-based" \
              "interface (tty) there"
         echo "only are 16 colors available."
     else
-        echo "This is a pure text-based interface (tty) which only supports"\
+        echo "This is a pure text-based interface (tty) which only supports" \
              "(can display)"
         echo "the following 8 or 16 colors (sorted alphabetically):"
         echo
-        echo -e "    black, ${cl_br}brown${cl_n}, ${cl_db}darkblue${cl_n},"\
-                "${cl_dc}darkcyan${cl_n}, ${cl_dy}darkgray${cl_n},"\
+        echo -e "    black, ${cl_br}brown${cl_n}, ${cl_db}darkblue${cl_n}," \
+                "${cl_dc}darkcyan${cl_n}, ${cl_dy}darkgray${cl_n}," \
                 "${cl_dg}darkgreen${cl_n}," \
                 "${cl_dp}darkpurple${cl_n},"
-        echo -e "    ${cl_dr}darkred${cl_n}, ${cl_lb}lightblue${cl_n},"\
-                "${cl_lc}lightcyan${cl_n}, ${cl_ly}lightgray${cl_n},"\
+        echo -e "    ${cl_dr}darkred${cl_n}, ${cl_lb}lightblue${cl_n}," \
+                "${cl_lc}lightcyan${cl_n}, ${cl_ly}lightgray${cl_n}," \
                 "${cl_lg}lightgreen${cl_n}, ${cl_lp}lightpurple${cl_n},"
-        echo -e "    ${cl_lr}lightred${cl_n}, ${cl_wh}white${cl_n},"\
+        echo -e "    ${cl_lr}lightred${cl_n}, ${cl_wh}white${cl_n}," \
                 "${cl_yl}yellow${cl_n}"
         echo
         echo "Terminal emulators on a graphical user interface support up" \

@@ -287,12 +287,12 @@ print_output_header() {
     print_line
     print_line "\c"
 
-    echo -e "${cl_wh}Press"\
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}C"\
-            "${cl_wh}to ${cl_lr}cancel${cl_wh},"\
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}S"\
-            "${cl_wh}to ${cl_yl}freeze${cl_wh} and"\
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q"\
+    echo -e "${cl_wh}Press" \
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
+            "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}S" \
+            "${cl_wh}to ${cl_yl}freeze${cl_wh} and" \
+            "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q" \
             "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
 
     print_line "*"
@@ -396,7 +396,7 @@ print_output_line() {
                     else
                         term_case=$term
                     fi
-                    color_temp=$(echo -e "${color_high}${term_case}${cl_n}"\
+                    color_temp=$(echo -e "${color_high}${term_case}${cl_n}" \
                                    "\b${color_code}")
 
                     output=$(echo -e "${color_code}${line}${cl_n}" | \

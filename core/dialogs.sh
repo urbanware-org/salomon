@@ -33,8 +33,8 @@ dialog_action() {
 dialog_arg_list() {
     def_button="--defaultno"
 
-    dlg_text=$(echo "Do you want to see what the command-line looks like"\
-                    "with the arguments given?\n\nThis can be copied and"\
+    dlg_text=$(echo "Do you want to see what the command-line looks like" \
+                    "with the arguments given?\n\nThis can be copied and" \
                     "used for e.g. aliases, desktop shortcuts or scripts.")
 
     if [ $dialog_program = "dialog" ]; then
@@ -59,8 +59,8 @@ dialog_color_file() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to use a color file?\n\nEnter the path of"\
-                    "the color config file or leave blank to disable"\
+    dlg_text=$(echo "Do you want to use a color file?\n\nEnter the path of" \
+                    "the color config file or leave blank to disable" \
                     "highlighting:")
 
     predef_input_dialog "Color configuration file" "$dlg_text" 11 60 "$1"
@@ -72,7 +72,7 @@ dialog_delay() {
         return
     fi
 
-    dlg_text=$(echo "Enter the amount of milliseconds to wait between each"\
+    dlg_text=$(echo "Enter the amount of milliseconds to wait between each" \
                     "output line:")
     predef_input_dialog "Slow down delay" "$dlg_text" 9 60 "$1"
 }
@@ -83,10 +83,10 @@ dialog_exclude_pattern() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to use an exclude pattern?\n\nFor details"\
-                    "about the exclude pattern syntax, see\nsection 5 inside"\
-                    "the documentation.\n\nEnter the desired information or"\
-                    "leave blank to skip:")
+    dlg_text=$(echo "Do you want to use an exclude pattern?\n\nFor details" \
+                    "about the exclude pattern syntax, see\nsection 5" \
+                    "inside the documentation.\n\nEnter the desired" \
+                    "information or leave blank to skip:")
 
     predef_input_dialog "Exclude pattern" "$dlg_text" 13 60 "$1"
 }
@@ -97,10 +97,10 @@ dialog_export_file() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to simultaneously export the output lines"\
-                    "into a file?\n\nFor details see section 9 inside the"\
-                    "documentation.\n\nEnter the desired output file path or"\
-                    "leave blank to skip:")
+    dlg_text=$(echo "Do you want to simultaneously export the output lines" \
+                    "into a file?\n\nFor details see section 9 inside the" \
+                    "documentation.\n\nEnter the desired output file path" \
+                    "or leave blank to skip:")
 
     predef_input_dialog "Export output to file" "$dlg_text" 14 60 "$1"
 }
@@ -111,12 +111,12 @@ dialog_filter_pattern() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to use a filter?\n\nYou can either enter"\
-                    "the path to a filter config file or a filter pattern"\
-                    "(without leading and trailing quotation marks).\n\nFor"\
-                    "details about the filter syntax, see section 4.1 inside"\
-                    "the documentation.\n\nEnter the desired information or"\
-                    "leave blank to skip:")
+    dlg_text=$(echo "Do you want to use a filter?\n\nYou can either enter" \
+                    "the path to a filter config file or a filter pattern" \
+                    "(without leading and trailing quotation marks).\n\nFor" \
+                    "details about the filter syntax, see section 4.1" \
+                    "inside the documentation.\n\nEnter the desired" \
+                    "information or leave blank to skip:")
 
     predef_input_dialog "Filter pattern" "$dlg_text" 17 60 "$1"
 }
@@ -127,8 +127,8 @@ dialog_head_lines() {
         return
     fi
 
-    dlg_text=$(echo "Do you only want to display a certain amount of first"\
-                    "lines of the given input file?\n\nEnter the desired"\
+    dlg_text=$(echo "Do you only want to display a certain amount of first" \
+                    "lines of the given input file?\n\nEnter the desired" \
                     "amount or leave blank to skip:")
     predef_input_dialog "Number of first lines" "$dlg_text" 11 60 "$1"
 }
@@ -213,7 +213,7 @@ dialog_highlight() {
                                     "2" "$hlw (filled, filter independent)" \
                                     "3" "$hlw (cut-off, filter independent)" \
                                     "4" "$hlf" \
-                                    "5" "$hlf and convert to uppercase"\
+                                    "5" "$hlf and convert to uppercase" \
                                 3>&1 1>&2 2>&3 3>&-)
         else
             user_input=$(whiptail --nocancel --default-item $def_item \
@@ -224,7 +224,7 @@ dialog_highlight() {
                                     "2" "$hlw (filled, filter independent)" \
                                     "3" "$hlw (cut-off, filter independent)" \
                                     "4" "$hlf" \
-                                    "5" "$hlf and convert to uppercase"\
+                                    "5" "$hlf and convert to uppercase" \
                                   3>&1 1>&2 2>&3 3>&-)
         fi
     fi
@@ -258,11 +258,11 @@ dialog_ignore_case() {
 }
 
 dialog_input_file() {
-    dlg_text=$(echo "Please enter the path of the file(s) which you want to"\
-                    "process.\n\nMultiple paths must be separated with"\
-                    "spaces.\n\nPaths that contain spaces themselves must"\
-                    "either be enclosed with (single or double) quotes or"\
-                    "given with escaped whitespaces.\n\nFor details see"\
+    dlg_text=$(echo "Please enter the path of the file(s) which you want to" \
+                    "process.\n\nMultiple paths must be separated with" \
+                    "spaces.\n\nPaths that contain spaces themselves must" \
+                    "either be enclosed with (single or double) quotes or" \
+                    "given with escaped whitespaces.\n\nFor details see" \
                     "section 2.5 inside the documentation.")
 
     predef_input_dialog "Input file" "$dlg_text" 17 60 "$1"
@@ -283,8 +283,9 @@ dialog_merge() {
         def_button="--defaultno"
     fi
 
-    dlg_text=$(echo "Do you wish to merge the input files?\n\nThis is useful"\
-                    "for files containing lines starting with timestamps.")
+    dlg_text=$(echo "Do you wish to merge the input files?\n\nThis is" \
+                    "useful for files containing lines starting with" \
+                    "timestamps.")
 
     if [ $dialog_program = "dialog" ]; then
         dialog $dlg_shadow --title "Merge input files" --yes-label "Yes" \
@@ -329,9 +330,9 @@ dialog_pause_output() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to pause the output after a certain number"\
-                    "of output lines?\n\nEnter the desired amount of lines"\
-                    "enter 'auto' to pause based on the terminal height or"\
+    dlg_text=$(echo "Do you want to pause the output after a certain number" \
+                    "of output lines?\n\nEnter the desired amount of lines" \
+                    "enter 'auto' to pause based on the terminal height or" \
                     "leave blank to skip:")
     predef_input_dialog "Pause output" "$dlg_text" 12 60 "$1"
 }
@@ -351,9 +352,9 @@ dialog_prompt_on_exit() {
         def_button="--defaultno"
     fi
 
-    dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is useful"\
-                    "when running Salomon in a terminal window which closes"\
-                    "on exit.")
+    dlg_text=$(echo "Do you wish to prompt before exiting?\n\nThis is" \
+                    "useful when running Salomon in a terminal window which" \
+                    "closes on exit.")
 
     if [ $dialog_program = "dialog" ]; then
         dialog $dlg_shadow --title "Prompt on exit" --yes-label "Yes" \
@@ -371,9 +372,9 @@ dialog_remove_pattern() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to use an remove pattern?\n\nFor details"\
-                    "about the remove pattern syntax, see\nsection 6 inside"\
-                    "the documentation.\n\nEnter the desired information or"\
+    dlg_text=$(echo "Do you want to use an remove pattern?\n\nFor details" \
+                    "about the remove pattern syntax, see\nsection 6 inside" \
+                    "the documentation.\n\nEnter the desired information or" \
                     "leave blank to skip:")
 
     predef_input_dialog "Remove pattern" "$dlg_text" 13 60 "$1"
@@ -394,8 +395,8 @@ dialog_slow_down() {
         def_button="--defaultno"
     fi
 
-    dlg_text=$(echo "Do you want to slow down the output of the lines?"\
-                    "\n\nThis will decrease the CPU usage depending on the"\
+    dlg_text=$(echo "Do you want to slow down the output of the lines?" \
+                    "\n\nThis will decrease the CPU usage depending on the" \
                     "amount of output data. Usually, this is not required.")
 
     if [ $dialog_program = "dialog" ]; then
@@ -420,8 +421,8 @@ dialog_tail_lines() {
         dlt="only"
     fi
 
-    dlg_text=$(echo "Do you $dlt want to display a certain amount of last"\
-                    "lines of the given input file?\n\nEnter the desired"\
+    dlg_text=$(echo "Do you $dlt want to display a certain amount of last" \
+                    "lines of the given input file?\n\nEnter the desired" \
                     "amount or leave blank to skip:")
     predef_input_dialog "Number of last lines" "$dlg_text" 11 60 "$1"
 }
@@ -432,8 +433,8 @@ dialog_wait_on_match() {
         return
     fi
 
-    dlg_text=$(echo "Do you want to wait after printing a colorized line?"\
-                    "\n\nIf yes, enter the amount of seconds, otherwise"\
+    dlg_text=$(echo "Do you want to wait after printing a colorized line?" \
+                    "\n\nIf yes, enter the amount of seconds, otherwise" \
                     "leave blank to skip:")
 
     predef_input_dialog "Wait on match" "$dlg_text" 11 60 "$1"
@@ -444,24 +445,24 @@ dialog_welcome() {
         return
     fi
 
-    dlg_text=$(echo "Welcome to the interactive dialogs!\n\nFor details"\
-                    "about this feature see section 2.6 inside the"\
+    dlg_text=$(echo "Welcome to the interactive dialogs!\n\nFor details" \
+                    "about this feature see section 2.6 inside the" \
                     "documentation.\n\n")
 
     if [ $dialog_program = "dialog" ]; then
-        dlg_notice=$(echo "You can \Z1cancel\Z0 this interactive"\
-                          "mode at any time either by holding"\
-                          "\Z4Ctrl\Z0+\Z4C\Z0 or pressing those keys"\
-                          "multiple times. Furthermore, you can use the"\
-                          "\Z4Exit\Z0 button on this and many of the"\
+        dlg_notice=$(echo "You can \Z1cancel\Z0 this interactive" \
+                          "mode at any time either by holding" \
+                          "\Z4Ctrl\Z0+\Z4C\Z0 or pressing those keys" \
+                          "multiple times. Furthermore, you can use the" \
+                          "\Z4Exit\Z0 button on this and many of the" \
                           "following dialogs.")
         dialog $dlg_shadow --title "Salomon interactive dialogs notice" \
                            --colors --yes-label "Proceed" --no-label "Exit" \
                            --yesno "${dlg_text}${dlg_notice}" 13 60
     else
         dlg_text=$(sed -e "s/\\\Z[0-9]//g" <<< "$dlg_text")
-        dlg_notice=$(echo "You can cancel this interactive mode using"\
-                          "the 'Exit' button on this and many of the"\
+        dlg_notice=$(echo "You can cancel this interactive mode using" \
+                          "the 'Exit' button on this and many of the" \
                           "following dialogs.")
         whiptail --title "Salomon interactive dialogs notice" \
                  --yes-button "Proceed" --no-button "Exit" \

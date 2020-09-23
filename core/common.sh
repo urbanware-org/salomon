@@ -234,18 +234,18 @@ confirm() {
 debug_notification() {
     echo
     print_line "*" 1
-    print_line "${cl_yl}This version of Salomon has been modified for debug "\
-               "purposes."
+    print_line "${cl_yl}This version of Salomon has been modified for " \
+               "debug purposes."
     print_line
-    print_line "${cl_n}The '${cl_lc}debug${cl_n}' sub-directory contains "\
+    print_line "${cl_n}The '${cl_lc}debug${cl_n}' sub-directory contains " \
                "script files which will be loaded when"
-    print_line "${cl_n}proceeding. This means that functions and variables "\
+    print_line "${cl_n}proceeding. This means that functions and variables " \
                "defined in the core"
-    print_line "${cl_n}modules will be overwritten by those debug scripts"\
+    print_line "${cl_n}modules will be overwritten by those debug scripts " \
                "which may cause unusual"
     print_line "${cl_n}or faulty behavior."
     print_line
-    print_line "${cl_n}You can disable this notification by adding the "\
+    print_line "${cl_n}You can disable this notification by adding the " \
                "'${cl_lc}--debug${cl_n}' argument."
     print_line "*"
     echo
@@ -317,16 +317,16 @@ print_arg_list() {
     done
 
     echo -e "\e[0m\n"
-    echo -e "With the given information, the command line would look like"\
+    echo -e "With the given information, the command line would look like" \
             "this (without"
-    echo -e "'${cl_lc}--dialog${cl_n}' or '${cl_lc}--interactive${cl_n}'"\
+    echo -e "'${cl_lc}--dialog${cl_n}' or '${cl_lc}--interactive${cl_n}'" \
             "argument):"
     echo
     echo -e "    ${cl_yl}$arg_list${cl_n}"
     echo
-    echo "In case you are on text-based user interface and cannot select and"\
-         "copy the"
-    echo "above command, it has also been written into the following"\
+    echo "In case you are on text-based user interface and cannot select" \
+         "and copy the"
+    echo "above command, it has also been written into the following" \
          "temporary file:"
     echo
     echo -e "    ${cl_yl}$arg_temp${cl_n}"
