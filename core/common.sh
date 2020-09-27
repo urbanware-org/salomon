@@ -355,7 +355,7 @@ read_config_file() {
 read_filter() {
     (grep -v "^#" | grep "#") < "$filter_file" &>/dev/null
     if [ $? -eq 0 ]; then
-        usage "The filter pattern must not contain any hashes"
+        usage "The filter pattern must not contain any hashes ('#')"
     fi
 
     filter_pattern=""
