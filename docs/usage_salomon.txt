@@ -11,19 +11,19 @@ USAGE (salomon.sh)
              2.3.1  Color config files
              2.3.2  Highlight filter terms
              2.3.3  Highlight whole lines
-             2.3.4  No colorization and hightlighting
           2.4  Config file paths
-          2.5  File paths containing certain characters
+          2.5  File paths containing spaces and special characters
              2.5.1  Whitespaces
              2.5.2  Quotation marks
              2.5.3  Backslashes
           2.6  Interactive dialogs
-        3.  Processing an input file
+        3.  Process input files
           3.1  Relevant keystrokes
-          3.2  Monitor the file
-          3.3  Analyze the file
+          3.2  Monitor a file
+          3.3  Analyze a file
           3.4  Multiple input files
-          3.5  Non-existent input file path
+          3.5  Merge multiple input files
+          3.6  Input file without path
         4.  Applying a filter
           4.1  Filter pattern
           4.2  Filter config file
@@ -66,8 +66,8 @@ USAGE (salomon.sh)
 
             In first place, Salomon has been developed to monitor and analyze
             files by colorizing lines which contain certain terms (which can
-            also be highlighted) to get a fast overview of the contents (for
-            example to easily detect error messages inside log files).
+            also be additionally highlighted) to get a fast overview of the
+            contents (e.g. to easily detect error messages inside log files).
 
             2.3.1 Color config files
 
@@ -79,39 +79,34 @@ USAGE (salomon.sh)
 
             2.3.2 Highlight filter terms
 
-                The '--highlight-matches' command-line argument allows to
-                additionally highlight the filter terms inside the
-                corresponding lines (if a filter was given) by inverting
-                their colors (sort of marker pen like). It can be used with
-                and without a color config.
+                The '--highlight-matches' command-line argument allows to also
+                highlight the filter terms inside the corresponding lines by
+                inverting their colors (sort of marker pen like). It requires
+                a filter, but can be used with as well as without a color
+                config file.
 
-                You may also use '--highlight-upper', which works the same way
-                and additionally switches the letters of the filter terms to
-                uppercase.
+                You may also use '--highlight-upper' instead, which works the
+                same way and additionally switches the letters of the filter
+                terms to uppercase.
 
             2.3.3 Highlight whole lines
 
                 Instead of only highlighting the filter terms, you can also
                 highlight the whole line using '--highlight-all'. This does
-                neither require a color config nor a filter.
+                neither require a color config file nor a filter.
 
-            2.3.4 No colorization and hightlighting
-
-                If you do not need any colorization and highlighting, you may
-                use the native shell commands and tools such as 'cat', 'grep'
-                and 'tail' instead which are faster and usually already
-                installed by default.
+                If you want to remove the trailing whitespaces used to fill
+                the highlighted lines, add the '--cut-off' argument.
 
         2.4 Config file paths
 
-            Since version 1.1.1 you do not have to give the full path to the
-            config files for Salomon if these are located in the corresponding
-            sub-directories.
+            You do not have to give the full path to the config files for
+            Salomon if these are located in the corresponding sub-directories.
 
             So, in case you only give the file name (instead of the path) for
             the color or filter config like this:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log -c colors.cfg \
+                ./salomon.sh -a monitor -i /var/log/foobar.log -c colors.cfg \
                              -f filter.cfg
 
             Salomon will first check the current working directory for these
@@ -119,16 +114,21 @@ USAGE (salomon.sh)
             inside the config sub-directories ('colors' and 'filters') of the
             Salomon script directory.
 
-        2.5 File paths containing certain characters
+        2.5 File paths containing spaces and special characters
 
-            Paths which contain spaces must either be enclosed with (single or
-            or double) quotes or given with escaped whitespaces.
+            Usually, paths containing spaces and special characters are simply
+            enclosed with either single (') or double (") quotes.
 
-            Escaping also applies to special characters such as quotes or
-            backslashes inside the file name.
+            If you do not want to enclose the whole path for some reason, you
+            have to escape spaces as well as special characters such as quotes
+            or backslashes inside the file name.
+
+            Notice that each of those characters must be escaped which also
+            applies to consecutive ones.
 
             Due to the fact, that backslashes are escape characters, it is
-            most unlikely that a file path contains one.
+            most unlikely that a file path contains any. However, if it does,
+            backslashes must also be escaped.
 
             Below you can find a few examples of escaped characters.
 
@@ -136,61 +136,70 @@ USAGE (salomon.sh)
 
                 Single space:
 
-                    File path:  /tmp/server mails.log
-                    Escaped:    /tmp/server\ mails.log
+                    File path:  /home/johndoe/server mails.log
+                    Escaped:    /home/johndoe/server\ mails.log
 
                 Multiple spaces:
 
-                    File path:  /tmp/server user logins.log
-                    Escaped:    /tmp/server\ user\ logins.log
+                    File path:  /home/johndoe/server user logins.log
+                    Escaped:    /home/johndoe/server\ user\ logins.log
 
                 Multiple spaces (consecutively):
 
-                    File path:  /tmp/server   user logins.log
-                    Escaped:    /tmp/server\ \ \ user\ logins.log
+                    File path:  /home/johndoe/server   user logins.log
+                    Escaped:    /home/johndoe/server\ \ \ user\ logins.log
 
             2.5.2 Quotation marks
 
                 Single quotes:
 
-                    File path:  /tmp/output of 'tail'.log
-                    Escaped:    /tmp/output\ of\ \'tail\'.log
+                    File path:  /home/johndoe/output of 'tail'.log
+                    Escaped:    /home/johndoe/output\ of\ \'tail\'.log
 
                 Double quotes:
 
-                    File path:  /tmp/output of "tail".log
-                    Escaped:    /tmp/output\ of\ \"tail\".log
+                    File path:  /home/johndoe/output of "tail".log
+                    Escaped:    /home/johndoe/output\ of\ \"tail\".log
 
             2.5.3 Backslashes
 
                 Most unlikely, but just in case:
 
-                    File path:  /tmp/foo\bar.log
-                    Escaped:    /tmp/foo\\bar.log
+                    File path:  /home/johndoe/foo\bar.log
+                    Escaped:    /home/johndoe/foo\\bar.log
 
         2.6 Interactive dialogs
 
-            Since version 1.9.0 you can use interactive dialogs instead of or
-            in combination with command-line arguments by giving either the
-            '--dialogs' or '--interactive' argument:
+            You can use interactive dialogs instead of or in combination with
+            command-line arguments by giving either the '--interactive' or
+            '--dialogs' argument:
 
                 ./salomon.sh --dialogs
 
             However, if you give further arguments like this
 
-                ./salomon.sh --dialogs -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg
+                ./salomon.sh --dialogs -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg
 
             the values will be automatically applied to the dialogs. For
             example, the dialog window asking for the input file will already
-            contain '/tmp/foobar.log', which can still be changed.
+            contain '/var/log/foobar.log', which can still be changed.
 
-            Salomon supports the dialog programs 'dialog' and 'whiptail'. You
-            can set the one you want to use inside the 'salomon.cfg' file.
+            The dialogs inside the text-based user interface can be displayed
+            using the tools 'dialog' and 'whiptail'. By default, Salomon does
+            automatically detect which of both is installed and uses the
+            corresponding one. If both are, 'dialog' is being preferred.
 
-            Furthermore, you can set which dialogs should be shown when using
-            interactice mode. For example, if you want to disable the welcome
-            dialog, edit 'salomon.cfg' and change the value of the option
+            However, you also can explicitly set the one that should be used
+            inside the 'salomon.cfg' config file. For example, if you want to
+            only use 'whiptail', edit the file and set the value of the option
+            'dialog_program' from 'auto' to 'whiptail':
+
+                dialog_program=whiptail
+
+            Furthermore, inside that config file you can set which dialogs
+            should be shown when using interactive mode. For example, if you
+            want to disable the welcome dialog change the value of the option
 
                 dialog_show_welcome=1
 
@@ -198,10 +207,9 @@ USAGE (salomon.sh)
 
                 dialog_show_welcome=0
 
-    3. Processing input file
+    3. Process input files
 
-        The following examples use a color config file. See section 2.3 for
-        details.
+        There are different ways to process the given input file or files.
 
         3.1 Relevant keystrokes
 
@@ -209,75 +217,102 @@ USAGE (salomon.sh)
             canceled at any time by pressing the universal and well-known
             <Ctrl>+<C> keystroke.
 
-            Furthermore, the Bash shell also provides built-in keystrokes to
-            pause ("freeze") the output and, of course, to resume again.
-            Notice that they are part of the Bash.
-
             By pressing <Ctrl>+<S> the output freezes until defreezing it
-            again using <Ctrl>+<Q> or <Return>.
+            again using <Ctrl>+<Q>.
+
+            Notice that when in monitoring mode no lines will be lost. As soon
+            as you defreeze the output, the lines that would have been shown
+            in the meantime will be printed afterwards.
 
             Salomon also provides an optional pause feature based on the
             number of output lines, see section 8 below.
 
-        3.2 Monitor the file
+        3.2 Monitor a file
 
             This feature uses the follow mode of the 'tail' utility to return
             the lines of the file and colorizes the output with user-defined
             colors. The file will be monitored until the user cancels the
             process.
 
-            For example, if you want to monitor the file '/tmp/foobar.log'
-            using the file '/tmp/colors.cfg' to colorize certain lines, type:
+            For example, to monitor the file '/var/log/foobar.log' using the
+            color file 'log_colors.cfg' to colorize certain lines:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg
 
             Alternatively, you can also give the '--monitor' command-line
-            argument instead of '-a monitor'.
+            argument:
 
-        3.3 Analyze the file
+                ./salomon.sh --monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg
+
+        3.3 Analyze a file
 
             Instead of monitoring a file, it is also possible to analyze it.
             This will simply return its lines and colorize certain of them,
             then exit.
 
-            For example, if you want to analyze the file '/tmp/foobar.log'
-            using the file '/tmp/colors.cfg' to colorize certain lines, type:
+            For example, to analyze the file '/var/log/foobar.log' using the
+            color file 'log_colors.cfg' to colorize certain lines:
 
-                ./salomon.sh -a analyze -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg
+                ./salomon.sh -a analyze -i /var/log/foobar.log \
+                             -c log_colors.cfg
 
             Alternatively, you can also give the '--analyze' command-line
-            argument instead of '-a analyze'.
+            argument:
+
+                ./salomon.sh --analyze -i /var/log/foobar.log \
+                             -c log_colors.cfg
 
         3.4 Multiple input files
 
             You can also provide multiple (two or more) input files at once.
 
-            For example, if you want to monitor the files '/tmp/foo.log' and
-            and '/tmp/bar.log' using the file '/tmp/colors.cfg' to colorize
-            certain lines, type:
+            When monitoring multiple files a separator will be displayed that
+            shows to which file a new line was last added and when analyzing
+            they will simply be processed one by another.
 
-                ./salomon.sh -a monitor -i /tmp/foo.log -i /tmp/bar.log \
-                             -c /tmp/colors.cfg
+            For example, to monitor '/var/log/foo.log' and '/var/log/bar.log'
+            using the color file 'log_colors.cfg' to colorize certain lines:
 
-        3.5 Non-existent input file path
+                ./salomon.sh -a monitor -c log_colors.cfg \
+                             -i /var/log/foo.log -i /var/log/bar.log
+
+            Notice that the '-i' argument is required for each input file
+            given.
+
+        3.5 Merge multiple input files
+
+            This feature is primarily intended for analyzing multiple files.
+
+            Usually, the files are processed one after another by default.
+            However, in some cases it is useful to be able to merge several
+            log files of the same type (e.g. mail logs) into one, especially
+            when working with timestamps.
+
+            This can simply be done using the '--merge' argument. For example:
+
+                ./salomon.sh -a monitor -c log_colors.cfg --merge \
+                             -i /var/log/maillog_1.log \
+                             -i /var/log/maillog_2.log \
+                             -i /var/log/maillog_3.log
+
+            When using '--merge' with monitoring mode, it simply removes the
+            file separators from the output.
+
+        3.6 Input file without path
 
             In case a given input file path does not exist, Salomon also
             checks the default log file path '/var/log' for the file.
 
             For example, if you execute the following command
 
-                ./salomon.sh -a monitor -i foo.log -c /tmp/colors.cfg
+                ./salomon.sh -a monitor -i foobar.log
 
-            and the file 'foo.log' does not exist inside the current working
-            directory, Salomon also checks for '/var/log/foo.log'. If that
-            file exists, it will be monitored.
+            and the given file 'foobar.log' does not exist inside the current
+            working directory, Salomon also checks for '/var/log/foobar.log'.
 
     4. Applying a filter
-
-        The following examples use a color config file. See section 2.3 for
-        details.
 
         It is possible to filter the output to e.g. only return lines that
         contain certain terms. There is also the optional '--ignore-case'
@@ -291,40 +326,40 @@ USAGE (salomon.sh)
             For example, to only return lines that contain the term "error",
             you can use the filter argument as follows:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg -f error
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg -f error
 
-            The pattern also allows spaces, but when using spaces the criteria
+            The pattern also allows spaces, but when using such the criteria
             must be enclosed either with single (') or double (") quotes, for
             example:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg -f "error while"
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg -f "error while"
 
             This will return lines that contain the term "error while", but no
             lines which contain only one of those words.
 
-            In case this does not work properly, you may try escaping the
-            space (or all of them if there are multiple) using a backslash
-            like this:
+            In case this does not work properly for whatever reason, you may
+            try escaping the space (each of them if there are multiple) using
+            a backslash like this:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg -f "error\ while"
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg -f "error\ while"
 
             Furthermore, the pattern allows multiple terms. These must be
             separated with semicolons and be enclosed either with single (')
             or double (") quotes, for example:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg -f "error;warning;success"
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg -f "error;warning;success"
 
             This will return lines that contain one of those terms.
 
             A combination of spaces and multiple terms inside the pattern also
             is supported:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg \
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg \
                              -f "error while;warning;success"
 
         4.2 Filter config file
@@ -337,83 +372,87 @@ USAGE (salomon.sh)
             file named 'sample_filter.cfg'. This file contains usage examples
             how to filter the output.
 
-            For example, to use the file '/tmp/filter.cfg' as filter pattern,
-            type:
+            For example, to use that file as filter pattern:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg -f /tmp/filter.cfg
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg -f sample_filter.cfg
 
-            Please notice that in case the file does not exist, the script
-            will interpret the given path as a pattern instead of a file path.
+            Notice that in case the file does not exist, the script will
+            interpret the given path as a pattern instead of a file path.
 
     5. Exclude lines
 
-        For example, to exclude all lines containing the string "example",
-        type:
+        Sometimes it makes sense to exclude lines to get a clearer output.
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+        For example, to exclude all lines containing the string "example":
+
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -e example
 
         The exclude pattern also allows spaces, including leading and trailing
         ones. When using spaces, the string must be enclosed either with
         single (') or double (") quotes, for example:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -e "example for"
 
         This will exclude lines that contain the term "example for", but no
         lines which contain only one of those words.
 
-        In case this does not work properly, you may try escaping the space
-        (or all of them if there are multiple) using a backslash like this:
+        In case this does not work properly for whatever reason, you may try
+        escaping the space (each of them if there are multiple) using a
+        backslash like this:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -e "example\ for"
 
         Furthermore, the pattern allows multiple exclude terms. These must be
         separated with semicolons and be enclosed either with single (') or
         double (") quotes, for example:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -e "example;foo;bar"
 
-        This will exclude lines that contain one of those terms.
+        This will exclude lines that contain at least one of those terms.
 
         A combination of spaces and multiple terms inside the exclude pattern
         also is supported:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -e "example for;foo;bar"
 
     6. Remove certain strings
 
-        For example, to remove the string "example" from all output lines,
-        type:
+        In some case it also makes sense to remove strings to get a clearer
+        output.
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+        For example, to remove the string "example" from all output lines:
+
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -r example
 
         The remove pattern also allows spaces, including leading and trailing
         ones. When using spaces, the string must be enclosed either with
         single (') or double (") quotes, for example:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -r "example for"
 
         This will remove the string "example for", but not just one of those
         words.
 
-        In case this does not work properly, you may try escaping the space
-        (or all of them if there are multiple) using a backslash like this:
+        In case this does not work properly for whatever reason, you may try
+        escaping the space (each of them if there are multiple) using a
+        backslash like this:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -r "example\ for"
 
         Furthermore, the pattern allows multiple remove terms. These must be
         separated with semicolons and be enclosed either with single (') or
         double (") quotes, for example:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -r "example;foo;bar"
 
         This will remove all of the given terms from the corresponding lines.
@@ -421,32 +460,33 @@ USAGE (salomon.sh)
         A combination of spaces and multiple terms inside the remove pattern
         also is supported:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log -c /tmp/colors.cfg \
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
                          -r "example for ;foo;bar"
 
     7. Head and tail feature
 
-        Notice that both features do not work with multiple input files.
+        Notice that both features do not work with multiple input files. When
+        analyzing a large file it may take a while until the whole file has
+        been printed on the output.
+
+        Salomon provides are two arguments to simply return a certain amount
+        of lines.
 
         7.1 Head feature
 
-            When analyzing large files it may take a while until the whole
-            file has been printed on the output. For example, if you just
-            need the first 30 lines of a log file, you can use the '--head'
-            command-line argument:
+            For example, if you just need the first 30 lines of a log file,
+            you can use the '--head' command-line argument:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg --head 30
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg --head 30
 
         7.2 Tail feature
 
-            When analyzing large files it may take a while until the whole
-            file has been printed on the output. For example, if you just
-            need the last 30 lines of a log file, you can use the '--tail'
-            command-line argument:
+            For example, if you just need the last 30 lines of a log file, you
+            can use the '--tail' command-line argument:
 
-                ./salomon.sh -a monitor -i /tmp/foobar.log \
-                             -c /tmp/colors.cfg --tail 30
+                ./salomon.sh -a monitor -i /var/log/foobar.log \
+                             -c log_colors.cfg --tail 30
 
     8. Pause output
 
@@ -458,21 +498,17 @@ USAGE (salomon.sh)
         For example, to pause the output after 30 lines, the command would
         look like this:
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log --pause 30
+            ./salomon.sh -a monitor -i /var/log/foobar.log --pause 30
 
         When you give 'auto' instead of a number, Salomon determines the
         height of the terminal (number of lines) and pauses based on that
         value.
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log --pause auto
+            ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
 
         When the corresponding number of lines is reached, a typical "Press
         any key to continue" message appears. As this already suggests, the
         output continues after pressing a key.
-
-        The Return and Enter keys have a different behavior than the others.
-        If you press one of them, the previous "Press any key to continue"
-        prompt will be kept.
 
         However, you should avoid pressing certain keys such as the delete
         key, arrow keys, F-keys and the right-click keyboard shortcut, as this
@@ -480,26 +516,28 @@ USAGE (salomon.sh)
 
     9. Export output into a file
 
-        Since version 1.9.6 you can simultaneously write the output of Salomon
-        into a file including the colors and highlighting.
+        You can simultaneously write the output of Salomon into a file
+        including the colors and highlighting.
 
         The purpose of this feature is that you have an exact copy of the
-        relevant output displayed on the screen without requiring the original
-        log file and the appropriate Salomon command-line arguments.
+        relevant output displayed on the screen requiring neither the original
+        log file nor the appropriate Salomon command-line arguments.
 
         For example, to export the output of the following command
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log \
-                         -c /tmp/colors.cfg -f /tmp/filter.cfg
+            ./salomon.sh -a monitor -i /var/log/foobar.log \
+                         -c log_colors.cfg
 
-        into the file '/tmp/export.log', the command would like this:
+        into the file '/home/johndoe/export.log':
 
-            ./salomon.sh -a monitor -i /tmp/foobar.log \
-                         -c /tmp/colors.cfg -f /tmp/filter.cfg \
-                         --export-file /tmp/export.log
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
+                         --export-file /home/johndoe/export.log
 
         Now, by using e.g. 'cat' you can display the exported data as seen in
-        the output of Salomon. However, editing the file with an editor will
-        not work, due to the fact, that the editor will (or should) also print
-        the color and highlighting codes instead of interpreting them.
+        the output. You do not even need Salomon for that as the exported file
+        contains the required color and highlighting codes.
+
+        However, editing the file with an editor will not work, due to the
+        fact, that the editor will (or should) also print these codes instead
+        of interpreting them.
 
