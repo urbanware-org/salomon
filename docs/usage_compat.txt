@@ -27,10 +27,6 @@ USAGE (compat.sh)
         Due to the shebang in the header of each script file, each component
         uses the Bash shell, even if the script is being run on another shell.
 
-        In case the scripts will not run and return a "bad interpreter" error,
-        simply run the included shebang adjustment script. Further information
-        can be found inside the included documentation for that script.
-
     3. Compatibility check
 
         To check if Salomon will work in the current environment, simply run
