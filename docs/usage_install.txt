@@ -13,7 +13,7 @@ USAGE (install.sh)
 
     1. Definition
 
-        The Salomon installation script allows to install or uninstall the
+        The Salomon installation script allows to install and uninstall the
         project, which is optional and not mandatory in order to use it.
 
     2. General stuff
@@ -61,9 +61,9 @@ USAGE (install.sh)
 
     4. Run the installed Salomon
 
-        After installing Salomon, it can simply be run by typing its name in
-        lowercase (without a trailing '.sh') followed by the arguments to use.
-        For example:
+        After installing Salomon, the main script can be run by executing the
+        'salomon' command (without a trailing '.sh') followed by the arguments
+        to use. For example:
 
             salomon --help
 
