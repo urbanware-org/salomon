@@ -33,7 +33,13 @@ USAGE (salomon.sh)
           7.1  Head feature
           7.2  Tail feature
         8.  Pause output
-        9.  Export output into a file
+          8.1  Prompt to continue
+          8.2  Prompt before exit
+        9.  Reduce the output speed
+          9.1  Wait after printing a colorized line
+          9.2  Slow down the process in general
+       10.  Force text color
+       11.  Export output into a file
 
     1. Definition
 
@@ -77,23 +83,25 @@ USAGE (salomon.sh)
                 colors. This sample config file also contains some simple
                 usage examples how to do this.
 
+                The color files must be given using the '--color-file' (or
+                '-c') argument.
+
             2.3.2 Highlight filter terms
 
-                The '--highlight-matches' command-line argument allows to also
-                highlight the filter terms inside the corresponding lines by
-                inverting their colors (sort of marker pen like). It requires
-                a filter, but can be used with as well as without a color
-                config file.
+                The '--highlight-matches' (or '-hm') command-line argument
+                allows to also highlight the filter terms inside by inverting
+                their colors (sort of marker pen like). It requires a filter,
+                but can be used with as well as without a color config file.
 
-                You may also use '--highlight-upper' instead, which works the
-                same way and additionally switches the letters of the filter
-                terms to uppercase.
+                You may also use '--highlight-upper' (or '-hu') instead, which
+                works the same way and additionally switches the letters of
+                the filter terms to uppercase.
 
             2.3.3 Highlight whole lines
 
                 Instead of only highlighting the filter terms, you can also
-                highlight the whole line using '--highlight-all'. This does
-                neither require a color config file nor a filter.
+                highlight the whole line using '--highlight-all' (or '-ha').
+                This does neither require a color config file nor a filter.
 
                 If you want to remove the trailing whitespaces used to fill
                 the highlighted lines, add the '--cut-off' argument.
@@ -211,6 +219,8 @@ USAGE (salomon.sh)
 
         There are different ways to process the given input file or files.
 
+        Input files must be given using the '--input-file' (or '-i') argument.
+
         3.1 Relevant keystrokes
 
             The Salomon process (no matter if monitoring or analyzing) can be
@@ -220,9 +230,10 @@ USAGE (salomon.sh)
             By pressing <Ctrl>+<S> the output freezes until defreezing it
             again using <Ctrl>+<Q>.
 
-            Notice that when in monitoring mode no lines will be lost. As soon
-            as you defreeze the output, the lines that would have been shown
-            in the meantime will be printed afterwards.
+            Notice that this is not a feature of Salomon, but a function of
+            the terminal device driver. When in monitoring mode no lines will
+            be lost. As soon as you defreeze the output, the lines that would
+            have been shown in the meantime will be printed afterwards.
 
             Salomon also provides an optional pause feature based on the
             number of output lines, see section 8 below.
@@ -278,8 +289,8 @@ USAGE (salomon.sh)
                 ./salomon.sh -a monitor -c log_colors.cfg \
                              -i /var/log/foo.log -i /var/log/bar.log
 
-            Notice that the '-i' argument is required for each input file
-            given.
+            Notice that the '-i' argument (or its long form '--input-file') is
+            required for each input file given.
 
         3.5 Merge multiple input files
 
@@ -290,15 +301,16 @@ USAGE (salomon.sh)
             log files of the same type (e.g. mail logs) into one, especially
             when working with timestamps.
 
-            This can simply be done using the '--merge' argument. For example:
+            This can simply be done using the '--merge' (or '-m') argument.
+            For example:
 
-                ./salomon.sh -a monitor -c log_colors.cfg --merge \
+                ./salomon.sh -a monitor -c log_colors.cfg -m \
                              -i /var/log/maillog_1.log \
                              -i /var/log/maillog_2.log \
                              -i /var/log/maillog_3.log
 
-            When using '--merge' with monitoring mode, it simply removes the
-            file separators from the output.
+            When using the merge feature with monitoring mode, it simply
+            removes the file separators from the output.
 
         3.6 Input file without path
 
@@ -316,10 +328,10 @@ USAGE (salomon.sh)
 
         It is possible to filter the output to e.g. only return lines that
         contain certain terms. There is also the optional '--ignore-case'
-        argument to ignore the case of the given filter pattern.
+        (or '-ic') argument to ignore the case of the given filter pattern.
 
-        The filter pattern also allows spaces, including leading and trailing
-        ones.
+        The pattern also allows spaces, including leading and trailing ones.
+        It must be given using the '--filter' (or '-f') argument.
 
         4.1 Filter pattern
 
@@ -384,6 +396,9 @@ USAGE (salomon.sh)
 
         Sometimes it makes sense to exclude lines to get a clearer output.
 
+        The exclude pattern must be given using the '--exclude' (or '-e')
+        argument.
+
         For example, to exclude all lines containing the string "example":
 
             ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg \
@@ -425,6 +440,9 @@ USAGE (salomon.sh)
 
         In some case it also makes sense to remove strings to get a clearer
         output.
+
+        The remove pattern must be given using the '--remove' (or '-r')
+        argument.
 
         For example, to remove the string "example" from all output lines:
 
@@ -475,46 +493,97 @@ USAGE (salomon.sh)
         7.1 Head feature
 
             For example, if you just need the first 30 lines of a log file,
-            you can use the '--head' command-line argument:
+            you can use the '--head' (or '-h') command-line argument:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg --head 30
+                             -c log_colors.cfg -h 30
 
         7.2 Tail feature
 
             For example, if you just need the last 30 lines of a log file, you
-            can use the '--tail' command-line argument:
+            can use the '--tail' (or '-t') command-line argument:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg --tail 30
+                             -c log_colors.cfg -t 30
 
     8. Pause output
 
-        When analyzing large files, the output can be very cluttered. With
-        the '--pause' argument you can pause the output either after user-
-        defined amount of lines or automatically by determining the number
-        of lines of the terminal Salomon is currently running in.
+        8.1 Prompt to continue
 
-        For example, to pause the output after 30 lines, the command would
-        look like this:
+            When analyzing large files, the output can be very cluttered. With
+            the '--pause' argument you can pause the output either after user-
+            defined amount of lines or automatically by determining the number
+            of lines of the terminal Salomon is currently running in.
 
-            ./salomon.sh -a monitor -i /var/log/foobar.log --pause 30
+            For example, to pause the output after 30 lines, the command would
+            look like this:
 
-        When you give 'auto' instead of a number, Salomon determines the
-        height of the terminal (number of lines) and pauses based on that
-        value.
+                ./salomon.sh -a monitor -i /var/log/foobar.log --pause 30
 
-            ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
+            When you give 'auto' instead of a number, Salomon determines the
+            height of the terminal (number of lines) and pauses based on that
+            value.
 
-        When the corresponding number of lines is reached, a typical "Press
-        any key to continue" message appears. As this already suggests, the
-        output continues after pressing a key.
+                ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
 
-        However, you should avoid pressing certain keys such as the delete
-        key, arrow keys, F-keys and the right-click keyboard shortcut, as this
-        will result in skipping pauses.
+            When the corresponding number of lines is reached, a typical
 
-    9. Export output into a file
+                Press any key to continue
+
+            message appears. As this already suggests, the output continues
+            after pressing a key.
+
+            However, you should avoid pressing certain keys such as the delete
+            key, arrow keys, F-keys and the right-click keyboard shortcut, as
+            this will result in skipping pauses.
+
+        8.2 Prompt before exit
+
+            If you are running Salomon e.g. via shortcut inside a terminal
+            window which closes automatically as soon as the Salomon process
+            gets canceled, you can use the '--prompt' (or '-p') argument which
+            prompts for pressing a key to exit.
+
+    9. Reduce the output speed
+
+        You can slow down the output on one hand to get a better overview, on
+        the other to decrease the CPU usage (depending on the amount of data
+        that is being processed).
+
+        9.1 Wait after printing a colorized line
+
+            The argument '--wait' (or '-w') allows to wait after printing a
+            colorized line. It requires a delay in seconds to be given. For
+            example to wait for 3 seconds after each colorized line printed:
+
+                ./salomon.sh -a monitor -i /var/log/foobar.log -w 3
+
+        9.2 Slow down the process in general
+
+            To do so, simply add the '--slow' (or '-s') argument:
+
+                ./salomon.sh -a monitor -i /var/log/foobar.log -s
+
+            This will slow down the output using a delay of 200 milliseconds
+            before printing the next line.
+
+            The delay can be modified using the additional '--delay' (or '-d')
+            argument. You can give a value between 100 and 900 milliseconds.
+            For example:
+
+                ./salomon.sh -a monitor -i /var/log/foobar.log -s -d 100
+
+    10. Force text color
+
+        If the colors inside a color config file are light and designed for
+        using them on a terminal with a dark background and you want to use it
+        in a terminal with a light background, you do not have to edit the
+        color config file.
+
+        Instead, you can use the '--force-dark' argument to force using dark
+        text colors or also '--force-light' for light ones.
+
+    11. Export output into a file
 
         You can simultaneously write the output of Salomon into a file
         including the colors and highlighting.
