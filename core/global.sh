@@ -23,6 +23,7 @@ set_global_variables() {
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
 
     action=""
+    analyze_less=0
     copy=0
     export_file=""
     export_log=0

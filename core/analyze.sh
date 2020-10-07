@@ -66,9 +66,19 @@ analyze_input_file() {
         input_file=$temp_file
     fi
 
+    if [ $analyze_less -eq 1 ]; then
+        less_file="${temp_file}.less"
+        rm -f $less_file
+    fi
+
     count=0
     while read line; do
-        print_output_line "$line"
+        if [ $analyze_less -eq 1 ]; then
+            print_output_line "$line" >> $less_file
+        else
+            print_output_line "$line"
+        fi
+
         if [ ! -z "$output" ]; then
             count=$(( count + 1 ))
         fi
@@ -92,30 +102,34 @@ analyze_input_file() {
             sleep 0.$delay
         fi
     done < $input_file
-    rm -f ${temp_file}*
 
-    if [ $header -eq 1 ]; then
-        echo
-        print_line "*" 1
-        print_line "${cl_lc}Reached the end of the given input file."
-        print_line
-        print_line_count
-        if [ $prompt -eq 1 ]; then
-            print_line
-            print_line "${cl_ly}Press any key to exit."
-            print_line "*"
-            read -n1 -r
-        else
-            print_line "*"
-            echo
-        fi
+    if [ $analyze_less -eq 1 ]; then
+        less -r < $less_file
     else
-        if [ $prompt -eq 1 ]; then
-            print_line "${cl_ly}Press any key to exit"
-            echo -e "\r\c"
-            read -n1 -r
+        if [ $header -eq 1 ]; then
+            echo
+            print_line "*" 1
+            print_line "${cl_lc}Reached the end of the given input file."
+            print_line
+            print_line_count
+            if [ $prompt -eq 1 ]; then
+                print_line
+                print_line "${cl_ly}Press any key to exit."
+                print_line "*"
+                read -n1 -r
+            else
+                print_line "*"
+                echo
+            fi
+        else
+            if [ $prompt -eq 1 ]; then
+                print_line "${cl_ly}Press any key to exit"
+                echo -e "\r\c"
+                read -n1 -r
+            fi
         fi
     fi
+    rm -f ${temp_file}*
 }
 
 # EOF

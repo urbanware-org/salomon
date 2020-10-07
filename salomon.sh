@@ -153,6 +153,10 @@ else
                 interactive=1
                 shift
             ;;
+            --less)
+                analyze_less=1
+                shift
+            ;;
             -m|--merge)
                 merge=1
                 shift
@@ -505,6 +509,11 @@ else
             usage "The '--merge' argument requires at least two input files"
         fi
 
+        # Use 'less' command to analyze input files
+        if [ $analyze_less -eq 1 ] && [ "$action" = "monitor" ]; then
+            usage "The '--less' argument cannot be used with monitoring mode"
+        fi
+
         # Pause output
         if [ $pause -eq 1 ] && [ $follow -eq 1 ]; then
             usage "The '--pause' argument cannot be used with monitoring mode"
@@ -605,7 +614,9 @@ if [ $header -eq 1 ]; then
 fi
 
 # Finally, process the given input file
-trap "cancel_process" 2 20
+if [ $analyze_less -eq 0 ]; then
+    trap "cancel_process" 2 20
+fi
 if [ $follow -eq 1 ]; then
     monitor_input_file
 else

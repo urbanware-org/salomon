@@ -284,19 +284,35 @@ print_output_header() {
         fi
     fi
 
-    print_line
-    print_line "\c"
-
-    echo -e "${cl_wh}Press" \
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
-            "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}S" \
-            "${cl_wh}to ${cl_yl}freeze${cl_wh} and" \
-            "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q" \
-            "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
-
+    if [ $analyze_less -eq 0 ]; then
+        print_line
+        print_line "\c"
+        echo -e "${cl_wh}Press" \
+                "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
+                "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
+                "${cl_lc}Ctrl${cl_ly}+${cl_lc}S" \
+                "${cl_wh}to ${cl_yl}freeze${cl_wh} and" \
+                "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q" \
+                "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
+    fi
     print_line "*"
     echo
+
+    if [ $analyze_less -eq 1 ]; then
+        print_line "*" 1
+        print_line "${cl_yl}Processing the input files and preparing their \c"
+        echo -e "output using the '${cl_lc}less${cl_yl}' command."
+        print_line "${cl_yl}Please wait. \c"
+        echo -e \
+          "${cl_ly}Depending on the amount of data this may take a while."
+        print_line
+        print_line "\c"
+        echo -e "${cl_wh}Press" \
+                "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
+                "${cl_wh}to ${cl_lr}cancel${cl_wh}."
+        print_line "*"
+        echo
+    fi
 }
 
 print_output_line() {
