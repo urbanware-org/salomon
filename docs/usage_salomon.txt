@@ -541,6 +541,10 @@ USAGE (salomon.sh)
             key, arrow keys, F-keys and the right-click keyboard shortcut, as
             this will result in skipping pauses.
 
+            Notice that there is no way to scroll up inside the output via
+            keyboard. The only way is by using the scroll wheel on the mouse
+            if latter is available in the environment.
+
         8.2 Prompt before exit
 
             If you are running Salomon e.g. via shortcut inside a terminal
