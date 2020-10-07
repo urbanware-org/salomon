@@ -275,7 +275,7 @@ deprecated_argument() {
         sleep 1
         wait_delay=$(( wait_delay - 1 ))
     done
-    echo "        Proceeding.                                 "
+    echo -e "${cl_lg}        Proceeding.                              ${cl_n}"
 }
 
 prepare_path() {
