@@ -510,8 +510,17 @@ else
         fi
 
         # Use 'less' command to analyze input files
-        if [ $analyze_less -eq 1 ] && [ "$action" = "monitor" ]; then
-            usage "The '--less' argument cannot be used with monitoring mode"
+        if [ $analyze_less -eq 1 ]; then
+            if [ "$action" = "monitor" ]; then
+                usage \
+                  "The '--less' argument cannot be used with monitoring mode"
+            else
+                # Disable options that do not make sense in this case.
+                pause=0   # the 'less' command handles that
+                prompt=0  # the 'less' command also handles that
+                slow=0    # would cause an unnecessary delay
+                wait=0    # would also cause an unnecessary delay
+            fi
         fi
 
         # Pause output
@@ -541,7 +550,6 @@ else
             elif [ $delay -gt 900 ]; then
                 delay=900
             fi
-
         else
             usage "The delay must be a number between 100 and 900"
         fi
