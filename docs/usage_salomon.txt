@@ -526,7 +526,7 @@ USAGE (salomon.sh)
 
             When you give 'auto' instead of a number, Salomon determines the
             height of the terminal (number of lines) and pauses based on that
-            value (like when using the 'more' tool).
+            value (like when using the 'more' command).
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
 
