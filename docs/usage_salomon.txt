@@ -52,7 +52,7 @@ USAGE (salomon.sh)
 
             The script requires command-line arguments to operate. You can get
             an overview of all arguments available, by simply running the main
-            script with the '--help' argument:
+            script with the '--help' (or '-?' argument):
 
                 ./salomon.sh --help
 
@@ -95,7 +95,7 @@ USAGE (salomon.sh)
 
                 You may also use '--highlight-upper' (or '-hu') instead, which
                 works the same way and additionally switches the letters of
-                the filter terms to uppercase.
+                the filter terms to upper case.
 
             2.3.3 Highlight whole lines
 
@@ -236,7 +236,7 @@ USAGE (salomon.sh)
             have been shown in the meantime will be printed afterwards.
 
             Salomon also provides an optional pause feature based on the
-            number of output lines, see section 8 below.
+            number of output lines, see section 8.1 below.
 
         3.2 Monitor a file
 
@@ -252,7 +252,7 @@ USAGE (salomon.sh)
                              -c log_colors.cfg
 
             Alternatively, you can also give the '--monitor' command-line
-            argument:
+            argument instead of '--action' (or '-a'):
 
                 ./salomon.sh --monitor -i /var/log/foobar.log \
                              -c log_colors.cfg
@@ -270,7 +270,7 @@ USAGE (salomon.sh)
                              -c log_colors.cfg
 
             Alternatively, you can also give the '--analyze' command-line
-            argument:
+            argument instead of '--action' (or '-a'):
 
                 ./salomon.sh --analyze -i /var/log/foobar.log \
                              -c log_colors.cfg
@@ -335,18 +335,18 @@ USAGE (salomon.sh)
 
         4.1 Filter pattern
 
-            For example, to only return lines that contain the term "error",
-            you can use the filter argument as follows:
+            For example, to only return lines that contain the term "error" no
+            matter if lower or upper case:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg -f error
+                             -c log_colors.cfg -f error -ic
 
             The pattern also allows spaces, but when using such the criteria
             must be enclosed either with single (') or double (") quotes, for
             example:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg -f "error while"
+                             -c log_colors.cfg -f "error while" -ic
 
             This will return lines that contain the term "error while", but no
             lines which contain only one of those words.
@@ -356,14 +356,14 @@ USAGE (salomon.sh)
             a backslash like this:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg -f "error\ while"
+                             -c log_colors.cfg -f "error\ while" -ic
 
             Furthermore, the pattern allows multiple terms. These must be
             separated with semicolons and be enclosed either with single (')
             or double (") quotes, for example:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg -f "error;warning;success"
+                             -c log_colors.cfg -f "error;warning;success" -ic
 
             This will return lines that contain one of those terms.
 
@@ -372,7 +372,7 @@ USAGE (salomon.sh)
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
                              -c log_colors.cfg \
-                             -f "error while;warning;success"
+                             -f "error while;warning;success" -ic
 
         4.2 Filter config file
 
@@ -387,7 +387,7 @@ USAGE (salomon.sh)
             For example, to use that file as filter pattern:
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
-                             -c log_colors.cfg -f sample_filter.cfg
+                             -c log_colors.cfg -f sample_filter.cfg -ic
 
             Notice that in case the file does not exist, the script will
             interpret the given path as a pattern instead of a file path.
@@ -397,7 +397,9 @@ USAGE (salomon.sh)
         Sometimes it makes sense to exclude lines to get a clearer output.
 
         The exclude pattern must be given using the '--exclude' (or '-e')
-        argument.
+        argument. Notice that the exclude term of is always processed case-
+        insensitive. So when e.g. giving the string "foobar", lines containing
+        "FOOBAR" will also be excluded.
 
         For example, to exclude all lines containing the string "example":
 
@@ -442,7 +444,9 @@ USAGE (salomon.sh)
         output.
 
         The remove pattern must be given using the '--remove' (or '-r')
-        argument.
+        argument. Notice that the exclude term of is always processed case-
+        insensitive. So when e.g. giving the string "foobar" also "FOOBAR"
+        will be excluded.
 
         For example, to remove the string "example" from all output lines:
 
@@ -522,7 +526,7 @@ USAGE (salomon.sh)
 
             When you give 'auto' instead of a number, Salomon determines the
             height of the terminal (number of lines) and pauses based on that
-            value.
+            value (like when using the 'more' tool).
 
                 ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
 
@@ -583,6 +587,10 @@ USAGE (salomon.sh)
         Instead, you can use the '--force-dark' argument to force using dark
         text colors or also '--force-light' for light ones.
 
+        However, this only works with the 16 pre-defined color names mentioned
+        inside the 'sample_colors.cfg' config file inside the 'colors' sub-
+        directory.
+
     11. Export output into a file
 
         You can simultaneously write the output of Salomon into a file
@@ -594,8 +602,7 @@ USAGE (salomon.sh)
 
         For example, to export the output of the following command
 
-            ./salomon.sh -a monitor -i /var/log/foobar.log \
-                         -c log_colors.cfg
+            ./salomon.sh -a monitor -i /var/log/foobar.log -c log_colors.cfg
 
         into the file '/home/johndoe/export.log':
 
