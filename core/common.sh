@@ -285,7 +285,6 @@ prepare_path() {
         if [ $? -ne 0 ]; then
             break
         fi
-
         path_input=$(sed -e "s/\/\//\//g" <<< $path_input)
     done
     path_prepared=$(sed -e "s/^ *//g;s/ *$//g;s/\ /\/\//g" <<< $path_input)
