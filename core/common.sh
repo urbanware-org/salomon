@@ -269,7 +269,6 @@ deprecated_argument() {
             "${cl_lr}removed${cl_n}"
     echo -e "        somewhen. You should use '${cl_lc}${arg_i}${cl_n}'" \
             "instead."
-    echo
     wait_delay=3
     for sec in $(seq 1 $wait_delay); do
         echo -e "        Proceeding in $wait_delay seconds.      \r\c"
