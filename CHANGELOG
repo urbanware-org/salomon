@@ -1,10 +1,21 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added the optional analyzation method using 'less' command.
+
+        * Revised some usage and notification messages (neglibile changes).
+        * Revised the code in general (removed unnecessary spaces as well as
+          blank lines and fixed inconsistent indentation).
+        * Revised the compatibility script (added a check for the 'less'
+          command).
+        * Revised the whole documentation (usage files).
+        
     Version 1.16.4 (2020-09-19)
 
         * Revised the installation script in general (added a clean install
-          mode, added further output messages and revised existing ones). 
+          mode, added further output messages and revised existing ones).
         * Revised the output header of the main script (added merge
           information).
         * Revised the testrun script (negligible changes).
@@ -26,7 +37,7 @@ CHANGELOG (Salomon)
     Version 1.16.2 (2020-04-05)
 
         + Added some command-line argument count checks (to prevent
-          conflicting arguments). 
+          conflicting arguments).
         + Added the merge functionality for the monitoring mode.
 
         * Revised the common core module (negligible changes).
