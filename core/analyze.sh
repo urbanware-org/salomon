@@ -72,15 +72,24 @@ analyze_input_file() {
     fi
 
     count=0
+    line_count=$(wc -l < $input_file)
     while read line; do
         if [ $analyze_less -eq 1 ]; then
             print_output_line "$line" >> $less_file
+            if [ $line_count -gt 0 ]; then
+                percent="$(( (count * 100) / line_count ))"
+            fi
         else
             print_output_line "$line"
         fi
 
         if [ ! -z "$output" ]; then
             count=$(( count + 1 ))
+            if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
+                echo -e "${cl_lb}$ld_char${cl_n} ${cl_lg}Progress:${cl_n}" \
+                        "$(printf "%3s" "$percent") %" \
+                        "(line $count of $line_count)\r\c"
+            fi
         fi
 
         if [ $pause -gt 0 ]; then
@@ -102,9 +111,17 @@ analyze_input_file() {
             sleep 0.$delay
         fi
     done < $input_file
+    if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
+        echo -e "${cl_lb}$ld_char${cl_n}${cl_lg}" \
+          "${cl_lg}Done.                                           ${cl_n}"
+        echo
+    fi
+
 
     if [ $analyze_less -eq 1 ]; then
-        less -r < $less_file
+        if [ -f $less_file ]; then
+            less -r < $less_file
+        fi
     else
         if [ $header -eq 1 ]; then
             echo
