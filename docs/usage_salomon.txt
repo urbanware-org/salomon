@@ -34,6 +34,8 @@ USAGE (salomon.sh)
           7.2  Tail feature
         8.  Pause output
           8.1  Prompt to continue
+             8.1.1  Using the integrated method
+             8.1.2  Using the 'less' command
           8.2  Prompt before exit
         9.  Reduce the output speed
           9.1  Wait after printing a colorized line
@@ -236,7 +238,7 @@ USAGE (salomon.sh)
             have been shown in the meantime will be printed afterwards.
 
             Salomon also provides an optional pause feature based on the
-            number of output lines, see section 8.1 below.
+            number of output lines, see section 8 below.
 
         3.2 Monitor a file
 
@@ -514,36 +516,57 @@ USAGE (salomon.sh)
 
         8.1 Prompt to continue
 
-            When analyzing large files, the output can be very cluttered. With
-            the '--pause' argument you can pause the output either after user-
-            defined amount of lines or automatically by determining the number
-            of lines of the terminal Salomon is currently running in.
+            There are two methods available, an integrated one and one using
+            the 'less' command.
 
-            For example, to pause the output after 30 lines, the command would
-            look like this:
+            8.1.1 Using the integrated method
 
-                ./salomon.sh -a monitor -i /var/log/foobar.log --pause 30
+                When analyzing large files, the output can be very cluttered.
+                With the '--pause' argument you can pause the output either
+                after user-defined amount of lines or automatically by
+                determining the number of lines of the terminal Salomon is
+                currently running in.
 
-            When you give 'auto' instead of a number, Salomon determines the
-            height of the terminal (number of lines) and pauses based on that
-            value (like when using the 'more' command).
+                For example, to pause the output after 30 lines, the command
+                would look like this:
 
-                ./salomon.sh -a monitor -i /var/log/foobar.log --pause auto
+                    ./salomon.sh -a monitor -i /var/log/foobar.log --pause 30
 
-            When the corresponding number of lines is reached, a typical
+                When you give 'auto' instead of a number, Salomon determines
+                the height of the terminal (number of lines) and pauses based
+                on that value (like when using the 'more' command).
 
-                Press any key to continue
+                    ./salomon.sh -a monitor -i /var/log/foobar.log \
+                                 --pause auto
 
-            message appears. As this already suggests, the output continues
-            after pressing a key.
+                When the corresponding number of lines is reached, a typical
 
-            However, you should avoid pressing certain keys such as the delete
-            key, arrow keys, F-keys and the right-click keyboard shortcut, as
-            this will result in skipping pauses.
+                    Press any key to continue
 
-            Notice that there is no way to scroll up inside the output via
-            keyboard. The only way is by using the scroll wheel on the mouse
-            if latter is available in the environment.
+                message appears. As this already suggests the output continues
+                after pressing a key.
+
+                However, you should avoid pressing certain keys such as the
+                delete key, arrow keys, F-keys and the right-click keyboard
+                shortcut, as this will result in skipping pauses.
+
+                Notice that when using this method there is no way to scroll
+                up inside the output via keyboard. The only way is by using
+                the scroll wheel on the mouse if latter is available in the
+                environment.
+
+            8.1.2 Using the 'less' command
+
+                Alternatively, Salomon can use the 'less' command to analyze
+                the output instead, which allows scrolling up and down through
+                the entire file using just the keyboard.
+
+                Simply add the '--less' argument to the command. For example:
+
+                    ./salomon.sh -a monitor -i /var/log/foobar.log --less
+
+                Notice that there is no interactive dialog for selecting this
+                method, so it must be given as command-line argument.
 
         8.2 Prompt before exit
 
