@@ -87,8 +87,8 @@ analyze_input_file() {
             count=$(( count + 1 ))
             if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
                 echo -e "${cl_lb}$ld_char${cl_n} ${cl_lg}Progress:${cl_n}" \
-                        "$(printf "%3s" "$percent") %" \
-                        "(line $count of $line_count)\r\c"
+                        "${cl_wh}$(printf "%3s" "$percent") %" \
+                        "${cl_ly}(line $count of $line_count)${cl_n}\r\c"
             fi
         fi
 
