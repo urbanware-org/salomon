@@ -515,9 +515,9 @@ else
                 usage \
                   "The '--less' argument cannot be used with monitoring mode"
             else
-                # Disable options that do not make sense in this case.
-                pause=0   # the 'less' command handles that
-                prompt=0  # the 'less' command also handles that
+                # Disable options that do not make sense in this case
+                pause=0   # gets handled by the 'less' command
+                prompt=0  # also gets handled by the 'less' command
                 slow=0    # would cause an unnecessary delay
                 wait=0    # would also cause an unnecessary delay
             fi
