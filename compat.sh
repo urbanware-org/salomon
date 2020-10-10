@@ -34,6 +34,7 @@ check_dialog="$missing"
 check_dirname="$failure"
 check_grep="$failure"
 check_kernel="$failure"
+check_less="$missing"
 check_paste="$failure"
 check_printf="$failure"
 check_readlink="$failure"
@@ -96,6 +97,13 @@ if [ $? -eq 0 ]; then
     check_grep="$success"
 else
     check_failed=1
+fi
+
+command -v lesfs &>/dev/null
+if [ $? -eq 0 ]; then
+    check_less="$success"
+else
+    check_missing=1
 fi
 
 command -v paste &>/dev/null
@@ -213,6 +221,8 @@ echo -e "Checking definition of functions .....................$line" \
 echo
 echo -e "Checking for optional 'dialog' command ...............$line" \
         "${check_dialog}"
+echo -e "Checking for optional 'less' command .................$line" \
+        "${check_less}"
 echo -e "Checking for optional 'whiptail' command .............$line" \
         "${check_whiptail}"
 echo
