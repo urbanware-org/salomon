@@ -99,7 +99,7 @@ else
     check_failed=1
 fi
 
-command -v lesfs &>/dev/null
+command -v less &>/dev/null
 if [ $? -eq 0 ]; then
     check_less="$success"
 else
