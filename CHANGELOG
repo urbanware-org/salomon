@@ -11,7 +11,7 @@ CHANGELOG (Salomon)
         * Revised the compatibility script (added a check for the 'less'
           command).
         * Revised the whole documentation (usage files).
-        
+
     Version 1.16.4 (2020-09-19)
 
         * Revised the installation script in general (added a clean install
