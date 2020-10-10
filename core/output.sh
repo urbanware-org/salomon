@@ -299,8 +299,8 @@ print_output_header() {
     echo
 
     if [ $analyze_less -eq 1 ]; then
-        print_line "${cl_yl}Processing the input files and preparing their \c"
-        echo -e "output using the '${cl_lc}less${cl_yl}' command."
+        print_line "${cl_yl}Processing the input files for analyzing them \c"
+        echo -e "using the '${cl_lc}less${cl_yl}' command."
         print_line "${cl_yl}Please wait. \c"
         echo -e \
           "${cl_ly}Depending on the amount of data this may take a while."
