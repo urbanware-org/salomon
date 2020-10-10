@@ -299,7 +299,6 @@ print_output_header() {
     echo
 
     if [ $analyze_less -eq 1 ]; then
-        print_line "*" 1
         print_line "${cl_yl}Processing the input files and preparing their \c"
         echo -e "output using the '${cl_lc}less${cl_yl}' command."
         print_line "${cl_yl}Please wait. \c"
@@ -310,8 +309,7 @@ print_output_header() {
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}."
-        print_line "*"
-        echo
+        print_line
     fi
 }
 
