@@ -516,12 +516,23 @@ USAGE (salomon.sh)
 
         8.1 Prompt to continue
 
-            There are two methods available, an integrated one and one using
-            the 'less' command.
+            When analyzing large files, the output can be very cluttered which
+            makes it difficult to keep track of information.
+
+            So, there are two methods available to pause the output using a
+            prompt to continue.
+
+            First, there is an integrated one which processes the input files
+            line by line, returning one after another. When the output reaches
+            the given limit, the prompt will be displayed.
+
+            Second, one using the 'less' command. With this method, Salomon
+            processes all input files first and returns the output as a whole
+            then. There is no output of the input files while processing, only
+            a progress information.         
 
             8.1.1 Using the integrated method
 
-                When analyzing large files, the output can be very cluttered.
                 With the '--pause' argument you can pause the output either
                 after user-defined amount of lines or automatically by
                 determining the number of lines of the terminal Salomon is
