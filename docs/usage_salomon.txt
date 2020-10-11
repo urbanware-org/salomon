@@ -277,6 +277,10 @@ USAGE (salomon.sh)
                 ./salomon.sh --analyze -i /var/log/foobar.log \
                              -c log_colors.cfg
 
+            When analyzing large files, you can pause the output to keep track
+            of the information from the output. For details see section 8.1
+            below.
+
         3.4 Multiple input files
 
             You can also provide multiple (two or more) input files at once.
@@ -517,24 +521,24 @@ USAGE (salomon.sh)
         8.1 Prompt to continue
 
             When analyzing large files, the output can be very cluttered which
-            makes it difficult to keep track of information.
+            makes it difficult to keep track of the information.
 
             So, there are two methods available to pause the output using a
             prompt to continue.
 
             First, there is an integrated one which processes the input files
             line by line, returning one after another. When the output reaches
-            the given limit, the prompt will be displayed.
+            the preferred number of lines, the prompt will be displayed.
 
             Second, one using the 'less' command. With this method, Salomon
             processes all input files first and returns the output as a whole
             then. There is no output of the input files while processing, only
-            a progress information.         
+            a progress information.
 
             8.1.1 Using the integrated method
 
                 With the '--pause' argument you can pause the output either
-                after user-defined amount of lines or automatically by
+                after a user-defined number of lines or automatically by
                 determining the number of lines of the terminal Salomon is
                 currently running in.
 
