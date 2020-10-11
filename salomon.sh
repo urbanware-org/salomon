@@ -511,15 +511,17 @@ else
 
         # Use 'less' command to analyze input files
         if [ $analyze_less -eq 1 ]; then
+            less_msg="The '--less' argument cannot be used"
             if [ "$action" = "monitor" ]; then
-                usage \
-                  "The '--less' argument cannot be used with monitoring mode"
-            else
-                # Disable options that do not make sense in this case
-                pause=0   # gets handled by the 'less' command
-                prompt=0  # also gets handled by the 'less' command
-                slow=0    # would cause an unnecessary delay
-                wait=0    # would also cause an unnecessary delay
+                usage "$less_msg with monitoring mode"
+            elif [ $pause -eq 1 ]; then
+                usage "$less_msg together with '--pause'"
+            elif [ $prompt -eq 1 ]; then
+                usage "$less_msg together with '-p' (or '--prompt')"
+            elif [ $slow -eq 1 ]; then
+                usage "$less_msg together with '-s' (or '--slow')"
+            elif [ ! "$wait_match" = "0" ]; then
+                usage "$less_msg together with '-w' (or '--wait')"
             fi
         fi
 
