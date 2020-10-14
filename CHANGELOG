@@ -3,7 +3,7 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
-        + Added the optional analyzation method using 'less' command.
+        + Added the optional analyzation method using the 'less' command.
 
         * Revised some usage and notification messages (neglibile changes).
         * Revised the code in general (removed unnecessary spaces as well as
