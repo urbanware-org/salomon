@@ -40,6 +40,7 @@ check_printf="$failure"
 check_readlink="$failure"
 check_sed="$failure"
 check_tail="$failure"
+check_tput="$failure"
 check_trap="$failure"
 check_wget="$missing"
 check_whiptail="$missing"
@@ -141,6 +142,13 @@ else
     check_failed=1
 fi
 
+command -v tput &>/dev/null
+if [ $? -eq 0 ]; then
+    check_tput="$success"
+else
+    check_failed=1
+fi
+
 command -v trap &>/dev/null
 if [ $? -eq 0 ]; then
     check_trap="$success"
@@ -210,6 +218,8 @@ echo -e "Checking for 'sed' command ...........................$line" \
         "${check_sed}"
 echo -e "Checking for 'tail' command ..........................$line" \
         "${check_tail}"
+echo -e "Checking for 'tput' command ..........................$line" \
+        "${check_tput}"
 echo -e "Checking for 'trap' command ..........................$line" \
         "${check_trap}"
 echo -e "Checking for 'wget' command ..........................$line" \
