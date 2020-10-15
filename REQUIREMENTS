@@ -12,6 +12,7 @@ REQUIREMENTS (Salomon)
 
         - coreutils (version 2.85 or higher is recommended)
         - grep (version 2.18 or higher is recommended)
+        - ncurses (version 6.1 or higher is recommended)
         - sed (version 2.50 or higher is recommended)
 
     Optional package requirements:
