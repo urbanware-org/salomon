@@ -128,6 +128,11 @@ if [ "$script_mode" = "install" ]; then
     echo    "information can be found inside the documentation file for" \
             "this script."
     echo
+else
+    if [ ! -f "$script_dir/salomon" ]; then
+        run_message="Please run this script"
+        usage "$run_message from the directory where Salomon is installed"
+    fi
 fi
 
 if [ $is_root -eq 0 ]; then
@@ -260,7 +265,6 @@ if [ $script_mode = "install" ]; then
             echo
         fi
     fi
-    echo
 else  # uninstall
     target_dir=$script_dir
     target="${cl_yl}${target_dir}${cl_n}"
@@ -290,24 +294,27 @@ else  # uninstall
     else
         if [ -d $target_dir ]; then
             rm -fR $target_dir &>/dev/null
+            echo
         else
             echo -e "${cl_lb}(does not exist)${cl_n}"
         fi
     fi
-    echo
 fi
 
+echo
 echo -e "Salomon has been ${script_mode}ed."
 if [ $is_root -eq 1 ]; then
     if [ $script_mode = "install" ]; then
         echo -e "You can now directly run the '${cl_yl}salomon${cl_n}'" \
                 "command in order to use it."
     fi
-else
-    if [ $script_mode = "install" ]; then
-        cd $target_dir
-        ln -s salomon.sh salomon &>/dev/null
-    fi
+fi
+if [ $script_mode = "install" ]; then
+    cd $target_dir
+    ln -s salomon.sh salomon &>/dev/null
+    echo
+    echo -e "In order to uninstall, run" \
+            "'${cl_yl}$target_dir/install.sh -u${cl_n}'."
 fi
 echo
 
