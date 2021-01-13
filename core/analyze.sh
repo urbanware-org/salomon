@@ -35,12 +35,6 @@ analyze_input_file() {
     done
 
     temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
-    egrep_pattern=""
-    if [ ! -z "$filter_list" ]; then
-        for filter_term in $filter_list; do
-            egrep_pattern="$egrep_pattern|$filter_term"
-        done
-    fi
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
         paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
