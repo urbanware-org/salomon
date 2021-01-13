@@ -292,18 +292,12 @@ prepare_path() {
 }
 
 print_arg_list() {
-    if [ $boxdrawing_chars -eq 1 ]; then
-        ln="═"
-    else
-        ln="="
-    fi
-
     arg_temp="/tmp/salomon_args_$$.txt"
     echo "$arg_list" > $arg_temp
 
     clear
     message="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
-    echo -e "${cl_dy}$ln$ln${message}\c"
+    echo -e "${cl_dy}$ln_dbl$ln_dbl${message}\c"
 
     if [ "$line_width" = "auto" ]; then
         term_cols=$(( $(tput cols) - 26 ))
@@ -312,7 +306,7 @@ print_arg_list() {
     fi
 
     for number in $(seq 1 $term_cols); do
-        echo -e "$ln\c"
+        echo -e "$ln_dbl\c"
     done
 
     echo -e "\e[0m\n"
@@ -363,6 +357,20 @@ read_filter() {
         filter_pattern="$filter_pattern;$line"
     done < $temp_file
     rm -f $temp_file
+}
+
+set_line_characters() {
+    if [ $boxdrawing_chars -eq 1 ]; then
+        ld_char="┃"     # character used at the beginning of header lines
+        ln="─"          # single line
+        ln_dbl="═"      # double line
+        fl="$ld_char "  # character used at the beginning of output lines
+    else
+        ld_char="*"     # use asterisk instead
+        ln="-"
+        ln_dbl="="
+        fl="| "
+    fi
 }
 
 usage() {

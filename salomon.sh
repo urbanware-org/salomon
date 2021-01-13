@@ -619,6 +619,7 @@ check_command grep grep
 check_command sed sed
 check_command tail coreutils
 
+set_line_characters
 if [ $header -eq 1 ]; then
     print_output_header
 fi

@@ -11,12 +11,6 @@
 #
 
 pause_output() {
-    if [ $boxdrawing_chars -eq 1 ]; then
-        ln="═"
-    else
-        ln="="
-    fi
-
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
     message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
     echo -e "${message}\c"
@@ -44,14 +38,12 @@ print_line() {
     fi
 
     if [ $boxdrawing_chars -eq 1 ]; then
-        ld_char="┃"
         if [ "$line_width" = "auto" ]; then
             term_cols=$(( $(tput cols) - 2 ))
         else
             term_cols=76
         fi
     else
-        ld_char="*"
         if [ "$line_width" = "auto" ]; then
             term_cols=$(( $(tput cols) ))
         else
@@ -318,15 +310,11 @@ print_output_line() {
     color_match=0
     count_total=$(( count_total + 1 ))
     filter_match=0
-    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$1")
+
+    line="${fl}$1"
+    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ $separator_line -eq 1 ]; then
-        if [ $boxdrawing_chars -eq 1 ]; then
-            ln="─"
-        else
-            ln="-"
-        fi
-
         grep "^==>.*<==$" <<< $1 &>/dev/null
         if [ $? -eq 0 ]; then
             string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
