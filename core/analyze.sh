@@ -111,7 +111,6 @@ analyze_input_file() {
         echo
     fi
 
-
     if [ $analyze_less -eq 1 ]; then
         if [ -f $less_file ]; then
             less -r < $less_file
