@@ -10,7 +10,7 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
-debug=1
+debug=0
 salomon_script_dir=$(dirname $(readlink -f $0) | sed -e "s/testrun//g")
 salomon_script="$salomon_script_dir/salomon.sh"
 salomon_testrun_log="/tmp/salomon_testrun_$$.log"
