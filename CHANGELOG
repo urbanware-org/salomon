@@ -1,6 +1,18 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.17.1 (2021-01-14)
+
+        + Added the optional leading line character feature.
+
+        * Revised the code in general (removed duplicates, unnecessary spaces
+          as well as blank lines and fixed inconsistent indentation).
+        * Revised the code to assign certain output characters (separate
+          global function).
+
+        # Fixed the filter term bug in analyze mode (terms with spaces were
+          not processed properly).
+
     Version 1.17.0 (2020-10-14)
 
         + Added the optional analyzation method using the 'less' command.
