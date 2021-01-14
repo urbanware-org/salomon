@@ -297,7 +297,7 @@ print_arg_list() {
 
     clear
     message="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
-    echo -e "${cl_dy}$ln_dbl$ln_dbl${message}\c"
+    echo -e "${cl_dy}$lnd_char$lnd_char${message}\c"
 
     if [ "$line_width" = "auto" ]; then
         term_cols=$(( $(tput cols) - 26 ))
@@ -306,7 +306,7 @@ print_arg_list() {
     fi
 
     for number in $(seq 1 $term_cols); do
-        echo -e "$ln_dbl\c"
+        echo -e "$lnd_char\c"
     done
 
     echo -e "\e[0m\n"
@@ -361,15 +361,15 @@ read_filter() {
 
 set_line_characters() {
     if [ $boxdrawing_chars -eq 1 ]; then
-        ld_char="┃"     # character used at the beginning of header lines
-        ln="─"          # single line
-        ln_dbl="═"      # double line
-        fl="$ld_char "  # character used at the beginning of output lines
+        ld_char="┃"           # leading character used for header lines
+        ln_char="─"           # character for single lines
+        lnd_char="═"          # character for dougble lines
+        ldg_char="$ld_char "  # leading character used for output lines
     else
-        ld_char="*"     # use asterisk instead
-        ln="-"
-        ln_dbl="="
-        fl="| "
+        ld_char="*"           # use asterisk instead
+        ln_char="-"
+        lnd_char="="
+        ldg_char="| "
     fi
 }
 

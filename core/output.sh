@@ -12,7 +12,7 @@
 
 pause_output() {
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
-    message="${cl_dy}$ln$ln${cl_ly}[$anykey${cl_ly}]${cl_dy}"
+    message="${cl_dy}$ln_char$ln_char${cl_ly}[$anykey${cl_ly}]${cl_dy}"
     echo -e "${message}\c"
 
     if [ "$line_width" = "auto" ]; then
@@ -22,7 +22,7 @@ pause_output() {
     fi
 
     for number in $(seq 1 $term_cols); do
-          echo -e "$ln\c"
+          echo -e "$ln_char\c"
     done
     echo -e "\r\c"
     read -n1 -r < /dev/tty
@@ -311,7 +311,7 @@ print_output_line() {
     count_total=$(( count_total + 1 ))
     filter_match=0
 
-    line="${fl}$1"
+    line="${ldg_char}$1"
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ $separator_line -eq 1 ]; then
@@ -325,9 +325,9 @@ print_output_line() {
             else
                 term_cols=$(( 79 - fp_len - 4))
             fi
-            echo -e "${cl_dy}$ln$ln${cl_ly}[${cl_yl}$fp${cl_ly}]${cl_dy}\c"
+            echo -e "${cl_dy}$ln_char$ln_char${cl_ly}[${cl_yl}$fp${cl_ly}]${cl_dy}\c"
             for number in $(seq 1 $term_cols); do
-                echo -e "$ln\c"
+                echo -e "$ln_char\c"
             done
             echo -e "${cl_n}"
             return
