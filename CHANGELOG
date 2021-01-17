@@ -1,6 +1,12 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised the installation script (revised the code in general and
+          added code to remove items which are not part of the official
+          release).
+
     Version 1.18.0 (2021-01-14)
 
         + Added the optional leading line character feature.
@@ -11,9 +17,6 @@ CHANGELOG (Salomon)
           global function).
         * Revised the compatibility script (added a check for the 'tput'
           command).
-        * Revised the installation script (revised the code in general and
-          added code to remove items which are not part of the official
-          release).
         * Revised the output of the compatibility script (negligible changes).
 
         # Fixed the filter term bug in analyze mode (terms with spaces were
