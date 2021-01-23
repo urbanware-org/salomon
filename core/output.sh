@@ -325,7 +325,8 @@ print_output_line() {
             else
                 term_cols=$(( 79 - fp_len - 4))
             fi
-            echo -e "${cl_dy}$ln_char$ln_char${cl_ly}[${cl_yl}$fp${cl_ly}]${cl_dy}\c"
+            fpc="${cl_yl}$fp${cl_ly}"
+            echo -e "${cl_dy}$ln_char$ln_char${cl_ly}[$fpc]${cl_dy}\c"
             for number in $(seq 1 $term_cols); do
                 echo -e "$ln_char\c"
             done
