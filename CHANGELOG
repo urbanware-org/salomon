@@ -11,8 +11,7 @@ CHANGELOG (Salomon)
 
         + Added the optional leading line character feature.
 
-        * Revised the code in general (remove duplicates, unnecessary spaces
-          as well as blank lines and fix inconsistent indentation).
+        * Revised the code in general (negligible changes).
         * Revised the code to assign certain output characters (separate
           global function).
         * Revised the code to check the values from the global config file
