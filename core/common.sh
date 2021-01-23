@@ -394,16 +394,17 @@ read_filter() {
 
 set_line_characters() {
     if [ $boxdrawing_chars -eq 1 ]; then
-        ld_char="┃"           # leading character used for header lines
-        ln_char="─"           # character for single lines
-        lnd_char="═"          # character for dougble lines
-        ldg_char="$ld_char "  # leading character used for output lines
+        ld_char="┃"     # leading character used for header lines
+        ln_char="─"     # character for single lines
+        lnd_char="═"    # character for double lines
+        ldg_char="│ "   # optional leading character used for output lines
     else
-        ld_char="*"           # use asterisk instead
+        ld_char="*"     # use asterisk instead of a line
         ln_char="-"
         lnd_char="="
         ldg_char="| "
     fi
+    prompt_char="■"
 
     if [ $leading_line_char -eq 0 ]; then
         ldg_char=""
