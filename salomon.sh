@@ -25,6 +25,7 @@ source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
 read_config_file; check_config
 set_global_variables
+set_line_characters
 
 # Script files stored inside the 'debug' sub-directory (if existing) will be
 # loaded after the included ones listed above. This allows to overwrite
@@ -619,7 +620,6 @@ check_command grep grep
 check_command sed sed
 check_command tail coreutils
 
-set_line_characters
 if [ $header -eq 1 ]; then
     print_output_header
 fi
