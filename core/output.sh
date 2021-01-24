@@ -12,7 +12,8 @@
 
 pause_output() {
     anykey="${cl_lr}Press ${cl_yl}any key${cl_n} to ${cl_lg}continue${cl_n}"
-    message="${cl_dy}$ln_char$ln_char${cl_ly}[$anykey${cl_ly}]${cl_dy}"
+    anykey="${cl_ly}[$anykey${cl_ly}]"
+    message="${cl_dy}$char_line_single$char_line_single$anykey${cl_dy}"
     echo -e "${message}\c"
 
     if [ "$line_width" = "auto" ]; then
@@ -22,7 +23,7 @@ pause_output() {
     fi
 
     for number in $(seq 1 $term_cols); do
-          echo -e "$ln_char\c"
+          echo -e "$char_line_single\c"
     done
     echo -e "\r\c"
     read -n1 -r < /dev/tty
@@ -52,9 +53,9 @@ print_line() {
     fi
 
     if [ -z "$1" ]; then
-        echo -e "${cl_lb}$ld_char${cl_n}"
+        echo -e "${cl_lb}$char_header_line_v${cl_n}"
     elif [ "$1" = "*" ]; then
-        if [ "$ld_char" = "*" ]; then
+        if [ "$char_header_line_v" = "*" ]; then
             echo -e "${cl_lb}\c"
             for number in $(seq 1 $term_cols); do
                 echo -e "*\c"
@@ -62,17 +63,17 @@ print_line() {
             echo -e "${cl_n}"
         else
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}$ctl_char\c"
+                echo -e "${cl_lb}$char_header_ctl\c"
             else
-                echo -e "${cl_lb}$cbl_char\c"
+                echo -e "${cl_lb}$char_header_cbl\c"
             fi
             for number in $(seq 1 $term_cols); do
-                echo -e "━\c"
+                echo -e "${char_header_line_h}\c"
             done
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}$ctr_char\c"
+                echo -e "${cl_lb}$char_header_ctr\c"
             else
-                echo -e "${cl_lb}$cbr_char\c"
+                echo -e "${cl_lb}$char_header_cbr\c"
             fi
             echo -e "${cl_n}"
         fi
@@ -81,7 +82,7 @@ print_line() {
         if [ $canceled -eq 1 ]; then
             lc="$prompt_char"
         else
-            lc="$ld_char"
+            lc="$char_header_line_v"
         fi
         echo -e "${cl_lb}$lc ${string}${2}${cl_n}"
     fi
@@ -316,7 +317,7 @@ print_output_line() {
     count_total=$(( count_total + 1 ))
     filter_match=0
 
-    line="${ldg_char}$1"
+    line="${char_line_leading}$1"
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ $separator_line -eq 1 ]; then
@@ -330,10 +331,10 @@ print_output_line() {
             else
                 term_cols=$(( 79 - fp_len - 4))
             fi
-            fpc="${cl_yl}$fp${cl_ly}"
-            echo -e "${cl_dy}$ln_char$ln_char${cl_ly}[$fpc]${cl_dy}\c"
+            fpc="${cl_ly}[${cl_yl}$fp${cl_ly}]"
+            echo -e "${cl_dy}$char_line_single$char_line_single$fpc${cl_dy}\c"
             for number in $(seq 1 $term_cols); do
-                echo -e "$ln_char\c"
+                echo -e "$char_line_single\c"
             done
             echo -e "${cl_n}"
             return
