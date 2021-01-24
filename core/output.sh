@@ -62,17 +62,17 @@ print_line() {
             echo -e "${cl_n}"
         else
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}┏\c"
+                echo -e "${cl_lb}$ctl_char\c"
             else
-                echo -e "${cl_lb}┗\c"
+                echo -e "${cl_lb}$cbl_char\c"
             fi
             for number in $(seq 1 $term_cols); do
                 echo -e "━\c"
             done
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}┓\c"
+                echo -e "${cl_lb}$ctr_char\c"
             else
-                echo -e "${cl_lb}┛\c"
+                echo -e "${cl_lb}$cbr_char\c"
             fi
             echo -e "${cl_n}"
         fi
