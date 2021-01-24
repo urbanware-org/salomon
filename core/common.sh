@@ -11,6 +11,7 @@
 #
 
 cancel_process() {
+    canceled=1
     echo
     if [ $header -eq 1 ]; then
         print_line "*" 1
