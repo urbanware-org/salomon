@@ -134,6 +134,7 @@ analyze_input_file() {
             fi
         else
             if [ $prompt -eq 1 ]; then
+                exit_prompt=1
                 print_line "${cl_ly}Press any key to exit"
                 echo -e "\r\c"
                 read -n1 -r

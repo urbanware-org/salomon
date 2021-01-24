@@ -31,7 +31,7 @@ cancel_process() {
             print_line "*"
         fi
     else
-        canceled=1
+        exit_prompt=1
         if [ $prompt -eq 1 ]; then
             trap - 2 20
             print_line "${cl_ly}Press any key to exit."

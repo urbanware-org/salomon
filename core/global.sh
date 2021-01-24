@@ -24,8 +24,8 @@ set_global_variables() {
 
     action=""
     analyze_less=0
-    canceled=0
     copy=0
+    exit_prompt=0
     export_file=""
     export_log=0
     follow=1

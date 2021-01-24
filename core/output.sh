@@ -32,6 +32,13 @@ pause_output() {
 
 print_line() {
     indent=30
+
+    if [ $exit_prompt -eq 1 ]; then
+        lc="$char_prompt"
+    else
+        lc="$char_header_line_v"
+    fi
+
     if [ -z "$2" ]; then
         line_leading=0
     else
@@ -53,9 +60,9 @@ print_line() {
     fi
 
     if [ -z "$1" ]; then
-        echo -e "${cl_lb}$char_header_line_v${cl_n}"
+        echo -e "${cl_lb}$lc${cl_n}"
     elif [ "$1" = "*" ]; then
-        if [ "$char_header_line_v" = "*" ]; then
+        if [ "$lc" = "*" ]; then
             echo -e "${cl_lb}\c"
             for number in $(seq 1 $term_cols); do
                 echo -e "*\c"
@@ -79,11 +86,6 @@ print_line() {
         fi
     else
         string=$(printf "%-${indent}s" "$1")
-        if [ $canceled -eq 1 ]; then
-            lc="$char_prompt"
-        else
-            lc="$char_header_line_v"
-        fi
         echo -e "${cl_lb}$lc ${string}${2}${cl_n}"
     fi
 }
