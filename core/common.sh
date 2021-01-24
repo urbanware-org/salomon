@@ -411,7 +411,7 @@ set_line_characters() {
         char_line_single="-"
         char_line_double="="
     fi
-    prompt_char="■"
+    char_prompt="■"
 
     if [ $leading_line_char -eq 0 ]; then
         char_line_leading=""

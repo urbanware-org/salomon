@@ -80,7 +80,7 @@ print_line() {
     else
         string=$(printf "%-${indent}s" "$1")
         if [ $canceled -eq 1 ]; then
-            lc="$prompt_char"
+            lc="$char_prompt"
         else
             lc="$char_header_line_v"
         fi
