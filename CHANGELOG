@@ -3,9 +3,13 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        * Revised the code in general (negligible changes).
         * Revised the installation script (revised the code in general and
           added code to remove items which are not part of the official
           release).
+
+        # Fixed the missing line bug when running in interactive mode when
+          displaying the command-line argument list.
 
     Version 1.18.0 (2021-01-14)
 
