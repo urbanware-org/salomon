@@ -297,7 +297,8 @@ deprecated_argument() {
     arg_g="$1"
     arg_i="$2"
 
-    echo -e "${cl_lb}notice:${cl_n} The given argument '${cl_lc}${arg_g}'" \
+    echo -e "${cl_lb}notice:${cl_n} The given argument" \
+            "'${cl_lc}${arg_g}${cl_n}'" \
             "${cl_n}is ${cl_yl}deprecated${cl_n} and will be" \
             "${cl_lr}removed${cl_n}"
     echo -e "        somewhen. You should use '${cl_lc}${arg_i}${cl_n}'" \
