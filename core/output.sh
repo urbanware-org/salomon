@@ -78,7 +78,12 @@ print_line() {
         fi
     else
         string=$(printf "%-${indent}s" "$1")
-        echo -e "${cl_lb}$ld_char ${string}${2}${cl_n}"
+        if [ $canceled -eq 1 ]; then
+            lc="$prompt_char"
+        else
+            lc="$ld_char"
+        fi
+        echo -e "${cl_lb}$lc ${string}${2}${cl_n}"
     fi
 }
 
