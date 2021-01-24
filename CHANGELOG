@@ -4,6 +4,8 @@ CHANGELOG (Salomon)
     Next release (outstanding)
 
         * Revised the code in general (negligible changes).
+        * Revised output related code (characters for drawing lines as well as
+          prompt characters and set colors depending on exit condition).
         * Revised the installation script (revised the code in general and
           added code to remove items which are not part of the official
           release).
