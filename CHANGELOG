@@ -10,6 +10,7 @@ CHANGELOG (Salomon)
           added code to remove items which are not part of the official
           release).
 
+        # Fixed the color file usage error messages (file name was missing).
         # Fixed the missing line bug when running in interactive mode when
           displaying the command-line argument list.
 
