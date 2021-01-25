@@ -366,11 +366,11 @@ else
             if [ ! -e "$color_file" ]; then
                 color_file="${color_dir}${color_file}"
                 if [ ! -e "$color_file" ]; then
-                    usage "$msg path '$user_input' does not exist"
+                    usage "$msg path '$color_file' does not exist"
                 fi
             fi
             if [ ! -f "$color_file" ]; then
-                usage "$msg path '$user_input' is not a file"
+                usage "$msg path '$color_file' is not a file"
             else
                 msg="No read permission"
                 tail "$color_file" &>/dev/null
