@@ -1,6 +1,14 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added a color option for the leading line character to the global
+          config file.
+
+        # Fixed the leading line character export bug (the character is no
+          longer written to the export file).
+
     Version 1.18.1 (2021-01-25)
 
         * Revised the code in general (negligible changes).
