@@ -72,83 +72,87 @@ check_config() {
 
     # General options
 
-    check_config_value "$boxdrawing_chars"        integer 1
+    check_config_value "$boxdrawing_chars"            integer 1
     boxdrawing_chars=$config_value
 
-    check_config_value "$delay"                   integer 200
+    check_config_value "$delay"                       integer 200
     delay=$config_value
 
-    check_config_value "$leading_line_char"       integer 0
+    check_config_value "$leading_line_char"           integer 0
     leading_line_char=$config_value
 
-    check_config_value "$line_width"              string  "auto" "auto fixed"
+    check_config_value "$leading_line_char_colored"   integer 0
+    leading_line_char_colored=$config_value
+
+    check_config_value "$line_width"                  string  "auto" \
+      "auto fixed"
     line_width=$config_value
 
-    check_config_value "$separator_line"          integer 1
+    check_config_value "$separator_line"              integer 1
     separator_line=$config_value
 
-    check_config_value "$highlight_forecolor"     string  "terminal" \
+    check_config_value "$highlight_forecolor"         string  "terminal" \
       "terminal black white"
     highlight_forecolor=$config_value
 
-    check_config_value "$usage_color"             integer 1
+    check_config_value "$usage_color"                 integer 1
     usage_color=$config_value
 
     # Dialog related options below
 
-    check_config_value "$dialog_program"          string  "auto" \
+    check_config_value "$dialog_program"              string  "auto" \
       "auto dialog whiptail"
     dialog_program=$config_value
 
-    check_config_value "$dialog_shadow"           integer 1
+    check_config_value "$dialog_shadow"               integer 1
     dialog_shadow=$config_value
 
-    check_config_value "$dialog_show_color"       integer 1
+    check_config_value "$dialog_show_color"           integer 1
     dialog_show_color=$config_value
 
-    check_config_value "$dialog_show_delay"       integer 1
+    check_config_value "$dialog_show_delay"           integer 1
     dialog_show_delay=$config_value
 
-    check_config_value "$dialog_show_exclude"     integer 1
+    check_config_value "$dialog_show_exclude"         integer 1
     dialog_show_exclude=$config_value
 
-    check_config_value "$dialog_show_export"      integer 1
+    check_config_value "$dialog_show_export"          integer 1
     dialog_show_export=$config_value
 
-    check_config_value "$dialog_show_filter"      integer 1
+    check_config_value "$dialog_show_filter"          integer 1
     dialog_show_filter=$config_value
 
-    check_config_value "$dialog_show_head_lines"  integer 1
+    check_config_value "$dialog_show_head_lines"      integer 1
     dialog_show_head_lines=$config_value
 
-    check_config_value "$dialog_show_highlight"   integer 1
+    check_config_value "$dialog_show_highlight"       integer 1
     dialog_show_highlight=$config_value
 
-    check_config_value "$dialog_show_noinfo"      integer 1
+    check_config_value "$dialog_show_noinfo"          integer 1
     dialog_show_noinfo=$config_value
 
-    check_config_value "$dialog_show_ignorecase"  integer 1
+    check_config_value "$dialog_show_ignorecase"      integer 1
     dialog_show_ignorecase=$config_value
 
-    check_config_value "$dialog_show_pause"       integer 1
+    check_config_value "$dialog_show_pause"           integer 1
     dialog_show_pause=$config_value
 
-    check_config_value "$dialog_show_prompt"      integer 1
+    check_config_value "$dialog_show_prompt"          integer 1
     dialog_show_prompt=$config_value
 
-    check_config_value "$dialog_show_remove"      integer 1
+    check_config_value "$dialog_show_remove"          integer 1
     dialog_show_remove=$config_value
 
-    check_config_value "$dialog_show_slowdown"    integer 1
+    check_config_value "$dialog_show_slowdown"        integer 1
     dialog_show_slowdown=$config_value
 
-    check_config_value "$dialog_show_tail_lines"  integer 1
+    check_config_value "$dialog_show_tail_lines"      integer 1
     dialog_show_tail_lines=$config_value
 
-    check_config_value "$dialog_show_wait"        integer 1
+    check_config_value "$dialog_show_wait"            integer 1
     dialog_show_wait=$config_value
 
-    check_config_value "$dialog_show_welcome"     integer 1
+    check_config_value "$dialog_show_welcome"         integer 1
     dialog_show_welcome=$config_value
 }
 
@@ -403,12 +407,12 @@ set_line_characters() {
         char_header_cbr="┛"       # box corner character, bottom right
         char_header_line_h="━"    # box line character, horizontal
         char_header_line_v="┃"    # box line character, horizontal
-        char_line_leading="│ "    # leading character used for output lines
+        char_line_leading="│"     # leading character used for output lines
         char_line_single="─"      # character for single lines
         char_line_double="═"      # character for double lines
     else
         char_header_line_v="*"    # use asterisk instead of a line
-        char_line_leading="| "
+        char_line_leading="|"
         char_line_single="-"
         char_line_double="="
     fi

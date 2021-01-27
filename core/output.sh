@@ -323,13 +323,13 @@ print_output_line() {
     count_total=$(( count_total + 1 ))
     filter_match=0
 
-    line="${char_line_leading}$1"
+    line="$1"
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ $separator_line -eq 1 ]; then
-        grep "^==>.*<==$" <<< $1 &>/dev/null
+        grep "^==>.*<==$" <<< $line &>/dev/null
         if [ $? -eq 0 ]; then
-            string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $1)
+            string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $line)
             fp=$(readlink -f "$string")
             fp_len=$(wc -c <<< $fp)
             if [ "$line_width" = "auto" ]; then
@@ -350,6 +350,10 @@ print_output_line() {
     if [ $highlight_cut_off = 0 ]; then
         term_cols=$(( $(tput cols) + 1 ))
         line_length=${#line_lower}
+
+        if [ $leading_line_char -eq 1 ]; then
+            term_cols=$(( term_cols - 2 ))
+        fi
 
         while true; do
             if [ $line_length -lt $term_cols ]; then
@@ -467,9 +471,21 @@ print_output_line() {
         output=$(sed -e "s/\\\e\[.*//g" <<< "$line")
         random_colors "$output"
     elif [ "$color_code" = "\e[0m" ] && [ $highlight_all -eq 0 ]; then
-        echo -e "\e[0m$line\e[0m"
+        if [ $leading_line_char -eq 1 ]; then
+            echo -e "\e[0m${char_line_leading} $line\e[0m"
+        else
+            echo -e "\e[0m${line}\e[0m"
+        fi
     else
-        echo -e "$output"
+        if [ $leading_line_char -eq 1 ]; then
+            if [ $leading_line_char_colored -eq 1 ]; then
+                echo -e "${color_code}$char_line_leading $output"                
+            else
+                echo -e "$char_line_leading $output"
+            fi
+        else
+            echo -e "$output"
+        fi
     fi
 
     if [ $export_log -eq 1 ]; then
