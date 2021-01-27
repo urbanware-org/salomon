@@ -24,6 +24,7 @@ temp_file="/tmp/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
 clean_install=0
+exclude_config=""
 git_clone=".git snippets wiki README.md"
 keep_directory=0
 target="${cl_yl}${target_dir}${cl_n}"
@@ -196,7 +197,10 @@ if [ $script_mode = "install" ]; then
     fi
 
     echo "Copying data to installation directory..."
-    rsync -av $script_dir/* $target_dir/ &>/dev/null
+    if [ -f "$target_dir/salomon.cfg" ]; then
+        exclude_config="--exclude=salomon.cfg"
+    fi
+    rsync -av $script_dir/* $target_dir/ $exclude_config &>/dev/null
 
     # Remove all items which are not part of the official releases
     for dir in $git_clone; do
