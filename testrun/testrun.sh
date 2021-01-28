@@ -116,15 +116,15 @@ echo \
  '  | |/ _ \/ __| __| '\''__| | | | '\''_ \   / __| __/ _'\'' | __| | | / __|'
 echo '  | |  __/\__ \ |_| |  | |_| | | | |  \__ \ || (_| | |_| |_| \__ \'
 echo '  |_|\___||___/\__|_|   \__,_|_| |_|  |___/\__\__,_|\__|\__,_|___/'
-echo -e "\e[0m"
+echo -e "${cl_n}"
 echo "  Testrun finished."
 if [ $salomon_status -eq 0 ]; then
-    echo -e "  Overall status: \e[92mSuccessfully passed\e[0m"
+    echo -e "  Overall status: \e[92mSuccessfully passed${cl_n}"
 else
-    echo -e "  Overall status: \e[91mFailed\e[0m (at least one test)"
+    echo -e "  Overall status: \e[91mFailed${cl_n} (at least one test)"
 fi
 echo
-echo -e "For details see the file \e[96m$salomon_testrun_log\e[0m."
+echo -e "For details see the file \e[96m$salomon_testrun_log${cl_n}."
 echo
 exit $salomon_status
 

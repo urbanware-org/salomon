@@ -13,15 +13,15 @@ confetti() {
         if [ $highlight_random -eq 1 ]; then
             color_highlight=$(shuf -i 0-1 -n 1)
             if [ $color_highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
             fi
         else
             if [ $highlight -eq 1 ]; then
-                color_char="\e[48;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[48;5;${color_confetti}m${char}${cl_n}"
             else
-                color_char="\e[38;5;${color_confetti}m${char}\e[0m"
+                color_char="\e[38;5;${color_confetti}m${char}${cl_n}"
             fi
         fi
         line_output="${line_output}${color_char}"

@@ -349,7 +349,7 @@ print_arg_list() {
         echo -e "$char_line_double\c"
     done
 
-    echo -e "\e[0m\n"
+    echo -e "${cl_n}\n"
     echo -e "With the given information, the command line would look like" \
             "this (without"
     echo -e "'${cl_lc}--dialog${cl_n}' or '${cl_lc}--interactive${cl_n}'" \

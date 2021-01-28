@@ -470,16 +470,16 @@ print_output_line() {
         line=$(sed -e "s/^$color_code//g" <<< "$output")
         output=$(sed -e "s/\\\e\[.*//g" <<< "$line")
         random_colors "$output"
-    elif [ "$color_code" = "\e[0m" ] && [ $highlight_all -eq 0 ]; then
+    elif [ "$color_code" = "${cl_n}" ] && [ $highlight_all -eq 0 ]; then
         if [ $leading_line_char -eq 1 ]; then
-            echo -e "\e[0m${char_line_leading} $line\e[0m"
+            echo -e "${cl_n}${char_line_leading} $line${cl_n}"
         else
-            echo -e "\e[0m${line}\e[0m"
+            echo -e "${cl_n}${line}${cl_n}"
         fi
     else
         if [ $leading_line_char -eq 1 ]; then
             if [ $leading_line_char_colored -eq 1 ]; then
-                echo -e "${color_code}$char_line_leading $output"                
+                echo -e "${color_code}$char_line_leading $output"
             else
                 echo -e "$char_line_leading $output"
             fi
