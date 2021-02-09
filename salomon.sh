@@ -232,34 +232,6 @@ else
                 shift
             ;;
 
-            # Backwards compatibility arguments (still existing, but no longer
-            # listed inside the usage information)
-            --config-file)
-                if [ ! -z "$color_file" ]; then
-                    usage "The color file argument can only be given once"
-                fi
-                shift
-                color_file="$1"
-                check_argument "--config-file" "$color_file" "file"
-                deprecated_argument "--config-file" "--color-file"
-                shift
-            ;;
-            --highlight)
-                highlight_matches=1
-                deprecated_argument "--highlight" "--highlight-matches"
-                shift
-            ;;
-            -n|--no-follow)
-                follow=0
-                deprecated_argument "--no-follow" "--analyze"
-                shift
-            ;;
-            --no-header)
-                header=0
-                deprecated_argument "--no-header" "--no-info"
-                shift
-            ;;
-
             # Inofficial arguments
             --debug)
                 debug=1
