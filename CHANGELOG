@@ -9,7 +9,7 @@ CHANGELOG (Salomon)
         # Fixed the leading line character export bug (the character is no
           longer written to the export file).
 
-        - Remove the deprecated command-line arguments (kept for backwards
+        - Removed the deprecated command-line arguments (kept for backwards
           compatibility purposes for a while).
 
     Version 1.18.1 (2021-01-25)
