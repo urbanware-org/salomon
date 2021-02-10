@@ -36,37 +36,6 @@ dirmod=775
 filemod=664
 execmod=$dirmod
 
-perform() {
-    echo
-    echo -e "${cl_lc}Salomon install/uninstall script${cl_n}"
-    echo
-    if [ "$script_mode" = "install" ]; then
-        echo -e "Installing Salomon is ${cl_yl}optional${cl_n} and not" \
-                "mandatory in order to use it. Further"
-        echo    "information can be found inside the documentation file for" \
-                "this script."
-        echo
-    fi
-    confirm "This will $script_action Salomon. $proceed ($yesno)? \c"
-    if [ $choice -eq 0 ]; then
-        echo
-        echo -e "${cl_lr}Canceled${cl_n} on user request."
-        echo
-        exit
-    fi
-    echo
-    if [ "$script_mode" = "install" ]; then
-        echo -e "You can make Salomon available either for all users on" \
-                "this machine or only"
-        echo -e "for root. \c"
-        confirm "Do you want to make it available for all users ($yesno)? \c"
-        if [ $choice -eq 0 ]; then
-            available="rootonly"
-        fi
-        echo
-    fi
-}
-
 set_permissions() {
     chown -R root:root $target_dir
     if [ "$available" = "rootonly" ]; then
@@ -150,7 +119,36 @@ else
     symlink_sh="/usr/bin"
 fi
 
-perform $script_mode
+echo
+echo -e "${cl_lc}Salomon install/uninstall script${cl_n}"
+echo
+if [ "$script_mode" = "install" ]; then
+    echo -e "Installing Salomon is ${cl_yl}optional${cl_n} and not" \
+            "mandatory in order to use it. Further"
+    echo    "information can be found inside the documentation file for" \
+            "this script."
+    echo
+fi
+confirm "This will $script_action Salomon. $proceed ($yesno)? \c"
+if [ $choice -eq 0 ]; then
+    echo
+    echo -e "${cl_lr}Canceled${cl_n} on user request."
+    echo
+    exit
+fi
+echo
+
+if [ "$script_mode" = "install" ]; then
+    echo -e "You can make Salomon available either for all users on" \
+            "this machine or only"
+    echo -e "for root. \c"
+    confirm "Do you want to make it available for all users ($yesno)? \c"
+    if [ $choice -eq 0 ]; then
+        available="rootonly"
+    fi
+    echo
+fi
+
 if [ $script_mode = "install" ]; then
     if [ -d "$target_dir" ]; then
         if [ ! "$script_dir" = "$target_dir" ]; then
