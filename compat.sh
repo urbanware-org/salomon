@@ -38,6 +38,7 @@ check_less="$missing"
 check_paste="$failure"
 check_printf="$failure"
 check_readlink="$failure"
+check_rsync="$missing"
 check_sed="$failure"
 check_tail="$failure"
 check_tput="$failure"
@@ -126,6 +127,13 @@ if [ $? -eq 0 ]; then
     check_readlink="$success"
 else
     check_failed=1
+fi
+
+command -v rsync &>/dev/null
+if [ $? -eq 0 ]; then
+    check_rsync="$success"
+else
+    check_missing=1
 fi
 
 command -v sed &>/dev/null
@@ -232,6 +240,8 @@ echo -e "Checking for optional 'dialog' command ...............$line" \
         "${check_dialog}"
 echo -e "Checking for optional 'less' command .................$line" \
         "${check_less}"
+echo -e "Checking for optional 'rsync' command ................$line" \
+        "${check_rsync}"
 echo -e "Checking for optional 'wget' command .................$line" \
         "${check_wget}"
 echo -e "Checking for optional 'whiptail' command .............$line" \
