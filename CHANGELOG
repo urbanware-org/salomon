@@ -6,6 +6,10 @@ CHANGELOG (Salomon)
         + Added a color option for the leading line character to the global
           config file.
 
+        * Revised the code of the function used for confirming choices.
+        * Revised the installation script (replaced and removed unnecessary
+          code and added a check for the required 'rsync' command).
+
         # Fixed the leading line character export bug (the character is no
           longer written to the export file).
 
