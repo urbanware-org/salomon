@@ -96,6 +96,7 @@ fi
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
     script_mode="install"
     script_action="${cl_lg}${script_mode}${cl_n}"
+    check_command rsync rsync
 elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
     script_mode="uninstall"
     script_action="${cl_lr}${script_mode}${cl_n}"
