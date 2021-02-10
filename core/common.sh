@@ -256,17 +256,11 @@ confirm() {
     while true; do
         echo -e "$msg"
         read choice
-        egrep "^yes$|^y$|^no$|^n$" -i <<< $choice &>/dev/null
-        if [ $? -eq 0 ]; then
-            egrep "^yes$|^y$" -i <<< $choice &>/dev/null
-            if [ $? -eq 0 ]; then
-                choice=1  # Yes
-                break
-            else
-                choice=0  # No
-                break
-            fi
-        fi
+        case $choice in
+            [Yy] ) choice=1; break;;   # Yes
+            [Nn] ) choice=0; break;;   # No
+            * ) continue;;
+        esac
     done
 }
 
