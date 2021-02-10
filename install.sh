@@ -29,7 +29,6 @@ git_clone=".git snippets wiki README.md"
 keep_directory=0
 target="${cl_yl}${target_dir}${cl_n}"
 yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
-proceed="Do you wish to proceed"
 
 available="everyone"
 dirmod=775
@@ -129,7 +128,8 @@ if [ "$script_mode" = "install" ]; then
             "this script."
     echo
 fi
-confirm "This will $script_action Salomon. $proceed ($yesno)? \c"
+echo -e "This will $script_action Salomon. \c"
+confirm "Do you wish to proceed ($yesno)? \c"
 if [ $choice -eq 0 ]; then
     echo
     echo -e "${cl_lr}Canceled${cl_n} on user request."
