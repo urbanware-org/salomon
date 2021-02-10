@@ -7,6 +7,8 @@ CHANGELOG (Salomon)
           config file.
 
         * Revised the code of the function used for confirming choices.
+        * Revised the compatibility script (added a check for the 'rsync'
+          command).
         * Revised the installation script (replaced and removed unnecessary
           code and added a check for the required 'rsync' command).
 
