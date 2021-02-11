@@ -9,8 +9,8 @@ CHANGELOG (Salomon)
         * Revised the code of the function used for confirming choices.
         * Revised the compatibility script (added a check for the 'rsync'
           command).
-        * Revised the installation script (replaced and removed unnecessary
-          code and added a check for the required 'rsync' command).
+        * Revised the installation script (added a check for the required
+          'rsync' command, replaced and removed unnecessary code).
 
         # Fixed the leading line character export bug (the character is no
           longer written to the export file).
