@@ -124,7 +124,7 @@ else
     echo -e "  Overall status: \e[91mFailed${cl_n} (at least one test)"
 fi
 echo
-echo -e "For details see the file \e[96m$salomon_testrun_log${cl_n}."
+echo -e "${cl_n}For details see the file \e[96m$salomon_testrun_log${cl_n}."
 echo
 exit $salomon_status
 
