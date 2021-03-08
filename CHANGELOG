@@ -1,6 +1,11 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added an option to set a custom color for the leading line character
+          to the global config file.
+
     Version 1.18.2 (2021-02-11)
 
         + Added a color option for the leading line character to the global
