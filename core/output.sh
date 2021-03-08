@@ -466,22 +466,34 @@ print_output_line() {
         fi
     fi
 
+    if [ $leading_line_char_colored -eq 1 ]; then
+        if [ $leading_line_char_custom_color -ge 1 ] &&
+           [ $leading_line_char_custom_color -le 255 ]; then
+            get_color_code $leading_line_char_custom_color
+            char_ll="${color_code}${char_line_leading}${cl_n}"
+        else
+            char_ll="${color_code}${char_line_leading}${cl_n}"
+        fi
+    else
+        char_ll="${cl_n}${char_line_leading}${cl_n}"
+    fi
+
     if [ "$color_code" = "999" ]; then
         line=$(sed -e "s/^$color_code//g" <<< "$output")
         output=$(sed -e "s/\\\e\[.*//g" <<< "$line")
         random_colors "$output"
     elif [ "$color_code" = "${cl_n}" ] && [ $highlight_all -eq 0 ]; then
         if [ $leading_line_char -eq 1 ]; then
-            echo -e "${cl_n}${char_line_leading} $line${cl_n}"
+            echo -e "${cl_n}${char_ll} ${line}${cl_n}"
         else
             echo -e "${cl_n}${line}${cl_n}"
         fi
     else
         if [ $leading_line_char -eq 1 ]; then
             if [ $leading_line_char_colored -eq 1 ]; then
-                echo -e "${color_code}$char_line_leading $output"
+                echo -e "${color_code}${char_ll} ${output}"
             else
-                echo -e "$char_line_leading $output"
+                echo -e "${char_ll} ${output}"
             fi
         else
             echo -e "$output"
