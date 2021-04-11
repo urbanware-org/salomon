@@ -26,7 +26,7 @@ target_dir="/opt/salomon"
 already_uninstalled=1
 clean_install=0
 exclude_config=""
-git_clone=".git snippets wiki README.md"
+git_clone=".git snippets wiki"  # markdown files will be removed implicitly
 keep_directory=0
 target="${cl_yl}${target_dir}${cl_n}"
 yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
@@ -223,6 +223,9 @@ if [ $script_mode = "install" ]; then
     for dir in $git_clone; do
         rm -fR $target_dir/$git_clone &>/dev/null
     done
+    for markdown in $(find $target_dir | grep "\.md$"); do
+        rm -f $markdown
+    done
 
     if [ $install_icons -eq 1 ]; then
         echo "Copying icon files to shared directory..."
@@ -234,7 +237,7 @@ if [ $script_mode = "install" ]; then
                 fi
             fi
             if [ -d $icon_path_scalable ]; then
-                if [ ! -e "$icon_path_scalable/salomon.svg" ]
+                if [ ! -e "$icon_path_scalable/salomon.svg" ]; then
                     cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
                 fi
             fi
