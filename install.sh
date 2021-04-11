@@ -23,6 +23,7 @@ script_mode=""
 temp_file="/tmp/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
+already_uninstalled=1
 clean_install=0
 exclude_config=""
 git_clone=".git snippets wiki README.md"
@@ -34,6 +35,12 @@ available="everyone"
 dirmod=775
 filemod=664
 execmod=$dirmod
+
+if [ -d "/usr/share/icons/hicolor" ]; then
+    icon_path="/usr/share/icons/hicolor"
+elif [ -d "/usr/local/share/icons/hicolor" ]; then
+    icon_path="/usr/local/share/icons/hicolor"
+fi
 
 set_permissions() {
     chown -R root:root $target_dir
@@ -176,6 +183,16 @@ if [ $script_mode = "install" ]; then
         fi
     fi
 
+    if [ ! -z "$icon_path" ]; then
+        echo -e "In case you want to create desktop shortcuts for Salomon," \
+                "it provides its"
+        echo -e "icon in multiple common sizes as well as in a scalable" \
+                "image format."
+        confirm "Do you want to install the icon files ($yesno)? \c"
+        install_icons=$choice
+        echo
+    fi
+
     echo -e "Installation directory is '${target}'."
     if [ $clean_install -eq 1 ]; then
         if [ "$(pwd)" = "$target_dir" ]; then
@@ -206,6 +223,18 @@ if [ $script_mode = "install" ]; then
         rm -fR $target_dir/$git_clone &>/dev/null
     done
 
+    if [ $install_icons -eq 1 ]; then
+        echo "Copying icon files to shared directory..."
+        for i in 16 24 32 48 64 96 128 256; do
+            if [ -d "$icon_path/${i}x${i}" ]; then
+                if [ ! -f $icon_path/${i}x${i}/salomon.png ]; then
+                    cp $script_dir/icons/png/salomon_${i}x${i}.png \
+                       $icon_path/${i}x${i}/salomon.png
+                fi
+            fi
+        done
+    fi
+
     echo -e "Setting permissions for installation directory... \c"
     if [ $available = "rootonly" ]; then
         echo -e "${cl_lb}(root only)${cl_n}"
@@ -229,21 +258,36 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 else  # uninstall
-    echo -e "Removing the installation directory '$target' will also" \
-            "delete all"
-    echo -e "user-defined configs and settings. \c"
-    confirm "Do you want to remove it ($yesno)? \c"
-    if [ $choice -eq 0 ]; then
-        keep_directory=1
+    if [ -d $target_dir ]; then
+        echo -e "Removing the installation directory '$target' will also" \
+                "delete all"
+        echo -e "user-defined configs and settings. \c"
+        confirm "Do you want to remove it ($yesno)? \c"
+        if [ $choice -eq 0 ]; then
+            keep_directory=1
+        fi
+        echo
     fi
-    echo
 
     echo -e "Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
+        already_uninstalled=0
         echo
     else
         echo -e "${cl_lb}(does not exist)${cl_n}"
+    fi
+
+    echo -e "Removing icon files from shared directory... \c"
+    icons_installed=$(find $icon_path | egrep "salomon\.png|salomon\.svg")
+    if [ ! -z "$icons_installed" ]; then
+        for i in $icons_installed; do
+            rm -f $i
+        done
+        already_uninstalled=0
+        echo
+    else
+        echo -e "${cl_lb}(do not exist)${cl_n}"
     fi
 
     echo -e "Removing installation directory '${target}'... \c"
@@ -252,6 +296,7 @@ else  # uninstall
     else
         if [ -d $target_dir ]; then
             rm -fR $target_dir &>/dev/null
+            already_uninstalled=0
             echo
         else
             echo -e "${cl_lb}(does not exist)${cl_n}"
@@ -259,6 +304,14 @@ else  # uninstall
     fi
 fi
 echo
+
+if [ $script_mode = "uninstall" ] && [ $already_uninstalled -eq 1 ]; then
+    echo "Nothing to do, as Salomon was already uninstalled or not" \
+         "installed before."
+    echo
+    exit
+fi
+
 echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
