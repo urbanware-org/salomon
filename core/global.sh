@@ -14,7 +14,7 @@
 #           inside the main directory of Salomon for configuration options.
 
 set_global_variables() {
-    version="1.18.2"
+    version="1.18.3"
 
     arg_case=""
     arg_list=$(readlink -f "$0")
