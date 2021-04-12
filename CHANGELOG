@@ -1,11 +1,13 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.8.3 (2021-04-12)
 
         + Added an option to set a custom color for the leading line character
           to the global config file.
 
+        * Revised the installation script (added code to install the Salomon
+          icon files).
         * Revised the Salomon icon (provided new multiple size PNG image files
           and added the icon in the SVG image format).
 
