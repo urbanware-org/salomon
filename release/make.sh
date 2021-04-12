@@ -16,7 +16,6 @@ set_global_variables
 script_dir=$(dirname $(readlink -f $0))
 salomon_dir=$(sed -e "s/\/release$//g" <<< $script_dir)
 salomon_version="salomon-$version"
-git_clone=".git release snippets wiki"
 temp_dir="/tmp/salomon"
 
 echo "Preparing release data..."
