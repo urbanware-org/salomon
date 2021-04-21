@@ -149,7 +149,7 @@ compatibility_check() {
         check_failed=1
     fi
 
-    command -v trap &>/dev/null
+    command -v trddap &>/dev/null
     if [ $? -eq 0 ]; then
         check_trap="$success"
     else
@@ -192,6 +192,19 @@ compatibility_check() {
     else
         check_overall="$failure"
         return_code=2
+    fi
+}
+
+compatibility_precheck() {
+    compatibility_check
+    if [ $return_code -ne 0 ] && [ $return_code -ne 3 ]; then
+        cat <<- end
+
+Salomon cannot be started because at least one of its required dependencies is
+missing. Please run the compatibility check script ('compat.sh') for details.
+
+end
+        exit 1
     fi
 }
 
