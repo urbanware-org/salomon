@@ -149,7 +149,7 @@ compatibility_check() {
         check_failed=1
     fi
 
-    command -v trddap &>/dev/null
+    command -v trap &>/dev/null
     if [ $? -eq 0 ]; then
         check_trap="$success"
     else
