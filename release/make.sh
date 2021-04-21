@@ -16,29 +16,38 @@ set_global_variables
 script_dir=$(dirname $(readlink -f $0))
 salomon_dir=$(sed -e "s/\/release$//g" <<< $script_dir)
 salomon_version="salomon-$version"
+salomon_archive="$salomon_version.tar.gz"
+salomon_checksum="$salomon_archive.sha256"
+git_clone=".git release snippets wiki"
 temp_dir="/tmp/salomon"
 
-echo "Preparing release data..."
+echo -e "${cl_lc}Salomon $version release builder${cl_n}"
+
+echo -e "  - Preparing release data..."
 rm -f $salomon_version.tar.gz
 rm -fR $temp_dir
 mkdir -p $temp_dir
 rsync -a $salomon_dir $temp_dir
 
-echo "Removing non-relevant directories..."
+echo -e "  - Removing non-relevant directories..."
 for dir in $git_clone; do
     rm -fR $temp_dir/salomon/$dir &>/dev/null
 done
 
-echo "Removing non-relevant files..."
+echo -e "  - Removing non-relevant files..."
 for markdown in $(find $temp_dir | grep "\.md$"); do
     rm -f $markdown
 done
 
-echo "Creating Salomon $version release archive..."
+echo -e "  - Creating release archive ('${cl_yl}$salomon_archive${cl_n}')..."
 mv $temp_dir/salomon $temp_dir/$salomon_version
-tar czf $salomon_version.tar.gz -C $temp_dir .
+tar czf $salomon_archive -C $temp_dir .
 
-echo "Finished (created '$salomon_version.tar.gz')."
+echo -e "  - Generating archive checksum" \
+        "('${cl_yl}$salomon_checksum${cl_n}')..."
+sha256sum $salomon_archive > $salomon_archive.sha256
+
+echo -e "${cl_lg}Finished.${cl_n}"
 rm -fR $temp_dir
 
 # EOF
