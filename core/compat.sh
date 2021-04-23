@@ -193,6 +193,8 @@ compatibility_check() {
         check_overall="$failure"
         return_code=2
     fi
+
+    rm -f $script_temp
 }
 
 compatibility_precheck() {
