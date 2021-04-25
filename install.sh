@@ -232,16 +232,23 @@ if [ $script_mode = "install" ]; then
     if [ $install_icons -eq 1 ]; then
         echo "Copying icon files to shared directory..."
         for i in 16 24 32 48 64 96 128 256; do
-            if [ -d "$icon_path/${i}x${i}" ]; then
-                if [ ! -f $icon_path/${i}x${i}/salomon.png ]; then
-                    cp $script_dir/icons/png/salomon_${i}x${i}.png \
-                       $icon_path/${i}x${i}/salomon.png
-                fi
+            if [ ! -e "$script_dir/icons/png/salomon_${i}x${i}.png" ]; then
+                continue
             fi
+
+            if [ -d "$icon_path/${i}x${i}" ]; then
+                rm -f $icon_path/${i}x${i}/apps/salomon.png
+                cp $script_dir/icons/png/salomon_${i}x${i}.png \
+                   $icon_path/${i}x${i}/apps/salomon.png
+            fi
+
+            # This fixes a glitch from earlier versions where the icons were
+            # copied into the improper directory
+            rm -f $icon_path/${i}x${i}/salomon.png
+
             if [ -d $icon_path_scalable ]; then
-                if [ ! -e "$icon_path_scalable/salomon.svg" ]; then
-                    cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
-                fi
+                rm -f $icon_path_scalable/salomon.svg
+                cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
             fi
         done
     fi
