@@ -13,3 +13,11 @@ Please note the following:
 *   The file `MODIFIED` must be created and placed in the same directory where the above files are located.
 
 *   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` example file for details.
+
+When done, simply run `make.sh` without any command-line arguments
+
+```
+./make.sh
+```
+
+which will create the archive containing your customized version and the corresponding checksum.
