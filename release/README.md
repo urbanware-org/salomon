@@ -14,4 +14,4 @@ Please note the following:
 
 *   The file `MODIFIED` must be created and placed in the same directory where the above files are located.
 
-*   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` example file.
+*   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` example file for details.
