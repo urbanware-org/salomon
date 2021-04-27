@@ -1,6 +1,21 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added elementary compatibility checks into each script (without any
+          output except when something does not work).
+
+        * Revised the code of the installation script in general.
+        * Revised the output messages of the compatibility check results.
+        * Revised the script compatibility checks (moved main code into a new
+          separate core module).
+
+        # Fixed the icon directory bug inside the installation script (icons
+          were directly copied to the size directory instead of the 'apps'
+          sub-directory, re-running this script also fixes the issue in case
+          the icons already have been installed).
+
     Version 1.8.3 (2021-04-12)
 
         + Added an option to set a custom color for the leading line character
