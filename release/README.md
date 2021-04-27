@@ -2,7 +2,9 @@
 
 The repository clone of *Salomon* comes with `make.sh` some sort of release builder script. As this statement suggests, it is not a part in the official release.
 
-This script is used to create the archive and the corresponding checksum file for the official releases of the *GitHub* repository. Nevertheless, you can create an archive for your own purposes (with customized scripts, color schemes, filters, etc.).
+This script is used to create the archive and the corresponding checksum file for the official releases of the original repository. The archive contains all project relevant files (including the source code) without any of the *GitHub* specific files that are not necessary in order to use the project.
+
+Nevertheless, you can create an archive for your own purposes (with customized scripts, color schemes, filters, etc.).
 
 However, in case you want to share your customized version, a corresponding notice is required that it is not an official release.
 
