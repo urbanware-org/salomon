@@ -14,7 +14,7 @@ Please note the following:
 
 *   The file `MODIFIED` must be created and placed in the same directory where the above files are located.
 
-*   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` example file for details.
+*   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` file example below for details.
 
 When done, simply run `make.sh` without any command-line arguments
 
@@ -23,3 +23,23 @@ When done, simply run `make.sh` without any command-line arguments
 ```
 
 which will create the archive containing your customized version and the corresponding checksum.
+
+### Example file
+
+The structure of the file is up to you, it just needs to contain the required information.
+
+```
+Modified Salomon version
+
+Some modification of Salomon which makes all output lines flash in random
+colors which is absolutely useless. However, that does not matter as this file
+is just an example for a file that indicates the version of Salomon has been
+modified.
+
+Author: John Doe
+Date:   2021-04-27
+
+Changelog:
+    2021-04-27  Replaced foo with foobar
+    2021-04-26  Added foo
+```
