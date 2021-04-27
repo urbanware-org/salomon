@@ -24,7 +24,7 @@ When done, simply run `make.sh` without any command-line arguments
 
 which will create the archive containing your customized version and the corresponding checksum.
 
-### Example file
+## Example file
 
 The structure of the file is up to you, it just needs to contain the required information.
 
