@@ -145,8 +145,8 @@ print_color_table() {
         echo "All numbers with black background are colors that cannot be" \
              "displayed (except"
         echo "for number 0). When running Salomon on a pure text-based" \
-             "interface (tty) there"
-        echo "only are 16 colors available."
+             "interface (tty) only"
+        echo "the first are 16 colors available."
     else
         echo "This is a pure text-based interface (tty) which only supports" \
              "(can display)"
