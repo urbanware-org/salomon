@@ -150,10 +150,13 @@ fi
 echo
 
 if [ "$script_mode" = "install" ]; then
-    echo -e "You can make Salomon available either for all users on" \
-            "this machine or only"
-    echo -e "for root. \c"
-    confirm "Do you want to make it available for all users ($yesno)? \c"
+    echo -e "${cl_dc}Availability and permissions${cl_n}"
+    echo
+    echo -e "    You can make Salomon available either for all users on" \
+            "this machine"
+    echo -e "    or only for root."
+    echo
+    confirm "    Do you want to make it available for all users ($yesno)? \c"
     if [ $choice -eq 0 ]; then
         available="rootonly"
     fi
@@ -162,14 +165,20 @@ fi
 
 if [ $script_mode = "install" ]; then
     if [ -d "$target_dir" ]; then
+        echo -e "${cl_dc}Target directory${cl_n}"
+        echo
         if [ ! "$script_dir" = "$target_dir" ]; then
-            echo -e "The target directory '$target' already exists. You can" \
-                    "perform a clean"
-            echo -e "installation which will delete the directory and" \
-                    "reinstall the original files."
-            echo -e "Notice that all user-defined configs and settings will" \
-                    "also be deleted then."
-            confirm "Do you want to perform a clean installation ($yesno)? \c"
+            echo -e "    The target directory '$target' already exists. You" \
+                    "can perform a"
+            echo -e "    clean installation which will delete the directory" \
+                    "and reinstall the"
+            echo -e "    original files."
+            echo
+            echo -e "    Notice that this will also delete all user-defined" \
+                    "configs and settings."
+            echo
+            confirm \
+              "    Do you want to perform a clean installation ($yesno)? \c"
             clean_install=$choice
             echo
         else
@@ -177,21 +186,25 @@ if [ $script_mode = "install" ]; then
             # the target directory would also delete the original files, so a
             # clean installation is not possible here
             if [ -d "$target_dir" ]; then
-                echo "You are running the this script from the installation" \
-                     "directory. Due to this,"
-                echo "a clean installation (removing and reinstalling the" \
-                     "files) is not possible."
+                echo -e "    You are running the this script from the" \
+                        "installation directory. Due to"
+                echo -e "    this, a clean installation (removing and" \
+                        "reinstalling the files) is not"
+                echo -e "    possible."
                 echo
             fi
         fi
     fi
 
     if [ ! -z "$icon_path" ]; then
-        echo -e "In case you want to create desktop shortcuts for Salomon," \
-                "it provides its"
-        echo -e "icon in multiple common sizes as well as in a scalable" \
-                "image format."
-        confirm "Do you want to install the icon files ($yesno)? \c"
+        echo -e "${cl_dc}Shared icons${cl_n}"
+        echo
+        echo -e "    In case you want to create desktop shortcuts for" \
+                "Salomon, it provides"
+        echo -e "    its icon in multiple common sizes as well as in a" \
+                "scalable image format."
+        echo
+        confirm "    Do you want to install the icon files ($yesno)? \c"
         install_icons=$choice
         echo
     fi
@@ -287,16 +300,25 @@ if [ $script_mode = "install" ]; then
     fi
 else  # uninstall
     if [ -d $target_dir ]; then
-        echo -e "Removing the installation directory '$target' will also" \
-                "delete all"
-        echo -e "user-defined configs and settings. \c"
-        confirm "Do you want to remove it ($yesno)? \c"
+        echo -e "${cl_dc}Installation directory${cl_n}"
+        echo
+        echo -e "    Removing the installation directory '$target' will" \
+                "also delete all"
+        echo -e "    user-defined configs and settings."
+        echo
+        echo -e "    If you keep the installation directory, only the" \
+                "symbolic link and the"
+        echo -e "    icons will be removed."
+        echo
+        confirm "    Do you want to remove it ($yesno)? \c"
         if [ $choice -eq 0 ]; then
             keep_directory=1
         fi
         echo
     fi
 
+    echo -e "Ready to ${script_action} Salomon."
+    echo
     echo -e "Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
