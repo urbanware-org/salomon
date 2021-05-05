@@ -196,6 +196,16 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
+    echo -e "Ready to ${script_action} Salomon. \c"
+    confirm "Do you wish to proceed ($yesno)? \c"
+    if [ $choice -eq 0 ]; then
+        echo
+        echo -e "${cl_lr}Canceled${cl_n} on user request."
+        echo
+        exit
+    fi
+    echo
+
     echo -e "Installation directory is '${target}'."
     if [ $clean_install -eq 1 ]; then
         if [ "$(pwd)" = "$target_dir" ]; then
