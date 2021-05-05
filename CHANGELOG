@@ -6,7 +6,7 @@ CHANGELOG (Salomon)
         + Added elementary compatibility checks into each script (without any
           output except when something does not work).
 
-        * Revised the code of the installation script in general.
+        * Revised the installation script in general.
         * Revised the output messages of the compatibility check results.
         * Revised the script compatibility checks (moved main code into a new
           separate core module).
