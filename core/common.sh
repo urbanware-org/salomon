@@ -83,7 +83,7 @@ check_config() {
 
     check_config_value "$leading_line_char_colored"       integer 0
     leading_line_char_colored=$config_value
-    
+
     check_config_value "$leading_line_char_custom_color"  integer 0
     leading_line_char_custom_color=$config_value
 
