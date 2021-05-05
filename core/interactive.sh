@@ -344,8 +344,6 @@ get_input_file() {
         file=$(sed -e "s/^ *//g;s/ *$//g;s/\/\//\ /g" <<< $item)
         if [ -e "$file" ]; then
             filepath="$file"
-        elif [ -e "/var/log/$file" ]; then
-            filepath="/var/log/$file"
         else
             predef_error_dialog "$msg path '$file' does not exist"
             return
