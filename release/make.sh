@@ -15,7 +15,7 @@ set_global_variables
 
 script_dir=$(dirname $(readlink -f $0))
 salomon_dir=$(sed -e "s/\/release$//g" <<< $script_dir)
-salomon_version="salomon-$version"
+salomon_version="salomon-release-$version"
 salomon_archive="$salomon_version.tar.gz"
 salomon_checksum="$salomon_archive.sha256"
 git_clone=".git release snippets wiki"
