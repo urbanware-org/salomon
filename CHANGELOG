@@ -11,6 +11,8 @@ CHANGELOG (Salomon)
         * Revised the script compatibility checks (moved main code into a new
           separate core module).
 
+        # Fixed the relative input file path bug when using interactive mode
+          (requires absolute paths now).
         # Fixed the icon directory bug inside the installation script (icons
           were directly copied to the size directory instead of the 'apps'
           sub-directory, re-running this script also fixes the issue in case
