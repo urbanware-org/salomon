@@ -246,7 +246,7 @@ if [ $script_mode = "install" ]; then
 
     # Remove all items which are not part of the official releases
     for dir in $git_clone; do
-        rm -fR $target_dir/$git_clone &>/dev/null
+        rm -fR $target_dir/$dir &>/dev/null
     done
     for markdown in $(find $target_dir | grep "\.md$"); do
         rm -f $markdown
