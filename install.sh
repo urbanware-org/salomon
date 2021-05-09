@@ -232,17 +232,31 @@ if [ $script_mode = "install" ]; then
 
     echo -e "Creating installation directory... \c"
     if [ -d $target_dir ]; then
+        # The directory is not really created here. The code is for the output
+        # message, only (just to keep the messages of the steps in order). The
+        # actual code to create the directory is executed before the files are
+        # copied into it.
         echo -e "${cl_lb}(already exists)${cl_n}"
-    else
-        mkdir -p $target_dir &>/dev/null
-        echo
     fi
 
     echo "Copying data to installation directory..."
     if [ -f "$target_dir/salomon.cfg" ]; then
         exclude_config="--exclude=salomon.cfg"
     fi
-    rsync -av $script_dir/* $target_dir/ $exclude_config &>/dev/null
+
+    mkdir -p $target_dir &>/dev/null
+    rsync -av $script_dir/* $target_dir/ $exclude_config \
+          --exclude="colors" \
+          --exclude="filters" &>/dev/null
+
+
+    mkdir -p $target_dir/colors &>/dev/null
+    rsync -av $script_dir/colors/* $target_dir/colors/ \
+          --ignore-existing &>/dev/null
+
+    mkdir -p $target_dir/colors &>/dev/null
+    rsync -av $script_dir/filters/* $target_dir/filters/  \
+          --ignore-existing &>/dev/null
 
     # Remove all items which are not part of the official releases
     for dir in $git_clone; do
