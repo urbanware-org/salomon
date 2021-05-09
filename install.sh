@@ -249,7 +249,6 @@ if [ $script_mode = "install" ]; then
           --exclude="colors" \
           --exclude="filters" &>/dev/null
 
-
     mkdir -p $target_dir/colors &>/dev/null
     rsync -av $script_dir/colors/* $target_dir/colors/ \
           --ignore-existing &>/dev/null
