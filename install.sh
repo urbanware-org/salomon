@@ -245,16 +245,16 @@ if [ $script_mode = "install" ]; then
     fi
 
     mkdir -p $target_dir &>/dev/null
-    rsync -av $script_dir/* $target_dir/ $exclude_config \
+    rsync -a $script_dir/* $target_dir/ $exclude_config \
           --exclude="colors" \
           --exclude="filters" &>/dev/null
 
     mkdir -p $target_dir/colors &>/dev/null
-    rsync -av $script_dir/colors/* $target_dir/colors/ \
+    rsync -a $script_dir/colors/* $target_dir/colors/ \
           --ignore-existing &>/dev/null
 
     mkdir -p $target_dir/colors &>/dev/null
-    rsync -av $script_dir/filters/* $target_dir/filters/  \
+    rsync -a $script_dir/filters/* $target_dir/filters/  \
           --ignore-existing &>/dev/null
 
     # Remove all items which are not part of the official releases
