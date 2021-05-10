@@ -19,7 +19,7 @@ salomon_version="salomon-release-$version"
 salomon_archive="$salomon_version.tar.gz"
 salomon_checksum="$salomon_archive.sha256"
 git_clone=".git release snippets wiki"
-temp_dir="/tmp/salomon"
+temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
 
 echo -e "${cl_lc}Salomon $version release builder${cl_n}"
 

@@ -23,7 +23,8 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 script_mode=""
-temp_file="/tmp/salomon_install_$$.tmp"
+temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
+temp_file="$temp_dir/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
 already_uninstalled=1
