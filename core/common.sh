@@ -217,7 +217,7 @@ check_patterns() {
 
 check_update() {
     link_latest="https://github.com/urbanware-org/salomon/releases/latest"
-    temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
 
     command -v wget &>/dev/null
     if [ $? -ne 0 ]; then

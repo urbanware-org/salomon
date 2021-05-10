@@ -20,7 +20,7 @@ set_global_variables() {
     arg_list=$(readlink -f "$0")
     input_file=""
     input_count=0
-    temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
     git_clone=".git release snippets wiki"
 
     action=""

@@ -34,7 +34,7 @@ analyze_input_file() {
         fi
     done
 
-    temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
         paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
