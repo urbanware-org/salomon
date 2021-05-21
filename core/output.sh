@@ -501,7 +501,7 @@ print_output_line() {
     fi
 
     if [ $export_log -eq 1 ]; then
-        echo -e "$output" >> $export_file
+        sed -e "s/\ *$//g" <<< "$output" >> $export_file
     fi
 
     count_lines=$(( count_lines + 1 ))
