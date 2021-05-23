@@ -101,7 +101,7 @@ usage() {
 if [ $# -gt 1 ]; then
     usage "Too many arguments"
 elif [ $# -lt 1 ]; then
-    usage "Missing argument (to install or uninstall)"
+    usage "Missing argument (to either install or uninstall)"
 fi
 
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
