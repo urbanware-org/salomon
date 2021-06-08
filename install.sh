@@ -53,6 +53,7 @@ set_permissions() {
         filemod=660
         execmod=$dirmod
     fi
+    mkdir -p $temp_dir
     find $target_dir > $temp_file
     while read line; do
         if [ -f "$line" ]; then
