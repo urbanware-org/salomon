@@ -68,6 +68,10 @@ set_permissions() {
         fi
     done < $temp_file
     rm -f $temp_file
+
+    if [ $(ls $temp_dir | wc -l) -eq 0 ]; then
+        rm -fR $temp_dir
+    fi
 }
 
 usage() {
