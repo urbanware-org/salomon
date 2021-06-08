@@ -191,7 +191,8 @@ if [ $script_mode = "install" ]; then
                         "installation directory. Due to"
                 echo -e "    this, a clean installation (removing and" \
                         "reinstalling the files) is not"
-                echo -e "    possible."
+                echo -e "    possible. This is not a problem, rather normal" \
+                        "behavior."
                 echo
             fi
         fi
