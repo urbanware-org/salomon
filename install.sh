@@ -244,6 +244,8 @@ if [ $script_mode = "install" ]; then
         # actual code to create the directory is executed before the files are
         # copied into it.
         echo -e "${cl_lb}(already exists)${cl_n}"
+    else
+        echo
     fi
 
     echo "Copying data to installation directory..."
