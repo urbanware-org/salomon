@@ -294,6 +294,11 @@ if [ $script_mode = "install" ]; then
                 cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
             fi
         done
+
+        command -v gtk-update-icon-cache &>/dev/null
+        if [ $? -eq 0 ]; then
+            gtk-update-icon-cache -q $icon_path
+        fi
     fi
 
     echo -e "Setting permissions for installation directory... \c"
@@ -355,6 +360,11 @@ else  # uninstall
             rm -f $i
         done
         already_uninstalled=0
+
+        command -v gtk-update-icon-cache &>/dev/null
+        if [ $? -eq 0 ]; then
+            gtk-update-icon-cache -q $icon_path
+        fi
         echo
     else
         echo -e "${cl_lb}(do not exist)${cl_n}"
