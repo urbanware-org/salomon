@@ -4,13 +4,13 @@ Repository clones of *Salomon* include `make.sh` which is some sort of release b
 
 This script is used to create the archive and the corresponding checksum file for the official releases of the original repository. The archive contains all project relevant files (including the source code) without any of the *GitHub* specific files that are not necessary in order to use the project.
 
-When you download a release of *Salomon*, you can verify that it is an official one without modified content by using the SHA256 checksum file provided by the corresponding release [here](https://github.com/urbanware-org/salomon/releases).
+When you download a release of *Salomon* outside this *GitHub* repository (or the one from [*GitLab*](https://gitlab.com/urbanware-org/salomon)), you can verify that it is an official one without modified content by using the SHA256 checksum file provided by the corresponding release [here](https://github.com/urbanware-org/salomon/releases).
 
 ## Custom content
 
 Nevertheless, you can create an archive for your own purposes (with customized scripts, color schemes, filters etc.).
 
-If you want you can also send your custom files to make them officially added to the *Salomon* release.
+If you want you can also send your custom files to make them officially added to the *Salomon* release. Files such as color schemes and filters can simply been sent by mail or via issue. In case you want to contribute code it is indispensable using an issue for that purpose.
 
 The author will be mentioned in a contributor file, but the contribution can also be anonymous if desired. Personally, I would be pleased with the former.
 
