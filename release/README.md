@@ -1,10 +1,18 @@
 # Building a customized release
 
-The repository clone of *Salomon* comes with `make.sh` some sort of release builder script. As this statement suggests, it is not a part in the official release.
+Repository clones of *Salomon* include `make.sh` which is some sort of release builder script. As this statement suggests, it is not a part in the official release.
 
 This script is used to create the archive and the corresponding checksum file for the official releases of the original repository. The archive contains all project relevant files (including the source code) without any of the *GitHub* specific files that are not necessary in order to use the project.
 
+When you download a release of *Salomon*, you can verify that it is an official one without modified content by using the SHA256 checksum file provided by the corresponding release [here](https://github.com/urbanware-org/salomon/releases).
+
+## Custom content
+
 Nevertheless, you can create an archive for your own purposes (with customized scripts, color schemes, filters etc.).
+
+If you want you can also send your custom files to make them officially added to the *Salomon* release.
+
+The author will be mentioned in a contributor file, but the contribution can also be anonymous if desired. Personally, I would be pleased with the former.
 
 However, in case you want to share your customized version, a corresponding notice is required that it is not an official release.
 
@@ -24,7 +32,7 @@ When done, simply run `make.sh` without any command-line arguments
 
 which will create the archive containing your customized version and the corresponding checksum.
 
-## Example file
+### Example file
 
 The structure of the file is up to you, it just needs to contain the required information.
 
@@ -43,3 +51,6 @@ Changelog:
     2021-04-27  Replaced foo with foobar
     2021-04-26  Added foo
 ```
+
+
+If you want you can also send your custom files to make them officially added to the *Salomon* release.
