@@ -1,6 +1,24 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added some code to the installation script to instantly update the
+          icon cache, if possible.
+
+        * Revised the installation script (revised some output messages, the
+          code for installing color and filter files, removed unnecessary
+          arguments and further neglibile changes).
+        * Revised the variables for temporary files in general (replaced hard
+          coded paths).
+
+        # Fixed the temporary file bug inside the installation script (which
+          caused a "no such file or directory" error).
+        # Fixed the directory removal bug inside the installation script (some
+          unnecessary directories were not deleted from target directory).
+        # Fixed the trailing spaces bug (when exporting the output into a
+          file) inside the output core module.
+
     Version 1.19.0 (2021-05-05)
 
         + Added elementary compatibility checks into each script (without any
