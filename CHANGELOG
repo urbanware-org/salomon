@@ -6,9 +6,9 @@ CHANGELOG (Salomon)
         + Added some code to the installation script to instantly update the
           icon cache, if possible.
 
-        * Revised the installation script (revised some output messages, the
-          code for installing color and filter files, removed unnecessary
-          arguments and further neglibile changes).
+        * Revised the installation script (revised some output messages as
+          well as the code for installing color and filter files, removed
+          unnecessary arguments and further neglibile changes).
         * Revised the variables for temporary files in general (replaced hard
           coded paths).
 
