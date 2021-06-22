@@ -13,6 +13,8 @@ CHANGELOG (Salomon)
         * Revised the variables for temporary files in general (replaced hard
           coded paths).
 
+        # Fixed the missing header line bug when box-drawing characters are
+          disabled (horizontal line consisting of asterisks was empty before).
         # Fixed the temporary file bug inside the installation script (which
           caused a "no such file or directory" error).
         # Fixed the directory removal bug inside the installation script (some
