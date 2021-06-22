@@ -3,6 +3,7 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        + Added an option to set a custom leading line character (if enabled).
         + Added some code to the installation script to instantly update the
           icon cache, if possible.
 
