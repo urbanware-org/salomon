@@ -405,17 +405,17 @@ read_filter() {
 
 set_line_characters() {
     if [ $boxdrawing_chars -eq 1 ]; then
-        char_header_ctl="┏"       # box corner character, top left
-        char_header_ctr="┓"       # box corner character, top right
-        char_header_cbl="┗"       # box corner character, bottom left
-        char_header_cbr="┛"       # box corner character, bottom right
-        char_header_line_h="━"    # box line character, horizontal
-        char_header_line_v="┃"    # box line character, horizontal
-        char_line_leading="$ldlc" # leading character used for output lines
-        char_line_single="─"      # character for single lines
-        char_line_double="═"      # character for double lines
+        char_header_ctl="┏"         # box corner character, top left
+        char_header_ctr="┓"         # box corner character, top right
+        char_header_cbl="┗"         # box corner character, bottom left
+        char_header_cbr="┛"         # box corner character, bottom right
+        char_header_line_h="━"      # box line character, horizontal
+        char_header_line_v="┃"      # box line character, horizontal
+        char_line_leading="$ldlc"   # leading character used for output lines
+        char_line_single="─"        # character for single lines
+        char_line_double="═"        # character for double lines
     else
-        char_header_line_v="*"    # use asterisk instead of a line
+        char_header_line_v="*"      # use asterisk instead of a line
         char_line_leading="|"
         char_line_single="-"
         char_line_double="="
