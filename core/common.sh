@@ -415,7 +415,8 @@ set_line_characters() {
         char_line_single="─"        # character for single lines
         char_line_double="═"        # character for double lines
     else
-        char_header_line_v="*"      # use asterisk instead of a line
+        char_header_line_h="*"      # use asterisk instead of horizontal line
+        char_header_line_v="*"      # use asterisk instead of vertical line
         char_line_leading="|"
         char_line_single="-"
         char_line_double="="
