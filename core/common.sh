@@ -81,6 +81,12 @@ check_config() {
     check_config_value "$leading_line_char"               integer 0
     leading_line_char=$config_value
 
+    if [ "$leading_line_char_custom" = "" ]; then
+        ldlc="│"
+    else
+        ldlc=$(head -c 1 <<< "$leading_line_char_custom")
+    fi
+
     check_config_value "$leading_line_char_colored"       integer 0
     leading_line_char_colored=$config_value
 
@@ -405,7 +411,7 @@ set_line_characters() {
         char_header_cbr="┛"       # box corner character, bottom right
         char_header_line_h="━"    # box line character, horizontal
         char_header_line_v="┃"    # box line character, horizontal
-        char_line_leading="│"     # leading character used for output lines
+        char_line_leading="$ldlc" # leading character used for output lines
         char_line_single="─"      # character for single lines
         char_line_double="═"      # character for double lines
     else
