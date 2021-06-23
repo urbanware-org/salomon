@@ -79,7 +79,7 @@ analyze_input_file() {
 
         count=$(( count + 1 ))
         if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
-            echo -e "${cl_lb}$char_line_leading${cl_n}" \
+            echo -e "${cl_lb}$char_header_line_v${cl_n}" \
                     "${cl_lg}Progress:${cl_n}" \
                     "${cl_wh}$(printf "%3s" "$percent") %" \
                     "${cl_ly}(line $count of $line_count)${cl_n}\r\c"
@@ -107,7 +107,7 @@ analyze_input_file() {
         fi
     done < $input_file
     if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
-        echo -e "${cl_lb}$char_line_leading${cl_n}${cl_lg}" \
+        echo -e "${cl_lb}$char_header_line_v${cl_n}${cl_lg}" \
           "${cl_lg}Done.                                           ${cl_n}"
         echo
     fi
