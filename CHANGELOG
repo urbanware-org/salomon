@@ -3,6 +3,8 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        + Added a marginal delay when processing the input data using the
+          '--less' command-line argument to decrease the CPU load.
         + Added an option to set a custom leading line character (if enabled).
         + Added some code to the installation script to instantly update the
           icon cache, if possible.
@@ -13,14 +15,18 @@ CHANGELOG (Salomon)
         * Revised the variables for temporary files in general (replaced hard
           coded paths).
 
-        # Fixed the missing header line bug when box-drawing characters are
-          disabled (horizontal line consisting of asterisks was empty before).
-        # Fixed the temporary file bug inside the installation script (which
-          caused a "no such file or directory" error).
         # Fixed the directory removal bug inside the installation script (some
           unnecessary directories were not deleted from target directory).
+        # Fixed the missing header line bug when box-drawing characters are
+          disabled (horizontal line consisting of asterisks was empty before).
+        # Fixed the progress output lag when using the '--less' command-line
+          argument in combination with a filter.
+        # Fixed the temporary file bug inside the installation script (which
+          caused a "no such file or directory" error).
         # Fixed the trailing spaces bug (when exporting the output into a
           file) inside the output core module.
+        # Fixed the wrong leading line character of the progress output line
+          when using the '--less' command-line argument.
 
     Version 1.19.0 (2021-05-05)
 
