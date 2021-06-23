@@ -65,6 +65,13 @@ analyze_input_file() {
         rm -f $less_file
     fi
 
+    if [ $less_delay -lt 1 ]; then
+        less_delay=1
+    elif [ $less_delay -gt 900 ]; then
+        less_delay=900
+    fi
+    less_delay=$(printf "%03d\n" $less_delay)
+
     count=0
     line_count=$(wc -l < $input_file)
     while read line; do

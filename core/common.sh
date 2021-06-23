@@ -79,23 +79,10 @@ check_config() {
     delay=$config_value
 
     check_config_value "$less_delay"                      integer 4
-    if [ $config_value -lt 1 ]; then
-        less_delay=1
-    elif [ $config_value -gt 900 ]; then
-        less_delay=900
-    else
-        less_delay=$config_value
-    fi
-    less_delay=$(printf "%03d\n" $less_delay)
+    less_delay=$config_value
 
     check_config_value "$leading_line_char"               integer 0
     leading_line_char=$config_value
-
-    if [ "$leading_line_char_custom" = "" ]; then
-        ldlc="│"
-    else
-        ldlc=$(head -c 1 <<< "$leading_line_char_custom")
-    fi
 
     check_config_value "$leading_line_char_colored"       integer 0
     leading_line_char_colored=$config_value
@@ -414,6 +401,12 @@ read_filter() {
 }
 
 set_line_characters() {
+    if [ "$leading_line_char_custom" = "" ]; then
+        ldlc="│"
+    else
+        ldlc=$(head -c 1 <<< "$leading_line_char_custom")
+    fi
+
     if [ $boxdrawing_chars -eq 1 ]; then
         char_header_ctl="┏"         # box corner character, top left
         char_header_ctr="┓"         # box corner character, top right
