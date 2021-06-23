@@ -1,7 +1,7 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.20.0 (2021-06-23)
 
         + Added an option for a marginal delay when processing the input data
           using the '--less' command-line argument to decrease the CPU load.
