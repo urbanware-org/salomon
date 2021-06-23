@@ -11,7 +11,7 @@ CHANGELOG (Salomon)
 
         * Revised the installation script (revised some output messages as
           well as the code for installing color and filter files, removed
-          unnecessary arguments and further neglibile changes).
+          unnecessary arguments and further negligible changes).
         * Revised the variables for temporary files in general (replaced hard
           coded paths).
 
