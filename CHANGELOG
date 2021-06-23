@@ -3,8 +3,8 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
-        + Added a marginal delay when processing the input data using the
-          '--less' command-line argument to decrease the CPU load.
+        + Added an option for a marginal delay when processing the input data
+          using the '--less' command-line argument to decrease the CPU load.
         + Added an option to set a custom leading line character (if enabled).
         + Added some code to the installation script to instantly update the
           icon cache, if possible.
