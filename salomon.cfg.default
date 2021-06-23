@@ -14,7 +14,7 @@
 #                                                                            #
 ##############################################################################
 
-# Delay:
+# Delay for printing output lines
 #
 #   The default amount of milliseconds to wait between each output line.
 #   Relevant only when using the command-line argument to slow down the
@@ -26,6 +26,22 @@
 #     900 = maximum
 #
 delay=200
+
+#  Delay for processing input files via 'less':
+#
+#   When using the '--less' command-line argument the input files are pre-
+#   processed and then displayed by the 'less' tool.
+#
+#   While processing the input data, the CPU load may increase significantly
+#   depending on the file size. In order to decrease the CPU load, a marginal
+#   delay is used while processing.
+#
+#   Options:
+#       1 = minimum
+#       4 = default
+#     900 = maximum
+#
+less_delay=4
 
 # Highlight foreground color
 #
@@ -88,15 +104,38 @@ boxdrawing_chars=1
 #
 leading_line_char=0
 #
+#   The leading line character can be changed to a custom one. However, this
+#   only takes effect when enabling box-drawing characters (see above).
+#
+#   If you do not set any custom character, the default one will be used.
+#
+leading_line_char_custom=""
+#
 #   The leading line character uses the default terminal foreground color.
 #   However, it can be alternatively colored like the line it starts with.
 #   For example, if the output line is green, the leading line character will
 #   also be that way. This also applies to highlighting.
 #
+#   Options:
 #     0 = disabled (default)
 #     1 = enabled
 #
 leading_line_char_colored=0
+#
+#   Manually set the color of the leading line character. You may run the main
+#   script with the '--color-table' command-line argument for an overview of
+#   the colors the terminal emulator supports (can display).
+#
+#     ./salomon.sh --color-table
+#
+#   This option will only take effect when the option for colored leading line
+#   characters above is enabled.
+#
+#   Options:
+#     0        = shell foreground color (default)
+#     1 to 255 = corresponding color value
+#
+leading_line_char_custom_color=0
 
 # Usage information:
 #
