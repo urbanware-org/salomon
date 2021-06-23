@@ -77,14 +77,12 @@ analyze_input_file() {
             print_output_line "$line"
         fi
 
-        if [ ! -z "$output" ]; then
-            count=$(( count + 1 ))
-            if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
-                echo -e "${cl_lb}$char_line_leading${cl_n}" \
-                        "${cl_lg}Progress:${cl_n}" \
-                        "${cl_wh}$(printf "%3s" "$percent") %" \
-                        "${cl_ly}(line $count of $line_count)${cl_n}\r\c"
-            fi
+        count=$(( count + 1 ))
+        if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
+            echo -e "${cl_lb}$char_line_leading${cl_n}" \
+                    "${cl_lg}Progress:${cl_n}" \
+                    "${cl_wh}$(printf "%3s" "$percent") %" \
+                    "${cl_ly}(line $count of $line_count)${cl_n}\r\c"
         fi
 
         if [ $pause -gt 0 ]; then
