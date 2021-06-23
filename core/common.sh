@@ -78,6 +78,16 @@ check_config() {
     check_config_value "$delay"                           integer 200
     delay=$config_value
 
+    check_config_value "$less_delay"                      integer 4
+    if [ $config_value -lt 1 ]; then
+        less_delay=1
+    elif [ $config_value -gt 900 ]; then
+        less_delay=900
+    else
+        less_delay=$config_value
+    fi
+    less_delay=$(printf "%03d\n" $less_delay)
+
     check_config_value "$leading_line_char"               integer 0
     leading_line_char=$config_value
 
