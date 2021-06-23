@@ -83,6 +83,8 @@ analyze_input_file() {
                     "${cl_lg}Progress:${cl_n}" \
                     "${cl_wh}$(printf "%3s" "$percent") %" \
                     "${cl_ly}(line $count of $line_count)${cl_n}\r\c"
+
+            sleep 0.004     # reduce the CPU load, at least a bit
         fi
 
         if [ $pause -gt 0 ]; then
