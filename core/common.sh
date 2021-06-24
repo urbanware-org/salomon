@@ -404,7 +404,7 @@ set_line_characters() {
     if [ "$leading_line_char_custom" = "" ]; then
         ldlc="│"
     else
-        ldlc=$(head -c 1 <<< "$leading_line_char_custom")
+        ldlc=$(cut -c1 <<< "$leading_line_char_custom")
     fi
 
     if [ $boxdrawing_chars -eq 1 ]; then
