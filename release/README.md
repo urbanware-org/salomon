@@ -51,6 +51,3 @@ Changelog:
     2021-04-27  Replaced foo with foobar
     2021-04-26  Added foo
 ```
-
-
-If you want you can also send your custom files to make them officially added to the *Salomon* release.
