@@ -492,13 +492,9 @@ print_output_line() {
         fi
     else
         if [ $leading_line_char -eq 1 ]; then
-            if [ $leading_line_char_colored -eq 1 ]; then
-                echo -e "${color_code}${char_ll} ${output}"
-            else
-                echo -e "${char_ll} ${output}"
-            fi
+            echo -e "${char_ll} ${output}"
         else
-            echo -e "$output"
+            echo -e "${output}"
         fi
     fi
 
