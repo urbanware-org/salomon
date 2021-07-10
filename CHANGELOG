@@ -3,8 +3,12 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
-        # Fix custom leading line character bug (special characters were not
-          displayed correctly).
+        * Revised the leading line character code in general.
+
+        # Fixed the custom leading line character bug (special characters were
+          not displayed correctly).
+        # Fixed the export file line format bug (color codes were exported as
+          plain text).
 
     Version 1.20.0 (2021-06-23)
 
