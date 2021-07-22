@@ -15,11 +15,11 @@ shell_precheck_compat
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/compat.sh
 source ${script_dir}/core/global.sh
+kernel_check
 compatibility_check
 
 echo
 echo -e "${cl_lc}Salomon compatibility check script${cl_n}"
-
 echo
 echo -e "Checking operating system kernel .....................$line" \
         "${check_kernel}"
@@ -68,12 +68,6 @@ echo
 echo -e "Overall status .......................................$line" \
         "${check_overall}"
 echo
-
-if [[ $kernel_name =~ bsd ]]; then
-    echo -e "This seems to be a ${cl_yl}BSD${cl_n} derivate. In this case" \
-            "you may use ${cl_yl}Salomon-BSD${cl_n} instead."
-    echo
-fi
 
 exit $return_code
 

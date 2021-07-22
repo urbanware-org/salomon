@@ -25,7 +25,7 @@ compatibility_check() {
     check_dialog="$missing"
     check_dirname="$failure"
     check_grep="$failure"
-    check_kernel="$failure"
+    check_kernel="$success"   # manually set to successful
     check_less="$missing"
     check_paste="$failure"
     check_printf="$failure"
@@ -43,13 +43,6 @@ compatibility_check() {
     check_missing=0
     check_overall="$failure"
     line="................"
-
-    kernel_name=$(uname -s | tr '[:upper:]' '[:lower:]')
-    if [[ $kernel_name =~ linux ]]; then
-        check_kernel="$success"
-    else
-        check_failed=1
-    fi
 
     bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
     if [ $bash_major -ge 4 ]; then
@@ -207,6 +200,17 @@ missing. Please run the compatibility check script ('compat.sh') for details.
 
 end
         exit 1
+    fi
+}
+
+kernel_check() {
+    kernel_name=$(uname -s | tr '[:upper:]' '[:lower:]')
+    if [[ $kernel_name =~ bsd ]]; then
+        echo
+        echo -e "This seems to be a ${cl_yl}BSD${cl_n} derivate. In this" \
+                "case you may use ${cl_yl}Salomon-BSD${cl_n} instead."
+        echo
+        exit 4
     fi
 }
 
