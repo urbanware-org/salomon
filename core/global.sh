@@ -16,12 +16,13 @@
 set_global_variables() {
     version="1.20.1"
 
+    git_clone=".git release snippets wiki"
+    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
+
     arg_case=""
     arg_list=$(readlink -f "$0")
     input_file=""
     input_count=0
-    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
-    git_clone=".git release snippets wiki"
 
     action=""
     analyze_less=0
