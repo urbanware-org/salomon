@@ -8,12 +8,13 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
+source ${script_dir}/core/common.sh
+source ${script_dir}/core/global.sh
+set_global_variables
+
 compatibility_check() {
     script_file=$(basename "$0")
     script_temp="$(dirname $(mktemp -u --tmpdir))/salomon_compat.sh"
-    source ${script_dir}/core/common.sh
-    source ${script_dir}/core/global.sh
-    set_global_variables
 
     failure="${cl_lr}FAILURE${cl_n}"
     missing="${cl_yl}MISSING${cl_n}"
