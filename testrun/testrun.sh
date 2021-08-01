@@ -14,7 +14,7 @@ debug=0
 salomon_script_dir=$(dirname $(readlink -f $0) | sed -e "s/testrun//g")
 salomon_script="$salomon_script_dir/salomon.sh"
 
-temp_dir="$(dirname $(mktemp -u --tmpdir))/"
+temp_dir="$(dirname $(mktemp -u --tmpdir))"
 salomon_testrun_log="$temp_dir/salomon_testrun_$$.log"
 salomon_sample_log="$salomon_script_dir/samples/foobar.log"
 salomon_sample_colors="$salomon_script_dir/colors/log_colors.cfg"
