@@ -367,6 +367,7 @@ else  # uninstall
         for i in $icons_installed; do
             rm -f $i
         done
+        rm -f $icon_path_xpm/salomon.xpm
         already_uninstalled=0
 
         command -v gtk-update-icon-cache &>/dev/null
