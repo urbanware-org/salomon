@@ -45,6 +45,7 @@ elif [ -d "/usr/local/share/icons/hicolor" ]; then
     icon_path="/usr/local/share/icons/hicolor"
 fi
 icon_path_scalable="$icon_path/scalable/apps"
+icon_path_xpm="/usr/share/pixmaps"
 
 set_permissions() {
     chown -R root:root $target_dir
@@ -294,6 +295,11 @@ if [ $script_mode = "install" ]; then
             if [ -d $icon_path_scalable ]; then
                 rm -f $icon_path_scalable/salomon.svg
                 cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
+            fi
+
+            if [ -d $icon_path_xpm ]; then
+                rm -f $icon_path_xpm/salomon.xpm
+                cp $script_dir/icons/xpm/salomon.xpm $icon_path_xpm/
             fi
         done
 
