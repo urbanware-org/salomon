@@ -467,11 +467,12 @@ ${no}
 ${lr}required arguments:${no}
   -a {analyze,monitor}, --action {analyze,monitor}
                         action (processing mode) to perform with the given
-                        input file(s), this can also be given via '--analyze'
-                        or '--monitor' instead
+                        input file(s)
+  --analyze             alternative for '-a analyze' (or '--action analyze')
   -i INPUT_FILE, --input-file INPUT_FILE
                         input file to analyze or monitor (can be given
                         multiple times)
+  --monitor             alternative for '-a monitor' (or '--action monitor')
 
 ${lb}optional arguments:${no}
   -c COLOR_FILE, --color-file COLOR_FILE
