@@ -32,9 +32,11 @@ clean_install=0
 exclude_config=""
 keep_directory=0
 target="${cl_yl}${target_dir}${cl_n}"
-yesno="${cl_yl}Y${cl_n}/${cl_yl}N${cl_n}"
+dowant="Do you want to"
+yesno="${cl_yl}Y${cl_dy}es${cl_n}/${cl_yl}N${cl_dy}o${cl_n}"
+yesnocancel="${yesno}${cl_m}/${cl_yl}C${cl_dy}ancel${cl_n}"
 
-available="everyone"
+available=""
 dirmod=775
 filemod=664
 execmod=$dirmod
@@ -46,6 +48,13 @@ elif [ -d "/usr/local/share/icons/hicolor" ]; then
 fi
 icon_path_scalable="$icon_path/scalable/apps"
 icon_path_xpm="/usr/share/pixmaps"
+
+cancel_install() {
+    echo
+    echo -e "${cl_lr}Canceled${cl_n} on user request."
+    echo
+    exit
+}
 
 set_permissions() {
     chown -R root:root $target_dir
@@ -149,10 +158,7 @@ fi
 echo -e "This will $script_action Salomon. \c"
 confirm "Do you wish to proceed ($yesno)? \c"
 if [ $choice -eq 0 ]; then
-    echo
-    echo -e "${cl_lr}Canceled${cl_n} on user request."
-    echo
-    exit
+    cancel_install
 fi
 echo
 
@@ -163,9 +169,13 @@ if [ "$script_mode" = "install" ]; then
             "this machine"
     echo -e "    or only for root."
     echo
-    confirm "    Do you want to make it available for all users ($yesno)? \c"
-    if [ $choice -eq 0 ]; then
+    confirm "    $dowant make it available for all users ($yesnocancel)? \c"
+    if [ $choice -eq 2 ]; then
+        cancel_install
+    elif [ $choice -eq 0 ]; then
         available="rootonly"
+    else
+        available="everyone"
     fi
     echo
 fi
@@ -177,16 +187,21 @@ if [ $script_mode = "install" ]; then
         if [ ! "$script_dir" = "$target_dir" ]; then
             echo -e "    The target directory '$target' already exists. You" \
                     "can perform a"
-            echo -e "    clean installation which will delete the directory" \
-                    "and reinstall the"
+            echo -e "    clean installation which will" \
+                    "${cl_lr}delete${cl_n} the directory" \
+                    "and ${cl_lg}reinstall${cl_n} the"
             echo -e "    original files."
             echo
-            echo -e "    Notice that this will also delete all user-defined" \
-                    "configs and settings."
+            echo -e "    Notice that this will also ${cl_lr}delete${cl_n}" \
+                    "all user-defined configs and settings."
             echo
             confirm \
-              "    Do you want to perform a clean installation ($yesno)? \c"
-            clean_install=$choice
+              "    $dowant to perform a clean installation ($yesnocancel)? \c"
+            if [ $choice -eq 2 ]; then
+                cancel_install
+            else
+                clean_install=$choice
+            fi
             echo
         else
             # Performing a clean installation when running this script from
@@ -212,8 +227,12 @@ if [ $script_mode = "install" ]; then
         echo -e "    its icon in multiple common sizes as well as in a" \
                 "scalable image format."
         echo
-        confirm "    Do you want to install the icon files ($yesno)? \c"
-        install_icons=$choice
+        confirm "    $dowant to install the icon files ($yesnocancel)? \c"
+        if [ $choice -eq 2 ]; then
+            cancel_install
+        else
+            install_icons=$choice
+        fi
         echo
     fi
 
@@ -227,18 +246,18 @@ if [ $script_mode = "install" ]; then
     fi
     echo
 
-    echo -e "Installation directory is '${target}'."
+    echo -e "    Installation directory is '${target}'."
     if [ $clean_install -eq 1 ]; then
         if [ "$(pwd)" = "$target_dir" ]; then
-            echo "Removing previous data from installation directory..."
+            echo "    Removing previous data from installation directory..."
             rm -fR $target_dir/*
         else
-            echo "Removing previous installation directory..."
+            echo "    Removing previous installation directory..."
             rm -fR $target_dir
         fi
     fi
 
-    echo -e "Creating installation directory... \c"
+    echo -e "    Creating installation directory... \c"
     if [ -d $target_dir ]; then
         # The directory is not really created here. The code is for the output
         # message, only (just to keep the messages of the steps in order). The
@@ -249,7 +268,7 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
-    echo "Copying data to installation directory..."
+    echo "    Copying data to installation directory..."
     if [ -f "$target_dir/salomon.cfg" ]; then
         exclude_config="--exclude=salomon.cfg"
     fi
@@ -276,7 +295,7 @@ if [ $script_mode = "install" ]; then
     done
 
     if [ $install_icons -eq 1 ]; then
-        echo "Copying icon files to shared directory..."
+        echo "    Copying icon files to shared directory..."
         for i in 16 24 32 48 64 96 128 256; do
             if [ ! -e "$script_dir/icons/png/salomon_${i}x${i}.png" ]; then
                 continue
@@ -309,7 +328,7 @@ if [ $script_mode = "install" ]; then
         fi
     fi
 
-    echo -e "Setting permissions for installation directory... \c"
+    echo -e "    Setting permissions for installation directory... \c"
     if [ $available = "rootonly" ]; then
         echo -e "${cl_lb}(root only)${cl_n}"
     else
@@ -319,12 +338,12 @@ if [ $script_mode = "install" ]; then
 
     if [ $clean_install -eq 1 ]; then
         if [ -f ${symlink_sh}/salomon ]; then
-            echo "Removing existing symbolic link for main script..."
+            echo "    Removing existing symbolic link for main script..."
             rm -f ${symlink_sh}/salomon &>/dev/null
         fi
     fi
 
-    echo -e "Creating symbolic link for main script... \c"
+    echo -e "    Creating symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         echo -e "${cl_lb}(already exists)${cl_n}"
     else
@@ -336,14 +355,14 @@ else  # uninstall
         echo -e "${cl_dc}Installation directory${cl_n}"
         echo
         echo -e "    Removing the installation directory '$target' will" \
-                "also delete all"
+                "also ${cl_lr}delete${cl_n} all"
         echo -e "    user-defined configs and settings."
         echo
         echo -e "    If you keep the installation directory, only the" \
                 "symbolic link and the"
         echo -e "    icons will be removed."
         echo
-        confirm "    Do you want to remove it ($yesno)? \c"
+        confirm "    $dowant to remove it ($yesno)? \c"
         if [ $choice -eq 0 ]; then
             keep_directory=1
         fi
@@ -352,7 +371,7 @@ else  # uninstall
 
     echo -e "Ready to ${script_action} Salomon."
     echo
-    echo -e "Removing symbolic link for main script... \c"
+    echo -e "    Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
         already_uninstalled=0
@@ -361,7 +380,7 @@ else  # uninstall
         echo -e "${cl_lb}(does not exist)${cl_n}"
     fi
 
-    echo -e "Removing icon files from shared directory... \c"
+    echo -e "    Removing icon files from shared directory... \c"
     icons_installed=$(find $icon_path | egrep "salomon\.png|salomon\.svg")
     if [ ! -z "$icons_installed" ]; then
         for i in $icons_installed; do
@@ -379,7 +398,7 @@ else  # uninstall
         echo -e "${cl_lb}(do not exist)${cl_n}"
     fi
 
-    echo -e "Removing installation directory '${target}'... \c"
+    echo -e "    Removing installation directory '${target}'... \c"
     if [ $keep_directory -eq 1 ]; then
         echo -e "${cl_lb}(kept on user request)${cl_n}"
     else
