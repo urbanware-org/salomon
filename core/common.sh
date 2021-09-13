@@ -265,6 +265,7 @@ confirm() {
         case $choice in
             [Yy] ) choice=1; break;;   # Yes
             [Nn] ) choice=0; break;;   # No
+            [Cc] ) choice=2; break;;   # Cancel
             * ) continue;;
         esac
     done
