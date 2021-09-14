@@ -1,6 +1,21 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.20.2 (2021-09-14)
+
+        + Added the Salomon icon in XPM image file format.
+
+        * Revised the command-line argument usage information inside the
+          common core module (added the mode alternatives as separate
+          arguments).
+        * Revised the compatibility script as well as the core module
+          (negligible changes).
+        * Revised the global core module (negligible changes).
+        * Revised the installation script (added code to install and uninstall
+          the XPM icon as well as negligible changes).
+
+        # Fixed the temporary file path (removed unnecessary slash).
+
     Version 1.20.1 (2021-07-11)
 
         * Revised the leading line character code in general.
