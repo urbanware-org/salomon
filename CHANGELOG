@@ -14,7 +14,8 @@ CHANGELOG (Salomon)
         * Revised the installation script (added code to install and uninstall
           the XPM icon as well as negligible changes).
 
-        # Fixed the temporary file path (removed unnecessary slash).
+        # Fixed the temporary file path inside the testrun script (removed
+          unnecessary slash).
 
     Version 1.20.1 (2021-07-11)
 
