@@ -166,8 +166,8 @@ if [ "$script_mode" = "install" ]; then
     echo -e "${cl_dc}Availability and permissions${cl_n}"
     echo
     echo -e "    You can make Salomon available either for all users on" \
-            "this machine"
-    echo -e "    or only for root."
+            "this machine or"
+    echo -e "    only for root."
     echo
     confirm "    $dowant make it available for all users ($yesnocancel)? \c"
     if [ $choice -eq 2 ]; then
