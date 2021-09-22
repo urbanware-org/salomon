@@ -27,6 +27,7 @@ temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
 temp_file="$temp_dir/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
+allow_write=0
 already_uninstalled=1
 clean_install=0
 exclude_config=""
@@ -78,6 +79,13 @@ set_permissions() {
         fi
     done < $temp_file
     rm -f $temp_file
+
+    if [ $allow_write -eq 1 ]; then
+        chmod 777 $target_dir/colors
+        chmod 777 $target_dir/filters
+        chmod 666 $target_dir/colors/*
+        chmod 666 $target_dir/filters/*
+    fi
 
     if [ $(ls $temp_dir | wc -l) -eq 0 ]; then
         rm -fR $temp_dir
@@ -178,6 +186,21 @@ if [ "$script_mode" = "install" ]; then
         available="everyone"
     fi
     echo
+    if [ "$available" = "everyone" ]; then
+        echo -e "    By default, the Salomon installation directory is" \
+                "writable by root, only."
+        echo -e "    Shall users have the permission to add, edit and" \
+                "remove files inside the"
+        echo -e "    color and filter directory?"
+        echo
+        confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
+        if [ $choice -eq 2 ]; then
+            cancel_install
+        elif [ $choice -eq 1 ]; then
+            allow_write=1
+        fi
+        echo
+    fi
 fi
 
 if [ $script_mode = "install" ]; then
