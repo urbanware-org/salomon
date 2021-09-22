@@ -177,6 +177,10 @@ if [ "$script_mode" = "install" ]; then
             "this machine or"
     echo -e "    only for root."
     echo
+    echo -e "    Notice that if you choose the latter, you must be root in" \
+            "order to run"
+    echo -e "    Salomon as it will not be available for other users."
+    echo
     confirm "    $dowant make it available for all users ($yesnocancel)? \c"
     if [ $choice -eq 2 ]; then
         cancel_install
@@ -191,9 +195,9 @@ if [ "$script_mode" = "install" ]; then
     if [ "$available" = "everyone" ]; then
         echo -e "  ■ By default, the Salomon installation directory is" \
                 "writable by root, only."
-        echo -e "    Shall users have the permission to add, edit and" \
-                "remove files inside the"
-        echo -e "    color and filter directory?"
+        echo -e "    You can give users the permission to add, edit and" \
+                "remove files inside"
+        echo -e "    the color and filter directory."
         echo
         confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
