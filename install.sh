@@ -177,9 +177,10 @@ if [ "$script_mode" = "install" ]; then
             "this machine or"
     echo -e "    only for root."
     echo
-    echo -e "    Notice that if you choose the latter, you must be root in" \
-            "order to run"
-    echo -e "    Salomon as it will not be available for other users."
+    echo -e "    Notice that if you choose the latter, you even must be" \
+            "root in order to"
+    echo -e "    run Salomon and it will not be available for other users" \
+            "at all."
     echo
     confirm "    $dowant make it available for all users ($yesnocancel)? \c"
     if [ $choice -eq 2 ]; then
