@@ -173,7 +173,7 @@ echo
 if [ "$script_mode" = "install" ]; then
     echo -e "${cl_dc}Availability and permissions${cl_n}"
     echo
-    echo -e "    You can make Salomon available either for all users on" \
+    echo -e "  ■ You can make Salomon available either for all users on" \
             "this machine or"
     echo -e "    only for root."
     echo
@@ -187,7 +187,7 @@ if [ "$script_mode" = "install" ]; then
     fi
     echo
     if [ "$available" = "everyone" ]; then
-        echo -e "    By default, the Salomon installation directory is" \
+        echo -e "  ■ By default, the Salomon installation directory is" \
                 "writable by root, only."
         echo -e "    Shall users have the permission to add, edit and" \
                 "remove files inside the"
@@ -208,7 +208,7 @@ if [ $script_mode = "install" ]; then
         echo -e "${cl_dc}Target directory${cl_n}"
         echo
         if [ ! "$script_dir" = "$target_dir" ]; then
-            echo -e "    The target directory '$target' already exists. You" \
+            echo -e "  ■ The target directory '$target' already exists. You" \
                     "can perform a"
             echo -e "    clean installation which will" \
                     "${cl_lr}delete${cl_n} the directory" \
@@ -245,7 +245,7 @@ if [ $script_mode = "install" ]; then
     if [ ! -z "$icon_path" ]; then
         echo -e "${cl_dc}Shared icons${cl_n}"
         echo
-        echo -e "    In case you want to create desktop shortcuts for" \
+        echo -e "  ■ In case you want to create desktop shortcuts for" \
                 "Salomon, it provides"
         echo -e "    its icon in multiple common sizes as well as in a" \
                 "scalable image format."
@@ -377,7 +377,7 @@ else  # uninstall
     if [ -d $target_dir ]; then
         echo -e "${cl_dc}Installation directory${cl_n}"
         echo
-        echo -e "    Removing the installation directory '$target' will" \
+        echo -e "  ■ Removing the installation directory '$target' will" \
                 "also ${cl_lr}delete${cl_n} all"
         echo -e "    user-defined configs and settings."
         echo
