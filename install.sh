@@ -182,8 +182,10 @@ if [ "$script_mode" = "install" ]; then
         cancel_install
     elif [ $choice -eq 0 ]; then
         available="rootonly"
+        as_root="as root "
     else
         available="everyone"
+        as_root=""
     fi
     echo
     if [ "$available" = "everyone" ]; then
@@ -446,7 +448,7 @@ fi
 echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
-            "in order to use it."
+            "${as_root}in order to use it."
 fi
 echo
 
