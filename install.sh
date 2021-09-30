@@ -27,6 +27,7 @@ temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
 temp_file="$temp_dir/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
+allow_write=0
 already_uninstalled=1
 clean_install=0
 exclude_config=""
@@ -78,6 +79,13 @@ set_permissions() {
         fi
     done < $temp_file
     rm -f $temp_file
+
+    if [ $allow_write -eq 1 ]; then
+        chmod 777 $target_dir/colors
+        chmod 777 $target_dir/filters
+        chmod 666 $target_dir/colors/*
+        chmod 666 $target_dir/filters/*
+    fi
 
     if [ $(ls $temp_dir | wc -l) -eq 0 ]; then
         rm -fR $temp_dir
@@ -165,19 +173,41 @@ echo
 if [ "$script_mode" = "install" ]; then
     echo -e "${cl_dc}Availability and permissions${cl_n}"
     echo
-    echo -e "    You can make Salomon available either for all users on" \
+    echo -e "  ■ You can make Salomon available either for all users on" \
             "this machine or"
     echo -e "    only for root."
+    echo
+    echo -e "    Notice that if you choose the latter, you even must be" \
+            "root in order to"
+    echo -e "    run Salomon and it will not be available for other users" \
+            "at all."
     echo
     confirm "    $dowant make it available for all users ($yesnocancel)? \c"
     if [ $choice -eq 2 ]; then
         cancel_install
     elif [ $choice -eq 0 ]; then
         available="rootonly"
+        as_root="as root "
     else
         available="everyone"
+        as_root=""
     fi
     echo
+    if [ "$available" = "everyone" ]; then
+        echo -e "  ■ By default, the Salomon installation directory is" \
+                "writable by root, only."
+        echo -e "    You can give users the permission to add, edit and" \
+                "remove files inside"
+        echo -e "    the color and filter directory."
+        echo
+        confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
+        if [ $choice -eq 2 ]; then
+            cancel_install
+        elif [ $choice -eq 1 ]; then
+            allow_write=1
+        fi
+        echo
+    fi
 fi
 
 if [ $script_mode = "install" ]; then
@@ -185,7 +215,7 @@ if [ $script_mode = "install" ]; then
         echo -e "${cl_dc}Target directory${cl_n}"
         echo
         if [ ! "$script_dir" = "$target_dir" ]; then
-            echo -e "    The target directory '$target' already exists. You" \
+            echo -e "  ■ The target directory '$target' already exists. You" \
                     "can perform a"
             echo -e "    clean installation which will" \
                     "${cl_lr}delete${cl_n} the directory" \
@@ -222,7 +252,7 @@ if [ $script_mode = "install" ]; then
     if [ ! -z "$icon_path" ]; then
         echo -e "${cl_dc}Shared icons${cl_n}"
         echo
-        echo -e "    In case you want to create desktop shortcuts for" \
+        echo -e "  ■ In case you want to create desktop shortcuts for" \
                 "Salomon, it provides"
         echo -e "    its icon in multiple common sizes as well as in a" \
                 "scalable image format."
@@ -354,7 +384,7 @@ else  # uninstall
     if [ -d $target_dir ]; then
         echo -e "${cl_dc}Installation directory${cl_n}"
         echo
-        echo -e "    Removing the installation directory '$target' will" \
+        echo -e "  ■ Removing the installation directory '$target' will" \
                 "also ${cl_lr}delete${cl_n} all"
         echo -e "    user-defined configs and settings."
         echo
@@ -423,7 +453,7 @@ fi
 echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
-            "in order to use it."
+            "${as_root}in order to use it."
 fi
 echo
 
