@@ -1,6 +1,11 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised the installation script (added optional write permissions
+          for non-root users and revised the output in general).
+
     Version 1.20.2 (2021-09-14)
 
         + Added the Salomon icon in XPM image file format.
