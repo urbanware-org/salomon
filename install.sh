@@ -215,15 +215,16 @@ if [ $script_mode = "install" ]; then
         echo -e "${cl_dc}Target directory${cl_n}"
         echo
         if [ ! "$script_dir" = "$target_dir" ]; then
-            echo -e "  ■ The target directory '$target' already exists. You" \
-                    "can perform a"
-            echo -e "    clean installation which will" \
-                    "${cl_lr}delete${cl_n} the directory" \
-                    "and ${cl_lg}reinstall${cl_n} the"
-            echo -e "    original files."
+            echo -e "  ■ The target directory '$target' already exists."
             echo
-            echo -e "    Notice that this will also ${cl_lr}delete${cl_n}" \
-                    "all user-defined configs and settings."
+            echo -e "    You can ${cl_yl}either${cl_n} only install the" \
+                    "program relevant files and keep all"
+            echo -e "    configs and settings ${cl_yl}or${cl_n} perform a" \
+                    "clean installation which will ${cl_lr}delete${cl_n}"
+            echo -e "    the directory and ${cl_lg}reinstall${cl_n} the" \
+                    "original files. Notice that latter will"
+            echo -e "    also ${cl_lr}delete${cl_n} all user-defined" \
+                    "configs and settings."
             echo
             confirm \
               "    $dowant to perform a clean installation ($yesnocancel)? \c"
