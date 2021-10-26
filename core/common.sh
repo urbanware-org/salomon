@@ -232,22 +232,71 @@ check_update() {
         rm -f $temp_file
         usage "Unable to retrieve update information"
     else
-        temp_file=$(grep "css-truncate-target" $temp_file |
-                    sed -e "s/<\/.*//g" | sed -e "s/.*>//g ")
-        version_latest=$(echo $temp_file | awk '{ print $1 }')
+        version_latest=$(grep "Release salomon" $temp_file \
+                        | sed -e "s/.*Release\ salomon-//g" \
+                        | sed -e "s/\ .*//g" | head -n1)
         rm -f $temp_file
     fi
 
     echo
     if [ "$version" = "$version_latest" ]; then
         echo "This version of Salomon is up-to-date."
-    else
+        echo
+        exit
+    fi
+
+    version_update=0
+    version_major=$((sed -e "s/\./\ /g" | awk '{ print $1 }') \
+                                        <<< $version)
+    version_minor=$((sed -e "s/\./\ /g" | awk '{ print $2 }') \
+                                        <<< $version)
+    version_revis=$((sed -e "s/\./\ /g" | awk '{ print $3 }') \
+                                        <<< $version | sed -e "s/-.*//g")
+
+    version_major_latest=$((sed -e "s/\./\ /g" | awk '{ print $1 }') \
+                                               <<< $version_latest)
+    version_minor_latest=$((sed -e "s/\./\ /g" | awk '{ print $2 }') \
+                                               <<< $version_latest)
+    version_revis_latest=$((sed -e "s/\./\ /g" | awk '{ print $3 }' \
+                                               | cut -c1) \
+                                               <<< $version_latest)
+
+    if [ -z "$version_major" ] || \
+       [ -z "$version_minor" ] || \
+       [ -z "$version_revis" ] || \
+       [ -z "$version_major_latest" ] || \
+       [ -z "$version_minor_latest" ] || \
+       [ -z "$version_revis_latest" ]; then
+         usage "Unable to get the information of the latest version"
+    fi
+
+    if [ $version_major_latest -ge $version_major ]; then
+        if [ $version_major_latest -gt $version_major ]; then
+            version_update=1
+        else
+            if [ $version_minor_latest -ge $version_minor ]; then
+                if [ $version_minor_latest -gt $version_minor ]; then
+                    version_update=1
+                else
+                    if [ $version_revis_latest -ge $version_revis ]; then
+                        if [ $version_revis_latest -gt $version_revis ]; then
+                            version_update=1
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    fi
+
+    if [ $version_update -eq 1 ]; then
         echo "There is a newer version of Salomon available."
         echo
-        echo "For details see: $link_latest"
+        echo -e "Current version: ${cl_yl}$version${cl_n}"
+        echo -e "Latest version:  ${cl_yl}$version_latest${cl_n}"
+        echo
+        echo -e "For details see: ${cl_lc}$link_latest${cl_n}"
+        echo
     fi
-    echo
-
     exit
 }
 
