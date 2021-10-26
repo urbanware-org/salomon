@@ -385,13 +385,15 @@ else  # uninstall
     if [ -d $target_dir ]; then
         echo -e "${cl_dc}Installation directory${cl_n}"
         echo
-        echo -e "  ■ Removing the installation directory '$target' will" \
-                "also ${cl_lr}delete${cl_n} all"
-        echo -e "    user-defined configs and settings."
+        echo -e "  ■ The Salomon icon files and the symbolic link will" \
+                "automatically be"
+        echo -e "    deleted, but not the installation directory."
         echo
-        echo -e "    If you keep the installation directory, only the" \
-                "symbolic link and the"
-        echo -e "    icons will be removed."
+        echo -e "    You can ${cl_yl}either${cl_n} keep the installation" \
+                "directory with all configs and"
+        echo -e "    settings ${cl_yl}or${cl_n} completely remove it which" \
+                "will also ${cl_lr}delete${cl_n} all files"
+        echo -e "    including configs and settings."
         echo
         confirm "    $dowant to remove it ($yesno)? \c"
         if [ $choice -eq 0 ]; then
