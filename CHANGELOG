@@ -5,6 +5,8 @@ CHANGELOG (Salomon)
 
         * Revised the installation script (added optional write permissions
           for non-root users and revised the output in general).
+        * Revised the version update check function inside the common core
+          module (mostly rewritten with improved version comparison).
 
     Version 1.20.2 (2021-09-14)
 
