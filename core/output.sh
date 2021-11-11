@@ -364,8 +364,8 @@ print_output_line() {
             line_length=$(( line_length - term_cols + 1 ))
         done
 
-        line_filler=$(( term_cols - line_length ))
-        line_spaces=$(seq -s " " ${line_filler} | tr -d '[:digit:]')
+        line_filler=$(( ( term_cols - line_length ) - 1 ))
+        line_spaces=$(printf "%${line_filler}s" | tr -d '[:digit:]')
     else
         line_spaces=""
     fi
