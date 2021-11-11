@@ -22,7 +22,7 @@ pause_output() {
         term_cols=49
     fi
 
-    for (( term_col = 1; term_col <= $term_cols; term_col++ ); do
+    for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
           echo -e "$char_line_single\c"
     done
     echo -e "\r\c"
