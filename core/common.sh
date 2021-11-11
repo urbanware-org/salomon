@@ -361,7 +361,7 @@ deprecated_argument() {
             "instead."
 
     wait_delay=10
-    for sec in $(seq 1 $wait_delay); do
+    for (( sec = 1; sec <= $wait_delay; sec++ )); do
         echo -e "        Proceeding in $wait_delay seconds.      \r\c"
         sleep 1
         wait_delay=$(( wait_delay - 1 ))
@@ -396,7 +396,7 @@ print_arg_list() {
         term_cols=52
     fi
 
-    for number in $(seq 1 $term_cols); do
+    for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
         echo -e "$char_line_double\c"
     done
 
