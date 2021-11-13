@@ -22,7 +22,7 @@ pause_output() {
         term_cols=49
     fi
 
-    for number in $(seq 1 $term_cols); do
+    for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
           echo -e "$char_line_single\c"
     done
     echo -e "\r\c"
@@ -70,7 +70,7 @@ print_line() {
     elif [ "$string_leading" = "*" ]; then
         if [ "$lc" = "*" ]; then
             echo -e "${cl_lb}\c"
-            for number in $(seq 1 $term_cols); do
+            for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
                 echo -e "*\c"
             done
             echo -e "${cl_n}"
@@ -80,7 +80,7 @@ print_line() {
             else
                 echo -e "${cl_lb}$char_header_cbl\c"
             fi
-            for number in $(seq 1 $term_cols); do
+            for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
                 echo -e "${char_header_line_h}\c"
             done
             if [ $line_leading -eq 1 ]; then
@@ -341,7 +341,7 @@ print_output_line() {
             fi
             fpc="${cl_ly}[${cl_yl}$fp${cl_ly}]"
             echo -e "${cl_dy}$char_line_single$char_line_single$fpc${cl_dy}\c"
-            for number in $(seq 1 $term_cols); do
+            for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
                 echo -e "$char_line_single\c"
             done
             echo -e "${cl_n}"
@@ -364,8 +364,8 @@ print_output_line() {
             line_length=$(( line_length - term_cols + 1 ))
         done
 
-        line_filler=$(( term_cols - line_length ))
-        line_spaces=$(seq -s " " ${line_filler} | tr -d '[:digit:]')
+        line_filler=$(( ( term_cols - line_length ) - 1 ))
+        line_spaces=$(printf "%${line_filler}s" | tr -d '[:digit:]')
     else
         line_spaces=""
     fi

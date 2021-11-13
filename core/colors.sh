@@ -132,7 +132,7 @@ print_color_table() {
 
         cpl=1
         echo -e "    \c"
-        for color in $(seq 0 255); do
+        for (( color = 0; color <= 255; color++ )); do
             printf "\x1b[48;5;%sm%4d${cl_n}" "$color" "$color";
             cpl=$(( ++cpl ))
             if [ $cpl -gt 16 ] || [ $color -eq 255 ]; then

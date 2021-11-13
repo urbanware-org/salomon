@@ -360,11 +360,13 @@ deprecated_argument() {
     echo -e "        somewhen. You should use '${cl_lc}${arg_i}${cl_n}'" \
             "instead."
 
-    wait_delay=10
-    for sec in $(seq 1 $wait_delay); do
-        echo -e "        Proceeding in $wait_delay seconds.      \r\c"
+    sec="seconds"
+    for (( wait_delay = 10; wait_delay > 0; wait_delay-- )); do
+        if [ $wait_delay -eq 1 ]; then
+            sec="second"
+        fi
+        echo -e "        Proceeding in $wait_delay $sec.      \r\c"
         sleep 1
-        wait_delay=$(( wait_delay - 1 ))
     done
     echo -e "${cl_lg}        Proceeding.                              ${cl_n}"
 }
@@ -396,7 +398,7 @@ print_arg_list() {
         term_cols=52
     fi
 
-    for number in $(seq 1 $term_cols); do
+    for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
         echo -e "$char_line_double\c"
     done
 
