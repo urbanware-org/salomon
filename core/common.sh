@@ -360,11 +360,13 @@ deprecated_argument() {
     echo -e "        somewhen. You should use '${cl_lc}${arg_i}${cl_n}'" \
             "instead."
 
-    wait_delay=10
-    for (( sec = 1; sec <= $wait_delay; sec++ )); do
-        echo -e "        Proceeding in $wait_delay seconds.      \r\c"
+    sec="seconds"
+    for (( wait_delay = 10; wait_delay > 0; wait_delay-- )); do
+        if [ $wait_delay -eq 1 ]; then
+            sec="second"
+        fi
+        echo -e "        Proceeding in $wait_delay $sec.      \r\c"
         sleep 1
-        wait_delay=$(( wait_delay - 1 ))
     done
     echo -e "${cl_lg}        Proceeding.                              ${cl_n}"
 }
