@@ -14,7 +14,7 @@
 #           inside the main directory of Salomon for configuration options.
 
 set_global_variables() {
-    version="1.20.2"
+    version="1.20.3"
 
     git_clone=".git release snippets wiki"
     temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
