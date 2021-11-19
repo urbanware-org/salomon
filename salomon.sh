@@ -16,8 +16,8 @@ shell_precheck
 
 source ${script_dir}/core/compat.sh
 compatibility_precheck
-
 script_file=$(basename "$0")
+
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh
 source ${script_dir}/core/common.sh
@@ -26,6 +26,7 @@ source ${script_dir}/core/global.sh
 source ${script_dir}/core/interactive.sh
 source ${script_dir}/core/monitor.sh
 source ${script_dir}/core/output.sh
+
 read_config_file; check_config
 set_global_variables
 set_line_characters
@@ -142,7 +143,11 @@ else
                 shift
             ;;
             -hm|--highlight-matches)
-                highlight_matches=1
+                if [ $is_openbsd -eq 1 ]; then
+                    highlight_upper=1
+                else
+                    highlight_matches=1
+                fi
                 shift
             ;;
             -hu|--highlight-upper)
@@ -393,10 +398,17 @@ else
             filter_pattern=$((tr -s ";;" ";" | \
                     sed -e "s/^;//" \
                         -e "s/;$//") <<< "$filter_pattern")
-            filter_list=$(sed -e "s/^;*//g" \
-                              -e "s/;*$//g" \
-                              -e "s/\ /#/g" \
-                              -e "s/;/\n/g" <<< "$filter_pattern")
+            if [ $is_bsd -eq 1 ]; then
+                filter_list=$(sed -e "s/^;*//g" \
+                                  -e "s/;*$//g" \
+                                  -e "s/\ /#/g" \
+                                  -e $'s/;/\\\n/g' <<< "$filter_pattern")
+            else  # Linux
+                filter_list=$(sed -e "s/^;*//g" \
+                                  -e "s/;*$//g" \
+                                  -e "s/\ /#/g" \
+                                  -e "s/;/\n/g" <<< "$filter_pattern")
+            fi
             filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
             filter=1
         fi
