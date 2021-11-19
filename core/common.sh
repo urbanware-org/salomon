@@ -23,7 +23,11 @@ cancel_process() {
             print_line_count
         fi
         if [ $prompt -eq 1 ]; then
-            trap - 2 20
+            if [ $is_bsd -eq 1 ]; then
+                trap - 2
+            else  # Linux
+                trap - 2 20
+            fi
             print_line
             print_line "${cl_ly}Press any key to exit."
             print_line "*"
@@ -34,7 +38,11 @@ cancel_process() {
     else
         exit_prompt=1
         if [ $prompt -eq 1 ]; then
-            trap - 2 20
+            if [ $is_bsd -eq 1 ]; then
+                trap - 2
+            else  # Linux
+                trap - 2 20
+            fi
             print_line "${cl_ly}Press any key to exit."
             read -n1 -r < /dev/tty
         fi
