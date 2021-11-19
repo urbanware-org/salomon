@@ -14,7 +14,12 @@ debug=0
 salomon_script_dir=$(dirname $(readlink -f $0) | sed -e "s/testrun//g")
 salomon_script="$salomon_script_dir/salomon.sh"
 
-temp_dir="$(dirname $(mktemp -u --tmpdir))"
+if [ $is_bsd -eq 1 ]; then
+    temp_dir="$(dirname $(mktemp -u))"
+else
+    temp_dir="$(dirname $(mktemp -u --tmpdir))"
+fi
+
 salomon_testrun_log="$temp_dir/salomon_testrun_$$.log"
 salomon_sample_log="$salomon_script_dir/samples/foobar.log"
 salomon_sample_colors="$salomon_script_dir/colors/log_colors.cfg"
