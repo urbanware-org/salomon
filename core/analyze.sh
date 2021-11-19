@@ -34,7 +34,11 @@ analyze_input_file() {
         fi
     done
 
-    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
+    if [ $is_bsd -eq 1 ]; then
+        temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    else
+        temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
+    fi
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
         paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
@@ -73,7 +77,11 @@ analyze_input_file() {
     less_delay=$(printf "%03d\n" $less_delay)
 
     count=0
-    line_count=$(wc -l < $input_file)
+    if [ $is_bsd -eq 1 ]; then
+        line_count=$(wc -l < $input_file | sed -e "s/\ //g")
+    else  # Linux
+        line_count=$(wc -l < $input_file)
+    fi
     while read line; do
         if [ $analyze_less -eq 1 ]; then
             print_output_line "$line" >> $less_file
