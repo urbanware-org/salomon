@@ -15,7 +15,6 @@ shell_precheck_compat
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/compat.sh
 source ${script_dir}/core/global.sh
-kernel_check
 compatibility_check
 
 echo
