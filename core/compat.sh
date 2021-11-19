@@ -14,7 +14,11 @@ set_global_variables
 
 compatibility_check() {
     script_file=$(basename "$0")
-    script_temp="$(dirname $(mktemp -u --tmpdir))/salomon_compat.sh"
+    if [ $is_bsd -eq 1 ]; then
+        script_temp="$(dirname $(mktemp -u))/salomon_compat.sh"
+    else
+        script_temp="$(dirname $(mktemp -u --tmpdir))/salomon_compat.sh"
+    fi
 
     failure="${cl_lr}FAILURE${cl_n}"
     missing="${cl_yl}MISSING${cl_n}"
