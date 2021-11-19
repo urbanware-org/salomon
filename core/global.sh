@@ -16,8 +16,22 @@
 set_global_variables() {
     version="1.20.3"
 
+    is_bsd=0
+    is_openbsd=0
+    uname=$(uname | tr '[:upper:]' '[:lower:]')
+    if [[ "$uname" == *"bsd"* ]]; then
+        is_bsd=1
+        if [ "$uname" = "openbsd" ]; then
+            is_openbsd=1
+        else
+            is_openbsd=0
+        fi
+        temp_file="$(dirname $(mktemp -u))/salomon_$$.tmp"
+    else  # Linux
+        temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
+    fi
+
     git_clone=".git release snippets wiki"
-    temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
 
     arg_case=""
     arg_list=$(readlink -f "$0")
