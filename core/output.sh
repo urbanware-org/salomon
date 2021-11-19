@@ -317,6 +317,9 @@ print_output_header() {
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}."
         print_line
     fi
+    if [ $is_bsd -eq 1 ]; then
+        trap "cancel_process" 2
+    fi
 }
 
 print_output_line() {
