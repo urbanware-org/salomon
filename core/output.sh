@@ -420,11 +420,22 @@ print_output_line() {
                     color_temp=$(echo -e "${color_high}${term_case}${cl_n}" \
                                    "\b${color_code}")
 
-                    output=$(echo -e "${color_code}${line}${cl_n}" | \
-                             sed -e "s/$term_upper/$color_temp/ig")
+                    if [ $is_openbsd -eq 1 ]; then
+                        if [ $highlight_upper -eq 1 ]; then
+                            line=$(tr '[:lower:]' '[:upper:]' <<< "$line")
+                        fi
+                        output=$(echo -e "${color_code}${line}${cl_n}" | \
+                                 sed -e "s/$term_upper/$color_temp/g")
+                    else
+                        output=$(echo -e "${color_code}${line}${cl_n}" | \
+                                 sed -e "s/$term_upper/$color_temp/ig")
+                    fi
 
                     line="$output"
                     filter_match=1
+                    if [ $is_openbsd -eq 1 ]; then
+                        break
+                    fi
                 fi
             done
         else
@@ -450,7 +461,14 @@ print_output_line() {
     if [ $remove -eq 1 ]; then
         for string in $remove_list; do
             string=$(sed -e "s/#/\ /g" <<< "$string")
-            line=$(echo -e "$output" | sed -e "s/${string}//ig")
+            if [ $is_openbsd -eq 1 ]; then
+                if [ $highlight_upper -eq 1 ]; then
+                    string=$(tr '[:lower:]' '[:upper:]' <<< "$string")
+                fi
+                line=$(echo -e "$output" | sed -e "s/${string}//g")
+            else
+                line=$(echo -e "$output" | sed -e "s/${string}//ig")
+            fi
             output="$line"
         done
     fi
