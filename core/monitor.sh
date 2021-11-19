@@ -40,13 +40,23 @@ monitor_input_file() {
         merge=""
     fi
 
-    tail -n $tail_lines $merge -F $input_file_list 2>/dev/null | \
-      while read line; do
-        print_output_line "$line"
-        if [ $slow -eq 1 ]; then
-            sleep 0.$delay
-        fi
-    done
+    if [ $is_openbsd -eq 1 ]; then
+        tail -n $tail_lines $merge -f $input_file_list 2>/dev/null | \
+        while read line; do
+            print_output_line "$line"
+            if [ $slow -eq 1 ]; then
+                sleep 0.$delay
+            fi
+        done
+    else
+        tail -n $tail_lines $merge -F $input_file_list 2>/dev/null | \
+        while read line; do
+            print_output_line "$line"
+            if [ $slow -eq 1 ]; then
+                sleep 0.$delay
+            fi
+        done
+    fi
 }
 
 # EOF
