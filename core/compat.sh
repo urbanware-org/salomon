@@ -204,15 +204,4 @@ end
     fi
 }
 
-kernel_check() {
-    kernel_name=$(uname -s | tr '[:upper:]' '[:lower:]')
-    if [[ $kernel_name =~ bsd ]]; then
-        echo
-        echo -e "This seems to be a ${cl_yl}BSD${cl_n} derivate. In this" \
-                "case you may use ${cl_yl}Salomon-BSD${cl_n} instead."
-        echo
-        exit 4
-    fi
-}
-
 # EOF
