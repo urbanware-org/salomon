@@ -122,6 +122,7 @@ $salomon_script --monitor -i $salomon_sample_log_temp \
 if [ $? -ne 130 ]; then salomon_status=$(( salomon_status + 1 )); fi
 
 echo >> $salomon_testrun_log
+echo
 rm -f $salomon_sample_log_temp
 if [ $debug -ne 1 ]; then clear; fi
 echo -e "\e[93m\c"
