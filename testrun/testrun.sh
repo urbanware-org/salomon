@@ -14,6 +14,9 @@ debug=0
 salomon_script_dir=$(dirname $(readlink -f $0) | sed -e "s/testrun//g")
 salomon_script="$salomon_script_dir/salomon.sh"
 
+source $salomon_script_dir/core/global.sh
+set_global_variables
+
 if [ $is_bsd -eq 1 ]; then
     temp_dir="$(dirname $(mktemp -u))"
 else
