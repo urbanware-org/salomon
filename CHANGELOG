@@ -1,6 +1,10 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.21.0 (2021-11-22)
+
+        * Salomon-BSD was officially merged into the Salomon project.
+
     Version 1.20.3 (2021-11-17)
 
         * Revised (replaced) the 'seq' command (e.g. using 'for' loops).
