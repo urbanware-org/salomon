@@ -23,7 +23,12 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 script_mode=""
-temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
+if [ $is_bsd -eq 1 ]; then
+    temp_dir="$(dirname $(mktemp -u))/salomon"
+else  # Linux
+    temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
+fi
+
 temp_file="$temp_dir/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
 
@@ -38,9 +43,15 @@ yesno="${cl_yl}Y${cl_dy}es${cl_n}/${cl_yl}N${cl_dy}o${cl_n}"
 yesnocancel="${yesno}${cl_m}/${cl_yl}C${cl_dy}ancel${cl_n}"
 
 available=""
+user="root"
+group="root"
 dirmod=775
 filemod=664
 execmod=$dirmod
+
+if [ $is_bsd -eq 1 ]; then
+    group="wheel"
+fi
 
 if [ -d "/usr/share/icons/hicolor" ]; then
     icon_path="/usr/share/icons/hicolor"
@@ -58,10 +69,15 @@ cancel_install() {
 }
 
 set_permissions() {
-    chown -R root:root $target_dir
+    chown -R ${user}:${group} $target_dir
     if [ "$available" = "rootonly" ]; then
-        dirmod=770
-        filemod=660
+        if [ $is_bsd -eq 1 ]; then
+            dirmod=700
+            filemod=600
+        else
+            dirmod=770
+            filemod=660
+        fi
         execmod=$dirmod
     fi
     mkdir -p $temp_dir
