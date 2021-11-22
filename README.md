@@ -15,7 +15,7 @@
 
 The *Salomon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other text files.
 
-It runs on *Linux* as well as [*BSD*](../../wiki/Running-salomon-on-bsd) derivates.
+It runs on *Linux* and since version 1.21.0 also on [*BSD*](../../wiki/Running-salomon-on-bsd) derivates.
 
 [Top](#salomon-)
 
