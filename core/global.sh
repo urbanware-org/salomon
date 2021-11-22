@@ -14,7 +14,7 @@
 #           inside the main directory of Salomon for configuration options.
 
 set_global_variables() {
-    version="1.20.3"
+    version="1.21.0"
 
     is_bsd=0
     is_openbsd=0
