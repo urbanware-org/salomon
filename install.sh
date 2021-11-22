@@ -78,8 +78,17 @@ set_permissions() {
             dirmod=770
             filemod=660
         fi
-        execmod=$dirmod
+    else
+        if [ $is_bsd -eq 1 ]; then
+            dirmod=755
+            filemod=644
+        else
+            dirmod=775
+            filemod=664
+        fi
     fi
+    execmod=$dirmod
+    
     mkdir -p $temp_dir
     find $target_dir > $temp_file
     while read line; do
