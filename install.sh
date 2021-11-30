@@ -227,6 +227,9 @@ if [ "$script_mode" = "install" ]; then
                 "remove files inside"
         echo -e "    the color and filter directory."
         echo
+        echo -e "    However, granting such write permissions is not" \
+                "recommended."
+        echo
         confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
             cancel_install
