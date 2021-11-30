@@ -31,12 +31,14 @@ fi
 
 temp_file="$temp_dir/salomon_install_$$.tmp"
 target_dir="/opt/salomon"
+migrate_dir="/opt/salomon-bsd"
 
 allow_write=0
 already_uninstalled=1
 clean_install=0
 exclude_config=""
 keep_directory=0
+migrate=0
 target="${cl_yl}${target_dir}${cl_n}"
 dowant="Do you want to"
 yesno="${cl_yl}Y${cl_dy}es${cl_n}/${cl_yl}N${cl_dy}o${cl_n}"
@@ -88,7 +90,7 @@ set_permissions() {
         fi
     fi
     execmod=$dirmod
-    
+
     mkdir -p $temp_dir
     find $target_dir > $temp_file
     while read line; do
@@ -292,6 +294,29 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
+    if [ -d "$migrate_dir" ]; then
+        echo -e "${cl_dc}Migration of BSD port configuration files${cl_n}"
+        echo
+        echo -e "  ■ The installation directory of Salomon-BSD" \
+                "('${cl_yl}/opt/salomon-bsd${cl_n}')" \
+                    "was"
+        echo -e     "    found on this system. You can migrate the config" \
+                    "files (if existing)"
+        echo -e "    from Salomon-BSD to Salomon."
+        echo
+        echo -e "    Notice that the Salomon-BSD installation directory" \
+                "(including all"
+        echo -e "    files) will remain untainted."
+        echo
+        confirm "    $dowant migrate the config files ($yesnocancel)? \c"
+        if [ $choice -eq 2 ]; then
+            cancel_install
+        elif [ $choice -eq 1 ]; then
+            migrate=1
+        fi
+        echo
+    fi
+
     echo -e "Ready to ${script_action} Salomon. \c"
     confirm "Do you wish to proceed ($yesno)? \c"
     if [ $choice -eq 0 ]; then
@@ -349,6 +374,14 @@ if [ $script_mode = "install" ]; then
     for markdown in $(find $target_dir | grep "\.md$"); do
         rm -f $markdown
     done
+
+    if [ $migrate -eq 1 ]; then
+        echo "    Migrating config files from Salomon-BSD installation" \
+             "directory..."
+        rsync -a $migrate_dir/*.cfg $target_dir/ &>/dev/null
+        rsync -a $migrate_dir/colors/* $target_dir/colors &>/dev/null
+        rsync -a $migrate_dir/filters/*.cfg $target_dir/filters &>/dev/null
+    fi
 
     if [ $install_icons -eq 1 ]; then
         echo "    Copying icon files to shared directory..."
