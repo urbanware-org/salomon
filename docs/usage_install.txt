@@ -9,7 +9,11 @@ USAGE (install.sh)
           2.2  Shell requirements
         3.  Verify archive integrity
         4.  Install Salomon
-        5.  Uninstall Salomon
+        5.  Migrate config files from Salomon-BSD
+          5.1  Migration with a new Salomon installation
+          5.2  Migration with Salomon already installed
+          5.3  Migration steps
+        6.  Uninstall Salomon
 
     1. Definition
 
@@ -104,7 +108,64 @@ USAGE (install.sh)
 
             salomon --help
 
-    5. Uninstall Salomon
+    5. Migrate config files from Salomon-BSD
+
+        If the Salomon-BSD installation directory ('/opt/salomon-bsd') exists
+        on your system, you can migrate the config files from Salomon-BSD to
+        Salomon (which sounds a little confusing first).
+
+        Notice that that this will overwrite the config files inside the
+        Salomon installation directory without any prompt. Due to this, it
+        is recommended to create a backup first.
+
+        5.1 Migration with a new Salomon installation
+
+            Simply run the installation script as descibed in section 4.
+            Before the actual installation starts, you can decide whether you
+            want to migrate the config files. If so, follow the instructions
+            of section 5.3 below.
+
+        5.2 Migration with Salomon already installed
+
+            In order to do that, navigate to the Salomon installation
+            directory first:
+
+                cd /opt/salomon
+
+            Then, run the installation script as descibed in section 4.
+
+            The installation script will (as always) show the "availability
+            and permissions" as well as the "shared icons" options, just like
+            when performing a new Salomon installation.
+
+            After those, you can decide whether you want to migrate the config
+            files. If so, follow the instructions of section 5.3 below.
+
+        5.3 Migration steps
+
+            After confirming the migration the process will copy the config
+            files as follows:
+
+                - /opt/salomon-bsd/*.cfg      ->  /opt/salomon
+                - /opt/salomon-bsd/colors/*   ->  /opt/salomon/colors
+                - /opt/salomon-bsd/filters/*  ->  /opt/salomon/filters
+
+            The Salomon-BSD installation directory (including all files) will
+            remain untainted.
+
+            If you want to remove it, you have to do that manually and not via
+            the 'install.sh' script inside it, as this will cause problems
+            with the Salomon installation.
+
+            You can remove it either as normal user via 'sudo'
+
+                sudo rm -fR /opt/salomon-bsd
+
+            or directly when logged in as root:
+
+                rm -fR /opt/salomon-bsd
+
+    6. Uninstall Salomon
 
         Notice that this process also requires superuser privileges.
 
