@@ -424,7 +424,11 @@ if [ $script_mode = "install" ]; then
     if [ $available = "rootonly" ]; then
         echo -e "${cl_lb}(root only)${cl_n}"
     else
-        echo -e "${cl_lb}(everyone)${cl_n}"
+        if [ $allow_write -eq 0 ]; then
+            echo -e "${cl_lb}(everyone, read-only)${cl_n}"
+        else
+            echo -e "${cl_lb}(everyone, allow write)${cl_n}"
+        fi
     fi
     set_permissions
 
