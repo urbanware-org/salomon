@@ -79,6 +79,9 @@ USAGE (install.sh)
 
             salomon-release-1.18.3.tar.gz: OK
 
+        Now you can extract the archive and after that remove the archive file
+        itself as well as the checksum file if you want to.
+
     4. Install Salomon
 
         Notice that this process requires superuser privileges.
@@ -91,8 +94,8 @@ USAGE (install.sh)
         After installing, you can directly run the 'salomon' command (system-
         wide) without having to give the full path to the main script.
 
-        Now, to install, type one of the following commands depending on the
-        way you prefer.
+        Now, to start the installation, type one of the following commands
+        depending on the way you prefer.
 
         Either as normal user via 'sudo'
 
