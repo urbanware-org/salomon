@@ -66,7 +66,7 @@ USAGE (install.sh)
 
         directly from the assets of the official release, with this particular
         version:
-        
+
             https://github.com/urbanware-org/salomon/releases/tag/1.18.3
 
         Then, copy the checksum file into the same directory from the archive
