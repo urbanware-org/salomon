@@ -225,10 +225,10 @@ if [ "$script_mode" = "install" ]; then
                 "writable by root, only."
         echo -e "    You can give users the permission to add, edit and" \
                 "remove files inside"
-        echo -e "    the color and filter directory."
+        echo -e "    the color and filter directories."
         echo
-        echo -e "    However, granting such write permissions is not" \
-                "recommended."
+        echo -e "    However, granting such write permissions is" \
+                "${cl_lr}not recommended${cl_n}."
         echo
         confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
