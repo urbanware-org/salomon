@@ -302,14 +302,18 @@ if [ $script_mode = "install" ]; then
         echo
         echo -e "  ■ The installation directory of Salomon-BSD" \
                 "('${cl_yl}/opt/salomon-bsd${cl_n}')" \
-                    "was"
-        echo -e     "    found on this system. You can migrate the config" \
-                    "files (if existing)"
-        echo -e "    from Salomon-BSD to Salomon."
+                    "was found"
+        echo -e "    on this system. You can migrate the config" \
+                    "files (if existing) from"
+        echo -e "    Salomon-BSD to Salomon."
         echo
-        echo -e "    Notice that the Salomon-BSD installation directory" \
-                "(including all"
-        echo -e "    files) will remain untainted."
+        echo -e "    Before that, you should read section 5 inside the" \
+                "documentation of this"
+        echo -e "    script."
+        echo
+        echo -e "    The migration can also be performed later at another" \
+                "time, so you do not"
+        echo -e "    have to decide if it should be done now."
         echo
         confirm "    $dowant migrate the config files ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
@@ -432,8 +436,11 @@ if [ $script_mode = "install" ]; then
     fi
     set_permissions
 
-    if [ $clean_install -eq 1 ]; then
+    if [ $clean_install -eq 1 ] || [ $migrate -eq 1 ]; then
         if [ -f ${symlink_sh}/salomon ]; then
+            # This must also be done when migrating from Salomon-BSD to
+            # Salomon, as the symbolic link points to '/opt/salomon-bsd'
+            # instead of '/opt/salomon'.
             echo "    Removing existing symbolic link for main script..."
             rm -f ${symlink_sh}/salomon &>/dev/null
         fi
