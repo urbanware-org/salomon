@@ -293,6 +293,15 @@ print_output_header() {
     if [ $analyze_less -eq 0 ]; then
         print_line
         print_line "\c"
+
+        # The following keystrokes are pre-defined by the terminal driver:
+        #
+        #    Ctrl+C = cancel
+        #    Ctrl+S = stop
+        #    Ctrl+Q = continue or 'qontinue' as the 'C' key is already taken
+        #
+        # However, in the output text, the terms 'freeze' and 'defreeze' are
+        # used for the last two.
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
