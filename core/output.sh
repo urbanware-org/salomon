@@ -294,14 +294,15 @@ print_output_header() {
         print_line
         print_line "\c"
 
-        # The following keystrokes are pre-defined by the terminal driver:
+        # The following keystrokes are pre-defined by the terminal driver.
+        # Salomon handles them as follows:
         #
-        #    Ctrl+C = cancel
-        #    Ctrl+S = stop
-        #    Ctrl+Q = continue or 'qontinue' as the 'C' key is already taken
+        #   Ctrl+C = cancel
+        #   Ctrl+S = stop
+        #   Ctrl+Q = continue or 'qontinue' as the 'C' key is already taken
         #
         # However, in the output text, the terms 'freeze' and 'defreeze' are
-        # used for the last two.
+        # used for the last two by default.
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
