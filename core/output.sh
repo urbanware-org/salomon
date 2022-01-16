@@ -337,9 +337,15 @@ print_output_line() {
     color_match=0
     count_total=$(( count_total + 1 ))
     filter_match=0
+    lstamp=$(date "${leading_timestamp}")
 
     line="$1"
+    if [ $timestamp -eq 1 ]; then
+        line="${lstamp}${line}"
+    fi
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
+
+
 
     if [ $separator_line -eq 1 ]; then
         grep "^==>.*<==$" <<< $line &>/dev/null
@@ -522,8 +528,9 @@ print_output_line() {
             echo -e "${cl_n}${line}${cl_n}"
         fi
     else
+
         if [ $leading_line_char -eq 1 ]; then
-            echo -e "${char_ll} ${output}"
+            echo -e "${char_ll}  ${output}"
         else
             echo -e "${output}"
         fi
