@@ -581,6 +581,7 @@ ${lb}optional arguments:${no}
   -t TAIL, --tail TAIL  only return the given number of last lines of the
                         input file
   --timestamp           add a custom timestamp at the beginning of each line
+                        (see main config file for details about the format)
   -w WAIT, --wait WAIT  seconds to wait after printing a colorized line
 
 ${ly}general arguments:${no}
