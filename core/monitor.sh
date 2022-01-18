@@ -34,11 +34,11 @@ monitor_input_file() {
         fi
     done
 
-    if [ $merge -eq 1 ]; then
-        merge="-q"
-    else
-        merge=""
-    fi
+    #if [ $merge -eq 1 ]; then
+    #    merge="-q"
+    #else
+    #    merge=""
+    #fi
 
     if [ $is_openbsd -eq 1 ]; then
         tail -n $tail_lines $merge -f $input_file_list 2>/dev/null | \
@@ -49,7 +49,7 @@ monitor_input_file() {
             fi
         done
     else
-        tail -n $tail_lines $merge -F $input_file_list 2>/dev/null | \
+        tail -n $tail_lines -F $input_file_list 2>/dev/null | \
         while read line; do
             print_output_line "$line"
             if [ $slow -eq 1 ]; then
