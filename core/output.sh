@@ -337,22 +337,27 @@ print_output_line() {
     color_match=0
     count_total=$(( count_total + 1 ))
     filter_match=0
-    lstamp=$(date "${leading_timestamp}")
 
     line="$1"
-    if [ $timestamp -eq 1 ]; then
-        line="${lstamp}${line}"
+
+    if [ -z "$line" ] && [ $merge -eq 1 ]; then
+        return
     fi
-    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
-
+    is_separator=0
+    grep "^==>.*<==$" <<< $line &>/dev/null
+    if [ $? -eq 0 ]; then
+        is_separator=1
+        string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $line)
+        fp=$(readlink -f "$string")
+        fp_len=$(wc -c <<< $fp)
+        if [ $merge -eq 1 ]; then
+            return
+        fi
+    fi
 
     if [ $separator_line -eq 1 ]; then
-        grep "^==>.*<==$" <<< $line &>/dev/null
-        if [ $? -eq 0 ]; then
-            string=$(sed -e "s/==>//g;s/<==//g;s/^ *//g;s/ *$//g" <<< $line)
-            fp=$(readlink -f "$string")
-            fp_len=$(wc -c <<< $fp)
+        if [ $is_separator -eq 1 ]; then
             if [ "$line_width" = "auto" ]; then
                 term_cols=$(( $(tput cols) + 1 - fp_len - 4))
             else
@@ -367,6 +372,12 @@ print_output_line() {
             return
         fi
     fi
+
+    if [ ! -z "$line" ] && [ $timestamp -eq 1 ]; then
+        lstamp=$(date -r "$fp" "${leading_timestamp}")
+        line="${lstamp}${line}"
+    fi
+    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ $highlight_cut_off = 0 ]; then
         term_cols=$(( $(tput cols) + 1 ))
