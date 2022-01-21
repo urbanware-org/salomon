@@ -34,19 +34,13 @@ monitor_input_file() {
         fi
     done
 
-    if [ $merge -eq 1 ]; then
-        merge="-q"
-    else
-        merge=""
-    fi
-
     if [ $is_openbsd -eq 1 ]; then
         param_files="-f"
     else
         param_files="-F"
     fi
 
-    tail -n $tail_lines $merge $param_files $input_file_list 2>/dev/null | \
+    tail -n $tail_lines $param_files $input_file_list 2>/dev/null | \
     while read line; do
         print_output_line "$line"
         if [ $slow -eq 1 ]; then
