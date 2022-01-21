@@ -41,22 +41,18 @@ monitor_input_file() {
     fi
 
     if [ $is_openbsd -eq 1 ]; then
-        tail -n $tail_lines $merge -f $input_file_list 2>/dev/null | \
-        while read line; do
-            print_output_line "$line"
-            if [ $slow -eq 1 ]; then
-                sleep 0.$delay
-            fi
-        done
+        param_files="-f"
     else
-        tail -n $tail_lines $merge -F $input_file_list 2>/dev/null | \
-        while read line; do
-            print_output_line "$line"
-            if [ $slow -eq 1 ]; then
-                sleep 0.$delay
-            fi
-        done
+        param_files="-F"
     fi
+
+    tail -n $tail_lines $merge $param_files $input_file_list 2>/dev/null | \
+    while read line; do
+        print_output_line "$line"
+        if [ $slow -eq 1 ]; then
+            sleep 0.$delay
+        fi
+    done
 }
 
 # EOF
