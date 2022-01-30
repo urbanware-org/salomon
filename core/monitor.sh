@@ -34,12 +34,6 @@ monitor_input_file() {
         fi
     done
 
-    #if [ $merge -eq 1 ]; then
-    #    merge="-q"
-    #else
-    #    merge=""
-    #fi
-
     if [ $is_openbsd -eq 1 ]; then
         tail -n $tail_lines $merge -f $input_file_list 2>/dev/null | \
         while read line; do
