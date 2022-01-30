@@ -202,6 +202,10 @@ else
                 tail_lines="$1"
                 shift
             ;;
+            --timestamp)
+                timestamp=1
+                shift
+            ;;
             -w|--wait)
                 shift
                 wait_match="$1"

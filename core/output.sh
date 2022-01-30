@@ -373,6 +373,12 @@ print_output_line() {
     fi
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
+    if [ ! -z "$line" ] && [ $timestamp -eq 1 ]; then
+        lstamp=$(date -r "$fp" "${leading_timestamp}")
+        line="${lstamp}${line}"
+    fi
+    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
+
     if [ $highlight_cut_off = 0 ]; then
         term_cols=$(( $(tput cols) + 1 ))
         line_length=${#line_lower}
@@ -533,6 +539,7 @@ print_output_line() {
             echo -e "${cl_n}${line}${cl_n}"
         fi
     else
+
         if [ $leading_line_char -eq 1 ]; then
             echo -e "${char_ll} ${output}"
         else
