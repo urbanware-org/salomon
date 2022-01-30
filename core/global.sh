@@ -59,6 +59,7 @@ set_global_variables() {
     prompt=0
     slow=0
     tail_lines=0
+    timestamp=0
     wait_match=0
 
     color_code=""
