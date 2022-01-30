@@ -541,7 +541,7 @@ print_output_line() {
     else
 
         if [ $leading_line_char -eq 1 ]; then
-            echo -e "${char_ll}  ${output}"
+            echo -e "${char_ll} ${output}"
         else
             echo -e "${output}"
         fi
