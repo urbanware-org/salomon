@@ -339,7 +339,6 @@ print_output_line() {
     filter_match=0
 
     line="$1"
-
     if [ -z "$line" ] && [ $merge -eq 1 ]; then
         return
     fi
@@ -359,7 +358,7 @@ print_output_line() {
     if [ $separator_line -eq 1 ]; then
         if [ $is_separator -eq 1 ]; then
             if [ "$line_width" = "auto" ]; then
-                term_cols=$(( $(tput cols) + 1 - fp_len - 4))
+                term_cols=$(( $(tput cols) + 1 - fp_len - 4 ))
             else
                 term_cols=$(( 79 - fp_len - 4))
             fi
@@ -372,6 +371,7 @@ print_output_line() {
             return
         fi
     fi
+    line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ ! -z "$line" ] && [ $timestamp -eq 1 ]; then
         lstamp=$(date -r "$fp" "${leading_timestamp}")
