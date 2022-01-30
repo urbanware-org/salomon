@@ -35,7 +35,7 @@ monitor_input_file() {
     done
 
     if [ $is_openbsd -eq 1 ]; then
-        tail -n $tail_lines $merge -f $input_file_list 2>/dev/null | \
+        tail -n $tail_lines -f $input_file_list 2>/dev/null | \
         while read line; do
             print_output_line "$line"
             if [ $slow -eq 1 ]; then
