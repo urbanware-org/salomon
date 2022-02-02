@@ -3,7 +3,7 @@
 #
 # Salomon - Simple log file monitor and analyzer
 # File analyzing core script
-# Copyright (C) 2021 by Ralf Kilian
+# Copyright (c) 2021 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/salomon
