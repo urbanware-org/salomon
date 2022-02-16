@@ -123,7 +123,7 @@ usage() {
     error_msg=$1
     given_arg=$2
 
-    echo "usage: salomon.sh [-i] [-u]"
+    echo "usage: install.sh [-i] [-u]"
     echo
     echo "  -i, --install         install Salomon (requires superuser" \
          "privileges)"
