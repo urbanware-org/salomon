@@ -345,15 +345,9 @@ if [ $script_mode = "install" ]; then
         fi
     fi
 
-    echo -e "    Creating installation directory... \c"
-    if [ -d $target_dir ]; then
-        # The directory is not really created here. The code is for the output
-        # message, only (just to keep the messages of the steps in order). The
-        # actual code to create the directory is executed before the files are
-        # copied into it.
-        echo -e "${cl_lb}(already exists)${cl_n}"
-    else
-        echo
+    if [ ! -d $target_dir ]; then
+        echo -e "    Creating installation directory..."
+        mkdir -p $target_dir &>/dev/null
     fi
 
     echo "    Copying data to installation directory..."
@@ -361,7 +355,6 @@ if [ $script_mode = "install" ]; then
         exclude_config="--exclude=salomon.cfg"
     fi
 
-    mkdir -p $target_dir &>/dev/null
     rsync -a $script_dir/* $target_dir/ $exclude_config \
           --exclude="colors" \
           --exclude="filters" &>/dev/null
