@@ -465,10 +465,16 @@ else  # uninstall
             keep_directory=1
         fi
         echo
+        echo -e "Ready to ${script_action} Salomon. \c"
+        confirm "Do you wish to proceed ($yesno)? \c"
+        if [ $choice -eq 0 ]; then
+            echo
+            echo -e "${cl_lr}Canceled${cl_n} on user request."
+            echo
+            exit
+        fi
+        echo
     fi
-
-    echo -e "Ready to ${script_action} Salomon."
-    echo
     echo -e "    Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
