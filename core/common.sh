@@ -200,11 +200,11 @@ check_config_value() {
 }
 
 check_patterns() {
-    if [ ! -z "$filter_list" ]; then
+    if [ -n "$filter_list" ]; then
         for filter_term in $filter_list; do
             term=$(sed -e "s/#/\ /g" <<< "$filter_term")
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
-            if [ ! -z "$exclude_list" ]; then
+            if [ -n "$exclude_list" ]; then
                 for string in $exclude_list; do
                     string=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
@@ -213,7 +213,7 @@ check_patterns() {
                     fi
                 done
             fi
-            if [ ! -z "$remove_list" ]; then
+            if [ -n "$remove_list" ]; then
                 for string in $remove_list; do
                     string=$(sed -e "s/#/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
@@ -595,8 +595,8 @@ ${ly}general arguments:${no}
 ${yl}
 Further information and usage examples can be found inside the documentation
 file for this script.${no}"
-    if [ ! -z "$error_msg" ]; then
-        if [ $interactive -eq 1 ] && [ ! -z $dialog_program ]; then
+    if [ -n "$error_msg" ]; then
+        if [ $interactive -eq 1 ] && [ -n $dialog_program ]; then
             predef_error_dialog "$error_msg"
             clear
         else

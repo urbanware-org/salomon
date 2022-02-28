@@ -140,7 +140,7 @@ print_output_header() {
                 continue
             fi
             print_line "${cl_wh}$desc" "${cl_yl}$filepath"
-            if [ ! -z "$desc" ]; then
+            if [ -n "$desc" ]; then
                 desc=""
             fi
         done
@@ -237,7 +237,7 @@ print_output_header() {
     print_line "${cl_wh}Remove pattern:" "$msg_remove"
 
     if [ $filter -eq 1 ]; then
-        if [ ! -z "$filter_file" ]; then
+        if [ -n "$filter_file" ]; then
             msg_filter="${cl_wh}Filter file:"
             print_line "$msg_filter" "${cl_yl}$filter_file"
         fi
@@ -373,7 +373,7 @@ print_output_line() {
     fi
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
-    if [ ! -z "$line" ] && [ $timestamp -eq 1 ]; then
+    if [ -n "$line" ] && [ $timestamp -eq 1 ]; then
         lstamp=$(date -r "$fp" "${leading_timestamp}")
         line="${lstamp}${line}"
     fi
@@ -412,7 +412,7 @@ print_output_line() {
 
     get_color_match "$line"
     output="${color_code}${line}${cl_n}${line_spaces}"
-    if [ ! -z "$filter_list" ]; then
+    if [ -n "$filter_list" ]; then
         if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
             if [ $color_match -eq 1 ]; then
                 if [ -z "$(grep "\[38;" <<< "$color_code")" ]; then

@@ -134,7 +134,7 @@ usage() {
     echo "Further information and usage examples can be found inside the" \
          "documentation"
     echo "file for this script."
-    if [ ! -z "$error_msg" ]; then
+    if [ -n "$error_msg" ]; then
         echo
         if [ -z "$given_arg" ]; then
             echo -e "${cl_lr}error:${cl_n} $error_msg."
@@ -280,7 +280,7 @@ if [ $script_mode = "install" ]; then
         fi
     fi
 
-    if [ ! -z "$icon_path" ]; then
+    if [ -n "$icon_path" ]; then
         echo -e "${cl_dc}Shared icons${cl_n}"
         echo
         echo -e "  ■ In case you want to create desktop shortcuts for" \
@@ -486,7 +486,7 @@ else  # uninstall
 
     echo -e "    Removing icon files from shared directory... \c"
     icons_installed=$(find $icon_path | egrep "salomon\.png|salomon\.svg")
-    if [ ! -z "$icons_installed" ]; then
+    if [ -n "$icons_installed" ]; then
         for i in $icons_installed; do
             rm -f $i
         done

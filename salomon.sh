@@ -54,7 +54,7 @@ else
         case "$arg" in
             # Required arguments
             -a|--action)
-                if [ ! -z "$action" ]; then
+                if [ -n "$action" ]; then
                     usage "The action argument can only be given once"
                 fi
                 shift
@@ -71,7 +71,7 @@ else
 
             # Optional arguments
             -c|--color-file)
-                if [ ! -z "$color_file" ]; then
+                if [ -n "$color_file" ]; then
                     usage "The color file argument can only be given once"
                 fi
                 shift
@@ -93,7 +93,7 @@ else
                 shift
             ;;
             -e|--exclude)
-                if [ ! -z "$exclude_pattern" ]; then
+                if [ -n "$exclude_pattern" ]; then
                     usage "The exclude argument can only be given once" \
                           "Use a pattern instead"
                 fi
@@ -102,7 +102,7 @@ else
                 shift
             ;;
             --export-file)
-                if [ ! -z "$export_file" ]; then
+                if [ -n "$export_file" ]; then
                     usage "The export argument can only be given once"
                 fi
                 shift
@@ -111,7 +111,7 @@ else
                 shift
             ;;
             -f|--filter)
-                if [ ! -z "$filter_pattern" ]; then
+                if [ -n "$filter_pattern" ]; then
                     usage "The filter argument can only be given once" \
                           "Use a pattern instead"
                 fi
@@ -120,14 +120,14 @@ else
                 shift
             ;;
             --force-dark)
-                if [ ! -z "$color_force" ]; then
+                if [ -n "$color_force" ]; then
                     usage "The force dark argument can only be given once"
                 fi
                 color_force="dark"
                 shift
             ;;
             --force-light)
-                if [ ! -z "$color_force" ]; then
+                if [ -n "$color_force" ]; then
                     usage "The force light argument can only be given once"
                 fi
                 color_force="light"
@@ -185,7 +185,7 @@ else
                 shift
             ;;
             -r|--remove)
-                if [ ! -z "$remove_pattern" ]; then
+                if [ -n "$remove_pattern" ]; then
                     usage "The remove argument can only be given once" \
                           "Use a pattern instead"
                 fi
@@ -230,14 +230,14 @@ else
 
             # Alternatives to the required arguments
             --analyze)
-                if [ ! -z "$action" ]; then
+                if [ -n "$action" ]; then
                     usage "An action argument can only be given once"
                 fi
                 action="analyze"
                 shift
             ;;
             --monitor)
-                if [ ! -z "$action" ]; then
+                if [ -n "$action" ]; then
                     usage "An action argument can only be given once"
                 fi
                 action="monitor"
@@ -329,7 +329,7 @@ else
         input_file="$filelist"
 
         # Action to perform
-        if [ ! -z "$action" ]; then
+        if [ -n "$action" ]; then
             if [ "$action" = "analyze" ]; then
                 follow=0
             elif [ "$action" = "monitor" ]; then
@@ -345,7 +345,7 @@ else
         fi
 
         # Color file
-        if [ ! -z "$color_file" ]; then
+        if [ -n "$color_file" ]; then
             msg="The given color config file"
             if [ ! -e "$color_file" ]; then
                 color_file="${color_dir}${color_file}"
@@ -441,7 +441,7 @@ else
         fi
 
         # Exclude pattern
-        if [ ! -z "$exclude_pattern" ]; then
+        if [ -n "$exclude_pattern" ]; then
             if [[ $exclude_pattern == *"#"* ]]; then
                 usage "The exclude pattern must not contain any hashes"
             fi
@@ -454,7 +454,7 @@ else
         fi
 
         # Remove pattern
-        if [ ! -z "$remove_pattern" ]; then
+        if [ -n "$remove_pattern" ]; then
             if [[ $remove_pattern == *"#"* ]]; then
                 usage "The remove pattern must not contain any hashes"
             fi
