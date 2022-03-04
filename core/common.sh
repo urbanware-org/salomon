@@ -309,7 +309,6 @@ check_update() {
 }
 
 concat_arg() {
-    arg_a="$1"
     concat="$arg_list $1"
     arg_list=$concat
 }
