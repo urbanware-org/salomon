@@ -24,8 +24,9 @@ USAGE (compat.sh)
         matter of fact, the Salomon project takes advantage of certain
         features provided by the Bash shell.
 
-        Due to the shebang in the header of each script file, each component
-        uses the Bash shell, even if the script is being run on another shell.
+        Due to the shebang in the header of each script file, they are run
+        using the Bash shell, even if the scripts are being executed on
+        another shell.
 
     3. Compatibility check
 
