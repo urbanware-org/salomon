@@ -20,8 +20,8 @@ USAGE (help.sh)
         The main purpose of this script is that you can read the documentation
         (the usage information files from the 'docs' sub-directory) on the
         graphical user interface using a shortcut instead of opening them with
-        a text editor or reading them on the shell by using a shell tool such
-        as 'cat', 'more' or 'less'.
+        a text editor or reading them on the shell by using a shell command
+        such as 'cat', 'more' or 'less'.
 
     3. Requirements
 
