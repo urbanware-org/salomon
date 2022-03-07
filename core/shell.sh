@@ -15,7 +15,7 @@ shell_precheck() {
 
 Salomon cannot be run.
 
-The reason is that the required Bash shell does not seem to be installed. For
+The reason for this is that the Bash shell does not seem to be installed. For
 Salomon, the Bash shell is a mandatory dependency and so it will not work
 without it.
 
@@ -30,10 +30,11 @@ end
 
 Salomon cannot be run.
 
-All scripts must be executed using the required Bash shell and this one has
-determined that it was executed with a different one (maybe explicitly) which
-is not supported. Please run the compatibility check script ('compat.sh') for
-details.
+The reason for this is that all of its components require the Bash shell in
+order to run and this script has determined that it was (maybe explicitly)
+executed with a different one which is not supported.
+
+You may run the compatibility check script ('compat.sh') for details.
 
 end
         exit 1
@@ -45,9 +46,10 @@ end
 
 Salomon cannot be run.
 
-The reason is that it requires at least version 4 of the Bash shell. The
-currently installed version is $bash_version which is not supported. Please
-run the compatibility check script ('compat.sh') for details.
+The reason for this is that it requires at least version 4 of the Bash shell
+and the currently installed version is $bash_version which is not supported.
+
+You may run the compatibility check script ('compat.sh') for details.
 
 end
             exit 1
@@ -62,7 +64,7 @@ shell_precheck_compat() {
 
 Salomon cannot be run.
 
-The reason is that the required Bash shell does not seem to be installed. For
+The reason for this is that the Bash shell does not seem to be installed. For
 Salomon, the Bash shell is a mandatory dependency and so it will not work
 without it.
 
@@ -73,16 +75,32 @@ provided by the Bash shell.
 end
         exit 1
     elif [ ! -n "$BASH" ]; then
-        cat <<- end
+        if [ "$init_compat" = "1" ]; then #
+            cat <<- end
 
 Salomon cannot be run.
 
-All scripts must be executed using the required Bash shell and this one has
-determined that it was executed with a different one (maybe explicitly) which
-is not supported. Please run the compatibility check script ('compat.sh') for
-details.
+The reason for this is that all of its components require the Bash shell in
+order to run and this script has determined that it was (maybe explicitly)
+executed with a different one which is not supported.
+
+You may run 'echo \$0' (without any quotes) to get further information which
+shell you are currently using.
 
 end
+        else
+            cat <<- end
+
+Salomon cannot be run.
+
+The reason is that all of its components require the Bash shell in order to
+run and this script has determined that it was (maybe explicitly) executed
+with a different one which is not supported.
+
+You may run the compatibility check script ('compat.sh') for details.
+
+end
+        fi
         exit 1
     fi
 }
