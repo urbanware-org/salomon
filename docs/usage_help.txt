@@ -1,0 +1,55 @@
+
+USAGE (help.sh)
+
+    Contents:
+
+        1.  Definition
+        2.  Details
+        3.  Requirements
+          3.1  Shell environment
+          3.2  Dialog tool
+        4.  Displaying a help file
+
+    1. Definition
+
+        The Salomon dialog-based help script simply displays the included
+        documentation files using a shell dialog tool.
+
+    2. Details
+
+        The main purpose of this script is that you can read the documentation
+        (the usage information files from the 'docs' sub-directory) on the
+        graphical user interface using a shortcut instead of opening them with
+        a text editor or reading them on the shell by using a shell command
+        such as 'cat', 'more' or 'less'.
+
+    3. Requirements
+
+        3.1 Shell environment
+
+            The Salomon project was developed on (and for) the Bash shell,
+            which is the default shell on many Unix-like systems (or at least
+            on many Linux distributions).
+
+            No matter which shell you are using, the Bash shell (version 4 or
+            higher) must be installed in order to use the Salomon project. As
+            a matter of fact, the Salomon project takes advantage of certain
+            features provided by the Bash shell.
+
+            Due to the shebang in the header of each script file, they are run
+            using the Bash shell, even if the scripts are being executed on
+            another shell.
+
+        3.2. Dialog tool
+
+            In order to display the documentation files with dialogs, either
+            'dialog' or the 'whiptail' tool must be installed.
+
+    4. Displaying a help file
+
+        Simply run the help dialog display script without any arguments (there
+        are no command-line arguments available anyway) and select the usage
+        information file you wish to read.
+
+            ./help.sh
+
