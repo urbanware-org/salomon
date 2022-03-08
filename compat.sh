@@ -71,5 +71,3 @@ echo -e "Overall status .......................................$line" \
 echo
 
 exit $return_code
-
-# EOF

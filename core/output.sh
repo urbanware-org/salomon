@@ -557,5 +557,3 @@ print_output_line() {
         sleep $wait_match
     fi
 }
-
-# EOF

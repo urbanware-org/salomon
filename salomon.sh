@@ -628,5 +628,3 @@ if [ $follow -eq 1 ]; then
 else
     analyze_input_file
 fi
-
-# EOF

@@ -222,5 +222,3 @@ random_colors() {
 
     echo -e "$line_output"
 }
-
-# EOF

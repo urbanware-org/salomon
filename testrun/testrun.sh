@@ -143,5 +143,3 @@ echo
 echo -e "\e[0mFor details see the file \e[96m$salomon_testrun_log\e[0m."
 echo
 exit $salomon_status
-
-# EOF

@@ -504,5 +504,3 @@ get_wait_on_match() {
         fi
     fi
 }
-
-# EOF

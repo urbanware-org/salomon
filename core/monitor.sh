@@ -48,5 +48,3 @@ monitor_input_file() {
         fi
     done
 }
-
-# EOF

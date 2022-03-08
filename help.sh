@@ -98,5 +98,3 @@ case "${user_input}" in
     *) ;;
 esac
 clear
-
-# EOF

@@ -113,5 +113,3 @@ set_global_variables() {
 
     unset color_temp
 }
-
-# EOF
