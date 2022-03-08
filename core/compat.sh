@@ -207,5 +207,3 @@ end
         exit 1
     fi
 }
-
-# EOF

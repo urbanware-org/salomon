@@ -158,5 +158,3 @@ analyze_input_file() {
     fi
     rm -f ${temp_file}*
 }
-
-# EOF

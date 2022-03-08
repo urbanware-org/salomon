@@ -49,5 +49,3 @@ sha256sum $salomon_archive > $salomon_archive.sha256
 
 echo -e "${cl_lg}Finished.${cl_n}"
 rm -fR $temp_dir
-
-# EOF

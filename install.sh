@@ -530,5 +530,3 @@ if [ $script_mode = "install" ]; then
             "${as_root}in order to use it."
 fi
 echo
-
-# EOF

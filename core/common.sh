@@ -623,5 +623,3 @@ warn() {
         echo -e "${cl_dy}==> ${cl_yl}warning:${cl_n} ${message}."
     fi
 }
-
-# EOF

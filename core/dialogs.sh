@@ -560,5 +560,3 @@ predef_input_dialog() {
         exit
     fi
 }
-
-# EOF
