@@ -50,8 +50,8 @@ echo -e "Checking for 'sed' command ...........................$line" \
         "${check_sed}"
 echo -e "Checking for 'tail' command ..........................$line" \
         "${check_tail}"
-echo -e "Checking for 'tput' command (part of 'ncurses') ......$line" \
-        "${check_tput}"
+echo -e "Checking for 'tput' command" \
+        "(part of 'ncurses' or 'ncurses-utils') ... ${check_tput}"
 echo -e "Checking for 'trap' command (Bash built-in) ..........$line" \
         "${check_trap}"
 echo
