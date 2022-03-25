@@ -170,6 +170,9 @@ usage_color=1
 #   When using the 'auto' option, it first tries to use 'dialog' and in case
 #   it is unavailable, it switches to 'whiptail'.
 #
+#   In case an unsupported program (which is not listed) is given, there is a
+#   fallback to the default option.
+#
 #   Options:
 #     auto (default)
 #     dialog
