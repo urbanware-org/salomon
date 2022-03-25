@@ -264,35 +264,37 @@ else
     fi
 
     if [ $interactive -eq 1 ]; then
+        dialog_program_dialog="$(command -v dialog)"
+        dialog_program_whiptail="$(command -v whiptail)"
+
+        if [ -z "$dialog_program_dialog" ] && \
+           [ -z "$dialog_program_whiptail" ]; then
+            dialog_program=""
+            interactive=0
+            usage "No supported dialog program found"
+        fi
+
         if [ "$dialog_program" = "auto" ]; then
-            command -v dialog &>/dev/null
-            if [ $? -eq 0 ]; then
+            if [ -n "$dialog_program_dialog" ]; then
                 dialog_program="dialog"
-            else
-                command -v whiptail &>/dev/null
-                if [ $? -eq 0 ]; then
-                    dialog_program="whiptail"
-                else
-                    dialog_program=""
-                fi
+            elif [ -n "$dialog_program_whiptail" ]; then
+                dialog_program="whiptail"
             fi
         elif [ "$dialog_program" = "dialog" ]; then
-            command -v dialog &>/dev/null
-            if [ $? -ne 0 ]; then
+            if [ -z "$dialog_program_dialog" ]; then
                 dialog_program=""
             fi
         elif [ "$dialog_program" = "whiptail" ]; then
-            command -v whiptail &>/dev/null
-            if [ $? -ne 0 ]; then
+            if [ -z "$dialog_program_whiptail" ]; then
                 dialog_program=""
             fi
         else
             dialog_program=""
-            usage "The given dialog program is not supported"
         fi
 
         if [ -z "$dialog_program" ]; then
-            usage "No supported dialog program found"
+            interactive=0
+            usage "The dialog program given in the config file was not found"
         fi
 
         init_dialogs
