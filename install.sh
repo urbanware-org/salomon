@@ -485,7 +485,7 @@ else  # uninstall
     fi
 
     echo -e "    Removing icon files from shared directory... \c"
-    icons_installed=$(find $icon_path | egrep "salomon\.png|salomon\.svg")
+    icons_installed=$(find $icon_path | grep -E "salomon\.png|salomon\.svg")
     if [ -n "$icons_installed" ]; then
         for i in $icons_installed; do
             rm -f $i

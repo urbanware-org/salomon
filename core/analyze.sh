@@ -51,7 +51,7 @@ analyze_input_file() {
     fi
 
     if [ -n "$egrep_pattern" ]; then
-        egrep -i $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file \
+        grep -E -i $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file \
               > ${temp_file}.presort
         mv -f ${temp_file}.presort $temp_file
     fi
