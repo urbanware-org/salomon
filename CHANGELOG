@@ -6,7 +6,7 @@ CHANGELOG (Salomon)
         + Added the dialog-based help script.
         + Added the leading timestamp option (which corresponds to the
           modification time of the corresponding input file).
-        + Added the SalomonBSD migration option to the installation script.
+        + Added the Salomon-BSD migration option to the installation script.
 
         * Revised the code in general (negligible changes).
         * Revised the code inside the monitoring core module to process the
