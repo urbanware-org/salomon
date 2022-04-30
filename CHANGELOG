@@ -10,7 +10,7 @@ CHANGELOG (Salomon)
 
         * Revised the code in general (negligible changes).
         * Revised the code inside the monitoring core module to process the
-          output inside.
+          output.
 
         - Removed the unnecessary end-of-file comments from all script and
           config files.
