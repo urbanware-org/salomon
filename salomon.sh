@@ -49,7 +49,7 @@ fi
 if [ $# -eq 0 ]; then
     usage "At least one required argument is missing"
 else
-    while [[ $# > 0 ]]; do
+    while [ $# -gt 0 ]; do
         arg="$1"
         case "$arg" in
             # Required arguments
