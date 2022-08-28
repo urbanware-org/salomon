@@ -276,6 +276,7 @@ if [ $script_mode = "install" ]; then
                 echo -e "    possible. This is not a problem, rather normal" \
                         "behavior."
                 echo
+                sleep 3
             fi
         fi
     fi
