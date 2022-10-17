@@ -1,6 +1,11 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        # Fixed the display bug inside the dialog-based help script (usage
+          information text was not correctly displayed in some environments).
+
     Version 1.22.0 (2022-04-28)
 
         + Added the dialog-based help script.
