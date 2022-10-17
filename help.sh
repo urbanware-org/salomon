@@ -26,7 +26,7 @@ dialog_help() {
     doc_file="$1"
     temp_file="/tmp/salomon_help_$$.tmp"
 
-    cp ${script_dir}/docs/usage_${doc_file}.txt ${temp_file}
+    sed 's/\r$//' < ${script_dir}/docs/usage_${doc_file}.txt > ${temp_file}
     dos2unix ${temp_file} &>/dev/null
 
     if [ "$dialog_program" = "dialog" ]; then
