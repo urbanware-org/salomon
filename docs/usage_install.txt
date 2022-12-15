@@ -9,10 +9,11 @@ USAGE (install.sh)
           2.2  Shell requirements
         3.  Verify archive integrity
         4.  Install Salomon
-        5.  Migrate config files from Salomon-BSD
-          5.1  Migration with a new Salomon installation
-          5.2  Migration with Salomon already installed
-        6.  Uninstall Salomon
+        5.  Update Salomon
+        6.  Migrate config files from Salomon-BSD
+          6.1  Migration with a new Salomon installation
+          6.2  Migration with Salomon already installed
+        7.  Uninstall Salomon
 
     1. Definition
 
@@ -104,7 +105,23 @@ USAGE (install.sh)
 
             salomon --help
 
-    5. Migrate config files from Salomon-BSD
+    5. Update Salomon
+
+        You can also update Salomon using the installation script in case it
+        is installed already.
+
+        Simply download a newer version, extract its archive and run the
+        installation script from there as described in section 4 above.
+
+        When it shows the message that the target directory already exists and
+        you can either only install the program relevant files and keep all
+        config files and settings or perform a clean installation which will
+        delete the directory and reinstall the original files, select "No".
+
+        Nevertheless, it is recommended to backup the user-defined configs and
+        settings first.
+
+    6. Migrate config files from Salomon-BSD
 
         If the Salomon-BSD installation directory ('/opt/salomon-bsd') exists
         on your system, you can migrate the config files from Salomon-BSD to
@@ -116,7 +133,7 @@ USAGE (install.sh)
         The following steps require superuser privileges. In case you are
         logged in as root, 'sudo' can be omitted.
 
-        5.1 Migration with a new Salomon installation
+        6.1 Migration with a new Salomon installation
 
             When installing Salomon, you will be prompted whether you want to
             migrate the config files or not.
@@ -140,7 +157,7 @@ USAGE (install.sh)
             Salomon-BSD it as this would cause problems with the current
             Salomon installation.
 
-        5.2 Migration with Salomon already installed
+        6.2 Migration with Salomon already installed
 
             The easiest and recommended way is to manually copy them as
             follows:
@@ -158,7 +175,7 @@ USAGE (install.sh)
             Salomon-BSD it as this would cause problems with the current
             Salomon installation.
 
-    6. Uninstall Salomon
+    7. Uninstall Salomon
 
         Notice that this process also requires superuser privileges. In case
         you are logged in as root 'sudo' can be omitted.
