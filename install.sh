@@ -36,11 +36,13 @@ migrate_dir="/opt/salomon-bsd"
 allow_write=0
 already_uninstalled=1
 clean_install=0
+blk="${cl_lb}■${cl_n}"
 exclude_config=""
 keep_directory=0
 migrate=0
 target="${cl_yl}${target_dir}${cl_n}"
 dowant="Do you want to"
+dowish="Do you wish to"
 yesno="${cl_yl}Y${cl_dy}es${cl_n}/${cl_yl}N${cl_dy}o${cl_n}"
 yesnocancel="${yesno}${cl_m}/${cl_yl}C${cl_dy}ancel${cl_n}"
 
@@ -190,8 +192,7 @@ if [ "$script_mode" = "install" ]; then
             "this script."
     echo
 fi
-echo -e "This will $script_action Salomon. \c"
-confirm "Do you wish to proceed ($yesno)? \c"
+confirm "This will $script_action Salomon. $dowish proceed ($yesno)? \c"
 if [ $choice -eq 0 ]; then
     cancel_install
 fi
@@ -200,8 +201,8 @@ echo
 if [ "$script_mode" = "install" ]; then
     echo -e "${cl_dc}Availability and permissions${cl_n}"
     echo
-    echo -e "  ■ You can make Salomon available either for all users on" \
-            "this machine or"
+    echo -e "  ${blk} You can make Salomon available either for all users" \
+            "on this machine or"
     echo -e "    only for root."
     echo
     echo -e "    Notice that if you choose the latter, you even must be" \
@@ -221,16 +222,17 @@ if [ "$script_mode" = "install" ]; then
     fi
     echo
     if [ "$available" = "everyone" ]; then
-        echo -e "  ■ By default, the Salomon installation directory is" \
-                "writable by root, only."
-        echo -e "    You can give users the permission to add, edit and" \
-                "remove files inside"
-        echo -e "    the color and filter directories."
+        echo -e "  ${blk} By default, the Salomon installation directory is" \
+                "writable only by root,"
+        echo -e "    but you can give all users the permission to add, edit" \
+                "and remove files"
+        echo -e "    inside the color and filter sub-directories."
         echo
         echo -e "    However, granting such write permissions is" \
-                "${cl_lr}not recommended${cl_n}."
+                "${cl_lr}not recommended${cl_n} unless there"
+        echo -e "    is a specific reason to do so."
         echo
-        confirm "    $dowant to grant those permissions ($yesnocancel)? \c"
+        confirm "    $dowant grant those permissions ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
             cancel_install
         elif [ $choice -eq 1 ]; then
@@ -245,7 +247,7 @@ if [ $script_mode = "install" ]; then
         echo -e "${cl_dc}Target directory${cl_n}"
         echo
         if [ ! "$script_dir" = "$target_dir" ]; then
-            echo -e "  ■ The target directory '$target' already exists."
+            echo -e "  ${blk} The target directory '$target' already exists."
             echo
             echo -e "    You can ${cl_yl}either${cl_n} only install the" \
                     "program relevant files and keep all"
@@ -256,8 +258,15 @@ if [ $script_mode = "install" ]; then
             echo -e "    also ${cl_lr}delete${cl_n} all user-defined" \
                     "configs and settings."
             echo
+            echo -e "    If you want to update the installed version," \
+                    "choose ${cl_yl}N${cl_dy}o${cl_n} here."
+            echo
+            echo -e "    Nevertheless, it is recommended to backup the" \
+                    "user-defined configs and"
+            echo -e "    settings first."
+            echo
             confirm \
-              "    $dowant to perform a clean installation ($yesnocancel)? \c"
+              "    $dowant perform a clean installation ($yesnocancel)? \c"
             if [ $choice -eq 2 ]; then
                 cancel_install
             else
@@ -284,12 +293,12 @@ if [ $script_mode = "install" ]; then
     if [ -n "$icon_path" ]; then
         echo -e "${cl_dc}Shared icons${cl_n}"
         echo
-        echo -e "  ■ In case you want to create desktop shortcuts for" \
+        echo -e "  ${blk} In case you want to create desktop shortcuts for" \
                 "Salomon, it provides"
         echo -e "    its icon in multiple common sizes as well as in a" \
                 "scalable image format."
         echo
-        confirm "    $dowant to install the icon files ($yesnocancel)? \c"
+        confirm "    $dowant install the icon files ($yesnocancel)? \c"
         if [ $choice -eq 2 ]; then
             cancel_install
         else
@@ -301,7 +310,7 @@ if [ $script_mode = "install" ]; then
     if [ -d "$migrate_dir" ]; then
         echo -e "${cl_dc}Migration of BSD port configuration files${cl_n}"
         echo
-        echo -e "  ■ The installation directory of Salomon-BSD" \
+        echo -e "  ${blk} The installation directory of Salomon-BSD" \
                 "('${cl_yl}/opt/salomon-bsd${cl_n}')" \
                     "was found"
         echo -e "    on this system. You can migrate the config" \
@@ -325,8 +334,8 @@ if [ $script_mode = "install" ]; then
         echo
     fi
 
-    echo -e "Ready to ${script_action} Salomon. \c"
-    confirm "Do you wish to proceed ($yesno)? \c"
+    confirm \
+      "Ready to ${script_action} Salomon. $dowish proceed ($yesno)? \c"
     if [ $choice -eq 0 ]; then
         echo
         echo -e "${cl_lr}Canceled${cl_n} on user request."
@@ -451,7 +460,7 @@ else  # uninstall
     if [ -d $target_dir ]; then
         echo -e "${cl_dc}Installation directory${cl_n}"
         echo
-        echo -e "  ■ The Salomon icon files and the symbolic link will" \
+        echo -e "  ${blk} The Salomon icon files and the symbolic link will" \
                 "automatically be"
         echo -e "    deleted, but not the installation directory."
         echo
@@ -461,13 +470,13 @@ else  # uninstall
                 "will also ${cl_lr}delete${cl_n} all files"
         echo -e "    including configs and settings."
         echo
-        confirm "    $dowant to remove it ($yesno)? \c"
+        confirm "    $dowant remove it ($yesno)? \c"
         if [ $choice -eq 0 ]; then
             keep_directory=1
         fi
         echo
-        echo -e "Ready to ${script_action} Salomon. \c"
-        confirm "Do you wish to proceed ($yesno)? \c"
+        confirm \
+          "Ready to ${script_action} Salomon. $dowish proceed ($yesno)? \c"
         if [ $choice -eq 0 ]; then
             echo
             echo -e "${cl_lr}Canceled${cl_n} on user request."
@@ -525,9 +534,11 @@ if [ $script_mode = "uninstall" ] && [ $already_uninstalled -eq 1 ]; then
     exit
 fi
 
-echo -e "Salomon has been ${script_mode}ed."
 if [ $script_mode = "install" ]; then
+    echo -e "Salomon $(salomon --version) has been ${script_mode}ed."
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
             "${as_root}in order to use it."
+else
+    echo -e "Salomon has been ${script_mode}ed."
 fi
 echo
