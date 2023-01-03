@@ -30,71 +30,73 @@ dialog_help() {
     dos2unix ${temp_file} &>/dev/null
 
     if [ "$dialog_program" = "dialog" ]; then
-        dialog ${dlg_shadow} --exit-label "Exit" --textbox ${temp_file} 256 90
+        dialog ${dlg_shadow} --exit-label "Back" --textbox ${temp_file} 256 90
     else
-        whiptail --ok-button "Exit" --textbox ${temp_file} 0 90
+        whiptail --ok-button "Back" --textbox ${temp_file} 0 90
     fi
 
     rm -f ${temp_file}
 }
 
-if [ "${dialog_program}" = "auto" ]; then
-    command -v dialog &>/dev/null
-    if [ $? -eq 0 ]; then
-        dialog_program="dialog"
-    else
-        command -v whiptail &>/dev/null
+while true; do
+    if [ "${dialog_program}" = "auto" ]; then
+        command -v dialog &>/dev/null
         if [ $? -eq 0 ]; then
-            dialog_program="whiptail"
+            dialog_program="dialog"
         else
+            command -v whiptail &>/dev/null
+            if [ $? -eq 0 ]; then
+                dialog_program="whiptail"
+            else
+                dialog_program=""
+            fi
+        fi
+    elif [ "${dialog_program}" = "dialog" ]; then
+        command -v dialog &>/dev/null
+        if [ $? -ne 0 ]; then
             dialog_program=""
         fi
-    fi
-elif [ "${dialog_program}" = "dialog" ]; then
-    command -v dialog &>/dev/null
-    if [ $? -ne 0 ]; then
+    elif [ "${dialog_program}" = "whiptail" ]; then
+        command -v whiptail &>/dev/null
+        if [ $? -ne 0 ]; then
+            dialog_program=""
+        fi
+    else
         dialog_program=""
+        usage "The given dialog program is not supported"
     fi
-elif [ "${dialog_program}" = "whiptail" ]; then
-    command -v whiptail &>/dev/null
-    if [ $? -ne 0 ]; then
-        dialog_program=""
+
+    if [ -z "${dialog_program}" ]; then
+        usage "No supported dialog program found"
     fi
-else
-    dialog_program=""
-    usage "The given dialog program is not supported"
-fi
 
-if [ -z "${dialog_program}" ]; then
-    usage "No supported dialog program found"
-fi
+    dlg_text="Available usage information files:"
+    if [ "${dialog_program}" = "dialog" ]; then
+        user_input=$(dialog ${dlg_shadow} \
+                            --ok-button "View" \
+                            --cancel-button "Exit" \
+                            --title "Help" \
+                            --menu "${dlg_text}" 10 40 3 \
+                                "S" "Salomon (main help)" \
+                                "I" "Installation" \
+                                "C" "Compatibility" \
+                            3>&1 1>&2 2>&3 3>&-)
+    else
+        user_input=$(whiptail --ok-button "View" \
+                            --cancel-button "Exit" \
+                            --title "Help" \
+                            --menu "${dlg_text}" 12 40 3 \
+                                "S" "Salomon (main help)" \
+                                "I" "Installation" \
+                                "C" "Compatibility" \
+                            3>&1 1>&2 2>&3 3>&-)
+    fi
 
-dlg_text="Available usage information files:"
-if [ "${dialog_program}" = "dialog" ]; then
-    user_input=$(dialog ${dlg_shadow} \
-                        --ok-button "Select" \
-                        --cancel-button "Exit" \
-                        --title "Help" \
-                        --menu "${dlg_text}" 10 40 3 \
-                            "S" "Salomon (main help)" \
-                            "I" "Installation" \
-                            "C" "Compatibility" \
-                        3>&1 1>&2 2>&3 3>&-)
-else
-    user_input=$(whiptail --ok-button "Select" \
-                          --cancel-button "Exit" \
-                          --title "Help" \
-                          --menu "${dlg_text}" 12 40 3 \
-                            "S" "Salomon (main help)" \
-                            "I" "Installation" \
-                            "C" "Compatibility" \
-                        3>&1 1>&2 2>&3 3>&-)
-fi
-
-case "${user_input}" in
-    [Ss]) dialog_help "salomon" ;;
-    [Ii]) dialog_help "install" ;;
-    [Cc]) dialog_help "compat" ;;
-    *) ;;
-esac
+    case "${user_input}" in
+        [Ss]) dialog_help "salomon" ;;
+        [Ii]) dialog_help "install" ;;
+        [Cc]) dialog_help "compat" ;;
+        *) break;;
+    esac
+done
 clear
