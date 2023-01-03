@@ -1,7 +1,7 @@
 #
 # Salomon - Simple log file monitor and analyzer
 # Compatibility check core script
-# Copyright (c) 2022 by Ralf Kilian
+# Copyright (c) 2023 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/salomon
