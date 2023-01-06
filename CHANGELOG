@@ -1,7 +1,11 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.22.1 (2023-01-06)
+
+        * Revised the code in general (negligible changes).
+        * Revised the dialog-based help script (added back function and
+          further negligible changes).
 
         # Fixed the display bug inside the dialog-based help script (usage
           information text was not correctly displayed in some environments).
