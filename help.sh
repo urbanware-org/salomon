@@ -76,19 +76,21 @@ while true; do
                             --ok-button "View" \
                             --cancel-button "Exit" \
                             --title "Help" \
-                            --menu "${dlg_text}" 10 40 3 \
+                            --menu "${dlg_text}" 12 40 3 \
                                 "S" "Salomon (main help)" \
                                 "I" "Installation" \
                                 "C" "Compatibility" \
+                                "H" "Help" \
                             3>&1 1>&2 2>&3 3>&-)
     else
         user_input=$(whiptail --ok-button "View" \
                             --cancel-button "Exit" \
                             --title "Help" \
-                            --menu "${dlg_text}" 12 40 3 \
+                            --menu "${dlg_text}" 14 40 3 \
                                 "S" "Salomon (main help)" \
                                 "I" "Installation" \
                                 "C" "Compatibility" \
+                                "H" "Help" \
                             3>&1 1>&2 2>&3 3>&-)
     fi
 
@@ -96,6 +98,7 @@ while true; do
         [Ss]) dialog_help "salomon" ;;
         [Ii]) dialog_help "install" ;;
         [Cc]) dialog_help "compat" ;;
+        [Hh]) dialog_help "help" ;;
         *) break;;
     esac
 done
