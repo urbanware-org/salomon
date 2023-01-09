@@ -125,17 +125,19 @@ usage() {
     error_msg=$1
     given_arg=$2
 
-    echo "usage: install.sh [-i] [-u]"
+    echo -e "usage: install.sh [-i] [-u]"
     echo
-    echo "  -i, --install         install Salomon (requires superuser" \
-         "privileges)"
-    echo "  -u, --uninstall       uninstall Salomon (requires superuser" \
-         "privileges)"
-    echo "  -?, -h, --help        print this help message and exit"
+    echo -e "  -i, --install         install, reinstall (clean install) or" \
+            "update Salomon"
+    echo -e "  -u, --uninstall       uninstall Salomon"
+    echo -e "  -?, -h, --help        print this help message and exit"
     echo
-    echo "Further information and usage examples can be found inside the" \
-         "documentation"
-    echo "file for this script."
+    echo -e "Notice that installing and uninstalling Salomon requires" \
+            "${cl_yl}superuser privileges${cl_n}."
+    echo
+    echo -e "Further information and usage examples can be found inside the" \
+            "documentation"
+    echo -e "file for this script."
     if [ -n "$error_msg" ]; then
         echo
         if [ -z "$given_arg" ]; then
@@ -171,7 +173,8 @@ fi
 
 if [ "$(whoami)" != "root" ]; then
     error="${cl_lr}error:${cl_n}"
-    echo -e "$error Superuser privileges are required."
+    echo -e "$error Superuser privileges are required in order to" \
+            "${script_mode} Salomon."
     exit 1
 fi
 
