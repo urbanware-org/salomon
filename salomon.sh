@@ -619,11 +619,7 @@ fi
 
 # Finally, process the given input file
 if [ $analyze_less -eq 0 ]; then
-    if [ $is_bsd -eq 1 ]; then
-        trap "cancel_process" 2
-    else  # Linux
-        trap "cancel_process" 2 20
-    fi
+    trap "cancel_process" 2
 fi
 if [ $follow -eq 1 ]; then
     monitor_input_file
