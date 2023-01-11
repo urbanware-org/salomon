@@ -122,9 +122,12 @@ print_line_count() {
 }
 
 print_output_header() {
+    head_version="${cl_lc}Salomon ${version}${cl_n}"
+    head_timestamp="${cl_lc}$(date)${cl_n}"
+    head_pid="${cl_lc}$$${cl_n}"
     echo
     print_line "*" 1
-    print_line "${cl_lc}Salomon $version ${cl_n}started on ${cl_lc}$(date)"
+    print_line "$head_version started on $head_timestamp with PID $head_pid"
     print_line
 
     input_count=$(wc -w <<< $input_file)
