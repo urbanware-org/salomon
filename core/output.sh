@@ -297,12 +297,15 @@ print_output_header() {
         # The following keystrokes are pre-defined by the terminal driver.
         # Salomon handles them as follows:
         #
-        #   Ctrl+C = cancel
-        #   Ctrl+S = stop
-        #   Ctrl+Q = continue or "qontinue" as the 'C' key is already taken
+        #   Ctrl+C = cancel (exit)
+        #   Ctrl+S = stop printing output
+        #   Ctrl+Q = continue printing output (or "qontinue" as the 'C' key
+        #            is already taken)
         #
-        # However, in the output text, the terms "freeze" and "unfreeze" are
-        # used for the last two by default.
+        # Pressing Ctrl+Z sends stop signal 20 (SIGTSTP) which prints the
+        # status "Stopped" when pressed. So, to avoid confusion the term
+        # "freeze" is used for stopping the output instead. Its counterpart
+        # is "unfreeze" (formerly "defreeze") to unify the terms.
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
