@@ -258,12 +258,12 @@ USAGE (salomon.sh)
             canceled at any time by pressing the universal and well-known
             <Ctrl>+<C> keystroke.
 
-            By pressing <Ctrl>+<S> the output freezes until defreezing it
+            By pressing <Ctrl>+<S> the output freezes until unfreezing it
             again using <Ctrl>+<Q>.
 
             Notice that this is not a feature of Salomon, but a function of
             the terminal device driver. When in monitoring mode no lines will
-            be lost. As soon as you defreeze the output, the lines that would
+            be lost. As soon as you unfreeze the output, the lines that would
             have been shown in the meantime will be printed afterwards.
 
             Salomon also provides an optional pause feature based on the

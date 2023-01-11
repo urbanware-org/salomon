@@ -301,7 +301,7 @@ print_output_header() {
         #   Ctrl+S = stop
         #   Ctrl+Q = continue or "qontinue" as the 'C' key is already taken
         #
-        # However, in the output text, the terms "freeze" and "defreeze" are
+        # However, in the output text, the terms "freeze" and "unfreeze" are
         # used for the last two by default.
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
@@ -309,7 +309,7 @@ print_output_header() {
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}S" \
                 "${cl_wh}to ${cl_yl}freeze${cl_wh} and" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}Q" \
-                "${cl_wh}to ${cl_lg}defreeze${cl_wh} the output."
+                "${cl_wh}to ${cl_lg}unfreeze${cl_wh} the output."
     fi
     print_line "*"
     echo
