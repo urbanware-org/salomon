@@ -1,6 +1,16 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised some information output (negligible changes).
+        * Revised the code for handling certain pre-defined keystrokes
+          (removed an unnecessary handler).
+        * Revised the Salomon icon (replaced the previous converted one with
+          real vector graphics).
+        * Revised the usage and information of the installation script and
+          added a privilege notice.
+
     Version 1.22.1 (2023-01-06)
 
         * Revised the code in general (negligible changes).
