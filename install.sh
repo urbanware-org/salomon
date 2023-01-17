@@ -405,24 +405,36 @@ if [ $script_mode = "install" ]; then
 
             if [ -d "$icon_path/${i}x${i}" ]; then
                 rm -f $icon_path/${i}x${i}/apps/salomon.png
+                rm -f $icon_path/${i}x${i}/apps/salomon-gray-border.png
+
                 cp $script_dir/icons/png/salomon_${i}x${i}.png \
                    $icon_path/${i}x${i}/apps/salomon.png
+                cp $script_dir/icons/png/salomon-gray-border_${i}x${i}.png \
+                   $icon_path/${i}x${i}/apps/salomon-gray-border.png
             fi
 
             # This fixes a glitch from earlier versions where the icons were
             # copied into the improper directory
             rm -f $icon_path/${i}x${i}/salomon.png
-
-            if [ -d $icon_path_scalable ]; then
-                rm -f $icon_path_scalable/salomon.svg
-                cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
-            fi
-
-            if [ -d $icon_path_xpm ]; then
-                rm -f $icon_path_xpm/salomon.xpm
-                cp $script_dir/icons/xpm/salomon.xpm $icon_path_xpm/
-            fi
         done
+
+        if [ -d $icon_path_scalable ]; then
+            rm -f $icon_path_scalable/salomon.svg \
+                    $icon_path_scalable/salomon-gray-border.svg
+
+            cp $script_dir/icons/svg/salomon.svg $icon_path_scalable/
+            cp $script_dir/icons/svg/salomon-gray-border.svg \
+                $icon_path_scalable/
+        fi
+
+        if [ -d $icon_path_xpm ]; then
+            rm -f $icon_path_xpm/salomon.xpm \
+                    $icon_path_xpm/salomon-gray-border.xpm
+
+            cp $script_dir/icons/xpm/salomon.xpm $icon_path_xpm/
+            cp $script_dir/icons/xpm/salomon-gray-border.xpm \
+                $icon_path_xpm/
+        fi
 
         command -v gtk-update-icon-cache &>/dev/null
         if [ $? -eq 0 ]; then
@@ -498,12 +510,17 @@ else  # uninstall
     fi
 
     echo -e "    Removing icon files from shared directory... \c"
-    icons_installed=$(find $icon_path | grep -E "salomon\.png|salomon\.svg")
+    icons_png="salomon\.png|salomon-gray-border\.png"
+    icons_svg="salomon\.svg|salomon-gray-border\.svg"
+    icons_installed=$(find $icon_path | grep -E "$icons_png|$icons_svg")
     if [ -n "$icons_installed" ]; then
         for i in $icons_installed; do
             rm -f $i
         done
+
         rm -f $icon_path_xpm/salomon.xpm
+        rm -f $icon_path_xpm/salomon-gray-border.xpm
+
         already_uninstalled=0
 
         command -v gtk-update-icon-cache &>/dev/null
