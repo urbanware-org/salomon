@@ -3,11 +3,13 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
-        * Revised some information output (negligible changes).
+        * Added some information to the output header (negligible changes).
+
         * Revised the code for handling certain pre-defined keystrokes
           (removed an unnecessary handler).
-        * Revised the Salomon icon (replaced the previous converted one with
-          real vector graphics).
+        * Revised the Salomon icon (replaced the previous converted ones with
+          real vector graphics and added additional icons with gray border).
+        * Revised the installation script (negligible changes).
         * Revised the usage and information of the installation script and
           added a privilege notice.
 
