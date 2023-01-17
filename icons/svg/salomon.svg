@@ -2,10 +2,10 @@
 <svg
    version="1.1"
    id="svg210"
-   width="800"
-   height="800"
-   viewBox="0 0 800 800"
-   sodipodi:docname="newsalomon.svg"
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   sodipodi:docname="salomon.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    inkscape:export-filename="newsalomon.png"
    inkscape:export-xdpi="30"
@@ -44,14 +44,14 @@
          id="stop991" />
     </linearGradient>
     <filter
-       y="-0.0033630713"
+       y="-0.0033630712"
        height="1.0067261"
        inkscape:menu-tooltip="Darkens the edge with an inner blur and adds a flexible glow"
        inkscape:menu="Shadows and Glows"
        inkscape:label="Dark and Glow"
        style="color-interpolation-filters:sRGB"
        id="filter286"
-       x="-0.0033630713"
+       x="-0.0033630712"
        width="1.0067261">
       <feGaussianBlur
          stdDeviation="0.93075275"
@@ -99,14 +99,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1916"
-     inkscape:window-height="1031"
+     inkscape:window-width="1303"
+     inkscape:window-height="1057"
      id="namedview212"
      showgrid="false"
-     inkscape:zoom="1.0631359"
-     inkscape:cx="399.76076"
-     inkscape:cy="400.23107"
-     inkscape:window-x="2"
+     inkscape:zoom="1.5035012"
+     inkscape:cx="172.26458"
+     inkscape:cy="145.99257"
+     inkscape:window-x="615"
      inkscape:window-y="21"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg_salomon"
@@ -121,7 +121,8 @@
      inkscape:highlight-color="#ffd139">
     <g
        id="salomon"
-       inkscape:label="salomon">
+       inkscape:label="salomon"
+       transform="matrix(0.31802175,0,0,0.31802175,0.79355388,0.78877385)">
       <g
          id="paths"
          transform="translate(-8.5488515,22.789724)"
