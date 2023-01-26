@@ -10,7 +10,7 @@ When you download a release of *Salomon* outside this *GitHub* repository (or th
 
 Nevertheless, you can create an archive for your own purposes (with customized scripts, color schemes, filters etc.).
 
-If you want you can also send your custom files to make them officially added to the *Salomon* release. Files such as color schemes and filters can simply been sent by mail or via issue. In case you want to contribute code it is indispensable using an issue for that purpose.
+If you want you can also send your custom files to make them officially added to the *Salomon* release. Files such as color schemes and filters can simply been sent by mail or via issue.s
 
 The author will be mentioned in a contributor file, but the contribution can also be anonymous if desired. Personally, I would be pleased with the former.
 
