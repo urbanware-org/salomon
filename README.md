@@ -13,7 +13,7 @@
 
 ## Definition
 
-The *Salomon* project is a simple log file monitor and analyzer with various filter and highlighting features which can also be used with other text files.
+The *Salomon* project is a simple log file monitor and analyzer with various highlighting and filtering features which can also be used with other plain (non-binary) text files.
 
 It runs on *Linux* and since version 1.21.0 also on [*BSD*](../../wiki/Running-salomon-on-bsd) derivates.
 

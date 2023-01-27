@@ -47,8 +47,8 @@ USAGE (salomon.sh)
 
     1. Definition
 
-        Monitor and analyze log and plain text files with various filter and
-        highlighting features.
+        Monitor and analyze log and plain text files with various highlighting
+        and filtering features.
 
     2. General stuff
 

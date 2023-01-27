@@ -13,8 +13,8 @@ README (Salomon)
     Definition
 
         The Salomon project is a simple log file monitor and analyzer with
-        various highlighting features which can also be used with other plain
-        text files.
+        various highlighting and filtering features which can also be used
+        with other plain (non-binary) text files.
 
         It comes with a shell script, that uses popular shell utilities and
         runs on Unix-like operating systems, only.
