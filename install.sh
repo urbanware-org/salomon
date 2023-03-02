@@ -261,8 +261,8 @@ if [ $script_mode = "install" ]; then
             echo -e "    also ${cl_lr}delete${cl_n} all user-defined" \
                     "configs and settings."
             echo
-            echo -e "    If you want to update the installed version," \
-                    "choose ${cl_yl}N${cl_dy}o${cl_n} here."
+            echo -e "    If you want to ${cl_lg}update${cl_n} the installed" \
+                    "version, choose ${cl_yl}N${cl_dy}o${cl_n} here."
             echo
             echo -e "    Nevertheless, it is recommended to backup the" \
                     "user-defined configs and"
