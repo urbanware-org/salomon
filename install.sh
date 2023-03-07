@@ -245,7 +245,7 @@ if [ "$script_mode" = "install" ]; then
     fi
 fi
 
-if [ $script_mode = "install" ]; then
+if [ "$script_mode" = "install" ]; then
     if [ -d "$target_dir" ]; then
         echo -e "${cl_dc}Target directory${cl_n}"
         echo
@@ -547,14 +547,14 @@ else  # uninstall
 fi
 echo
 
-if [ $script_mode = "uninstall" ] && [ $already_uninstalled -eq 1 ]; then
+if [ "$script_mode" = "uninstall" ] && [ $already_uninstalled -eq 1 ]; then
     echo "Nothing to do, as Salomon was already uninstalled or not" \
          "installed before."
     echo
     exit
 fi
 
-if [ $script_mode = "install" ]; then
+if [ "$script_mode" = "install" ]; then
     echo -e "Salomon $(salomon --version) has been ${script_mode}ed."
     echo -e "You can now directly run the '${cl_yl}salomon${cl_n}' command" \
             "${as_root}in order to use it."
