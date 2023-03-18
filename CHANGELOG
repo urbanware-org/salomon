@@ -3,14 +3,14 @@ CHANGELOG (Salomon)
 
     Version 1.22.2 (2023-03-18)
 
-        * Added some information to the output header (negligible changes).
-
         * Revised the code for handling certain pre-defined keystrokes
           (removed an unnecessary handler).
-        * Revised the Salomon icon (replaced the previous converted ones with
-          real vector graphics and added additional icons with gray border).
         * Revised the installation script (added further information and also
           some negligible changes).
+        * Revised the output header inside the output core module (negligible
+          changes).
+        * Revised the Salomon icon (replaced the previous converted ones with
+          real vector graphics and added additional icons with gray border).
 
     Version 1.22.1 (2023-01-06)
 
