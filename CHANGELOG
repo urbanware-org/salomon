@@ -1,7 +1,7 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.22.2 (2023-03-18)
 
         * Added some information to the output header (negligible changes).
 
@@ -9,9 +9,8 @@ CHANGELOG (Salomon)
           (removed an unnecessary handler).
         * Revised the Salomon icon (replaced the previous converted ones with
           real vector graphics and added additional icons with gray border).
-        * Revised the installation script (negligible changes).
-        * Revised the usage and information of the installation script and
-          added a privilege notice.
+        * Revised the installation script (added further information and also
+          some negligible changes).
 
     Version 1.22.1 (2023-01-06)
 
