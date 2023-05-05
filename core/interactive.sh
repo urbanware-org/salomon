@@ -193,7 +193,7 @@ get_color_file() {
                   "No read permission on the given color file '$color_file'"
             else
                 read_color_file "$color_file"
-                concat_arg "-c $color_file"
+                concat_arg "-c \"$color_file\""
                 dialog_valid=1
             fi
         fi
@@ -219,7 +219,7 @@ get_exclude_pattern() {
                                 -e "s/\ /#/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
-            concat_arg "-e $exclude_pattern"
+            concat_arg "-e \"$exclude_pattern\""
             dialog_valid=1
         fi
     fi
@@ -250,7 +250,7 @@ get_export_file() {
                 return
             else
                 export_log=1
-                concat_arg "--export-file $export_file"
+                concat_arg "--export-file \"$export_file\""
                 dialog_valid=1
             fi
         fi
@@ -299,7 +299,7 @@ get_filter_pattern() {
                                   -e "s/;/\n/g" <<< "$filter_pattern")
                 filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
                 filter=1
-                concat_arg "-f $filter_pattern"
+                concat_arg "-f \"$filter_pattern\""
                 dialog_valid=1
             fi
         fi
@@ -358,7 +358,7 @@ get_input_file() {
                 predef_error_dialog \
                   "No read permission on the given input file '$filepath'"
             else
-                concat_arg "-i $filepath"
+                concat_arg "-i \"$filepath\""
                 input_valid=1
                 filelist="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
             fi
@@ -421,7 +421,7 @@ get_remove_pattern() {
                                -e "s/\ /#/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
-            concat_arg "-r $remove_pattern"
+            concat_arg "-r \"$remove_pattern\""
             dialog_valid=1
         fi
     fi

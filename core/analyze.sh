@@ -120,7 +120,7 @@ analyze_input_file() {
         if [ $slow -eq 1 ]; then
             sleep 0.$delay
         fi
-    done < $input_file
+    done < "$input_file"
     if [ $analyze_less -eq 1 ] && [ $header -eq 1 ]; then
         echo -e "${cl_lb}$char_header_line_v${cl_n}${cl_lg}" \
           "${cl_lg}Done.                                           ${cl_n}"

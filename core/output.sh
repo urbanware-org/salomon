@@ -159,14 +159,14 @@ print_output_header() {
     if [ -z "$color_file" ]; then
         print_line "${cl_wh}Color file:" "${cl_ly}None"
     else
-        msg_color_file=$(readlink -f $color_file)
+        msg_color_file=$(readlink -f "$color_file")
         print_line "${cl_wh}Color file:" "${cl_yl}$msg_color_file"
     fi
 
     if [ -z "$export_file" ]; then
         print_line "${cl_wh}Export file:" "${cl_ly}None"
     else
-        msg_export_file=$(readlink -f $export_file)
+        msg_export_file=$(readlink -f "$export_file")
         print_line "${cl_wh}Export file:" "${cl_yl}$msg_export_file"
     fi
 

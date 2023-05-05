@@ -106,7 +106,7 @@ set_permissions() {
         elif [ -d "$line" ]; then
             chmod $dirmod $line
         fi
-    done < $temp_file
+    done < "$temp_file"
     rm -f $temp_file
 
     if [ $allow_write -eq 1 ]; then

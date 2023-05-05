@@ -386,7 +386,7 @@ print_arg_list() {
     temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
     arg_temp="$temp_dir/salomon_args_$$.txt"
 
-    mkdir -p $temp_dir
+    mkdir -p "$temp_dir"
     echo "$arg_list" > $arg_temp
 
     clear
@@ -449,7 +449,7 @@ read_filter() {
     (grep -v "#" | sed -e "s/\ /#/g") < "$filter_file" > $temp_file
     while read line; do
         filter_pattern="$filter_pattern;$line"
-    done < $temp_file
+    done < "$temp_file"
     rm -f $temp_file
 }
 

@@ -186,7 +186,7 @@ read_color_file() {
         fi
 
         colorize+=( ["$color_line_term"]="$color_line_code" )
-    done < $color_file
+    done < "$color_file"
 }
 
 random_colors() {
