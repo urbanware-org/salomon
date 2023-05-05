@@ -323,9 +323,8 @@ print_output_header() {
     if [ $analyze_less -eq 1 ]; then
         print_line "${cl_yl}Processing the input files for analyzing them \c"
         echo -e "using the '${cl_wh}less${cl_yl}' command."
-        print_line "${cl_yl}Please wait. \c"
-        echo -e \
-          "${cl_ly}Depending on the amount of data this may take a while."
+        print_line "${cl_yl}Please wait. Depending on the amount of data" \
+                    "this may take a while."
         print_line
         print_line "\c"
         echo -e "${cl_wh}Press" \
