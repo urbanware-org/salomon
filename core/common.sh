@@ -418,6 +418,8 @@ print_arg_list() {
     echo
     echo -e "    ${cl_yl}$arg_temp${cl_n}"
     echo
+    echo "This file will persist on exit and not be deleted by Salomon."
+    echo
     pause_output
 }
 
