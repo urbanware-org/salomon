@@ -1,6 +1,15 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised some output messages (negligible changes).
+        * Revised the command-line argument handling for allowing spaces.
+
+        # Fixed the missing directory bug (temporary file containing the
+          command-line argument list was not created due to the missing
+          directory it is supposed in).
+
     Version 1.22.2 (2023-03-18)
 
         * Revised the code for handling certain pre-defined keystrokes
