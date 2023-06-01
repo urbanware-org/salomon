@@ -10,6 +10,22 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
+space() {
+    for i in {1..3}; do
+        echo >> $salomon_testrun_log
+    done
+}
+
+step_output() {
+    if [ $1 -lt 10 ]; then
+        step=" $1"
+    else
+        step="$1"
+    fi
+    echo "Step $step of $2"
+    echo "Step $step of $2" >> $salomon_testrun_log
+}
+
 if [ "$1" = "--debug" ]; then
     debug=1
 else
@@ -43,74 +59,88 @@ echo
 sleep 1
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  1 of 13"
+step_output 1 13
 $salomon_script $salomon_args -f "2014" -hm | tee $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  2 of 13"
+step_output 2 13
 echo
+echo >> $salomon_testrun_log
 $salomon_script $salomon_args -f "2014" -hm --no-info \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+echo >> $salomon_testrun_log
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  3 of 13"
+step_output 3 13
 $salomon_script $salomon_args -f "2014" -ha | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  4 of 13"
+step_output 4 13
 $salomon_script $salomon_args -f "2014" -ha --cut-off \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  5 of 13"
+step_output 5 13
 $salomon_script $salomon_args -f "config file" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  6 of 13"
+step_output 6 13
 $salomon_script $salomon_args -f "config file" -hu -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  7 of 13"
+step_output 7 13
 $salomon_script $salomon_args -f "config;file;success;foo" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  8 of 13"
+step_output 8 13
 $salomon_script $salomon_args -e "process" | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step  9 of 13"
+step_output 9 13
 $salomon_script $salomon_args -r "2014-04-02 " | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step 10 of 13"
+step_output 10 13
 $salomon_script $salomon_args -h 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step 11 of 13"
+step_output 11 13
 $salomon_script $salomon_args -t 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step 12 of 13"
+step_output 12 13
 $salomon_script -i $salomon_sample_log --analyze --pause 4 \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 if [ $debug -ne 1 ]; then clear; fi
-echo "Step 13 of 13"
+step_output 13 13
 echo "==" >> $salomon_sample_log_temp
 echo "==  Please press Ctrl+C now once to  cancel  this test (required)." \
      >> $salomon_sample_log_temp
@@ -120,6 +150,7 @@ $salomon_script --monitor -i $salomon_sample_log_temp \
                 -c $salomon_sample_colors -hu -ic --prompt -t 14 \
                 | tee -a $salomon_testrun_log
 if [ $? -ne 130 ]; then salomon_status=$(( salomon_status + 1 )); fi
+space
 
 echo >> $salomon_testrun_log
 echo
