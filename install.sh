@@ -320,7 +320,7 @@ if [ "$script_mode" = "install" ]; then
                     "files (if existing) from"
         echo -e "    Salomon-BSD to Salomon."
         echo
-        echo -e "    Before that, you should read section 5 inside the" \
+        echo -e "    Before that, you should read section 6 inside the" \
                 "documentation of this"
         echo -e "    script."
         echo
