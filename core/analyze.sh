@@ -58,10 +58,12 @@ analyze_input_file() {
 
     if [ $merge -eq 1 ]; then
         merge_file="${temp_file}.merge"
-        sort < $temp_file > $merge_file
+        sort -u < $temp_file > $merge_file
         input_file=$merge_file
     else
-        input_file=$temp_file
+        seq_file="${temp_file}.seq"
+        uniq < $temp_file > $seq_file
+        input_file=$seq_file
     fi
 
     if [ $analyze_less -eq 1 ]; then
