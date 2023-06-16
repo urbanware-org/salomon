@@ -84,6 +84,7 @@ analyze_input_file() {
     else  # Linux
         line_count=$(wc -l < $input_file)
     fi
+
     while read line; do
         if [ $analyze_less -eq 1 ]; then
             print_output_line "$line" >> $less_file
