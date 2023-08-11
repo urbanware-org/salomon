@@ -1,10 +1,14 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.22.3 (2023-08-11)
 
-        * Revised some output messages (negligible changes).
-        * Revised the command-line argument handling for allowing spaces.
+        * Revised the code in general (output messages and further negligible
+          changes).
+        * Revised the command-line argument handling (and processing) to allow
+          paths with spaces.
+        * Revised the analyzation core module (remove duplicate lines when
+          merging multiple files).
 
         # Fixed the missing directory bug (temporary file containing the
           command-line argument list was not created due to the missing
