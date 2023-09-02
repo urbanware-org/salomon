@@ -76,8 +76,9 @@ USAGE (salomon.sh)
 
             In first place, Salomon has been developed to monitor and analyze
             files by colorizing lines which contain certain terms (which can
-            also be additionally highlighted) to get a fast overview of the
-            contents (e.g. to easily detect error messages inside log files).
+            additionally be highlighted sort of marker pen like) to get a fast
+            overview of the contents (e.g. to easily detect error messages
+            inside log files).
 
             2.3.1 Color config files
 
@@ -94,8 +95,10 @@ USAGE (salomon.sh)
 
                 The '--highlight-matches' (or '-hm') command-line argument
                 allows to also highlight the filter terms inside by inverting
-                their colors (sort of marker pen like). It requires a filter,
-                but can be used with as well as without a color config file.
+                their colors (foreground color becomes background color and
+                vice versa which makes it look sort of marker pen like). It
+                requires a filter, but can be used with as well as without a
+                color config file.
 
                 You may also use '--highlight-upper' (or '-hu') instead, which
                 works the same way and additionally switches the letters of
