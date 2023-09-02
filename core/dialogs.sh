@@ -161,7 +161,7 @@ dialog_highlight() {
                                 --default-item $def_item \
                                 --title "Highlight mode" \
                                 --menu "$dlg_text" \
-                                    10 60 20 \
+                                    14 60 20 \
                                     "1" "Do not highlight" \
                                     "2" "Highlight whole lines (filled)" \
                                     "3" "Highlight whole lines (cut-off)" \
@@ -170,7 +170,7 @@ dialog_highlight() {
             user_input=$(whiptail --nocancel --default-item $def_item \
                                   --title "Highlight mode" \
                                   --menu "$dlg_text" \
-                                    13 60 3 \
+                                    16 60 3 \
                                     "1" "Do not highlight" \
                                     "2" "Highlight whole lines (filled)" \
                                     "3" "Highlight whole lines (cut-off)" \
@@ -208,7 +208,7 @@ dialog_highlight() {
                                 --default-item $def_item \
                                 --title "Highlight mode" \
                                 --menu "$dlg_text" \
-                                    12 60 20 \
+                                    14 60 20 \
                                     "1" "Do not highlight" \
                                     "2" "$hlw (filled, filter independent)" \
                                     "3" "$hlw (cut-off, filter independent)" \
@@ -219,7 +219,7 @@ dialog_highlight() {
             user_input=$(whiptail --nocancel --default-item $def_item \
                                   --title "Highlight mode" \
                                   --menu "$dlg_text" \
-                                    13 60 5 \
+                                    16 60 5 \
                                     "1" "Do not highlight" \
                                     "2" "$hlw (filled, filter independent)" \
                                     "3" "$hlw (cut-off, filter independent)" \
