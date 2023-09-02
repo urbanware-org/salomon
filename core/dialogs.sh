@@ -135,7 +135,8 @@ dialog_head_lines() {
 
 dialog_highlight() {
     def_item="1"
-    dlg_text="Do you want to highlight the output?"
+    dlg_text=$(echo "Do you want to highlight the output?\n\nFor details" \
+                    "see section 2.3 inside the documentation.")
 
     if [ -z "$filter_pattern" ]; then
         if [ $highlight_all -eq 1 ]; then
