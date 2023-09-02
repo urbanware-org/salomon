@@ -75,7 +75,7 @@ provided by the Bash shell.
 end
         exit 1
     elif [ ! -n "$BASH" ]; then
-        if [ "$init_compat" = "1" ]; then #
+        if [ "$init_compat" = "1" ]; then
             cat <<- end
 
 Salomon cannot be run.
