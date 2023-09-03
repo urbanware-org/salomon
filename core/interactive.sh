@@ -38,12 +38,12 @@ interactive_mode() {
 
     dialog_valid=0
     while [ $dialog_valid -eq 0 ]; do
-    get_color_file
+        get_color_file
     done
 
     dialog_valid=0
     while [ $dialog_valid -eq 0 ]; do
-    get_filter_pattern
+        get_filter_pattern
     done
 
     if [ -z "$color_file" ]; then
