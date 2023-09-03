@@ -1,6 +1,11 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised the interactive dialogs (set list independent size for the
+          highlighting dialog and added documentation reference).
+
     Version 1.22.3 (2023-08-11)
 
         * Revised the code in general (output messages and further negligible
