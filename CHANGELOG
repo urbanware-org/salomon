@@ -3,6 +3,10 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        * Revised the code in general (negligible changes).
+        * Revised (changed) the background color of the interactive mode when
+          using 'whiptail' (explicitly set to blue, was displayed in purple in
+          some cases and maybe also other colors).
         * Revised the interactive dialogs (set list independent size for the
           highlighting dialog and added documentation reference).
 
