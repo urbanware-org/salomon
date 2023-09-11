@@ -111,5 +111,7 @@ set_global_variables() {
     remove_list=""
     remove_pattern=""
 
+    export NEWT_COLORS="root=,blue"
+
     unset color_temp
 }
