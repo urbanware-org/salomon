@@ -252,8 +252,8 @@ if [ "$script_mode" = "install" ]; then
         if [ ! "$script_dir" = "$target_dir" ]; then
             echo -e "  ${blk} The target directory '$target' already exists."
             echo
-            echo -e "    You can ${cl_yl}either${cl_n} only install the" \
-                    "program relevant files and keep all"
+            echo -e "    You can ${cl_yl}either${cl_n} only ${cl_lg}install" \
+                    "${cl_n}the program relevant files and keep all"
             echo -e "    configs and settings ${cl_yl}or${cl_n} perform a" \
                     "clean installation which will ${cl_lr}delete${cl_n}"
             echo -e "    the directory and ${cl_lg}reinstall${cl_n} the" \
