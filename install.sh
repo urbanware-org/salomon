@@ -347,23 +347,23 @@ if [ "$script_mode" = "install" ]; then
     fi
     echo
 
-    echo -e "    Installation directory is '${target}'."
+    echo -e "  → Installation directory is '${target}'."
     if [ $clean_install -eq 1 ]; then
         if [ "$(pwd)" = "$target_dir" ]; then
-            echo "    Removing previous data from installation directory..."
+            echo "  → Removing previous data from installation directory..."
             rm -fR $target_dir/*
         else
-            echo "    Removing previous installation directory..."
+            echo "  → Removing previous installation directory..."
             rm -fR $target_dir
         fi
     fi
 
     if [ ! -d $target_dir ]; then
-        echo -e "    Creating installation directory..."
+        echo -e "  → Creating installation directory..."
         mkdir -p $target_dir &>/dev/null
     fi
 
-    echo "    Copying data to installation directory..."
+    echo "  → Copying data to installation directory..."
     if [ -f "$target_dir/salomon.cfg" ]; then
         exclude_config="--exclude=salomon.cfg"
     fi
@@ -389,7 +389,7 @@ if [ "$script_mode" = "install" ]; then
     done
 
     if [ $migrate -eq 1 ]; then
-        echo "    Migrating config files from Salomon-BSD installation" \
+        echo "  → Migrating config files from Salomon-BSD installation" \
              "directory..."
         rsync -a $migrate_dir/*.cfg $target_dir/ &>/dev/null
         rsync -a $migrate_dir/colors/* $target_dir/colors &>/dev/null
@@ -397,7 +397,7 @@ if [ "$script_mode" = "install" ]; then
     fi
 
     if [ $install_icons -eq 1 ]; then
-        echo "    Copying icon files to shared directory..."
+        echo "  → Copying icon files to shared directory..."
         for i in 16 24 32 48 64 96 128 256; do
             if [ ! -e "$script_dir/icons/png/salomon_${i}x${i}.png" ]; then
                 continue
@@ -442,7 +442,7 @@ if [ "$script_mode" = "install" ]; then
         fi
     fi
 
-    echo -e "    Setting permissions for installation directory... \c"
+    echo -e "  → Setting permissions for installation directory... \c"
     if [ $available = "rootonly" ]; then
         echo -e "${cl_lb}(root only)${cl_n}"
     else
@@ -459,12 +459,12 @@ if [ "$script_mode" = "install" ]; then
             # This must also be done when migrating from Salomon-BSD to
             # Salomon, as the symbolic link points to '/opt/salomon-bsd'
             # instead of '/opt/salomon'.
-            echo "    Removing existing symbolic link for main script..."
+            echo "  → Removing existing symbolic link for main script..."
             rm -f ${symlink_sh}/salomon &>/dev/null
         fi
     fi
 
-    echo -e "    Creating symbolic link for main script... \c"
+    echo -e "  → Creating symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         echo -e "${cl_lb}(already exists)${cl_n}"
     else
@@ -500,7 +500,7 @@ else  # uninstall
         fi
         echo
     fi
-    echo -e "    Removing symbolic link for main script... \c"
+    echo -e "  → Removing symbolic link for main script... \c"
     if [ -f ${symlink_sh}/salomon ]; then
         rm -f ${symlink_sh}/salomon &>/dev/null
         already_uninstalled=0
@@ -509,7 +509,7 @@ else  # uninstall
         echo -e "${cl_lb}(does not exist)${cl_n}"
     fi
 
-    echo -e "    Removing icon files from shared directory... \c"
+    echo -e "  → Removing icon files from shared directory... \c"
     icons_png="salomon\.png|salomon-gray-border\.png"
     icons_svg="salomon\.svg|salomon-gray-border\.svg"
     icons_installed=$(find $icon_path | grep -E "$icons_png|$icons_svg")
@@ -532,7 +532,7 @@ else  # uninstall
         echo -e "${cl_lb}(do not exist)${cl_n}"
     fi
 
-    echo -e "    Removing installation directory '${target}'... \c"
+    echo -e "  → Removing installation directory '${target}'... \c"
     if [ $keep_directory -eq 1 ]; then
         echo -e "${cl_lb}(kept on user request)${cl_n}"
     else
