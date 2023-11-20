@@ -88,6 +88,14 @@ get_color_code() {
         fi
     fi
 
+    # 1 = bold
+    # 2 = dim
+    # 3 = italic
+    # 4 = underline
+    # 5 = blink
+    # 9 = strikethrough
+
+
     if [[ $color_name =~ \-b\-u$ ]] || [[ $color_name =~ \-u\-b$ ]] || \
        [[ $color_name =~ \-bold\-underlined$ ]] || \
        [[ $color_name =~ \-underlined\-bold$ ]]; then
@@ -182,7 +190,7 @@ read_color_file() {
             warn "Please check the color config for quotes and remove them." 0
             color_terms="$color_temp"
         else
-            color_terms=$(xargs -n1 <<< "$color_temp" | sort -u | xargs)
+            color_terms=$(xargs -n1 <<< "$color_temp" | xargs)
         fi
 
         colorize+=( ["$color_line_term"]="$color_line_code" )
