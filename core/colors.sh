@@ -88,25 +88,23 @@ get_color_code() {
         fi
     fi
 
-    # 1 = bold
-    # 2 = dim
-    # 3 = italic
-    # 4 = underline
-    # 5 = blink
-    # 9 = strikethrough
-
-
-    if [[ $color_name =~ \-b\-u$ ]] || [[ $color_name =~ \-u\-b$ ]] || \
-       [[ $color_name =~ \-bold\-underlined$ ]] || \
-       [[ $color_name =~ \-underlined\-bold$ ]]; then
-        color_temp=$(sed -e "s/\[/\[1;4;/g" <<< $color_code)
-        color_code="$color_temp"
-    elif [[ $color_name =~ \-b$ ]] || [[ $color_name =~ \-bold$ ]]; then
-        color_temp=$(sed -e "s/\[/\[1;/g" <<< $color_code)
-        color_code="$color_temp"
-    elif [[ $color_name =~ \-u$ ]] || [[ $color_name =~ \-underlined$ ]]; then
-        color_temp=$(sed -e "s/\[/\[4;/g" <<< $color_code)
-        color_code="$color_temp"
+    if [[ $color_name =~ \-b ]] || [[ $color_name =~ \-bold ]]; then
+        color_code="\e[1m${color_code}"
+    fi
+    if [[ $color_name =~ \-i ]] || [[ $color_name =~ \-italic ]]; then
+        color_code="\e[3m${color_code}"
+    fi
+    if [[ $color_name =~ \-d ]] || [[ $color_name =~ \-dim ]]; then
+        color_code="\e[2m${color_code}"
+    fi
+    if [[ $color_name =~ \-u ]] || [[ $color_name =~ \-underline ]]; then
+        color_code="\e[4m${color_code}"
+    fi
+    if [[ $color_name =~ \-bl ]] || [[ $color_name =~ \-blink ]]; then
+        color_code="\e[5m${color_code}"
+    fi
+    if [[ $color_name =~ \-s ]] || [[ $color_name =~ \-strikethrough ]]; then
+        color_code="\e[9m${color_code}"
     fi
 }
 
