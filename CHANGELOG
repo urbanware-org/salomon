@@ -1,6 +1,15 @@
 
 CHANGELOG (Salomon)
 
+    Version 1.23.0 (2023-11-24)
+
+        + Added some additional formatting options for highlighting purposes.
+
+        * Revised the installation script (negligible changes).
+
+        # Fixed the term order bug (in some cases lines were not highlighted
+          in the correct colors when multiple matched a line)
+
     Version 1.22.4 (2023-09-11)
 
         * Revised the code in general (negligible changes).
