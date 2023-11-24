@@ -8,7 +8,7 @@ CHANGELOG (Salomon)
         * Revised the installation script (negligible changes).
 
         # Fixed the term order bug (in some cases lines were not highlighted
-          in the correct colors when multiple matched a line)
+          in the correct colors when multiple matched a line).
 
     Version 1.22.4 (2023-09-11)
 
