@@ -217,6 +217,10 @@ else
                 color_table=1
                 shift
             ;;
+            --format-list)
+                format_list=1
+                shift
+            ;;
             --version)
                 echo "$version"
                 exit
@@ -260,6 +264,11 @@ else
     # Print color table (if requested)
     if [ $color_table -eq 1 ]; then
         print_color_table
+        exit
+    fi
+    # Print color table (if requested)
+    if [ $format_list -eq 1 ]; then
+        print_format_list
         exit
     fi
 

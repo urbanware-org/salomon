@@ -175,6 +175,35 @@ print_color_table() {
     echo
 }
 
+print_format_list() {
+
+    echo
+    echo "This terminal emulator supports or can display the text following" \
+         "formatting"
+    echo "options:"
+    echo
+
+    echo -e "    \e[${cl_yl}Bold:${cl_n}                \e[1mExample${cl_n}"
+    echo -e "    \e[${cl_yl}Italic:${cl_n}              \e[3mExample${cl_n}"
+    echo -e "    \e[${cl_yl}Dimmed:${cl_n}              \e[2mExample${cl_n}"
+    echo -e "    \e[${cl_yl}Underlined:${cl_n}          \e[4mExample${cl_n}"
+    echo -e "    \e[${cl_yl}Blinking:${cl_n}            \e[5mExample${cl_n}"
+    echo -e "    \e[${cl_yl}Striked through:${cl_n}     \e[9mExample${cl_n}"
+
+    echo
+    echo "If the text does not correspond to the specified format option," \
+         "it is not"
+    echo -e "supported. So, if e.g. the text in the" \
+            "\e[${cl_yl}Blinking${cl_n} line" \
+            "is displayed normally"
+    echo "rather than blinking, this format option is not supported."
+    echo
+    echo "When running Salomon on a pure text-based interface (tty) these" \
+         "options"
+    echo "will either not work at all or at least have a different effect."
+    echo
+}
+
 read_color_file() {
     while read line; do
         if [ -z "$line" ] || [[ $line == *"#"* ]]; then
