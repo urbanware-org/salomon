@@ -132,7 +132,7 @@ print_color_table() {
     echo
     is_tty=$(grep "/tty" <<< $(tty))
     if [ -z "$is_tty" ]; then
-        echo "This terminal emulator supports (can display) the following" \
+        echo "This terminal emulator supports or can display the following" \
              "colors:"
         echo
 
