@@ -581,8 +581,11 @@ ${lb}optional arguments:${no}
   -w WAIT, --wait WAIT  seconds to wait after printing a colorized line
 
 ${ly}general arguments:${no}
-  --color-table         print the 256-color table to see which colors are
-                        supported (can be displayed) by the terminal emulator
+  --color-table         print the 256-color table to see which of them are
+                        supported or can be displayed by the terminal emulator
+                        currently used and exit
+  --format-list         print the formatting options to see which of them are
+                        supported or can be displayed by the terminal emulator
                         currently used and exit
   --version             print the version number and exit
   --version-update      check for a newer version and exit
