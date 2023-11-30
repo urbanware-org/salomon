@@ -198,6 +198,10 @@ print_format_list() {
             "is displayed normally"
     echo "rather than blinking, this format option is not supported."
     echo
+    echo "Some terminal emulators which do not support the format options" \
+         "also can"
+    echo "completely mess up the output."
+    echo
     echo "When running Salomon on a pure text-based interface (tty) these" \
          "options"
     echo "will either not work at all or at least have a different effect."
