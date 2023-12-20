@@ -46,6 +46,7 @@ set_global_variables() {
     export_file=""
     export_log=0
     follow=1
+    format_list=0
     header=1
     head_lines=0
     highlight_all=0
