@@ -40,6 +40,7 @@ blk="${cl_lb}■${cl_n}"
 exclude_config=""
 keep_directory=0
 migrate=0
+new_install=0
 target="${cl_yl}${target_dir}${cl_n}"
 dowant="Do you want to"
 dowish="Do you wish to"
@@ -161,14 +162,14 @@ fi
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
     script_mode="install"
     if [ -d "/opt/salomon" ]; then
-        script_action="${cl_lg}${script_mode}${cl_n} or ${cl_lg}update${cl_n}"
+        script_action="${cl_lg}install${cl_n} or ${cl_lg}update${cl_n}"
     else
-        script_action="${cl_lg}${script_mode}${cl_n}"
+        script_action="${cl_lg}install${cl_n}"
     fi
     check_command rsync rsync
 elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
     script_mode="uninstall"
-    script_action="${cl_lr}${script_mode}${cl_n}"
+    script_action="${cl_lr}uninstall${cl_n}"
 elif [ "$1" = "-?" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     usage
 else
@@ -295,6 +296,8 @@ if [ "$script_mode" = "install" ]; then
                 sleep 3
             fi
         fi
+    else
+        new_install=1
     fi
 
     if [ -n "$icon_path" ]; then
@@ -339,6 +342,12 @@ if [ "$script_mode" = "install" ]; then
             migrate=1
         fi
         echo
+    fi
+
+    if [ $clean_install -eq 1 ] || [ $new_install -eq 1 ]; then
+        script_action="${cl_lg}install${cl_n}"
+    else
+        script_action="${cl_lg}update${cl_n}"
     fi
 
     confirm \
