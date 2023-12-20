@@ -160,7 +160,11 @@ fi
 
 if [ "$1" = "--install" ] || [ "$1" = "-i" ]; then
     script_mode="install"
-    script_action="${cl_lg}${script_mode}${cl_n}"
+    if [ -d "/opt/salomon" ]; then
+        script_action="${cl_lg}${script_mode}${cl_n} or ${cl_lg}update${cl_n}"
+    else
+        script_action="${cl_lg}${script_mode}${cl_n}"
+    fi
     check_command rsync rsync
 elif [ "$1" = "--uninstall" ] || [ "$1" = "-u" ]; then
     script_mode="uninstall"
