@@ -1,7 +1,7 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.23.1 (2024-01-26)
 
         + Added the command-line argument to the main script to print the
           additional text formatting options available.
