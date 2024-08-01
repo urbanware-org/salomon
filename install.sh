@@ -293,7 +293,11 @@ if [ "$script_mode" = "install" ]; then
                 echo -e "    possible. This is not a problem, rather normal" \
                         "behavior."
                 echo
-                sleep 3
+                confirm "    $dowish proceed anyway ($yesno)? \c"
+                if [ $choice -eq 0 ]; then
+                    cancel_install
+                fi
+            echo
             fi
         fi
     else
