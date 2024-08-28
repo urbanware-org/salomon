@@ -1,6 +1,13 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        * Revised the installation script (replaced the directory information
+          delay with user prompt).
+        * Revised the interactive dialogs core module (added the color file
+          parse information dialog).
+
     Version 1.23.1 (2024-01-26)
 
         + Added the command-line argument to the main script to print the
