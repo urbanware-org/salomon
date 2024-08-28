@@ -193,7 +193,14 @@ get_color_file() {
                 predef_error_dialog \
                   "No read permission on the given color file '$color_file'"
             else
-                read_color_file "$color_file"
+                if [ "$dialog_program" = "whiptail" ]; then
+                    dlg_shadow=""
+                fi
+                parse_notice="Parsing color file. Please wait."
+                read_color_file "$color_file" | \
+                    $dialog_program $dlg_shadow \
+                                    --title "Color configuration file" \
+                                    --gauge "$parse_notice" 11 60 0
                 concat_arg "-c \"$color_file\""
                 dialog_valid=1
             fi
