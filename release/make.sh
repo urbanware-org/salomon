@@ -10,7 +10,11 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
-source ../core/global.sh
+if [ -f "../core/global.sh" ]; then
+    source ../core/global.sh
+else
+    source core/global.sh
+fi
 set_global_variables
 
 script_dir=$(dirname $(readlink -f $0))
