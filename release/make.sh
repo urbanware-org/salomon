@@ -18,12 +18,13 @@ fi
 set_global_variables
 
 script_dir=$(dirname $(readlink -f $0))
+temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
+work_dir="$(pwd)"
 salomon_dir=$(sed -e "s/\/release$//g" <<< $script_dir)
 salomon_version="salomon-release-$version"
 salomon_archive="$salomon_version.tar.gz"
 salomon_checksum="$salomon_archive.sha256"
 git_clone=".git compile release snippets wiki"
-temp_dir="$(dirname $(mktemp -u --tmpdir))/salomon"
 
 echo -e "${cl_lc}Salomon $version release builder${cl_n}"
 
@@ -44,12 +45,14 @@ for markdown in $(find $temp_dir | grep "\.md$"); do
 done
 
 echo -e "  - Creating release archive ('${cl_yl}$salomon_archive${cl_n}')..."
+cd $script_dir
 mv $temp_dir/salomon $temp_dir/$salomon_version
 tar czf $salomon_archive -C $temp_dir .
 
 echo -e "  - Generating archive checksum" \
         "('${cl_yl}$salomon_checksum${cl_n}')..."
 sha256sum $salomon_archive > $salomon_archive.sha256
+cd $work_dir
 
 echo -e "${cl_lg}Finished.${cl_n}"
 rm -fR $temp_dir
