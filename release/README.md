@@ -1,6 +1,6 @@
 # Building a customized release
 
-Repository clones of *Salomon* include `make.sh` which is some sort of release builder script. As this statement suggests, it is not a part in the official release.
+Repository clones of *Salomon* include `build.sh` which is some sort of release builder script. As this statement suggests, it is not a part in the official release.
 
 This script is used to create the archive and the corresponding checksum file for the official releases of the original repository. The archive contains all project relevant files (including the source code) without any of the *GitHub* specific files that are not necessary in order to use the project.
 
@@ -24,10 +24,10 @@ Please note the following:
 
 *   This file must contain all information about the customized version (author, modifications, changelog etc.). See the `MODIFIED` file example below for details.
 
-When done, simply run `make.sh` without any command-line arguments
+When done, simply run the release builder script without any command-line arguments
 
 ```
-./make.sh
+./build.sh
 ```
 
 which will create the archive containing your customized version and the corresponding checksum.
