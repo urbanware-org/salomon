@@ -226,14 +226,14 @@ print_output_header() {
 
     print_line
     if [ $exclude -eq 1 ]; then
-        msg_exclude="${cl_yl}$exclude_pattern"
+        msg_exclude="${cl_dy}\"${cl_yl}$exclude_pattern${cl_dy}\""
     else
         msg_exclude="${cl_ly}None"
     fi
     print_line "${cl_wh}Exclude pattern:" "$msg_exclude"
 
     if [ $remove -eq 1 ]; then
-        msg_remove="${cl_yl}$remove_pattern"
+        msg_remove="${cl_dy}\"${cl_yl}$remove_pattern${cl_dy}\""
     else
         msg_remove="${cl_ly}None"
     fi
@@ -246,7 +246,8 @@ print_output_header() {
         fi
 
         msg_pattern="${cl_wh}Filter pattern:"
-        print_line "$msg_pattern" "${cl_yl}$filter_pattern"
+        print_line "$msg_pattern" \
+                    "${cl_dy}\"${cl_yl}$filter_pattern${cl_dy}\""
 
         if [ "$arg_case" = "-i" ]; then
             msg_case="${cl_lg}Yes"
