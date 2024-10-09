@@ -30,29 +30,35 @@ fi
 echo -e "${cl_lc}Salomon $version binary compiler${cl_n}"
 
 echo "  - Merging core modules..."
-echo '#!/bin/bash' > salobin.sh
-cat core/global.sh      >> salobin.sh
-cat core/colors.sh      >> salobin.sh
-cat core/common.sh      >> salobin.sh
-cat core/analyze.sh     >> salobin.sh
-cat core/monitor.sh     >> salobin.sh
-cat core/interactive.sh >> salobin.sh
-cat core/dialogs.sh     >> salobin.sh
-cat core/compat.sh      >> salobin.sh
-cat core/shell.sh       >> salobin.sh
-cat core/output.sh      >> salobin.sh
+echo '#!/bin/bash'          >  salomon_merge.sh
+cat core/global.sh          >> salomon_merge.sh
+cat core/colors.sh          >> salomon_merge.sh
+cat core/common.sh          >> salomon_merge.sh
+cat core/analyze.sh         >> salomon_merge.sh
+cat core/monitor.sh         >> salomon_merge.sh
+cat core/interactive.sh     >> salomon_merge.sh
+cat core/dialogs.sh         >> salomon_merge.sh
+cat core/shell.sh           >> salomon_merge.sh
+cat core/output.sh          >> salomon_merge.sh
 
 echo "  - Appending main script..."
-cat salomon.sh          | grep -v "^#" | grep -v "\${script_dir}/core" \
-                        | grep -v "compatib" >> salobin.sh
+cat salomon.sh              >> salomon_merge.sh
+
+echo "  - Preparing code..."
+cat salomon_merge.sh | grep -v "source \${script_dir}/core" \
+                     | grep -v "\${script_dir}/core" \
+                     | grep -v "compatib" \
+                     > salomon_prep.sh
 
 echo "  - Compiling..."
-shc -f salobin.sh -o salomon
+shc -f salomon_prep.sh -o salomon
 if [ $? -eq 0 ]; then
     chmod +x salomon
     echo -e "${cl_lg}Finished.${cl_n}"
 else
     echo -e "${cl_lr}error:${cl_n} Compiling failed with return value $?"
 fi
-rm -f salobin*
+rm -f salomon_*
 
+echo -e "Notice that ${cl_yl}compiling only served as a test${cl_n}." \
+        "See ${cl_lc}README.md${cl_n} for details."
