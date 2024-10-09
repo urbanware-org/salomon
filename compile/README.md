@@ -12,6 +12,6 @@ After that, the `core` sub-directory is obsolete (for running the binary) and co
 
 You could also merge the script files (the way it is done in `compile.sh`) without compiling them to avoid using `source`, but the code will become a mess then.
 
-As mentioned above, this was a test and not meant for productive use. Furthermore, there is no guarantee, that the compiled version works properly.
+As mentioned above, this was a test and not meant for productive use. Furthermore, there is no guarantee that the compiled version works properly.
 
 In short, compiling *Salomon* is useless, but the script shows how it can be done.
