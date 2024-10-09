@@ -9,6 +9,7 @@ CHANGELOG (Salomon)
           parse information dialog).
         * Revised the output header (enclosed pattern strings with double
           quotes to display leading and trailing spaces).
+        * Revised the pattern string parser to allow hash characters ('#').
 
     Version 1.23.1 (2024-01-26)
 
