@@ -405,8 +405,9 @@ else
                     read_filter
                 fi
             else
-                if [[ $filter_pattern == *"#"* ]]; then
-                    usage "The filter pattern must not contain any hashes"
+                if [[ $filter_pattern == *"§"* ]]; then
+                    usage \
+                      "The filter pattern must not contain any section signs"
                 fi
             fi
 
@@ -416,15 +417,15 @@ else
             if [ $is_bsd -eq 1 ]; then
                 filter_list=$(sed -e "s/^;*//g" \
                                   -e "s/;*$//g" \
-                                  -e "s/\ /#/g" \
+                                  -e "s/\ /§/g" \
                                   -e $'s/;/\\\n/g' <<< "$filter_pattern")
             else  # Linux
                 filter_list=$(sed -e "s/^;*//g" \
                                   -e "s/;*$//g" \
-                                  -e "s/\ /#/g" \
+                                  -e "s/\ /§/g" \
                                   -e "s/;/\n/g" <<< "$filter_pattern")
             fi
-            filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
+            filter_pattern=$(sed -e "s/§/\ /g" <<< "$filter_pattern")
             filter=1
         fi
 
@@ -453,26 +454,26 @@ else
 
         # Exclude pattern
         if [ -n "$exclude_pattern" ]; then
-            if [[ $exclude_pattern == *"#"* ]]; then
-                usage "The exclude pattern must not contain any hashes"
+            if [[ $exclude_pattern == *"§"* ]]; then
+                usage "The exclude pattern must not contain any section signs"
             fi
             exclude_list=$((tr -s ";;" ";" | \
                             sed -e "s/^;*//" \
                                 -e "s/;*$//" \
-                                -e "s/\ /#/g" \
+                                -e "s/\ /§/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
         fi
 
         # Remove pattern
         if [ -n "$remove_pattern" ]; then
-            if [[ $remove_pattern == *"#"* ]]; then
-                usage "The remove pattern must not contain any hashes"
+            if [[ $remove_pattern == *"§"* ]]; then
+                usage "The remove pattern must not contain any section signs"
             fi
             remove_list=$((tr -s ";;" ";" | \
                            sed -e "s/^;*//" \
                                -e "s/;*$//" \
-                               -e "s/\ /#/g" \
+                               -e "s/\ /§/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
         fi

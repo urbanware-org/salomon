@@ -216,15 +216,15 @@ get_exclude_pattern() {
         dialog_valid=1
         return
     else
-        if [[ $exclude_pattern == *"#"* ]]; then
+        if [[ $exclude_pattern == *"§"* ]]; then
             predef_error_dialog \
-              "The exclude pattern must not contain any hashes"
+              "The exclude pattern must not contain any section signs"
             return
         else
             exclude_list=$((tr -s ";;" ";" | \
                             sed -e "s/^;*//" \
                                 -e "s/;*$//" \
-                                -e "s/\ /#/g" \
+                                -e "s/\ /§/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
             concat_arg "-e \"$exclude_pattern\""
@@ -293,9 +293,9 @@ get_filter_pattern() {
                 read_filter
             fi
         else
-            if [[ $filter_pattern == *"#"* ]]; then
+            if [[ $filter_pattern == *"§"* ]]; then
                 predef_error_dialog \
-                  "The filter pattern must not contain any hashes"
+                  "The filter pattern must not contain any section signs"
                 return
             else
                 filter_pattern=$((tr -s ";;" ";" | \
@@ -303,9 +303,9 @@ get_filter_pattern() {
                             -e "s/;$//") <<< "$filter_pattern")
                 filter_list=$(sed -e "s/^;*//g" \
                                   -e "s/;*$//g" \
-                                  -e "s/\ /#/g" \
+                                  -e "s/\ /§/g" \
                                   -e "s/;/\n/g" <<< "$filter_pattern")
-                filter_pattern=$(sed -e "s/#/\ /g" <<< "$filter_pattern")
+                filter_pattern=$(sed -e "s/§/\ /g" <<< "$filter_pattern")
                 filter=1
                 concat_arg "-f \"$filter_pattern\""
                 dialog_valid=1
@@ -418,15 +418,15 @@ get_remove_pattern() {
         dialog_valid=1
         return
     else
-        if [[ $remove_pattern == *"#"* ]]; then
+        if [[ $remove_pattern == *"§"* ]]; then
             predef_error_dialog \
-              "The remove pattern must not contain any hashes"
+              "The remove pattern must not contain any section signs"
             return
         else
             remove_list=$((tr -s ";;" ";" | \
                            sed -e "s/^;*//" \
                                -e "s/;*$//" \
-                               -e "s/\ /#/g" \
+                               -e "s/\ /§/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
             concat_arg "-r \"$remove_pattern\""
