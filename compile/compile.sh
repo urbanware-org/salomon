@@ -31,26 +31,16 @@ echo -e "${cl_lc}Salomon $version binary compiler${cl_n}"
 
 echo "  - Merging core modules..."
 echo '#!/bin/bash' > salobin.sh
-cat core/global.sh      | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/colors.sh      | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/common.sh      | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/analyze.sh     | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/monitor.sh     | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/interactive.sh | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/dialogs.sh     | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/compat.sh      | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/shell.sh       | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
-cat core/output.sh      | grep -v "^#" \
-                        | grep -v "source \${script_dir}/core" >> salobin.sh
+cat core/global.sh      >> salobin.sh
+cat core/colors.sh      >> salobin.sh
+cat core/common.sh      >> salobin.sh
+cat core/analyze.sh     >> salobin.sh
+cat core/monitor.sh     >> salobin.sh
+cat core/interactive.sh >> salobin.sh
+cat core/dialogs.sh     >> salobin.sh
+cat core/compat.sh      >> salobin.sh
+cat core/shell.sh       >> salobin.sh
+cat core/output.sh      >> salobin.sh
 
 echo "  - Appending main script..."
 cat salomon.sh          | grep -v "^#" | grep -v "\${script_dir}/core" \
