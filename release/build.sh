@@ -24,7 +24,7 @@ salomon_dir=$(sed -e "s/\/release$//g" <<< $script_dir)
 salomon_version="salomon-release-$version"
 salomon_archive="$salomon_version.tar.gz"
 salomon_checksum="$salomon_archive.sha256"
-git_clone=".git compile release snippets wiki"
+git_clone=".git compile release rpmspec snippets wiki"
 
 echo -e "${cl_lc}Salomon $version release builder${cl_n}"
 
