@@ -370,6 +370,13 @@ deprecated_argument() {
     echo -e "${cl_lg}        Proceeding.                              ${cl_n}"
 }
 
+notice() {
+    message="$1"
+
+    echo -e "${cl_lb}notice:${cl_n} ${message}."
+    sleep 1
+}
+
 prepare_path() {
     path_input="$1"
     while true; do
