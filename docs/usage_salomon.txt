@@ -124,12 +124,14 @@ USAGE (salomon.sh)
                 ./salomon.sh -a monitor -i /var/log/foobar.log -c colors.cfg \
                              -f filter.cfg
 
-            Salomon will first check the current working directory for these
-            config files. If these do not exist there, it will check for them
-            inside the config sub-directories ('colors' and 'filters') of the
-            Salomon script directory.
+            If the color file name is given without a path, Salomon checks the
+            following in the given order:
 
-        2.5 File paths containing spaces and special characters
+                1. Current working path
+                2. User config path ('/home/johndoe/.config/salomon/colors')
+                3. Salomon installation path ('/opt/salomon/colors')
+
+         2.5 File paths containing spaces and special characters
 
             Usually, paths containing spaces and special characters are simply
             enclosed with either single (') or double (") quotes.
@@ -427,8 +429,15 @@ USAGE (salomon.sh)
                 ./salomon.sh -a monitor -i /var/log/foobar.log \
                              -c log_colors.cfg -f sample_filter.cfg -ic
 
-            Notice that in case the file does not exist, the script will
-            interpret the given path as a pattern instead of a file path.
+            If the filter file name is given without a path, Salomon checks
+            the following in the given order:
+
+                1. Current working path
+                2. User config path ('/home/johndoe/.config/salomon/filters')
+                3. Salomon installation path ('/opt/salomon/filters')
+
+            Notice that in case the file does not exist in any of them, the
+            script interprets the given path as a filter pattern instead.
 
     5. Exclude lines
 
