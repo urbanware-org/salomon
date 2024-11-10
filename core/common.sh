@@ -612,8 +612,12 @@ file for this script.${no}"
 }
 
 warn() {
-    message=$1
-    indent=$2
+    message="$1"
+    indent="$2"
+
+    if [ -z "$indent" ]; then
+        indent=0
+    fi
 
     if [ $indent -eq 0 ]; then
         echo -e "${cl_yl}warning:${cl_n} ${message}."
