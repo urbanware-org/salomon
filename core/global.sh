@@ -37,6 +37,7 @@ set_global_variables() {
     arg_list=$(readlink -f "$0")
     input_file=""
     input_count=0
+    warn_suffix=0
 
     action=""
     analyze_less=0

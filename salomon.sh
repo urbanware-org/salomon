@@ -623,6 +623,11 @@ check_command grep grep
 check_command sed sed
 check_command tail coreutils
 
+if [ $warn_suffix -ne 0 ]; then
+    notice \
+      "Please use '.cfg' as config file extension as others are deprecated"
+fi
+
 if [ $header -eq 1 ]; then
     print_output_header
 fi

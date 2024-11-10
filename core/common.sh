@@ -431,20 +431,29 @@ print_arg_list() {
 }
 
 read_config_file() {
-    if [ -f "${script_dir}/salomon.cfg" ]; then
-        source ${script_dir}/salomon.cfg
-    elif [ -f "${script_dir}/salomon.conf" ]; then
-        source ${script_dir}/salomon.conf
-    elif [ -f "${script_dir}/salomon.cf" ]; then
-        # Postfix anyone?
-        source ${script_dir}/salomon.cf
-    elif [ -f "${script_dir}/salomon.cfg.default" ]; then
-        # Fallback with the default config
-        source ${script_dir}/salomon.cfg.default
-        cp ${script_dir}/salomon.cfg.default \
-           ${script_dir}/salomon.cfg &>/dev/null
+    if [ -d "$user_config" ]; then
+        if [ -f "${user_config}/salomon.cfg" ]; then
+            source ${user_config}/salomon.cfg
+        fi
     else
-        usage "Global configuration file missing"
+        if [ -f "${script_dir}/salomon.cfg" ]; then
+            source ${script_dir}/salomon.cfg
+        elif [ -f "${script_dir}/salomon.conf" ]; then
+            # Deprecated, show warning
+            source ${script_dir}/salomon.conf
+            warn_suffix=1
+        elif [ -f "${script_dir}/salomon.cf" ]; then
+            # Deprecated, show warning
+            source ${script_dir}/salomon.cf
+            warn_suffix=1
+        elif [ -f "${script_dir}/salomon.cfg.default" ]; then
+            # Fallback with the default config
+            source ${script_dir}/salomon.cfg.default
+            cp ${script_dir}/salomon.cfg.default \
+               ${script_dir}/salomon.cfg &>/dev/null
+        else
+            usage "Global configuration file missing"
+        fi
     fi
 }
 
