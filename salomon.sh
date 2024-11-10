@@ -358,12 +358,24 @@ else
         # Color file
         if [ -n "$color_file" ]; then
             msg="The given color config file"
-            if [ ! -e "$color_file" ]; then
-                color_file="${color_dir}${color_file}"
-                if [ ! -e "$color_file" ]; then
-                    usage "$msg path '$color_file' does not exist"
+            color_file_found=1
+            color_file_path="$color_file"
+            if [ ! -e "$color_file_path" ]; then
+                color_file_path="${user_colors}/${color_file}"
+                if [ ! -e "$color_file_path" ]; then
+                    color_file_path="${color_dir}/${color_file}"
+                    if [ ! -e "$color_file_path" ]; then
+                        color_file_found=0
+                    fi
                 fi
             fi
+
+            if [ $color_file_found -eq 0 ]; then
+                usage "$msg path '$color_file' does not exist"
+            else
+                color_file="$color_file_path"
+            fi
+
             if [ ! -f "$color_file" ]; then
                 usage "$msg path '$color_file' is not a file"
             else
@@ -383,28 +395,40 @@ else
             if [ "$arg_case" = "-i" ]; then
                 usage "The '--ignore-case' argument $msg a filter"
             fi
-            if [ $highlight_matches -eq 1 ] || [ $highlight_upper -eq 1 ]; then
+            if [ $highlight_matches -eq 1 ] || \
+               [ $highlight_upper -eq 1 ]; then
                 usage "This highlighting argument $msg a filter"
             fi
         else
-            if [ -f "$filter_pattern" ]; then
-                msg="No read permission on the given filter file"
-                filter_file="$filter_pattern"
-                tail "$filepath" &>/dev/null
-                if [ $? -ne 0 ]; then
-                    usage "$msg '$filepath'"
-                else
-                    read_filter
+            msg="The given filter file"
+            filter_file_found=1
+            filter_file="$filter_pattern"
+            filter_file_path="$filter_file"
+            if [ ! -e "$filter_file_path" ]; then
+                filter_file_path="${user_filters}/${filter_file}"
+                if [ ! -e "$filter_file_path" ]; then
+                    filter_file_path="${filter_dir}/${filter_file}"
+                    if [ ! -e "$filter_file_path" ]; then
+                        filter_file_found=0
+                    fi
                 fi
-            elif [ -f "${filter_dir}${filter}" ]; then
-                filter_file="${filter_dir}${filter}"
-                tail "$filepath" &>/dev/null
-                if [ $? -ne 0 ]; then
-                    usage "$msg '$filepath'"
+            fi
+
+            if [ $filter_file_found -eq 1 ]; then
+                if [ ! -f "$filter_file_path" ]; then
+                    usage "$msg path '$filter_file' is not a file"
                 else
-                    read_filter
+                    msg="No read permission"
+                    tail "$filter_file_path" &>/dev/null
+                    if [ $? -ne 0 ]; then
+                        usage "$msg on the given color file '$filter_file'"
+                    else
+                        filter_file="$filter_file_path"
+                        read_filter "$filter_file"
+                    fi
                 fi
             else
+                filter_file=""
                 if [[ $filter_pattern == *"§"* ]]; then
                     usage \
                       "The filter pattern must not contain any section signs"

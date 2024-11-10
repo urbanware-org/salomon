@@ -31,6 +31,10 @@ set_global_variables() {
         temp_file="$(dirname $(mktemp -u --tmpdir))/salomon_$$.tmp"
     fi
 
+    user_config="${HOME}/.config/salomon"
+    user_colors="${user_config}/colors"
+    user_filters="${user_config}/filters"
+
     git_clone=".git release snippets wiki"
 
     arg_case=""
