@@ -431,6 +431,7 @@ print_arg_list() {
 }
 
 read_config_file() {
+    warn_suffix=0
     if [ -d "$user_config" ]; then
         if [ -f "${user_config}/salomon.cfg" ]; then
             source ${user_config}/salomon.cfg
