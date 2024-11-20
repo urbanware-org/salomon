@@ -67,14 +67,14 @@ set_global_variables() {
     timestamp=0
     wait_match=0
 
+    colors=("aqua" "black" "blue" "brown" "darkblue" "darkcyan" "darkgray"
+            "darkgreen" "darkpurple" "darkred" "fuchsia" "gray" "green"
+            "lightblue" "lightcyan" "lightgray" "lightgreen" "lightpurple"
+            "lightred"  "lime" "maroon" "navy" "olive" "purple" "red" "silver"
+            "teal" "white" "yellow" "$(seq 1 256)" "random" "confetti")
     color_code=""
     color_dir="$script_dir/colors/"
-    color_list="black brown darkblue darkcyan darkgray darkgreen darkpurple"
-    color_list="$color_list darkred lightblue lightcyan lightgray lightgreen"
-    color_list="$color_list lightpurple lightred white yellow"
-    color_list="$color_list $(seq 1 256) random confetti"
-    color_list="$color_list aqua blue fuchsia gray green lime maroon navy"
-    color_list="$color_list olive purple red silver teal"
+    color_list="${colors[*]}"
     color_random_min=1
     color_random_max=256
     color_table=0
