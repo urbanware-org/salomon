@@ -52,7 +52,7 @@ analyze_input_file() {
 
     if [ -n "$egrep_pattern" ]; then
         grep -Ei $(sed -e "s/^|//g" <<< $egrep_pattern) $temp_file \
-              > ${temp_file}.presort
+             > ${temp_file}.presort
         mv -f ${temp_file}.presort $temp_file
     fi
 
