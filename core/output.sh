@@ -259,7 +259,7 @@ print_output_header() {
         if [ $highlight_matches -eq 1 ]; then
             msg_highlight="${cl_lg}Filter matches"
         elif [ $highlight_upper -eq 1 ]; then
-            msg_highlight="${cl_lg}Filter matches (in uppercase)"
+            msg_highlight="${cl_lg}Filter matches${cl_n} (in uppercase)"
         elif [ $highlight_all -eq 1 ]; then
             msg_highlight="${cl_lg}All lines"
         else
