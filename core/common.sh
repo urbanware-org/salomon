@@ -583,6 +583,8 @@ ${lb}optional arguments:${no}
   --less                use the 'less' command to analyze files
   -m, --merge           merge all input files to a single sorted one (useful
                         for files containing lines starting with timestamps)
+  -mi, --merge-interleaved
+                        merge all input files using the interleaved method
   --no-info             do not display the information header and footer
   -p, --prompt          prompt before exit
   --pause PAUSE         pause output after a certain amount of lines
