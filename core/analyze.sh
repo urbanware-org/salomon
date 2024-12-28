@@ -41,17 +41,33 @@ analyze_input_file() {
     fi
 
     if [ $head_lines -eq 0 ] && [ $tail_lines -eq 0 ]; then
-        for input_file in $input_file_list; do
-            cat $input_file | grep -v "^$" >> $temp_file
-        done
+        if [ $merge_append -eq 1 ]; then
+            for input_file in $input_file_list; do
+                cat $input_file | grep -v "^$" >> $temp_file
+            done
+        else  # interleaved merge
+            paste -d "\n" $input_file_list | grep -v "^$" > $temp_file
+        fi
     elif [ $head_lines -gt 0 ]; then
-        for input_file in $input_file_list; do
-            cat $input_file | head -n $head_lines | grep -v "^$" >> $temp_file
-        done
+        if [ $merge_append -eq 1 ]; then
+            for input_file in $input_file_list; do
+                cat $input_file | head -n $head_lines | grep -v "^$" >> $temp_file
+            done
+        else  # interleaved merge
+            paste -d "\n" $input_file_list | head -n $head_lines \
+                                           | grep -v "^$" \
+                                           > $temp_file
+        fi
     elif [ $tail_lines -gt 0 ]; then
-        for input_file in $input_file_list; do
-            cat $input_file | tail -n $tail_lines | grep -v "^$" >> $temp_file
-        done
+        if [ $merge_append -eq 1 ]; then
+            for input_file in $input_file_list; do
+                cat $input_file | tail -n $tail_lines | grep -v "^$" >> $temp_file
+            done
+        else  # interleaved merge
+            paste -d "\n" $input_file_list | tail -n $tail_lines \
+                                           | grep -v "^$" \
+                                           > $temp_file
+        fi
     fi
 
     if [ -n "$egrep_pattern" ]; then
