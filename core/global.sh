@@ -59,6 +59,7 @@ set_global_variables() {
     highlight_upper=0
     interactive=0
     merge=0
+    merge_append=1
     pause=0
     pause_lines=0
     prompt=0
