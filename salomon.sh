@@ -537,8 +537,18 @@ else
         fi
 
         # Merge input files
+        if [ $merge -eq 1 ] && [ $merge_append -eq 0 ]; then
+            msg_args="'--merge' or '--merge-interleaved'"
+            usage "Use either $msg_args, not both at the same time"
+        fi
+
+        merge_msg="argument requires at least two input files"
         if [ $merge -eq 1 ] && [ $input_count -lt 2 ]; then
-            usage "The '--merge' argument requires at least two input files"
+            usage "The '--merge' $merge_msg"
+        fi
+
+        if [ $merge_append -eq 0 ] && [ $input_count -lt 2 ]; then
+            usage "The '--merge-interleaved' $merge_msg"
         fi
 
         # Use 'less' command to analyze input files
