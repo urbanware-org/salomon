@@ -170,6 +170,10 @@ else
                 merge=1
                 shift
             ;;
+            -mi|--merge-interleaved)
+                merge_append=0
+                shift
+            ;;
             --no-info)
                 header=0
                 shift
