@@ -30,6 +30,7 @@ source ${script_dir}/core/output.sh
 read_config_file; check_config
 set_global_variables
 set_line_characters
+get_dialog_program
 
 # Script files stored inside the 'debug' sub-directory (if existing) will be
 # loaded after the included ones listed above. This allows to overwrite
@@ -277,39 +278,16 @@ else
     fi
 
     if [ $interactive -eq 1 ]; then
-        dialog_program_dialog="$(command -v dialog)"
-        dialog_program_whiptail="$(command -v whiptail)"
-
         if [ -z "$dialog_program_dialog" ] && \
            [ -z "$dialog_program_whiptail" ]; then
             dialog_program=""
             interactive=0
             usage "No supported dialog program found"
         fi
-
-        if [ "$dialog_program" = "auto" ]; then
-            if [ -n "$dialog_program_dialog" ]; then
-                dialog_program="dialog"
-            elif [ -n "$dialog_program_whiptail" ]; then
-                dialog_program="whiptail"
-            fi
-        elif [ "$dialog_program" = "dialog" ]; then
-            if [ -z "$dialog_program_dialog" ]; then
-                dialog_program=""
-            fi
-        elif [ "$dialog_program" = "whiptail" ]; then
-            if [ -z "$dialog_program_whiptail" ]; then
-                dialog_program=""
-            fi
-        else
-            dialog_program=""
-        fi
-
         if [ -z "$dialog_program" ]; then
             interactive=0
             usage "The dialog program given in the config file was not found"
         fi
-
         init_dialogs
         interactive_mode
     else

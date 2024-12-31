@@ -375,6 +375,29 @@ deprecated_argument() {
     echo -e "${cl_lg}        Proceeding.                              ${cl_n}"
 }
 
+get_dialog_program() {
+    dialog_program_dialog="$(command -v dialog)"
+    dialog_program_whiptail="$(command -v whiptail)"
+
+    if [ "$dialog_program" = "auto" ]; then
+        if [ -n "$dialog_program_dialog" ]; then
+            dialog_program="dialog"
+        elif [ -n "$dialog_program_whiptail" ]; then
+            dialog_program="whiptail"
+        fi
+    elif [ "$dialog_program" = "dialog" ]; then
+        if [ -z "$dialog_program_dialog" ]; then
+            dialog_program=""
+        fi
+    elif [ "$dialog_program" = "whiptail" ]; then
+        if [ -z "$dialog_program_whiptail" ]; then
+            dialog_program=""
+        fi
+    else
+        dialog_program=""
+    fi
+}
+
 notice() {
     message="$1"
 
@@ -622,7 +645,7 @@ ${yl}
 Further information and usage examples can be found inside the documentation
 file for this script.${no}"
     if [ -n "$error_msg" ]; then
-        if [ $interactive -eq 1 ] && [ -n $dialog_program ]; then
+        if [ $interactive -eq 1 ] && [ -n "$dialog_program" ]; then
             predef_error_dialog "$error_msg"
             clear
         else
