@@ -26,12 +26,14 @@ interactive_mode() {
     else
         action="monitor"
     fi
-    concat_arg "-a $action"
+    concat_arg "--${action}"
+    concat_arg_compact "--${action}"
 
     dialog_prompt_on_exit $prompt
     if [ $? -eq 0 ]; then
         prompt=1
-        concat_arg "-p"
+        concat_arg "--prompt"
+        concat_arg_compact "-p"
     else
         prompt=0
     fi
@@ -55,17 +57,21 @@ interactive_mode() {
         dialog_highlight
         if [ $user_input -eq 2 ]; then
             highlight_all=1
-            concat_arg "-ha"
+            concat_arg "--highlight-all"
+            concat_arg_compact "-ha"
         elif [ $user_input -eq 3 ]; then
             highlight_all=1
             highlight_cut_off=1
-            concat_arg "-ha --cut-off"
+            concat_arg "--highlight-all --cut-off"
+            concat_arg_compact "-ha --cut-off"
         elif [ $user_input -eq 4 ]; then
             highlight_matches=1
-            concat_arg "-hm"
+            concat_arg "--highlight-matches"
+            concat_arg_compact "-hm"
         elif [ $user_input -eq 5 ]; then
             highlight_upper=1
-            concat_arg "-hu"
+            concat_arg "--highlight-upper"
+            concat_arg_compact "-hu"
         fi
 
         if [ "$highlight_forecolor" = "1" ] || \
@@ -114,9 +120,11 @@ interactive_mode() {
         if [ $user_input -eq 3 ]; then
             merge_append=0
             concat_arg "--merge-interleaved"
+            concat_arg_compact "-mi"
         elif [ $user_input -eq 2 ]; then
             merge=1
             concat_arg "--merge"
+            concat_arg_compact "-m"
         fi
     else
         merge=0
@@ -159,6 +167,7 @@ interactive_mode() {
     else
         header=0
         concat_arg "--no-info"
+        concat_arg_compact "--no-info"
     fi
 
     dialog_arg_list
@@ -203,7 +212,8 @@ get_color_file() {
                     $dialog_program $dlg_shadow \
                                     --title "Color configuration file" \
                                     --gauge "$parse_notice" 11 60 0
-                concat_arg "-c \"$color_file\""
+                concat_arg "--color-file \"$color_file\""
+                concat_arg_compact "-c \"$color_file\""
                 dialog_valid=1
             fi
         fi
@@ -229,7 +239,8 @@ get_exclude_pattern() {
                                 -e "s/\ /§/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
-            concat_arg "-e \"$exclude_pattern\""
+            concat_arg "--exclude \"$exclude_pattern\""
+            concat_arg_compact "-e \"$exclude_pattern\""
             dialog_valid=1
         fi
     fi
@@ -261,6 +272,7 @@ get_export_file() {
             else
                 export_log=1
                 concat_arg "--export-file \"$export_file\""
+                concat_arg_compact "--export-file \"$export_file\""
                 dialog_valid=1
             fi
         fi
@@ -309,7 +321,8 @@ get_filter_pattern() {
                                   -e "s/;/\n/g" <<< "$filter_pattern")
                 filter_pattern=$(sed -e "s/§/\ /g" <<< "$filter_pattern")
                 filter=1
-                concat_arg "-f \"$filter_pattern\""
+                concat_arg "--filter \"$filter_pattern\""
+                concat_arg_compact "-f \"$filter_pattern\""
                 dialog_valid=1
             fi
         fi
@@ -334,6 +347,7 @@ get_head_lines() {
             predef_error_dialog "The given value is not a number"
         else
             concat_arg "--head $head_lines"
+            concat_arg_compact "-h $head_lines"
             dialog_valid=1
         fi
     fi
@@ -368,7 +382,8 @@ get_input_file() {
                 predef_error_dialog \
                   "No read permission on the given input file '$filepath'"
             else
-                concat_arg "-i \"$filepath\""
+                concat_arg "--input-file \"$filepath\""
+                concat_arg_compact "-i \"$filepath\""
                 input_valid=1
                 filelist="$filelist $(sed -e "s/\ /\/\//g" <<< "$filepath")"
             fi
@@ -396,6 +411,7 @@ get_pause_lines() {
         if [ "$pause_lines" = "auto" ]; then
             pause=1
             concat_arg "--pause auto"
+            concat_arg_compact "--pause auto"
             dialog_valid=1
             return
         else
@@ -406,6 +422,7 @@ get_pause_lines() {
             else
                 pause=1
                 concat_arg "--pause $pause_lines"
+                concat_arg_compact "--pause $pause_lines"
                 dialog_valid=1
             fi
         fi
@@ -431,7 +448,8 @@ get_remove_pattern() {
                                -e "s/\ /§/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
-            concat_arg "-r \"$remove_pattern\""
+            concat_arg "--remove \"$remove_pattern\""
+            concat_arg_compact "-r \"$remove_pattern\""
             dialog_valid=1
         fi
     fi
@@ -459,7 +477,8 @@ get_slow_down_delay() {
         return
     else
         slow=1
-        concat_arg "-s --delay $delay"
+        concat_arg "--slow --delay $delay"
+        concat_arg_compact "-s -d $delay"
         dialog_valid=1
   fi
 }
@@ -482,6 +501,7 @@ get_tail_lines() {
             predef_error_dialog "The given value is not a number"
         else
             concat_arg "--tail $tail_lines"
+            concat_arg_compact "-t $tail_lines"
             dialog_valid=1
         fi
     fi

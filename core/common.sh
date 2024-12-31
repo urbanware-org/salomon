@@ -305,6 +305,11 @@ concat_arg() {
     arg_list=$concat
 }
 
+concat_arg_compact() {
+    concat="$arg_list_compact $1"
+    arg_list_compact=$concat
+}
+
 confirm() {
     msg="$1"
     while true; do
@@ -395,7 +400,7 @@ print_arg_list() {
 
     mkdir -p "$temp_dir"
     echo "$arg_list" > $arg_temp
-
+    echo "$arg_list_compact" >> $arg_temp
     clear
     message="${cl_ly}[${cl_lc}Command-line arguments${cl_ly}]${cl_dy}"
     echo -e "${cl_dy}$char_line_double$char_line_double${message}\c"
@@ -418,9 +423,13 @@ print_arg_list() {
     echo
     echo -e "    ${cl_yl}$arg_list${cl_n}"
     echo
+    echo -e "You can also use the short form of the parameters (if existing):"
+    echo
+    echo -e "    ${cl_yl}$arg_list_compact${cl_n}"
+    echo
     echo "In case you are on text-based user interface and cannot select" \
          "and copy the"
-    echo "above command, it has also been written into the following" \
+    echo "above commands, they have also been written into the following" \
          "temporary file:"
     echo
     echo -e "    ${cl_yl}$arg_temp${cl_n}"

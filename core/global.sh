@@ -39,6 +39,7 @@ set_global_variables() {
 
     arg_case=""
     arg_list=$(readlink -f "$0")
+    arg_list_compact=$(readlink -f "$0")
     input_file=""
     input_count=0
 
