@@ -278,15 +278,8 @@ else
     fi
 
     if [ $interactive -eq 1 ]; then
-        if [ -z "$dialog_program_dialog" ] && \
-           [ -z "$dialog_program_whiptail" ]; then
-            dialog_program=""
-            interactive=0
-            usage "No supported dialog program found"
-        fi
         if [ -z "$dialog_program" ]; then
-            interactive=0
-            usage "The dialog program given in the config file was not found"
+            usage "No supported dialog program found"
         fi
         init_dialogs
         interactive_mode
