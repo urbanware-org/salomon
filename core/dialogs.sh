@@ -270,31 +270,34 @@ dialog_input_file() {
 }
 
 dialog_merge() {
+
     if [ $dialog_show_merge -ne 1 ]; then
-        if [ $1 -eq 1 ]; then
-            return 0
-        else
-            return 1
-        fi
+        user_input="$1"
+        return
     fi
 
-    if [ $1 -eq 1 ]; then
-        def_button=""
-    else
-        def_button="--defaultno"
-    fi
-
-    dlg_text=$(echo "Do you wish to merge the input files?\n\nThis is" \
-                    "useful for files containing lines starting with" \
-                    "timestamps.")
+    def_item="1"
+    dlg_text=$(echo "How do you want to merge the given input files?")
 
     if [ $dialog_program = "dialog" ]; then
-        dialog $dlg_shadow --title "Merge input files" --yes-label "Yes" \
-                           --no-label "No" $def_button --yesno "$dlg_text" \
-                           8 60
+        user_input=$(dialog $dlg_shadow --no-cancel \
+                            --default-item $def_item \
+                            --title "Highlight mode" \
+                            --menu "$dlg_text" \
+                                14 60 20 \
+                                "1" "Do not merge (simply append the files)" \
+                                "2" "Merge them chronologically" \
+                                "3" "Merge them interleaved" \
+                            3>&1 1>&2 2>&3 3>&-)
     else
-        whiptail  --title "Merge input files" --yes-button "Yes" \
-                  --no-button "No" $def_button --yesno "$dlg_text" 7 60
+        user_input=$(whiptail --nocancel --default-item $def_item \
+                                --title "Highlight mode" \
+                                --menu "$dlg_text" \
+                                16 60 3 \
+                                "1" "Do not merge (simply append the files)" \
+                                "2" "Merge them chronologically" \
+                                "3" "Merge them interleaved" \
+                                3>&1 1>&2 2>&3 3>&-)
     fi
 }
 

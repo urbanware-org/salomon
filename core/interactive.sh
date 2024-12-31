@@ -111,14 +111,16 @@ interactive_mode() {
 
     if [ $follow -eq 0 ] && [ $input_count -gt 1 ]; then
         dialog_merge $merge
-        if [ $? -eq 0 ]; then
+        if [ $user_input -eq 3 ]; then
+            merge_append=0
+            concat_arg "--merge-interleaved"
+        elif [ $user_input -eq 2 ]; then
             merge=1
             concat_arg "--merge"
-        else
-            merge=0
         fi
     else
         merge=0
+        merge_append=1
     fi
 
     if [ $follow -eq 1 ]; then
