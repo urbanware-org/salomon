@@ -1,7 +1,7 @@
 #
 # Salomon - Simple log file monitor and analyzer
 # Bash pre-check core script
-# Copyright (c) 2024 by Ralf Kilian
+# Copyright (c) 2025 by Ralf Kilian
 # Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #
 # GitHub: https://github.com/urbanware-org/salomon
