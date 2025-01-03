@@ -1,7 +1,7 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.24.0 (2025-01-03)
 
         + Added the command-line argument (and feature) to merge multiple
           files in an interleaved manner.
@@ -9,12 +9,12 @@ CHANGELOG (Salomon)
           the argument overview provided by the interactive mode.
 
         * Revised the code in general (negligible changes).
-        * Revised the common core module (negligible changes).
+        * Revised the common core module (further negligible changes).
         * Revised the config file handling (check local user config directory
           for user-defined global config, color and filter files).
 
-        # Fixed the dialog program preload (wrong dialog program on usage
-          information in interactive mode).
+        # Fixed the dialog program preload bug (wrong dialog program on usage
+          information error in interactive mode).
 
     Version 1.23.2 (2024-11-07)
 
