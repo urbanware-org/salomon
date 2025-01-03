@@ -99,5 +99,5 @@ chmod 755 /opt/salomon/core/*.sh
 %postun
 
 %changelog
-* Tue Nov 07 2024 Ralf Kilian <dev@urbanware.org> - 1.24.0-1
+* Tue Jan 03 2025 Ralf Kilian <dev@urbanware.org> - 1.24.0-1
 - Initial package
