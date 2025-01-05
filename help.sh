@@ -24,7 +24,7 @@ read_config_file; check_config
 
 dialog_help() {
     doc_file="$1"
-    temp_file="/tmp/salomon_help_$$.tmp"
+    temp_file="$(dirname $(mktemp -u))/salomon_help_$$.tmp"
 
     sed 's/\r$//' < ${script_dir}/docs/usage_${doc_file}.txt > ${temp_file}
     dos2unix ${temp_file} &>/dev/null
