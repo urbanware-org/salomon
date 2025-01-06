@@ -1,6 +1,13 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+
+        # Fixed the bug inside the help script (documentation files could not
+          be opened in some environments because of the static temporary file
+          path which is now replaced with the dynamic one).
+
     Version 1.24.0 (2025-01-03)
 
         + Added the command-line argument (and feature) to merge multiple
