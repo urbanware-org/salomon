@@ -176,7 +176,6 @@ print_color_table() {
 }
 
 print_format_list() {
-
     echo
     echo "This terminal emulator supports or can display the following text" \
          "formatting"
