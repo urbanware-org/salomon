@@ -3,6 +3,7 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        * Revised the code in general (negligible changes).
 
         # Fixed the bug inside the help script (documentation files could not
           be opened in some environments because of the static temporary file
