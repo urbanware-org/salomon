@@ -306,10 +306,16 @@ print_output_header() {
         #   Ctrl+Q = continue printing output (or "qontinue" as the 'C' key
         #            is already taken)
         #
-        # Pressing Ctrl+Z sends stop signal 20 (SIGTSTP) which prints the
-        # status "Stopped" when pressed. So, to avoid confusion the term
-        # "freeze" is used for stopping the output instead. Its counterpart
-        # is "unfreeze" (formerly "defreeze") to unify the terms.
+        # So, to avoid confusion the term "freeze" is used for stopping the
+        # output instead. Its counterpart is "unfreeze" (formerly "defreeze")
+        # to unify the terms.
+        #
+        # Pressing Ctrl+Z sends the stop signal 20 (SIGTSTP) which prints the
+        # status "Stopped" and moves the process into the background (which
+        # requires the 'fg' command to bring it in the foreground again).
+        #
+        # Even though, signals can be handled (or changed) using 'trap', all
+        # keystrokes are kept as they are by default.
         echo -e "${cl_wh}Press" \
                 "${cl_lc}Ctrl${cl_ly}+${cl_lc}C" \
                 "${cl_wh}to ${cl_lr}cancel${cl_wh}," \
