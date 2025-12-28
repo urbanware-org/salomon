@@ -60,14 +60,18 @@ sleep 1
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 1 13
+echo "$salomon_args -f \"2014\" -hm" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "2014" -hm | tee $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 2 13
-echo
+echo "salomon.sh $salomon_args -f \"2014\" -hm --no-info" \
+     >> $salomon_testrun_log
 echo >> $salomon_testrun_log
+echo
 $salomon_script $salomon_args -f "2014" -hm --no-info \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -76,12 +80,16 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 3 13
+echo "salomon.sh $salomon_args -f \"2014\" -ha" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "2014" -ha | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 4 13
+echo "salomon.sh $salomon_args -f \"2014\" -ha --cut-off" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "2014" -ha --cut-off \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -89,6 +97,8 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 5 13
+echo "salomon.sh $salomon_args -f \"config file\" -hm -ic" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "config file" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -96,6 +106,8 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 6 13
+echo "salomon.sh $salomon_args -f \"config file\" -hu -ic" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "config file" -hu -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -103,6 +115,8 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 7 13
+echo "salomon.sh $salomon_args -f \"config;file;success;foo\" -hm -ic" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -f "config;file;success;foo" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -110,30 +124,40 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 8 13
+echo "salomon.sh $salomon_args -e \"process\"" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -e "process" | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 9 13
+echo "salomon.sh $salomon_args -r \"2024-04-02\"" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -r "2014-04-02 " | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 10 13
+echo "salomon.sh $salomon_args -h 4" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -h 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 11 13
+echo "salomon.sh $salomon_args -t 4" \
+     >> $salomon_testrun_log
 $salomon_script $salomon_args -t 4 | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 12 13
+echo "salomon.sh $salomon_args --analyze --pause 4" \
+     >> $salomon_testrun_log
 $salomon_script -i $salomon_sample_log --analyze --pause 4 \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
@@ -145,6 +169,10 @@ echo "==" >> $salomon_sample_log_temp
 echo "==  Please press Ctrl+C now once to  cancel  this test (required)." \
      >> $salomon_sample_log_temp
 echo "==" >> $salomon_sample_log_temp
+echo "salomon.sh --monitor -i $salomon_sample_log_temp " \
+                "-f \"2014; cancel ;=\ " \
+                "-c $salomon_sample_colors -hu -ic --prompt -t 14" \
+     >> $salomon_testrun_log
 $salomon_script --monitor -i $salomon_sample_log_temp \
                 -f "2014; cancel ;=" \
                 -c $salomon_sample_colors -hu -ic --prompt -t 14 \
