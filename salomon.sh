@@ -14,9 +14,8 @@ script_dir=$(dirname $(readlink -f $0))
 . ${script_dir}/core/shell.sh   # Use POSIX standard instead of 'source' here
 shell_precheck
 
-source ${script_dir}/core/compat.sh
+source "${script_dir}/core/compat.sh"
 compatibility_precheck
-script_file=$(basename "$0")
 
 source ${script_dir}/core/analyze.sh
 source ${script_dir}/core/colors.sh

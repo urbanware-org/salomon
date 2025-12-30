@@ -557,7 +557,7 @@ usage() {
         yl=$cl_n
     fi
 
-    usage="${lc}usage: ${no}$script_file"
+    usage="${lc}usage: ${no}$(basename "$0")"
     echo -e "$usage -a {analyze,monitor} -i INPUT_FILE [-c COLOR_FILE]
                   [--cut-off] [-d DELAY] [--dialogs] [-e EXCLUDE]
                   [--export-file EXPORT_FILE] [-f FILTER] [--head HEAD]

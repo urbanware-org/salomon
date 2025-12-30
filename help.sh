@@ -17,9 +17,7 @@ shell_precheck
 source ${script_dir}/core/compat.sh
 compatibility_precheck
 
-script_file=$(basename "$0")
 source ${script_dir}/core/common.sh
-
 read_config_file; check_config
 
 dialog_help() {

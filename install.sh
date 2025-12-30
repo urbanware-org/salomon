@@ -17,7 +17,6 @@ shell_precheck
 source ${script_dir}/core/compat.sh
 compatibility_precheck
 
-script_file=$(basename "$0")
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/global.sh
 set_global_variables

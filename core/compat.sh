@@ -13,7 +13,6 @@ source ${script_dir}/core/global.sh
 set_global_variables
 
 compatibility_check() {
-    script_file=$(basename "$0")
     if [ $is_bsd -eq 1 ]; then
         script_temp="$(dirname $(mktemp -u))/salomon_compat.sh"
     else
