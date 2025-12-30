@@ -3,6 +3,9 @@ CHANGELOG (Salomon)
 
     Next release (outstanding)
 
+        + Added the executed command (complete line) to the log file of the
+          testrun script.
+
         * Revised the code in general (negligible changes).
 
         # Fixed the bug inside the help script (documentation files could not
