@@ -8,8 +8,16 @@
 # GitLab: https://gitlab.com/urbanware-org/salomon
 #
 
-script_dir=$(dirname $(readlink -f $0))
-. ${script_dir}/core/shell.sh   # Use POSIX standard instead of 'source' here
+script_dir="$(dirname "$(readlink -f "$0")")"
+. "${script_dir}/core/shell.sh"  # use POSIX standard instead of 'source' here
+shell_precheck
+
+if [[ "$script_dir" = *[[:space:]]* ]]; then
+    echo -e \
+        "\e[91merror:\e[0m" \
+        "Salomon cannot be run from a path that contains spaces."
+    exit 10
+fi
 
 init_compat=1
 shell_precheck_compat
