@@ -17,7 +17,8 @@ shell_precheck
 if [[ "$script_dir" = *[[:space:]]* ]]; then
     echo -e \
         "\e[91merror:\e[0m" \
-        "Salomon cannot be run from a path that contains spaces."
+        "Salomon and its components cannot be run from a path that" \
+        "contains spaces."
     exit 10
 fi
 
