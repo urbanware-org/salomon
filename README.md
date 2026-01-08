@@ -49,9 +49,9 @@ In the `docs` sub-directory of the project, there are plain text files containin
 
 ## Requirements
 
-The *Salomon* project was developed on (and for) the *Bash* shell, which is the default shell on many *Unix*-like systems (or at least *Linux* distributions).
+The *Salomon* project was developed on (and for) the *Bash* shell and it uses popular shell utilities that should be pre-installed by default.
 
-Furthermore, it uses popular shell utilities that should be pre-installed by default, see the included `REQUIREMENTS` file for details.
+Details can be found [here](../../wiki/Home#requirements) inside the [wiki](../../wiki) as well as in the included `REQUIREMENTS` file.
 
 [Top](#salomon-)
 
