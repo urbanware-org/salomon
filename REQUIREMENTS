@@ -5,7 +5,7 @@ REQUIREMENTS (Salomon)
     the default shell on many Unix-like systems (or at least Linux
     distributions).
 
-    So, no matter which shell you are using, the Bash shell (version 4 or
+    So, no matter which shell you are using, the Bash shell (version 4.3 or
     higher) must be installed in order to use Salomon.
 
     Additional package requirements (should be pre-installed):
