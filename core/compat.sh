@@ -48,9 +48,15 @@ compatibility_check() {
     check_overall="$failure"
     line="................"
 
-    bash_major=$(sed -e "s/\..*//g" <<< $BASH_VERSION)
-    if [ $bash_major -ge 4 ]; then
-        check_bash_major="$success"
+    bash_major=${BASH_VERSINFO[0]}
+    bash_minor=${BASH_VERSINFO[1]}  # relevant for major version 4, only
+
+    if (( bash_major >= 5 )); then
+        check_bash_version="$success"
+    elif (( bash_major < 4 )); then
+        check_failed=1
+    elif (( bash_major == 4 && bash_minor >= 3 )); then
+        check_bash_version="$success"
     else
         check_failed=1
     fi
