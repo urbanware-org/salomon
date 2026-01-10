@@ -24,12 +24,10 @@ compatibility_check() {
     success="${cl_lg}SUCCESS${cl_n}"
 
     check_basename="$failure"
-    check_bash_major="$failure"
-    check_declare="$failure"
+    check_bash_version="$failure"
     check_dialog="$missing"
     check_dirname="$failure"
     check_grep="$failure"
-    check_kernel="$success"   # manually set to successful
     check_less="$missing"
     check_paste="$failure"
     check_printf="$failure"
@@ -38,11 +36,8 @@ compatibility_check() {
     check_sed="$failure"
     check_tail="$failure"
     check_tput="$failure"
-    check_trap="$failure"
     check_wget="$missing"
     check_whiptail="$missing"
-    check_echo="$success"
-    check_function="$failure"
     check_failed=0
     check_missing=0
     check_overall="$failure"
@@ -64,13 +59,6 @@ compatibility_check() {
     command -v basename &>/dev/null
     if [ $? -eq 0 ]; then
         check_basename="$success"
-    else
-        check_failed=1
-    fi
-
-    command -v declare &>/dev/null
-    if [ $? -eq 0 ]; then
-        check_declare="$success"
     else
         check_failed=1
     fi
@@ -152,13 +140,6 @@ compatibility_check() {
         check_failed=1
     fi
 
-    command -v trap &>/dev/null
-    if [ $? -eq 0 ]; then
-        check_trap="$success"
-    else
-        check_failed=1
-    fi
-
     command -v wget &>/dev/null
     if [ $? -eq 0 ]; then
         check_wget="$success"
@@ -171,18 +152,6 @@ compatibility_check() {
         check_whiptail="$success"
     else
         check_missing=1
-    fi
-
-    echo "#!${BASH}" > $script_temp
-    echo "foobar() {" >> $script_temp
-    echo "    echo \"foobar\"" >> $script_temp
-    echo "}" >> $script_temp
-    chmod +x $script_temp
-    $script_temp &>/dev/null
-    if [ $? -eq 0 ]; then
-        check_function="$success"
-    else
-        check_failed=1
     fi
 
     if [ $check_failed -eq 0 ]; then

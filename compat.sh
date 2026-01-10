@@ -31,48 +31,37 @@ compatibility_check
 echo
 echo -e "${cl_lc}Salomon compatibility check script${cl_n}"
 echo
-echo -e "Checking operating system kernel .....................$line" \
-        "${check_kernel}"
-echo -e "Checking Bash shell (version 4 or higher required) ...$line" \
-        "${check_bash_major}"
+echo -e "Checking Bash shell (version 4.3 or higher required) .$line" \
+        "${check_bash_version}"
 echo
-echo -e "Checking capabilities of the 'echo' command ..........$line" \
-        "${check_echo}"
-echo -e "Checking definition of functions .....................$line" \
-        "${check_function}"
-echo
-echo -e "Checking for 'basename' command ......................$line" \
+echo -e "Checking 'basename' command ..........................$line" \
         "${check_basename}"
-echo -e "Checking for 'declare' command (Bash built-in) .......$line" \
-        "${check_declare}"
-echo -e "Checking for 'dirname' command .......................$line" \
+echo -e "Checking 'dirname' command ...........................$line" \
         "${check_dirname}"
-echo -e "Checking for 'grep' command ..........................$line" \
+echo -e "Checking 'grep' command ..............................$line" \
         "${check_grep}"
-echo -e "Checking for 'paste' command .........................$line" \
+echo -e "Checking 'paste' command .............................$line" \
         "${check_printf}"
-echo -e "Checking for 'printf' command ........................$line" \
+echo -e "Checking 'printf' command ............................$line" \
         "${check_printf}"
-echo -e "Checking for 'readlink' command ......................$line" \
+echo -e "Checking 'readlink' command ..........................$line" \
         "${check_readlink}"
-echo -e "Checking for 'sed' command ...........................$line" \
+echo -e "Checking 'sed' command ...............................$line" \
         "${check_sed}"
-echo -e "Checking for 'tail' command ..........................$line" \
+echo -e "Checking 'tail' command ..............................$line" \
         "${check_tail}"
-echo -e "Checking for 'tput' command" \
-        "(part of 'ncurses' or 'ncurses-utils') ... ${check_tput}"
-echo -e "Checking for 'trap' command (Bash built-in) ..........$line" \
-        "${check_trap}"
+echo -e "Checking 'tput' command (part of 'ncurses') ..........$line" \
+        "${check_tput}"
 echo
-echo -e "Checking for optional 'dialog' command ...............$line" \
+echo -e "Checking optional 'dialog' command ...................$line" \
         "${check_dialog}"
-echo -e "Checking for optional 'less' command .................$line" \
+echo -e "Checking optional 'less' command .....................$line" \
         "${check_less}"
-echo -e "Checking for optional 'rsync' command ................$line" \
+echo -e "Checking optional 'rsync' command ....................$line" \
         "${check_rsync}"
-echo -e "Checking for optional 'wget' command .................$line" \
+echo -e "Checking optional 'wget' command .....................$line" \
         "${check_wget}"
-echo -e "Checking for optional 'whiptail' command .............$line" \
+echo -e "Checking optional 'whiptail' command .................$line" \
         "${check_whiptail}"
 echo
 echo -e "Overall status .......................................$line" \
