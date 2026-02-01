@@ -42,8 +42,8 @@ USAGE (compat.sh)
         evaluate the exit codes of the script as follows:
 
             0 - Compatibility check succeeded
-            1 - Bash shell missing or not used to execute the script
+            1 - Bash shell is not installed
             2 - Compatibility check failed
             3 - Compatibility check succeeded, except for optional tools
-            4 - The script must be run explicitly using the Bash shell
+            4 - Script must be run explicitly using the Bash shell
 
