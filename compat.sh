@@ -10,8 +10,19 @@
 
 script_dir="$(dirname "$(readlink -f "$0")")"
 
+bash_installed=0
+bash_source=0
+
 command -v bash >/dev/null 2>&1
-if [ "$?" != "0" ]; then
+if [ "$?" = "0" ]; then
+    bash_installed=1
+fi
+command -v source >/dev/null 2>&1
+if [ "$?" = "0" ]; then
+    bash_source=1
+fi
+
+if [ "$bash_installed" = "0" ] || [ "$bash_source" = "0" ]; then
     cat <<- end
 
 Salomon cannot be run.
@@ -27,7 +38,7 @@ end
     exit 1
 fi
 
-. "${script_dir}/core/shell.sh"  # use POSIX standard instead of 'source' here
+source "${script_dir}/core/shell.sh"
 shell_precheck
 
 if [[ "$script_dir" = *[[:space:]]* ]]; then
