@@ -49,9 +49,6 @@ if [[ "$script_dir" = *[[:space:]]* ]]; then
     exit 10
 fi
 
-init_compat=1
-shell_precheck_compat
-
 source ${script_dir}/core/common.sh
 source ${script_dir}/core/compat.sh
 source ${script_dir}/core/global.sh
