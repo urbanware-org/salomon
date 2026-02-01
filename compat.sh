@@ -9,6 +9,24 @@
 #
 
 script_dir="$(dirname "$(readlink -f "$0")")"
+
+command -v bash >/dev/null 2>&1
+if [ "$?" != "0" ]; then
+    cat <<- end
+
+Salomon cannot be run.
+
+The Bash shell does not seem to be installed. For Salomon, the Bash shell is a
+mandatory dependency and so it will not work without it.
+
+No matter which shell you are using, the Bash shell (version 4.3 or higher)
+must be installed in order to use Salomon as it takes advantage of certain
+features provided by the Bash shell.
+
+end
+    exit 1
+fi
+
 . "${script_dir}/core/shell.sh"  # use POSIX standard instead of 'source' here
 shell_precheck
 
