@@ -45,4 +45,5 @@ USAGE (compat.sh)
             1 - Bash shell missing or not used to execute the script
             2 - Compatibility check failed
             3 - Compatibility check succeeded, except for optional tools
+            4 - The script must be run explicitly using the Bash shell
 
