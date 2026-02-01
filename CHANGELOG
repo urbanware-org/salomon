@@ -7,7 +7,13 @@ CHANGELOG (Salomon)
           testrun script.
 
         * Revised the code in general (negligible changes).
+        * Revised the shell (pre-)check related code (removed unnecessary
+          funtions and added some revised and enhanced code directly into the
+          compatibility check script).
 
+        # Fixed the bug with the compatibility script which did not work
+          properly when not running on the Bash shell (returned errors and was
+          unable to check the compatibility).
         # Fixed the bug inside the help script (documentation files could not
           be opened in some environments because of the static temporary file
           path which is now replaced with the dynamic one).
