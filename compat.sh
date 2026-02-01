@@ -11,18 +11,12 @@
 script_dir="$(dirname "$(readlink -f "$0")")"
 
 bash_installed=0
-bash_source=0
-
 command -v bash >/dev/null 2>&1
 if [ "$?" = "0" ]; then
     bash_installed=1
 fi
-command -v source >/dev/null 2>&1
-if [ "$?" = "0" ]; then
-    bash_source=1
-fi
 
-if [ "$bash_installed" = "0" ] || [ "$bash_source" = "0" ]; then
+if [ $bash_installed -eq 0 ]; then
     cat <<- end
 
 Salomon cannot be run.
@@ -36,6 +30,18 @@ features provided by the Bash shell.
 
 end
     exit 1
+else
+    if [ -z "$BASH" ]; then
+        cat <<- end
+
+The compatibility check script must be run explicitly using the Bash shell.
+Please start it with the following command:
+
+    bash compat.sh
+
+end
+        exit 4
+    fi
 fi
 
 source "${script_dir}/core/shell.sh"
