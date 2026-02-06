@@ -60,17 +60,16 @@ USAGE (salomon.sh)
 
                 ./salomon.sh --help
 
-        2.2 Shell requirements
+        2.2 Requirements
 
             The Salomon project was developed on (and for) the Bash shell,
             which is the default shell on many Unix-like systems (or at least
             on many Linux distributions).
 
-            No matter which shell you are using, the Bash shell (version 4 or
-            higher) must be installed in order to use the project.
+            No matter which shell you are using, the Bash shell (version 4.3
+            or higher) must be installed in order to use the Salomon project.
 
-            Further information can be found inside the included documentation
-            for the shell compatibility script.
+            See the 'REQUIREMENTS' file for further information.
 
         2.3 Colorize and highlight certain lines
 

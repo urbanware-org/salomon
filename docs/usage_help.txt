@@ -25,25 +25,14 @@ USAGE (help.sh)
 
     3. Requirements
 
-        3.1 Shell environment
+        The Salomon project was developed on (and for) the Bash shell, which
+        is the default shell on many Unix-like systems (or at least on many
+        Linux distributions).
 
-            The Salomon project was developed on (and for) the Bash shell,
-            which is the default shell on many Unix-like systems (or at least
-            on many Linux distributions).
+        No matter which shell you are using, the Bash shell (version 4.3 or
+        higher) must be installed in order to use the Salomon project.
 
-            No matter which shell you are using, the Bash shell (version 4 or
-            higher) must be installed in order to use the Salomon project. As
-            a matter of fact, the Salomon project takes advantage of certain
-            features provided by the Bash shell.
-
-            Due to the shebang in the header of each script file, they are run
-            using the Bash shell, even if the scripts are being executed on
-            another shell.
-
-        3.2. Dialog tool
-
-            In order to display the documentation files with dialogs, either
-            'dialog' or the 'whiptail' tool must be installed.
+        See the 'REQUIREMENTS' file for further information.
 
     4. Displaying a help file
 
