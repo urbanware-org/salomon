@@ -1,7 +1,7 @@
 
 CHANGELOG (Salomon)
 
-    Next release (outstanding)
+    Version 1.25.0 (2026-02-15)
 
         + Added the executed command (complete line) to the log file of the
           testrun script.
