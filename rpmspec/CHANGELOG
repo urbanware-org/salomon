@@ -1,4 +1,7 @@
 %changelog
+* Sun Feb 15 2026 Ralf Kilian <dev@urbanware.org> - 1.25.0-1
+- Initial package
+%changelog
 * Tue Jan 03 2025 Ralf Kilian <dev@urbanware.org> - 1.24.0-1
 - Initial package
 %changelog
