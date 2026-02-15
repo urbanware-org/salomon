@@ -8,7 +8,7 @@ CHANGELOG (Salomon)
 
         * Revised the code in general (negligible changes).
         * Revised the shell (pre-)check related code (removed unnecessary
-          funtions and added some revised and enhanced code directly into the
+          functions and added some revised and enhanced code directly into the
           compatibility check script).
 
         # Fixed the bug with the compatibility script which did not work
