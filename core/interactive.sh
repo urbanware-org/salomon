@@ -228,7 +228,7 @@ get_exclude_pattern() {
         dialog_valid=1
         return
     else
-        if [[ $exclude_pattern == *"§"* ]]; then
+        if [[ $exclude_pattern == *"$sep"* ]]; then
             predef_error_dialog \
               "The exclude pattern must not contain any section signs"
             return
@@ -236,7 +236,7 @@ get_exclude_pattern() {
             exclude_list=$((tr -s ";;" ";" | \
                             sed -e "s/^;*//" \
                                 -e "s/;*$//" \
-                                -e "s/\ /§/g" \
+                                -e "s/\ /$sep/g" \
                                 -e "s/;/\n/g") <<< "$exclude_pattern")
             exclude=1
             concat_arg "--exclude \"$exclude_pattern\""
@@ -307,7 +307,7 @@ get_filter_pattern() {
                 read_filter
             fi
         else
-            if [[ $filter_pattern == *"§"* ]]; then
+            if [[ $filter_pattern == *"$sep"* ]]; then
                 predef_error_dialog \
                   "The filter pattern must not contain any section signs"
                 return
@@ -317,9 +317,9 @@ get_filter_pattern() {
                             -e "s/;$//") <<< "$filter_pattern")
                 filter_list=$(sed -e "s/^;*//g" \
                                   -e "s/;*$//g" \
-                                  -e "s/\ /§/g" \
+                                  -e "s/\ /$sep/g" \
                                   -e "s/;/\n/g" <<< "$filter_pattern")
-                filter_pattern=$(sed -e "s/§/\ /g" <<< "$filter_pattern")
+                filter_pattern=$(sed -e "s/$sep/\ /g" <<< "$filter_pattern")
                 filter=1
                 concat_arg "--filter \"$filter_pattern\""
                 concat_arg_compact "-f \"$filter_pattern\""
@@ -437,7 +437,7 @@ get_remove_pattern() {
         dialog_valid=1
         return
     else
-        if [[ $remove_pattern == *"§"* ]]; then
+        if [[ $remove_pattern == *"$sep"* ]]; then
             predef_error_dialog \
               "The remove pattern must not contain any section signs"
             return
@@ -445,7 +445,7 @@ get_remove_pattern() {
             remove_list=$((tr -s ";;" ";" | \
                            sed -e "s/^;*//" \
                                -e "s/;*$//" \
-                               -e "s/\ /§/g" \
+                               -e "s/\ /$sep/g" \
                                -e "s/;/\n/g") <<< "$remove_pattern")
             remove=1
             concat_arg "--remove \"$remove_pattern\""

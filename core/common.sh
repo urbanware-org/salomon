@@ -194,11 +194,11 @@ check_config_value() {
 check_patterns() {
     if [ -n "$filter_list" ]; then
         for filter_term in $filter_list; do
-            term=$(sed -e "s/§/\ /g" <<< "$filter_term")
+            term=$(sed -e "s/$sep/\ /g" <<< "$filter_term")
             term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
             if [ -n "$exclude_list" ]; then
                 for string in $exclude_list; do
-                    string=$(sed -e "s/§/\ /g" <<< "$string")
+                    string=$(sed -e "s/$sep/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
                     if [ "$term_upper" = "$string_upper" ]; then
                         usage "Exclude list must not contain a filter term"
@@ -207,7 +207,7 @@ check_patterns() {
             fi
             if [ -n "$remove_list" ]; then
                 for string in $remove_list; do
-                    string=$(sed -e "s/§/\ /g" <<< "$string")
+                    string=$(sed -e "s/$sep/\ /g" <<< "$string")
                     string_upper=$(tr '[:lower:]' '[:upper:]' <<< "$string")
                     if [ "$term_upper" = "$string_upper" ]; then
                         usage "Remove list must not contain a filter term"
@@ -491,13 +491,13 @@ read_config_file() {
 }
 
 read_filter() {
-    grep "§" < "$filter_file" &>/dev/null
+    grep "$sep" < "$filter_file" &>/dev/null
     if [ $? -eq 0 ]; then
         usage "The filter pattern must not contain any section signs"
     fi
 
     filter_pattern=""
-    (grep -v "§" | sed -e "s/\ /§/g") < "$filter_file" > $temp_file
+    (grep -v "$sep" | sed -e "s/\ /$sep/g") < "$filter_file" > $temp_file
     while read line; do
         filter_pattern="$filter_pattern;$line"
     done < "$temp_file"

@@ -414,7 +414,7 @@ print_output_line() {
 
     if [ $exclude -eq 1 ]; then
         for string in $exclude_list; do
-            string=$(sed -e "s/§/\ /g" <<< "$string")
+            string=$(sed -e "s/$sep/\ /g" <<< "$string")
             grep -i "$string" <<< "$line_lower" &>/dev/null
             if [ $? -eq 0 ]; then
                 return
@@ -449,7 +449,7 @@ print_output_line() {
             fi
 
             for filter_term in $filter_list; do
-                term=$(sed -e "s/§/\ /g" <<< "$filter_term")
+                term=$(sed -e "s/$sep/\ /g" <<< "$filter_term")
                 term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
                 grep $arg_case "$term" <<< "$line" &>/dev/null
@@ -482,7 +482,7 @@ print_output_line() {
             done
         else
             for filter_term in $filter_list; do
-                term=$(sed -e "s/§/\ /g" <<< "$filter_term")
+                term=$(sed -e "s/$sep/\ /g" <<< "$filter_term")
                 term_upper=$(tr '[:lower:]' '[:upper:]' <<< "$term")
 
                 grep $arg_case "$term" <<< "$line" &>/dev/null
@@ -502,7 +502,7 @@ print_output_line() {
 
     if [ $remove -eq 1 ]; then
         for string in $remove_list; do
-            string=$(sed -e "s/§/\ /g" <<< "$string")
+            string=$(sed -e "s/$sep/\ /g" <<< "$string")
             if [ $is_openbsd -eq 1 ]; then
                 if [ $highlight_upper -eq 1 ]; then
                     string=$(tr '[:lower:]' '[:upper:]' <<< "$string")
