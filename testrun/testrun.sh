@@ -202,7 +202,8 @@ echo
 echo -e "\e[0mDetails can be found inside the file"\
         "\e[96m$salomon_testrun_log\e[0m."
 echo
-echo "You may use the following command to avoid messing up the output:"
+echo "You may use the following command to avoid the output getting" \
+     "messed up:"
 echo
 echo -e "    \e[93mless -R $salomon_testrun_log\e[0m"
 echo
