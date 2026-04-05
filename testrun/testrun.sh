@@ -97,18 +97,18 @@ space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 5 13
-echo "salomon.sh $salomon_args -f \"config file\" -hm -ic" \
+echo "salomon.sh $salomon_args -f \"Config File\" -hm -ic" \
      >> $salomon_testrun_log
-$salomon_script $salomon_args -f "config file" -hm -ic \
+$salomon_script $salomon_args -f "Config File" -hm -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
 
 if [ $debug -ne 1 ]; then clear; fi
 step_output 6 13
-echo "salomon.sh $salomon_args -f \"config file\" -hu -ic" \
+echo "salomon.sh $salomon_args -f \"Config File\" -hu -ic" \
      >> $salomon_testrun_log
-$salomon_script $salomon_args -f "config file" -hu -ic \
+$salomon_script $salomon_args -f "Config File" -hu -ic \
     | tee -a $salomon_testrun_log
 if [ $? -ne 0 ]; then salomon_status=$(( salomon_status + 1 )); fi
 space
@@ -199,6 +199,11 @@ else
     echo -e "  Overall status: \e[91mFailed\e[0m (at least one test)"
 fi
 echo
-echo -e "\e[0mFor details see the file \e[96m$salomon_testrun_log\e[0m."
+echo -e "\e[0mDetails can be found inside the file"\
+        "\e[96m$salomon_testrun_log\e[0m."
+echo
+echo "You may use the following command to avoid messing up the output:"
+echo
+echo -e "    \e[93mless -R $salomon_testrun_log\e[0m"
 echo
 exit $salomon_status
