@@ -114,7 +114,9 @@ get_color_match() {
     shopt -s nocasematch
 
     for term in $color_terms; do
-        if [[ $line == *"$term"* ]]; then
+        line_sep="${line// /$sep}"
+        term_sep="${term// /$sep}"
+        if [[ $line_sep == *"$term_sep"* ]]; then
             color_match=1
             break
         fi
@@ -213,7 +215,9 @@ read_color_file() {
             continue
         fi
         color_line_code=$(awk '{ print $1 }' <<< "$line")
-        color_line_term=$(awk '{ print $2 }' <<< "$line")
+        color_line_term=$(awk '{ $1=""; sub(/^ +/, ""); print }' <<< "$line")
+        color_line_term=${color_line_term// /$sep}
+
         color_temp="$color_terms $color_line_term"
         xargs -n1 <<< "$color_temp" &>/dev/null
         if [ $? -ne 0 ]; then
