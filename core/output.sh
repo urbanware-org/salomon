@@ -374,8 +374,9 @@ print_output_line() {
             else
                 term_cols=$(( 79 - fp_len - 4))
             fi
-            fpc="${cl_ly}[${cl_yl}$fp${cl_ly}]"
-            echo -e "${cl_dy}$char_line_single$char_line_single$fpc${cl_dy}\c"
+            fpc="${cl_ly}[${cl_yl}${fp}${cl_ly}]"
+            fpl="${cl_dy}${char_line_single}${char_line_single}${fpc}${cl_dy}"
+            echo -e "${fpl}\c"
             for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
                 echo -e "$char_line_single\c"
             done
@@ -386,7 +387,7 @@ print_output_line() {
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
 
     if [ -n "$line" ] && [ $timestamp -eq 1 ]; then
-        lstamp=$(date -r "$fp" "${leading_timestamp}")
+        lstamp=$(date -r "$fp" "$leading_timestamp")
         line="${lstamp}${line}"
     fi
     line_lower=$(tr '[:upper:]' '[:lower:]' <<< "$line")
