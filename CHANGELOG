@@ -114,9 +114,6 @@ CHANGELOG (Salomon)
         * Revised the code inside the monitoring core module to process the
           output.
 
-        - Removed the unnecessary end-of-file comments from all script and
-          config files.
-
     Version 1.21.0 (2021-11-22)
 
         * Salomon-BSD was officially merged into the Salomon project.
