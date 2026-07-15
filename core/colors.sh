@@ -221,7 +221,6 @@ read_color_file() {
         color_temp="$color_terms $color_line_term"
         xargs -n1 <<< "$color_temp" &>/dev/null
         if [ $? -ne 0 ]; then
-            warn "Please check the color config for quotes and remove them." 0
             color_terms="$color_temp"
         else
             color_terms=$(xargs -n1 <<< "$color_temp" | xargs)
