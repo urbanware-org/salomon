@@ -37,12 +37,12 @@ print_line() {
 
     if [ $exit_prompt -eq 1 ]; then
         if [ $canceled -eq 1 ]; then
-            lc="${cl_lr}$char_prompt"
+            lc="${cl_lr}${char_prompt}"
         else
-            lc="${cl_lb}$char_prompt"
+            lc="${cl_lb}${char_prompt}"
         fi
     else
-        lc="${cl_lb}$char_header_line_v"
+        lc="${cl_lb}${char_header_line_v}"
     fi
 
     if [ -z "$string_value" ]; then
@@ -66,7 +66,7 @@ print_line() {
     fi
 
     if [ -z "$string_leading" ]; then
-        echo -e "${cl_lb}$lc${cl_n}"
+        echo -e "${cl_lb}${lc}${cl_n}"
     elif [ "$string_leading" = "*" ]; then
         if [ "$lc" = "*" ]; then
             echo -e "${cl_lb}\c"
@@ -76,23 +76,23 @@ print_line() {
             echo -e "${cl_n}"
         else
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}$char_header_ctl\c"
+                echo -e "${cl_lb}${char_header_ctl}\c"
             else
-                echo -e "${cl_lb}$char_header_cbl\c"
+                echo -e "${cl_lb}${char_header_cbl}\c"
             fi
             for (( term_col = 1; term_col <= $term_cols; term_col++ )); do
                 echo -e "${char_header_line_h}\c"
             done
             if [ $line_leading -eq 1 ]; then
-                echo -e "${cl_lb}$char_header_ctr\c"
+                echo -e "${cl_lb}${char_header_ctr}\c"
             else
-                echo -e "${cl_lb}$char_header_cbr\c"
+                echo -e "${cl_lb}${char_header_cbr}\c"
             fi
             echo -e "${cl_n}"
         fi
     else
         string=$(printf "%-${indent}s" "$string_leading")
-        echo -e "$lc ${string}${string_value}${cl_n}"
+        echo -e "${lc} ${string}${string_value}${cl_n}"
     fi
 }
 
@@ -133,7 +133,7 @@ print_output_header() {
     input_count=$(wc -w <<< $input_file)
     if [ $input_count -eq 1 ]; then
         filepath=$(readlink -f $input_file)
-        print_line "${cl_wh}Input file:" "${cl_yl}$filepath"
+        print_line "${cl_wh}Input file:" "${cl_yl}${filepath}"
     else
         desc="Input files:"
         for file in $input_file; do
@@ -142,7 +142,7 @@ print_output_header() {
             if [ -z "$filepath" ]; then
                 continue
             fi
-            print_line "${cl_wh}$desc" "${cl_yl}$filepath"
+            print_line "${cl_wh}$desc" "${cl_yl}${filepath}"
             if [ -n "$desc" ]; then
                 desc=""
             fi
@@ -160,14 +160,14 @@ print_output_header() {
         print_line "${cl_wh}Color file:" "${cl_ly}None"
     else
         msg_color_file=$(readlink -f "$color_file")
-        print_line "${cl_wh}Color file:" "${cl_yl}$msg_color_file"
+        print_line "${cl_wh}Color file:" "${cl_yl}${msg_color_file}"
     fi
 
     if [ -z "$export_file" ]; then
         print_line "${cl_wh}Export file:" "${cl_ly}None"
     else
         msg_export_file=$(readlink -f "$export_file")
-        print_line "${cl_wh}Export file:" "${cl_yl}$msg_export_file"
+        print_line "${cl_wh}Export file:" "${cl_yl}${msg_export_file}"
     fi
 
     print_line
@@ -226,14 +226,14 @@ print_output_header() {
 
     print_line
     if [ $exclude -eq 1 ]; then
-        msg_exclude="${cl_dy}\"${cl_yl}$exclude_pattern${cl_dy}\""
+        msg_exclude="${cl_dy}\"${cl_yl}${exclude_pattern}${cl_dy}\""
     else
         msg_exclude="${cl_ly}None"
     fi
     print_line "${cl_wh}Exclude pattern:" "$msg_exclude"
 
     if [ $remove -eq 1 ]; then
-        msg_remove="${cl_dy}\"${cl_yl}$remove_pattern${cl_dy}\""
+        msg_remove="${cl_dy}\"${cl_yl}${remove_pattern}${cl_dy}\""
     else
         msg_remove="${cl_ly}None"
     fi
@@ -247,7 +247,7 @@ print_output_header() {
 
         msg_pattern="${cl_wh}Filter pattern:"
         print_line "$msg_pattern" \
-                    "${cl_dy}\"${cl_yl}$filter_pattern${cl_dy}\""
+                    "${cl_dy}\"${cl_yl}${filter_pattern}${cl_dy}\""
 
         if [ "$arg_case" = "-i" ]; then
             msg_case="${cl_lg}Yes"
@@ -281,15 +281,15 @@ print_output_header() {
         print_line
         if [ $head_lines -gt 0 ]; then
             msg_head="${cl_wh}First lines (only):"
-            print_line "$msg_head" "${cl_yl}$head_lines"
+            print_line "$msg_head" "${cl_yl}${head_lines}"
         fi
         if [ $tail_lines -gt 0 ]; then
             if [ $follow -eq 1 ]; then
                 msg_tail="${cl_wh}Last lines (also):"
-                print_line "$msg_tail" "${cl_yl}$tail_lines"
+                print_line "$msg_tail" "${cl_yl}${tail_lines}"
             else
                 msg_tail="${cl_wh}Last lines (only):"
-                print_line "$msg_tail" "${cl_yl}$tail_lines"
+                print_line "$msg_tail" "${cl_yl}${tail_lines}"
             fi
         fi
     fi
