@@ -6,8 +6,6 @@ USAGE (help.sh)
         1.  Definition
         2.  Details
         3.  Requirements
-          3.1  Shell environment
-          3.2  Dialog tool
         4.  Displaying a help file
 
     1. Definition
