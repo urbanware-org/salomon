@@ -1,6 +1,16 @@
 
 CHANGELOG (Salomon)
 
+    Next release (outstanding)
+
+        + Added the ability to process composed (separated) terms from the
+          color config file instead of just the first one.
+
+        * Revised the code in general (negligible changes).
+        * Revised the processing of multiple terms (replaced the previous
+          separation characters with unit separators).
+        * Revised the testrun script (negligible changes).
+
     Version 1.25.0 (2026-02-15)
 
         + Added the executed command (complete line) to the log file of the
